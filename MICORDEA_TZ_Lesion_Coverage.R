@@ -84,15 +84,17 @@ bb.avg <- subset(bb.avg, Day > 21)
 #### Begin data visualisation ####
 ## lb
 p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
-  geom_line(aes(colour = as.factor(Scenario)), size = 2, alpha = 0.6) +
+  geom_line(aes(linetype = as.factor(Scenario)), size = 1) +
   scale_x_continuous("Day of Season") + scale_y_continuous("Percent Coverage\nLeaf Blast Lesion", limits = c(0, 40)) + 
-  scale_colour_discrete("Emission\nScenario")
+  scale_linetype_discrete("Emission\nScenario") +
+  theme_bw()
 p + facet_grid(. ~ Time.Slice)
 
 q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
-  geom_line(aes(colour = as.factor(Scenario)), size = 2, alpha = 0.6) + 
+  geom_line(aes(linetype = as.factor(Scenario)), size = 1) + 
   scale_x_continuous("Day of Season") + scale_y_continuous("Percent Coverage\nLeaf Bacterial Blight Lesion") + 
-  scale_colour_discrete("Emission\nScenario")
+  scale_linetype_discrete("Emission\nScenario") +
+  theme_bw()
 q + facet_grid(. ~ Time.Slice)
 
 #### End data visualisation ####
