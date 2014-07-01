@@ -85,19 +85,46 @@ bb.avg <- subset(bb.avg, Day > 21)
 ## lb
 p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   geom_line(aes(linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Coverage\nLeaf Blast Lesion", limits = c(0, 40)) + 
+  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage\nBlast Lesion", limits = c(0, 40)) + 
   scale_linetype_discrete("Emission\nScenario") +
-  theme_bw()
+  theme_bw() +
+  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        panel.grid.major = element_blank(), # switch off major gridlines
+        panel.grid.minor = element_blank(), # switch off minor gridlines
+        panel.border = element_rect(unit(0.25, "mm")),
+        legend.text = element_text(size = 8, family = "Helvetica"),
+        legend.title = element_blank(),
+        legend.key.size = unit(1, "lines"),
+        legend.position = c(0.3, 0.8),
+        legend.key = element_blank(),
+        axis.ticks.length = unit(-0.25 , "cm"), # -ve length = inside ticks
+        axis.ticks.margin = unit(0.5, "cm") # margin between the ticks and the text
+  )
 p + facet_grid(. ~ Time.Slice)
 
 q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
   geom_line(aes(linetype = as.factor(Scenario)), size = 1) + 
-  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Coverage\nLeaf Bacterial Blight Lesion") + 
+  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage\nBacterial Blight Lesion") + 
   scale_linetype_discrete("Emission\nScenario") +
-  theme_bw()
+  theme_bw() +
+  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        panel.grid.major = element_blank(), # switch off major gridlines
+        panel.grid.minor = element_blank(), # switch off minor gridlines
+        panel.border = element_rect(unit(0.25, "mm")),
+        legend.text = element_text(size = 8, family = "Helvetica"),
+        legend.title = element_blank(),
+        legend.key.size = unit(1, "lines"),
+        legend.position = c(0.3, 0.8),
+        legend.key = element_blank(),
+        axis.ticks.length = unit(-0.25 , "cm"), # -ve length = inside ticks
+        axis.ticks.margin = unit(0.5, "cm") # margin between the ticks and the text
+  ) +
 q + facet_grid(. ~ Time.Slice)
 
 #### End data visualisation ####
-
 
 #eos
