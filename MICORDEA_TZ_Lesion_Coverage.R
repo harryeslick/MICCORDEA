@@ -1,9 +1,9 @@
 ##############################################################################
 # title         : MICORDEA_TZ_Lesion_Coverage.R;
-# purpose       : analyse the lesion coverage results from the MICORDEA project
+# purpose       : analyse the lesion coverage results from the MICORDEA project;
 #               : for publication;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, Jun. 2014;
+# last update   : in Los Baños, Philippines, Jul. 2014;
 # inputs        : GTiff files of yield losses for Tanzania calculated using RICEPEST;
 # outputs       : Histograms and maps of lesion coverages for base/2030/2050 a2/b1/ab scenario;
 # remarks 1     : ;
