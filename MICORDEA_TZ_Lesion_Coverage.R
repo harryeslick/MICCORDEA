@@ -13,6 +13,8 @@
 #### Begin libraries ####
 library(raster)
 library(ggplot2)
+library(beepr)
+library(grid)
 ##### End libraries ####
 
 #### Begin data import ####
@@ -78,7 +80,7 @@ row.names(lb.avg) <- row.names(bb.avg) <- 1:nrow(lb.avg) # Assign sensible row n
 
 lb.avg <- subset(lb.avg, Day > 21) # EPIRICE begins at day 20 of the simulation, this drops all prior values
 bb.avg <- subset(bb.avg, Day > 21) 
-
+beep()
 #### End extract data and make dataframe for visualisation ####
 
 #### Begin data visualisation ####
@@ -88,7 +90,19 @@ p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage\nBlast Lesion", limits = c(0, 40)) + 
   scale_linetype_discrete("Emission\nScenario") +
   theme_bw(base_size = 12, base_family = "Helvetica") +
-  theme(legend.position = c(0.1, 0.8), legend.background = element_rect(colour = "black"))
+  theme(legend.position = c(0.1, 0.9), 
+        legend.background = element_rect(colour = "black", unit(3, "mm")), 
+        legend.key.width = unit(2, "cm"),
+        panel.grid.minor = element_blank(), # switch off minor gridlines
+        panel.border = element_rect(colour = "black", unit(0.25, "mm")),
+        legend.text = element_text(size = 9, family = "Helvetica"),
+        legend.title = element_blank(),
+        legend.key.size = unit(1, "lines"),
+        legend.position = c(0.3, 0.8),
+        legend.key = element_blank(),
+        axis.ticks.length = unit(0.25 , "cm"),
+        axis.ticks.margin = unit(0.5, "cm") # margin between the ticks and the text
+)
 p + facet_grid(. ~ Time.Slice)
 
 q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
@@ -96,7 +110,9 @@ q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) +
   scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage\nBacterial Blight Lesion") + 
   scale_linetype_discrete("Emission\nScenario") +
   theme_bw(base_size = 12, base_family = "Helvetica") + 
-  theme(legend.position = c(0.1, 0.8), legend.background = element_rect(colour = "black"))
+  theme(legend.position = c(0.1, 0.8), 
+        legend.background = element_rect(colour = "black", unit(0.25, "mm")), 
+        legend.key.width = unit(2, "cm"))
 q + facet_grid(. ~ Time.Slice)
 
 #### End data visualisation ####
