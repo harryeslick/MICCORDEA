@@ -15,6 +15,7 @@ library(raster)
 library(ggplot2)
 library(beepr)
 library(grid)
+library(scales)
 ##### End libraries ####
 
 #### Begin data import ####
@@ -87,43 +88,41 @@ beep()
 ## lb
 p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   geom_line(aes(linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage\nBlast Lesion", limits = c(0, 40)) + 
-  scale_linetype_discrete("Emission\nScenario") +
-  theme_bw() +
-  theme(legend.position = c(0.1, 0.9), 
-        legend.background = element_rect(fill = "white", unit(3, "mm")), 
-        legend.key.width = unit(2, "cm"),
+  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage by Blast Lesions", limits = c(0, 40)) + 
+  scale_linetype_discrete("Emission Scenario") +
+  theme_bw(base_size = 9, base_family = "Helvetica") + 
+  theme(legend.position = c(0.1, 0.85), 
+        legend.background = element_rect(fill = "white", colour = "black"),
+        legend.key.width = unit(11, "mm"), 
         panel.grid.minor = element_blank(), # switch off minor gridlines
         panel.border = element_rect(colour = "black", unit(0.25, "mm")),
-        legend.text = element_text(size = 9, family = "Helvetica"),
         legend.title = element_blank(),
         legend.key.size = unit(1, "lines"),
-        legend.position = c(0.3, 0.8),
         legend.key = element_blank(),
-        axis.ticks.length = unit(0.25 , "cm"),
-        axis.ticks.margin = unit(0.5, "cm") # margin between the ticks and the text
-)
+        legend.key.size = unit(1, "lines"),
+        axis.ticks.length = unit(0.15 , "cm"))
 p + facet_grid(. ~ Time.Slice)
+
+ggsave("LB.pdf", width = 140, height = 120, units = "mm")
 
 q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
   geom_line(aes(linetype = as.factor(Scenario)), size = 1) + 
-  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage\nBacterial Blight Lesion") + 
-  scale_linetype_discrete("Emission\nScenario") +
-  theme_bw(base_size = 12, base_family = "Helvetica") + 
-  theme(legend.position = c(0.1, 0.8), 
-        legend.background = element_rect(colour = "black", unit(0.25, "mm")), 
-        legend.key.width = unit(2, "cm"), 
-        legend.key.width = unit(2, "cm"),
+  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage by Bacterial Blight Lesions") +
+  scale_linetype_discrete("Emission Scenario") +
+  theme_bw(base_size = 9, base_family = "Helvetica") + 
+  theme(legend.position = c(0.1, 0.85), 
+        legend.background = element_rect(fill = "white", colour = "black"),
+        legend.key.width = unit(11, "mm"), 
         panel.grid.minor = element_blank(), # switch off minor gridlines
         panel.border = element_rect(colour = "black", unit(0.25, "mm")),
-        legend.text = element_text(size = 9, family = "Helvetica"),
         legend.title = element_blank(),
         legend.key.size = unit(1, "lines"),
-        legend.position = c(0.3, 0.8),
         legend.key = element_blank(),
-        axis.ticks.length = unit(0.25 , "cm"),
-        axis.ticks.margin = unit(0.5, "cm")) # margin between the ticks and the text
+        legend.key.size = unit(1, "lines"),
+        axis.ticks.length = unit(0.15 , "cm"))
 q + facet_grid(. ~ Time.Slice)
+
+ggsave("BB.pdf", width = 140, height = 120, units = "mm")
 
 #### End data visualisation ####
 
