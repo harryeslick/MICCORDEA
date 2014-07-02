@@ -1,0 +1,215 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Seck2013}
+P.~Seck, A.~Toure, J.~Coulibaly, D.~A., W.~M.C.S., Realizing Africa's rice
+  promise, CABI, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK, 2013,
+  Ch. Africa's rice economy before and after the 2008 rice crisis, pp. 24--34.
+
+\bibitem{Diagne2013}
+A.~Diagne, E.~Amovin-Assagba, K.~Futakuchi, M.~Wopereis, Realizing Africa's
+  rice promise, CABI, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
+  2013, Ch. Estimation of cultivated area, number of farming households and
+  yield for major rice-growing environments in Africa, pp. 35--45.
+
+\bibitem{Saito2013}
+K.~Saito, A.~Nelson, S.~Zwart, A.~Niang, A.~Sow, H.~Yoshida, M.~Wopereis,
+  Realizing Africa's rice promise, CABI, Nosworthy Way, Wallingford,
+  Oxfordshire OX10 8DE, UK, 2013, Ch. Towards a better understanding of
+  biophysical determinants of yield gaps and potential expansion of rice area
+  in Africa, pp. 188--203.
+
+\bibitem{Verdier2012}
+V.~Verdier, C.~V. Cruz, J.~E. Leach,
+  \href{http://www.sciencedirect.com/science/article/pii/S0168165611005578}{Controlling
+  rice bacterial blight in africa: Needs and prospects}, Journal of
+  Biotechnology 159~(4) (2012) 320 -- 328, biotechnology for enhancing plant
+  production and food quality - \{IBS\} 2010 Part \{III\} Biotechnology for
+  enhancing plant production and food quality - \{IBS\} 2010 Part \{III\}.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/j.jbiotec.2011.09.020}
+  {\path{doi:http://dx.doi.org/10.1016/j.jbiotec.2011.09.020}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0168165611005578}
+
+\bibitem{Madden2007}
+L.~Madden, G.~Hughes, F.~{van den Bosch}, The Study of Plant Disease Epidemics,
+  The American Phytopathological Society, APS Press, St. Paul, Minnesota, 2007.
+
+\bibitem{Anderson2004}
+P.~K. Anderson, A.~A. Cunningham, N.~G. Patel, F.~J. Morales, P.~R. Epstein,
+  P.~Daszak,
+  \href{http://www.sciencedirect.com/science/article/pii/S0169534704002186}{Emerging
+  infectious diseases of plants: pathogen pollution, climate change and
+  agrotechnology drivers}, Trends in Ecology \& Evolution 19~(10) (2004) 535 --
+  544.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/j.tree.2004.07.021}
+  {\path{doi:http://dx.doi.org/10.1016/j.tree.2004.07.021}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0169534704002186}
+
+\bibitem{Coakley1999}
+S.~M. Coakley, H.~Scherm, S.~Chakraborty,
+  \href{http://dx.doi.org/10.1146/annurev.phyto.37.1.399}{Climate change and
+  plant disease management}, Annual Review of Phytopathology 37~(1) (1999)
+  399--426, pMID: 11701829.
+\newblock \href
+  {http://arxiv.org/abs/http://dx.doi.org/10.1146/annurev.phyto.37.1.399}
+  {\path{arXiv:http://dx.doi.org/10.1146/annurev.phyto.37.1.399}}, \href
+  {http://dx.doi.org/10.1146/annurev.phyto.37.1.399}
+  {\path{doi:10.1146/annurev.phyto.37.1.399}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1146/annurev.phyto.37.1.399}
+
+\bibitem{Garrett2006}
+K.~A. Garrett, S.~P. Dendy, E.~E. Frank, M.~N. Rouse, S.~E. Travers,
+  \href{http://dx.doi.org/10.1146/annurev.phyto.44.070505.143420}{Climate
+  change effects on plant disease: Genomes to ecosystems}, Annual Review of
+  Phytopathology 44~(1) (2006) 489--509, pMID: 16722808.
+\newblock \href
+  {http://arxiv.org/abs/http://dx.doi.org/10.1146/annurev.phyto.44.070505.143420}
+  {\path{arXiv:http://dx.doi.org/10.1146/annurev.phyto.44.070505.143420}},
+  \href {http://dx.doi.org/10.1146/annurev.phyto.44.070505.143420}
+  {\path{doi:10.1146/annurev.phyto.44.070505.143420}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1146/annurev.phyto.44.070505.143420}
+
+\bibitem{Chakraborty2011}
+S.~Chakraborty, A.~C. Newton,
+  \href{http://dx.doi.org/10.1111/j.1365-3059.2010.02411.x}{Climate change,
+  plant diseases and food security: an overview}, Plant Pathology 60~(1) (2011)
+  2--14.
+\newblock \href {http://dx.doi.org/10.1111/j.1365-3059.2010.02411.x}
+  {\path{doi:10.1111/j.1365-3059.2010.02411.x}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1111/j.1365-3059.2010.02411.x}
+
+\bibitem{Juroszek2011}
+P.~Juroszek, A.~von Tiedemann,
+  \href{http://dx.doi.org/10.1111/j.1365-3059.2010.02410.x}{Potential
+  strategies and future requirements for plant disease management under a
+  changing climate}, Plant Pathology 60~(1) (2011) 100--112.
+\newblock \href {http://dx.doi.org/10.1111/j.1365-3059.2010.02410.x}
+  {\path{doi:10.1111/j.1365-3059.2010.02410.x}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1111/j.1365-3059.2010.02410.x}
+
+\bibitem{Luck2011}
+J.~Luck, M.~Spackman, A.~Freeman, P.~Tre˛bicki, W.~Griffiths, K.~Finlay,
+  S.~Chakraborty,
+  \href{http://dx.doi.org/10.1111/j.1365-3059.2010.02414.x}{Climate change and
+  diseases of food crops}, Plant Pathology 60~(1) (2011) 113--121.
+\newblock \href {http://dx.doi.org/10.1111/j.1365-3059.2010.02414.x}
+  {\path{doi:10.1111/j.1365-3059.2010.02414.x}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1111/j.1365-3059.2010.02414.x}
+
+\bibitem{Pautasso2010}
+M.~Pautasso, K.~Dehnen-Schmutz, O.~Holdenrieder, S.~Pietravalle, N.~Salama,
+  M.~J. Jeger, E.~Lange, S.~Hehl-Lange,
+  \href{http://dx.doi.org/10.1111/j.1469-185X.2010.00123.x}{Plant health and
+  global change -- some implications for landscape management}, Biological
+  Reviews 85~(4) (2010) 729--755.
+\newblock \href {http://dx.doi.org/10.1111/j.1469-185X.2010.00123.x}
+  {\path{doi:10.1111/j.1469-185X.2010.00123.x}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1111/j.1469-185X.2010.00123.x}
+
+\bibitem{Savary2011}
+S.~Savary, A.~Nelson, A.~H. Sparks, L.~Willocquet, E.~Duveiller, G.~Mahuku,
+  G.~Forbes, K.~A. Garrett, D.~Hodson, J.~Padgham, S.~Pande, M.~Sharma,
+  J.~Yuen, A.~Djurle,
+  \href{http://dx.doi.org/10.1094/PDIS-04-11-0316}{International agricultural
+  research tackling the effects of global and climate changes on plant diseases
+  in the developing world}, Plant Disease 95~(10) (2011) 1204--1216.
+\newblock \href {http://dx.doi.org/10.1094/PDIS-04-11-0316}
+  {\path{doi:10.1094/PDIS-04-11-0316}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1094/PDIS-04-11-0316}
+
+\bibitem{Sutherst2011}
+R.~W. Sutherst, F.~Constable, K.~J. Finlay, R.~Harrington, J.~Luck, M.~P.
+  Zalucki, \href{http://dx.doi.org/10.1002/wcc.102}{Adapting to crop pest and
+  pathogen risks under a changing climate}, Wiley Interdisciplinary Reviews:
+  Climate Change 2~(2) (2011) 220--237.
+\newblock \href {http://dx.doi.org/10.1002/wcc.102}
+  {\path{doi:10.1002/wcc.102}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1002/wcc.102}
+
+\bibitem{Sere2013}
+Y.~Sere, D.~Fargette, M.~Abo, K.~Wydra, M.~Bimerew, A.~Onasanya, S.~Akator,
+  Realizing Africa's rice promise, CABI, Nosworthy Way, Wallingford,
+  Oxfordshire OX10 8DE, UK, 2013, Ch. Managing the major diseases of rice in
+  Africa, pp. 213--228.
+
+\bibitem{Hijmans2000}
+R.~J. Hijmans, G.~A. Forbes, T.~S. Walker,
+  \href{http://dx.doi.org/10.1046/j.1365-3059.2000.00511.x}{Estimating the
+  global severity of potato late blight with gis-linked disease forecast
+  models}, Plant Pathology 49~(6) (2000) 697--705.
+\newblock \href {http://dx.doi.org/10.1046/j.1365-3059.2000.00511.x}
+  {\path{doi:10.1046/j.1365-3059.2000.00511.x}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1046/j.1365-3059.2000.00511.x}
+
+\bibitem{Savary2012}
+S.~Savary, A.~Nelson, L.~Willocquet, I.~Pangga, J.~Aunario,
+  \href{http://www.sciencedirect.com/science/article/pii/S0261219411003656}{Modeling
+  and mapping potential epidemics of rice diseases globally}, Crop Protection
+  34~(0) (2012) 6 -- 17.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/j.cropro.2011.11.009}
+  {\path{doi:http://dx.doi.org/10.1016/j.cropro.2011.11.009}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0261219411003656}
+
+\bibitem{Willocquet2000}
+L.~Willocquet, S.~Savary, L.~Fernandez, F.~Elazegui, P.~Teng,
+  \href{http://www.sciencedirect.com/science/article/pii/S0304380000002714}{Development
+  and evaluation of a multiple-pest, production situation specific model to
+  simulate yield losses of rice in tropical asia}, Ecological Modelling
+  131~(2{\^a}€``3) (2000) 133 -- 159.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/S0304-3800(00)00271-4}
+  {\path{doi:http://dx.doi.org/10.1016/S0304-3800(00)00271-4}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304380000002714}
+
+\bibitem{Willocquet2002}
+L.~Willocquet, S.~Savary, L.~Fernandez, F.~Elazegui, N.~Castilla, D.~Zhu,
+  Q.~Tang, S.~Huang, X.~Lin, H.~Singh, R.~Srivastava,
+  \href{http://www.sciencedirect.com/science/article/pii/S0304380002000145}{Structure
+  and validation of ricepest, a production situation-driven, crop growth model
+  simulating rice yield response to multiple pest injuries for tropical asia},
+  Ecological Modelling 153~(3) (2002) 247 -- 268.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/S0304-3800(02)00014-5}
+  {\path{doi:http://dx.doi.org/10.1016/S0304-3800(02)00014-5}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304380002000145}
+
+\bibitem{Rowhani2011}
+P.~Rowhani, D.~B. Lobell, M.~Linderman, N.~Ramankutty,
+  \href{http://www.sciencedirect.com/science/article/pii/S0168192310003357}{Climate
+  variability and crop production in tanzania}, Agricultural and Forest
+  Meteorology 151~(4) (2011) 449 -- 460.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/j.agrformet.2010.12.002}
+  {\path{doi:http://dx.doi.org/10.1016/j.agrformet.2010.12.002}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0168192310003357}
+
+\bibitem{Boko2007}
+M.~Boko, I.~Niang, A.~Nyong, C.~Vogel, A.~Githeko, M.~Medany, B.~Osman-Elasha,
+  R.~Tabo, P.~Yanda, Climate Change 2007: Impacts, Adaptation and
+  Vulnerability. Contribution of Working Group II to the Fourth Assessment
+  Report of the Intergovernmental Panel on Climate Change, Cambridge University
+  Press, 2007, Ch. Africa, pp. 433--467.
+
+\bibitem{Barreiro-Hurle2012}
+J.~Barreiro-Hurle, Analysis of incentives and disincentives for rice in the
+  united republic of tanzania, Technical note series, MAFAP, FAO, Rome (2012).
+
+\bibitem{R2014}
+{R Core Team}, \href{http://www.R-project.org/}{R: A Language and Environment
+  for Statistical Computing}, R Foundation for Statistical Computing, Vienna,
+  Austria (2014).
+\newline\urlprefix\url{http://www.R-project.org/}
+
+\bibitem{Shaner1977}
+G.~Shaner, R.~E. Finney, The effect of nitrogen fertilization on the expression
+  of slow-mildewing resistance in knox wheat, Phytopathology 67 (1977)
+  1051--1056.
+
+\end{thebibliography}

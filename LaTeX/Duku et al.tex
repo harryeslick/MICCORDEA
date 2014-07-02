@@ -1,0 +1,226 @@
+%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+\journal{Environmental and Ecological Modelling}
+
+\begin{document}
+
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Spatial modelling of rice yield losses in Tanzania due to bacterial blight and leaf blast in a changing climate} 
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author[AfricaRice, WUR]{C. Duku}
+\ead{confidence.duku@wur.nl}
+\author[IRRI]{A.H. Sparks}
+\ead{a.sparks@irri.org}
+\author[AfricaRice]{S.J. Zwart \corref{cor1}}
+\ead{s.zwart@cgiar.org}
+\author[IRRI]{J.K. Aunario}
+\ead{j.aunario@irri.org}
+
+\cortext[cor1]{Corresponding author}
+
+\fntext[fn1]{Current address: } 
+\address[AfricaRice]{Africa Rice Center (AfricaRice), 01 BP 2031, Cotonou, BENIN}
+\address[WUR]{Somewhere in Europe}
+\address[IRRI]{International Rice Research Institute (IRRI), DAPO Box 7777, Metro Manila, 1301, PHILIPPINES}
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{keyword}
+bacterial blight \sep leaf blast \sep EPIRICE \sep RICEPEST \sep crop modelling
+\end{keyword}
+
+\end{frontmatter}
+
+
+
+%%
+%% Start line numbering here if you want
+%%
+\linenumbers
+
+%% main text
+\section{Introduction}
+Rice is the most rapidly growing staple food in Africa and although rice production is steadily increasing, the consumption is still outpacing the production. For example by 2009 37 per cent of the rice consumed in Africa was imported. To reduce its reliance on imports and dependency on global markets Africas rice production needs to increase further \cite{Seck2013}. Current average yield levels in Africa range from about 1 t ha\textsuperscript{-1} in upland ecologies to 1.5 to 2 t ha\textsuperscript{-1} in rain fed lowland ecologies with the irrigated lowland ecologies having the highest yields of 3.0 to 4.0 t ha\textsuperscript{-1} \cite{Diagne2013}. Rice yields in African farmers fields are low due to a combination of abiotic and biotic stresses that constrain them. Farmers can significantly reduce the yield gaps with improved field, water and crop management, and weed control \cite{Saito2013}.
+
+Apart from weeds, pests and diseases also are major biotic stresses that can cause significant reductions in rice yields. Two important diseases in Sub-Saharan African rice are leaf blast (LB), causal agent \textit{Magnaporthe oryzae}, and bacterial blight (BB) \cite{Verdier2012}, causal agent \textit{Xanthamonas oryzae} pv. \textit{oryzae}. Because infectious plant disease occurs as an interaction of a favorable environment, a susceptible host and a competent pathogen \cite{Madden2007}, weather conditions impact both the occurrence and gravity of plant disease. Climate change is likely to affect plant disease \cite{Anderson2004, Coakley1999, Garrett2006} and several others have expressed interest in changes to plant disease as a result of climate change \cite{Chakraborty2011, Juroszek2011, Luck2011, Pautasso2010, Savary2011, Sutherst2011}. Moreover, intensification of rice production, which was witnessed in Sub-Saharan Africa since the food crisis of 2008 \cite{Saito2013}, may lead to an increased yield loss due to the blast, thus reducing the benefits that were created \cite{Sere2013}. Increases in disease incidence and severity may deter farmers from investing in intensification measures because of risks related to yield losses or even total crop failure. To the authors knowledge, the impact of climate change on leaf blast and bacterial blight diseases of rice in Africa has not yet been investigated.
+
+Efforts to link plant disease models with a geographic information system (GIS) to assess the impact of plant diseases spatially include Hijmans \textit{et al}. \cite{Hijmans2000}, which mapped the global number of pesticide applications necessary to control potato late blight using contemporary weather data. While Sparks et al. (2014) used a meta-model to generate map estimates of changes in global potato late blight due to climate change. Savary \textit{et al}. \cite{Savary2012} developed a GIS-linked model, EPIRICE, capable of simulating several important diseases of rice, including leaf blast and bacterial blight amongst others.
+
+The objective of the study was to quantify the impact of climate change as forecasted by the Intergovernmental Panel on Climate Change (IPCC) on rice yield loss as result of BB and LB. To carry out this study, we linked two previously unlinked, existing models, EPIRICE and RICEPEST \cite{Willocquet2000, Willocquet2002}, and we applied them using spatially and temporally downscaled climate change data to generate predictions on changes in plant disease impact due to climate change in Tanzania.
+
+The RICEPEST model has been used to estimate yield losses due to diseases and other pest injuries in rice in varying production situations, but until now these estimates have not been geographically representable. Additionally, the previous use of the RICEPEST model included only weather data that varied. The levels of disease damages were limited to the original levels of disease that corresponded to observations that were taken during model development or chosen by the user. Using EPIRICE output allows us to obtain spatial and temporal estimates of yield losses due to disease as affected by conducive weather.
+
+This paper will continue with a justification for the study area, followed by descriptions of the EPIRICE and RICEPEST models. We will then elaborate the framework for assessing rice yield losses under climate change that links both models. The procedure for generating daily weather inputs from the downscaled climate scenarios is outlined followed by the choice of production situations. Next the results are presented, followed by a discussion and finally conclusions.
+
+
+\section{Materials and Methods}
+\subsection{The study region}
+Tanzania was chosen as the study region because rice is planted widely across the country \cite{Rowhani2011} (Table 1). The bulk of the rice crop is grown from January until June the following year during the rainy season. According to the International Panel on Climate Change (IPCC), East Africa and especially the Great Lakes Region are among the more vulnerable regions in Africa to climate change, where the trend is towards increasing temperatures and declining rainfall according to General Circulation Model outputs \cite{Boko2007}.
+Rice accounts for five percent of the total value of agricultural production in Tanzania and is the 7th most important agricultural crop with steadily increasing production over the last decade. However, rice yields in Tanzania remain significantly lower than in neighboring countries \cite{Barreiro-Hurle2012}.
+
+\subsection{Model descriptions}
+\subsubsection{The EPIRICE model}
+EPIRICE \cite{Savary2012} is a SEIR (susceptible-exposed-infectious-removed) model implemented in R \cite{R2014}that simulates potential spatial epidemics of rice diseases including BB and LB. Model inputs are date of crop establishment and daily time-step climate data, precipitation, maximum and minimum temperature, and relative humidity. The model as originally implemented produces a single aggregated output, a map, at the end of a growing season of a measure called Area Under Disease Progress Curve (AUDPC) \cite{Shaner1977}. However, for this study, daily disease severity expressed as a percentage was generated for use in the RICEPEST model, which we discuss further in a later portion of this paper.
+
+\subsubsection{The RICEPEST model}
+The RICEPEST model \cite{Willocquet2000, Willocquet2002} simulates rice yield losses due to several yield-reducing factors under a range of specific production situations with simulated diseases including BB and LB. The model runs on a daily time-step with simulation starting 14 days after crop establishment for both transplanted and direct seeded rice. The model incorporates two sub-models, the first sub-model simulates the dynamics of the rice crop biomass and the second sub-model simulates the dynamics of the tiller population. The biomass sub-model accounts for the daily accumulation and partitioning of assimilates towards roots, leaves, stems, and panicles. For this study, because the damage mechanisms of the diseases of interest (BB and LB) are simulated only in the biomass sub-model, the tiller sub-model was not considered.
+
+Bacterial blight and LB cause lesions on the leaf blades. These lesions decrease the green leaf area index (LAI), reducing the photosynthetic capacity of the plant. To account for this, the RICEPEST model uses a reduction factor to reduce the value of LAI and subsequently the overall rate of growth (RG) \cite{Willocquet2002}. 
+
+          (1 – (BBDMt / 100)
+          (1 – (LBDMt / 100))
+ LAIt = SLAt × LEAFWt × (1 – (BBDMt / 100)) 
+         RGt = RUEt × RADt × (1- exp( - k × LAIt))
+
+BBDM and LBDM are the percent of leaf area covered by BB and LB respectively \cite{Willocquet2002}. SLA is the specific leaf area; LEAFW is the leaf dry weight; RUE is radiation use efficiency; RAD is daily solar radiation; k is coefficient of light extinction; 
+(1- exp( - k × LAIt)
+is the proportion of light intercepted by the crop.
+
+Three different injury profiles as listed in Table 2 were defined for this study. The defined production situation was then treated with these injury profiles to obtain the actual yield for each treatment combination.
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}          ==>>  [#]
+%%   \cite[chap. 2]{key} ==>>  [#, chap. 2]
+%%   \citet{key}         ==>>  Author [#]
+
+%% References with bibTeX database:
+
+\bibliographystyle{elsarticle-num}
+\bibliography{MICORDEA_References}
+
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use model1-num-names.bst.
+
+%% References without bibTeX database:
+
+% \begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
+
+
+\end{document}
+
+%%
+%% End of file `Duku et al.tex'.
