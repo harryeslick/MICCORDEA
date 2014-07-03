@@ -112,7 +112,7 @@
 %% \address[label1]{<address>}
 %% \address[label2]{<address>}
 
-\author[AfricaRice, WUR]{C. Duku}
+\author[AfricaRice]{C. Duku}
 \ead{confidence.duku@wur.nl}
 \author[IRRI]{A.H. Sparks}
 \ead{a.sparks@irri.org}
@@ -123,9 +123,8 @@
 
 \cortext[cor1]{Corresponding author}
 
-\fntext[fn1]{Current address: } 
+\fntext[fn1]{Current address: Wageningen...} 
 \address[AfricaRice]{Africa Rice Center (AfricaRice), 01 BP 2031, Cotonou, BENIN}
-\address[WUR]{Somewhere in Europe}
 \address[IRRI]{International Rice Research Institute (IRRI), DAPO Box 7777, Metro Manila, 1301, PHILIPPINES}
 
 \begin{abstract}
@@ -133,7 +132,7 @@
 \end{abstract}
 
 \begin{keyword}
-bacterial blight \sep leaf blast \sep EPIRICE \sep RICEPEST \sep crop modelling
+bacterial blight \sep leaf blast \sep EPIRICE \sep RICEPEST \sep crop modelling\sep yield loss modelling
 \end{keyword}
 
 \end{frontmatter}
@@ -160,7 +159,7 @@ The objective of the study was to quantify the impact of climate change as forec
 
 Rice accounts for five percent of the total value of agricultural production in Tanzania and is the 7th most important agricultural crop with steadily increasing production over the last decade. However, rice yields in Tanzania remain significantly lower than in neighboring countries \cite{Barreiro-Hurle2012}.
 
-The RICEPEST model has been used to estimate yield losses due to diseases and other pest injuries in rice in varying production situations, but until now these estimates have not been geographically representable. Additionally, the previous use of the RICEPEST model included only weather data that varied. The levels of disease damages were limited to the original levels of disease that corresponded to observations that were taken during model development or chosen by the user. Using EPIRICE output allows us to obtain spatial and temporal estimates of yield losses due to disease as affected by conducive weather.
+The linkage of EPIRICE with RICEPEST gives two advantages. First, RICEPEST has been used to estimate yield losses due to diseases and other pest injuries in rice in varying production situations with current weather and climate conditions. However, as plant diseases are affected by weather, the linkage with EPIRICE allows us to model the effects of climate change on both the rice crop and on the diseases while using the same weather data inputs. Second, the spatial nature of EPIRICE outputs enabled us to use RICEPEST in a GIS. Until now RICEPEST yield loss estimates have not been linked to a GIS. Linking RICEPEST with a GIS allowed us to map yield losses for the whole country of Tanzania, rather than just point estimates.
 
 This paper will continue with a justification for the study area, followed by descriptions of the EPIRICE and RICEPEST models. We will then elaborate the framework for assessing rice yield losses under climate change that links both models. The procedure for generating daily weather inputs from the downscaled climate scenarios is outlined followed by the choice of production situations. Next the results are presented, followed by a discussion and finally conclusions.
 
@@ -176,38 +175,36 @@ Tanzania was chosen as the study region because of its location in sub-Saharan A
 
 \subsection{Model descriptions}
 \subsubsection{The EPIRICE model}
-EPIRICE \cite{Savary2012} is a SEIR (susceptible-exposed-infectious-removed) model implemented in R  \cite{R2014} that simulates potential spatial epidemics of rice diseases including BB and LB. Model inputs are date of crop establishment and daily time-step climate data, precipitation, maximum and minimum temperature, and relative humidity. The model as originally implemented produces a single aggregated output, a map, at the end of a growing season of a measure called Area Under Disease Progress Curve (AUDPC) \cite{Shaner1977}. However, for this study, daily disease severity expressed as a percentage was generated for use in the RICEPEST model, which we discuss further in a later portion of this paper.
+EPIRICE \cite{Savary2012} is a SEIR (susceptible-exposed-infectious-removed) model \cite{Kermack1927, Madden2006} implemented in R \cite{R2014} that simulates potential spatial epidemics of rice diseases including BB and LB. The model considers a 1m\textsuperscript{2} area of rice, which is the same area that RICEPEST considers. Model inputs are date of crop establishment and daily time-step weather data; precipitation, maximum and minimum temperature, and relative humidity. The model as originally implemented produces a single aggregated output, a map, at the end of a growing season of a measure called Area Under Disease Progress Curve (AUDPC) \cite{Shaner1977}. However, for this study, daily disease severity expressed as a percentage was generated for use in the RICEPEST model, which we discuss further in a later portion of this paper. As the only modification made to the model was the expression of daily disease severity, we  would refer the reader to \citet{Savary2012} for further information on the model structure and function.
 
 \subsubsection{The RICEPEST model}
-The RICEPEST model \cite{Willocquet2000, Willocquet2002} simulates rice yield losses due to several yield-reducing factors under a range of specific production situations with simulated diseases including BB and LB. The model runs on a daily time-step with simulation starting 14 days after crop establishment for both transplanted and direct seeded rice. The model incorporates two sub-models, the first sub-model simulates the dynamics of the rice crop biomass and the second sub-model simulates the dynamics of the tiller population. The biomass sub-model accounts for the daily accumulation and partitioning of assimilates towards roots, leaves, stems, and panicles. For this study, because the damage mechanisms of the diseases of interest (BB and LB) are simulated only in the biomass sub-model, the tiller sub-model was not considered.
+The RICEPEST model \cite{Willocquet2000, Willocquet2002} simulates rice yield losses due to several yield-reducing factors under a range of specific production situations with simulated diseases including BB and LB. The model runs on a daily time-step with simulation starting 14 days after crop establishment (DACE) for both transplanted and direct seeded rice. The model incorporates two sub-models, the first sub-model simulates the dynamics of the rice crop biomass and the second sub-model simulates the dynamics of the tiller population. The biomass sub-model accounts for the daily accumulation and partitioning of assimilates towards roots, leaves, stems, and panicles. For this study, because the damage mechanisms of the diseases of interest (BB and LB) are simulated only in the biomass sub-model, the tiller sub-model was not considered.
 
-Bacterial blight and LB cause lesions on the leaf blades. These lesions decrease the green leaf area index (LAI), reducing the photosynthetic capacity of the plant. To account for this, the RICEPEST model uses a reduction factor to reduce the value of LAI and subsequently the overall rate of growth (RG) \cite{Willocquet2002}. 
-\begin{equation}
-(1  (BBDM_t / 100)
+Bacterial blight and LB cause lesions on the leaf blades. These lesions decrease the green leaf area index (LAI), reducing the photosynthetic capacity of the plant. RICEPEST reduces the rate of growth (RG) (Formula \ref{RG}) by reducing the LAI (Formula \ref{LAI}) by applying a damage function (Formula \ref{BBDM}) or (\ref{LBDM}) where SLA is the specific leaf area; LEAFW is the leaf dry weight; RUE is radiation use efficiency; RAD is daily solar radiation; k is coefficient of light extinction and is defined as the proportion of light intercepted by the crop \cite{Willocquet2000}, set to 0.6 \cite{Willocquet2002}.
+\begin{equation}\label{RG}
+RG_t = RUE_t \times RAD_t \times (1- exp(- k \times LAI_t))
 \end{equation}
 
-\begin{equation}
-(1  (LBDM_t / 100))
+\begin{equation}\label{LAI}
+LAI_t = SLA_t \times LEAFWt
+\end{equation}
+The damage functions that calculate the reduction factors, BBDM (Formula \ref{BBDM}) and LBDM (Formula \ref{LBDM}) are the percent of leaf area covered by BB and LB respectively \cite{Willocquet2002}. 
+\begin{equation}\label{BBDM}
+(1-(BBDM_t /100)
 \end{equation}
 
-\begin{equation}
-LAI_t = SLA_t  LEAFWt  (1  (BBDM_t / 100)) 
+\begin{equation}\label{LBDM}
+(1-(LBDM_t /100))
 \end{equation}
- 
-\begin{equation}
-RG_t = RUE_t  RAD_t  (1- exp(- k  LAI_t))
+Thus, the complete LAI formula with the damage function for BB reducing the photosynthetic area of the leaf becomes
+ \begin{equation}\label{LAIBBDM}
+LAI_t = SLA_t \times LEAFWt \times (1-(BBDM_t / 100)).
 \end{equation}
 
-BBDM and LBDM are the percent of leaf area covered by BB and LB respectively \cite{Willocquet2002}. SLA is the specific leaf area; LEAFW is the leaf dry weight; RUE is radiation use efficiency; RAD is daily solar radiation; k is coefficient of light extinction 
-\begin{equation}
-(1- exp( - k  LAI_t)
-\end{equation}
-and is the proportion of light intercepted by the crop, set to 0.6 \cite{Willocquet2000}.
-
-Three different injury profiles as listed in Table 2 were defined for this study. The defined production situation was then treated with these injury profiles to obtain the actual yield for each treatment combination.
+Three different injury profiles as listed in (Table \ref{}) were defined for this study. The defined production situation was then treated with these injury profiles to obtain the actual yield for each treatment combination.
 
 \subsubsection{Model coupling}
-To facilitate coupling of EPIRICE to RICEPEST, a temporal disaggregation function was incorporated into the EPIRICE model. With this function, the modified EPIRICE model produced daily, spatially representative and non-cumulative percentage disease severity data as outputs instead of the single cumulated output, AUDPC. The time-series of daily percentage disease severity data for BB and LB produced by the modified EPIRICE model were then used as inputs for RICEPEST. Both models were linked to a geographic information system (GIS). EPIRICE is implemented in the R language using the following packages: cropsim \cite{Hijmans2009}, oldweather \cite{Hijmans2009}, raster \cite{Hijmans2014}, rgdal \cite{Bivand2014}, and RODBC \cite{Ripley2013}, while this version of RICEPEST is implemented in Python language, using the ArcPy package, as a script in the ArcGIS platform \cite{ESRI2011}. Due to the different implementation environments, a loose coupling approach was therefore adopted. A loose coupling approach provided flexibility in data handling and data interoperability. 
+To facilitate coupling of EPIRICE to RICEPEST, a temporal disaggregation function was incorporated into the EPIRICE model. With this function, the modified EPIRICE model produced daily, spatially representative and non-cumulative percentage disease severity data as outputs instead of the single cumulated output, AUDPC. The time-series of daily percentage disease severity data for BB and LB produced by the modified EPIRICE model were then used as inputs for RICEPEST. Both models were linked to a geographic information system (GIS). EPIRICE is implemented in the R language using the following packages: cropsim \cite{Hijmans2009}, oldweather \cite{Hijmans2009}, raster \cite{Hijmans2014}, rgdal \cite{Bivand2014}, and RODBC \cite{Ripley2013}, while this version of RICEPEST is implemented in Python language \cite{python}, using the ArcPy package, as a script in the ArcGIS platform \cite{ESRI2011}. Due to the different implementation environments, a loose coupling approach was therefore adopted. A loose coupling approach provided flexibility in data handling and data interoperability. 
 
 \subsection{Growing seasons and areas}
 A planting window of late November to early December, the major growing season for most rain-fed ecologies in Tanzania according to the FAO cropping calendar (citation), was selected and ArcGIS was used to create a spatial dataset of areas with this planting window. Annual harvested rain-fed rice growing areas for Tanzania with values representing the proportion of harvested areas (in hectares) within each pixel (10,000ha) was also obtained from MIRCA2000 \cite{Portmann2010}. To select the major rice growing areas in Tanzania during this planting window, a simple raster overlay analysis was performed in ArcGIS.
@@ -218,17 +215,17 @@ For this study, the General Circulation Model (GCM), Commonwealth Scientific and
 \subsection{Production situations}
 Production situations directly affect the intensity of rice yield reduction for a given injury profile \cite{Savary2000}. For this study, production situation is defined as the combination of socioeconomic, environmental and biophysical factors excluding pests that define the attainab1e yield. Temperature and solar radiation were excluded from this definition because they remain unchanged across all the possible production situations in the study area. Due to lack of reliable information about the spatial arrangement of production situations in the study area, the production situation was assumed to be homogenous based on the most common production situation, lowland rainfed rice \cite{Diagne2013} (Table 1). The production situation was characterized using the following parameters: a rice cultivar of 90 days to flowering and 120 days to maturity, crop establishment type was direct seeded, fertilizer input or nitrogen management was 180kg/ha and the water management was a rainfed system with fairly good water management. Using data from farmer surveys, literature review and expert opinion, a number of production situations were defined for rice growing ecologies. However, lowland rainfed, direct seeded rice was the most common production situation, so it  was selected for this study and production situation was considered to be homogenous within the entire study area. 
 
-Comparing this with previous work by \citet{Willocquet2002}, the selected production situation was translated into quantitative estimates of leaf (LEAFW), stem (STEMW) and root (ROOTW) dry weights after 14 DACE. Panicle dry weight (PANW) after 14 DACE was however set to zero. These values were then used to initialize the model for simulations. 
+Comparing this with previous work by \citet{Willocquet2002}, the selected production situation was translated into quantitative estimates of leaf (LEAFW), stem (STEMW) and root (ROOTW) dry weights after 14 DACE. Panicle dry weight (PANW) after 14 DACE, was however, set to zero. These values were then used to initialize the model for simulations. 
 
 \subsection{Spatial modelling of yield loss}
-Simulation runs EPIRICE and RICEPEST were made separately at a spatial resolution of 10km\textsuperscript{2} for the growing season December to March. Outputs of daily non-cumulative percentage disease intensity in GeoTIFF format were then produced for each climate scenario in the 2030 and 2050 time slices. Simulation runs were also made for current climate conditions.
+Simulation runs of EPIRICE and RICEPEST were made separately at a spatial resolution of 10km\textsuperscript{2} for the growing season December to March for current climate conditions, the 2000 timeslice, and for each of the three emission scenarios, A1B, A2 and B1, for both the 2030 and the 2050 time slices.
 
-To map and quantify the spatial distribution of rice yield loss as a result of the two diseases under current and future climate conditions, the RICEPEST model was linked to weather data (temperature and solar radiation) and disease severity outputs from the EPIRICE model within the ArcGIS environment using the aforementioned Python tool. Simulation runs were first made without the injury profiles to obtain the attainable yield. Maintaining the same weather data and production situation parameter values, simulation runs were then made with the treatment of injury profiles to obtain the actual yield in the presence of the two diseases, separately. Yield loss was then modelled as the difference between attainable yield and actual yield for both BB and LB.
+To map and quantify the spatial distribution of rice yield loss as a result of the two diseases under current and future climate conditions, the RICEPEST model was linked to weather data (temperature and solar radiation) and disease severity outputs from the EPIRICE model within the ArcGIS environment using the aforementioned Python tool. Simulation runs were first made without the injury profiles to obtain the attainable yield. Maintaining the same weather data and production situation parameter values, simulation runs were then made with the treatment of injury profiles to obtain the actual yield in the presence of the two diseases, separately. Yield loss was then modelled as the difference between attainable yield and actual yield for both BB and LB damaged crops respectively.
 
 \section{Results and discussion}
 
 \subsection{Potential epidemics (EPIRICE output)}
-Predicted leaf blast epidemics were low for the country. Severity of the disesae was predicted to be less than 2.5 percent across the entire country for all time slices and emission scenarios. (Figure \ref{LBCurves}). The AUDPC values were correspondingly low as well (Table \ref{AUDPCTable}), with decreases for all future predictions as compared to the base prediction.
+Predicted leaf blast epidemics were low for the country. Severity of the disesae was predicted to be less than 2.5 percent across the entire country for all time slices and emission scenarios (Figure \ref{LBCurves}). The AUDPC values were correspondingly low as well (Table \ref{AUDPCTable}), with decreases for all future predictions when compared with the base prediction.
 
 % Leaf blast progress curves
 \begin{figure}[H]
@@ -239,7 +236,7 @@ Predicted leaf blast epidemics were low for the country. Severity of the disesae
 
 % Leaf blast and bacterial blight AUDPC Table
 
-\begin{table}[h]
+\begin{table}[H]
 \begin{tabular}{@{}lllllll@{}}
 \toprule
 \multicolumn{1}{c}{\multirow{3}{*}{Emission Scenario}} & \multicolumn{6}{c}{Time Slice}                                                                                                                                  \\ \cmidrule(l){2-7} 

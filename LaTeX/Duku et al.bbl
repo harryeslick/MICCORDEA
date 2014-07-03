@@ -1,4 +1,4 @@
-\begin{thebibliography}{35}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -264,6 +264,19 @@
   \bibinfo{chapter}{Africa}, \bibinfo{publisher}{Cambridge University Press},
   \bibinfo{pages}{433--467}, \bibinfo{year}{2007}.
 
+\bibitem[{Kermack and McKendrick(1927)}]{Kermack1927}
+\bibinfo{author}{W.~Kermack}, \bibinfo{author}{A.~McKendrick},
+  \bibinfo{title}{A contribution to the mathematical theory of epidemics},
+  \bibinfo{journal}{Proceedings of the Royal Society of London}
+  \bibinfo{volume}{115} (\bibinfo{year}{1927}) \bibinfo{pages}{700--721}.
+
+\bibitem[{Madden(2006)}]{Madden2006}
+\bibinfo{author}{L.~Madden}, \bibinfo{title}{Botanical Epidemiology: Some Key
+  Advances and its Continuing Role in Disease Management}
+  \bibinfo{volume}{115}~(\bibinfo{number}{1}) (\bibinfo{year}{2006})
+  \bibinfo{pages}{3--23}, \doi{\bibinfo{doi}{10.1007/s10658-005-1229-5}},
+  \urlprefix\url{http://dx.doi.org/10.1007/s10658-005-1229-5}.
+
 \bibitem[{{R Core Team}(2014)}]{R2014}
 \bibinfo{author}{{R Core Team}}, \bibinfo{title}{R: A Language and Environment
   for Statistical Computing}, \bibinfo{organization}{R Foundation for
@@ -301,6 +314,11 @@
   \bibinfo{title}{RODBC: ODBC Database Access},
   \urlprefix\url{http://CRAN.R-project.org/package=RODBC}, \bibinfo{note}{r
   package version 1.3-10}, \bibinfo{year}{2013}.
+
+\bibitem[{pyt(2014)}]{python}
+\bibinfo{title}{The Python Language Reference}, \bibinfo{organization}{Python
+  Software Foundation}, \urlprefix\url{https://docs.python.org/2/},
+  \bibinfo{year}{2014}.
 
 \bibitem[{ESR(2011)}]{ESRI2011}
 \bibinfo{title}{ArcGIS Desktop: Release 10},
