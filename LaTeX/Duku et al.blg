@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Duku et al.aux
+The style file: elsarticle-num-names.bst
+Database file #1: MICORDEA_References.bib
+Warning--can't use both author and editor fields in Seck2013
+Warning--can't use both author and editor fields in Diagne2013
+Warning--can't use both author and editor fields in Saito2013
+Warning--can't use both author and editor fields in Sere2013
+Warning--can't use both author and editor fields in Boko2007
+You've used 34 entries,
+            2793 wiz_defined-function locations,
+            886 strings with 14763 characters,
+and the built_in function-call counts, 22568 in all, are:
+= -- 1257
+> -- 1005
+< -- 12
++ -- 388
+- -- 314
+* -- 3364
+:= -- 2970
+add.period$ -- 34
+call.type$ -- 34
+change.case$ -- 143
+chr.to.int$ -- 34
+cite$ -- 41
+duplicate$ -- 1741
+empty$ -- 1637
+format.name$ -- 415
+if$ -- 4008
+int.to.chr$ -- 1
+int.to.str$ -- 35
+missing$ -- 446
+newline$ -- 112
+num.names$ -- 99
+pop$ -- 323
+preamble$ -- 1
+purify$ -- 170
+quote$ -- 0
+skip$ -- 390
+stack$ -- 0
+substring$ -- 1074
+swap$ -- 1788
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 192
+warning$ -- 5
+while$ -- 111
+width$ -- 0
+write$ -- 419
+(There were 5 warnings)

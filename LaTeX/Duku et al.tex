@@ -74,6 +74,8 @@
 
 % \biboptions{}
 
+\pdfinclusioncopyfonts=1 
+
 \journal{Environmental and Ecological Modelling}
 
 \begin{document}
@@ -177,31 +179,31 @@ The RICEPEST model \cite{Willocquet2000, Willocquet2002} simulates rice yield lo
 
 Bacterial blight and LB cause lesions on the leaf blades. These lesions decrease the green leaf area index (LAI), reducing the photosynthetic capacity of the plant. To account for this, the RICEPEST model uses a reduction factor to reduce the value of LAI and subsequently the overall rate of growth (RG) \cite{Willocquet2002}. 
 \begin{equation}
-(1  (BBDMt / 100)
+(1  (BBDM_t / 100)
 \end{equation}
 
 \begin{equation}
-(1  (LBDMt / 100))
+(1  (LBDM_t / 100))
 \end{equation}
 
 \begin{equation}
-LAIt = SLAt  LEAFWt  (1  (BBDMt / 100)) 
+LAI_t = SLA_t  LEAFWt  (1  (BBDM_t / 100)) 
 \end{equation}
  
 \begin{equation}
-RGt = RUEt  RADt  (1- exp( - k  LAIt))
+RG_t = RUE_t  RAD_t  (1- exp(- k  LAI_t))
 \end{equation}
 
 BBDM and LBDM are the percent of leaf area covered by BB and LB respectively \cite{Willocquet2002}. SLA is the specific leaf area; LEAFW is the leaf dry weight; RUE is radiation use efficiency; RAD is daily solar radiation; k is coefficient of light extinction 
 \begin{equation}
-(1- exp( - k  LAIt)
+(1- exp( - k  LAI_t)
 \end{equation}
-and is the proportion of light intercepted by the crop.
+and is the proportion of light intercepted by the crop, set to 0.6 \cite{Willocquet2000}.
 
 Three different injury profiles as listed in Table 2 were defined for this study. The defined production situation was then treated with these injury profiles to obtain the actual yield for each treatment combination.
 
 \subsubsection{Model coupling}
-To facilitate coupling of EPIRICE to RICEPEST, a temporal disaggregation function was incorporated into the EPIRICE model. With this function, the modified EPIRICE model produced daily, spatially representative and non-cumulative percentage disease severity data as outputs instead of the single cumulated output, AUDPC. The time-series of daily percentage disease severity data for BB and LB produced by the modified EPIRICE model were then used as inputs for RICEPEST. Both models were linked to a geographic information system (GIS). EPIRICE is implemented in the R language using the following packages: raster \cite{Hijmans2014}, cropsim \cite{Hijmans2009}, rgdal \cite{Bivand2014}, oldweather \cite{Hijmans2009} and RODBC \cite{Ripley2013}, while this version of RICEPEST is implemented in Python language, using the ArcPy package, as a script in the ArcGIS platform \cite{ESRI2011}. Due to the different implementation environments, a loose coupling approach was therefore adopted. A loose coupling approach provided flexibility in data handling and data interoperability. 
+To facilitate coupling of EPIRICE to RICEPEST, a temporal disaggregation function was incorporated into the EPIRICE model. With this function, the modified EPIRICE model produced daily, spatially representative and non-cumulative percentage disease severity data as outputs instead of the single cumulated output, AUDPC. The time-series of daily percentage disease severity data for BB and LB produced by the modified EPIRICE model were then used as inputs for RICEPEST. Both models were linked to a geographic information system (GIS). EPIRICE is implemented in the R language using the following packages: cropsim \cite{Hijmans2009}, oldweather \cite{Hijmans2009}, raster \cite{Hijmans2014}, rgdal \cite{Bivand2014}, and RODBC \cite{Ripley2013}, while this version of RICEPEST is implemented in Python language, using the ArcPy package, as a script in the ArcGIS platform \cite{ESRI2011}. Due to the different implementation environments, a loose coupling approach was therefore adopted. A loose coupling approach provided flexibility in data handling and data interoperability. 
 
 \subsection{Growing seasons and areas}
 A planting window of late November to early December, the major growing season for most rain-fed ecologies in Tanzania according to the FAO cropping calendar (citation), was selected and ArcGIS was used to create a spatial dataset of areas with this planting window. Annual harvested rain-fed rice growing areas for Tanzania with values representing the proportion of harvested areas (in hectares) within each pixel (10,000ha) was also obtained from MIRCA2000 \cite{Portmann2010}. To select the major rice growing areas in Tanzania during this planting window, a simple raster overlay analysis was performed in ArcGIS.
@@ -222,6 +224,7 @@ To map and quantify the spatial distribution of rice yield loss as a result of t
 \section{Results and discussion}
 
 \subsection{Potential epidemics (EPIRICE output)}
+Bacterial blight epidemics in all time slices and scenarios started rapidly increasing around day 50 and increases up until day 100, when it begins decreasing 
 
 \subsection{Yield losses (RICEPEST output)}
 
@@ -232,11 +235,16 @@ MICCORDEA project financed by GIZ, CCAFS and GRiSP consortium research programs
 
 
 %% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
-%% \appendix
+%% appendix sections are then done as normal section
+\appendix
 
-%% \section{}
-%% \label{}
+\section{Figures}
+\label{Figures}
+\begin{figure}[htb]
+  \caption{Bacterial leaf blight disease severity curves.}
+  \includegraphics[width = 1\textwidth]{figures/BB}
+\end{figure}
+
 
 %% References
 %%

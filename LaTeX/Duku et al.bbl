@@ -267,18 +267,18 @@
   Slow-Mildewing Resistance in Knox Wheat}, \bibinfo{journal}{Phytopathology}
   \bibinfo{volume}{67} (\bibinfo{year}{1977}) \bibinfo{pages}{1051--1056}.
 
-\bibitem[{Hijmans(2014)}]{Hijmans2014}
-\bibinfo{author}{R.~J. Hijmans}, \bibinfo{title}{raster: raster: Geographic
-  data analysis and modeling},
-  \urlprefix\url{http://CRAN.R-project.org/package=raster}, \bibinfo{note}{r
-  package version 2.2-31}, \bibinfo{year}{2014}.
-
 \bibitem[{Hijmans et~al.(2009)Hijmans, Savary, Pangga, and
   Aunario}]{Hijmans2009}
 \bibinfo{author}{R.~J. Hijmans}, \bibinfo{author}{S.~Savary},
   \bibinfo{author}{R.~Pangga}, \bibinfo{author}{J.~Aunario},
   \bibinfo{title}{cropsim: Simulation modeling of crops and their diseases},
   \bibinfo{year}{2009}.
+
+\bibitem[{Hijmans(2014)}]{Hijmans2014}
+\bibinfo{author}{R.~J. Hijmans}, \bibinfo{title}{raster: raster: Geographic
+  data analysis and modeling},
+  \urlprefix\url{http://CRAN.R-project.org/package=raster}, \bibinfo{note}{r
+  package version 2.2-31}, \bibinfo{year}{2014}.
 
 \bibitem[{Bivand et~al.(2014)Bivand, Keitt, and Rowlingson}]{Bivand2014}
 \bibinfo{author}{R.~Bivand}, \bibinfo{author}{T.~Keitt},
