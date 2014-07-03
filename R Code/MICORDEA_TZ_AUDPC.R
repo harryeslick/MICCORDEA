@@ -61,6 +61,20 @@ tz.2050.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease M
 tz.2050.b1.bb[tz.2050.b1.bb == -9999] <- NA
 #### End data import ####
 
+#### Extract data for tabular purposes ####
+lb <- data.frame(round(values(tz.base.lb), 0), round(values(tz.2030.a2.lb), 0), round(values(tz.2050.a2.lb), 0), round(values(tz.2030.ab.lb), 0), round(values(tz.2050.ab.lb), 0), round(values(tz.2030.b1.lb), 0), round(values(tz.2050.b1.lb), 0))
+bb <- data.frame(round(values(tz.base.bb), 0), round(values(tz.2030.a2.bb), 0), round(values(tz.2050.a2.bb), 0), round(values(tz.2030.ab.bb), 0), round(values(tz.2050.ab.bb), 0), round(values(tz.2030.b1.bb), 0), round(values(tz.2050.b1.bb), 0))
+
+## Mean and SD for tabular representation ##
+lb.table <- data.frame(round(apply(lb, 2, mean, na.rm = TRUE), 0), 
+                       round(apply(lb, 2, sd, na.rm = TRUE), 0)) # create matrix of average/sd leaf blast AUDPC
+bb.table <- data.frame(round(apply(bb, 2, mean, na.rm = TRUE), 0), 
+                       round(apply(bb, 2, sd, na.rm = TRUE), 0)) # create matrix of average/sd bacterial leaf blight AUDPC
+
+## Names in table ##
+row.names(lb.table) <- row.names(bb.table) <- 1:length(lb.table[, 1])
+names(lb.table) <- c("LB.Mean.AUDPC", "LB.SD.AUDPC")
+names(bb.table) <- c("BB.Mean.AUDPC", "BB.SD.AUDPC")
 
 #### Extract data and make dataframe for visualisation ####
 lb <- c(round(values(tz.base.lb), 0), round(values(tz.2030.a2.lb), 0), round(values(tz.2050.a2.lb), 0), round(values(tz.2030.ab.lb), 0), round(values(tz.2050.ab.lb), 0), round(values(tz.2030.b1.lb), 0), round(values(tz.2050.b1.lb), 0))
@@ -77,10 +91,6 @@ names(bb) <- c("Scenario", "Time.Slice", "Bacterial.Blight.AUDPC") # Assign name
 
 lb[, 1] <- factor(lb[, 1], levels = c("Base", "A1B", "A2", "B1")) # Fix the order of the facets in the plot, put the base first, then A1B the A2...
 bb[, 1] <- factor(bb[, 1], levels = c("Base", "A1B", "A2", "B1"))
-
-## Averages for tabular representation ##
-lb.avg <- apply(lb, 2, mean, na.rm = TRUE) # create matrix of average leaf blast lesion coverage for all of Tanzania, by day of growing season
-bb.avg <- apply(bb, 2, mean, na.rm = TRUE) # create matrix of average bacterial leaf blight lesion coverage for all of Tanzaina, by day of growing season
 
 #### End extract data and make dataframe for visualisation ####
 
