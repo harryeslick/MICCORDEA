@@ -73,8 +73,9 @@
 %% \biboptions{comma,round}
 
 % \biboptions{}
-
-\pdfinclusioncopyfonts=1 
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 \journal{Environmental and Ecological Modelling}
 
@@ -145,12 +146,15 @@ bacterial blight \sep leaf blast \sep EPIRICE \sep RICEPEST \sep crop modelling
 \linenumbers
 
 %% main text
+\section{Software and data availability}
+
+
 \section{Introduction}
 Rice is the most rapidly growing staple food in Africa and although rice production is steadily increasing, the consumption is still outpacing the production. For example by 2009 37 per cent of the rice consumed in Africa was imported. To reduce its reliance on imports and dependency on global markets Africas rice production needs to increase further \cite{Seck2013}. Current average yield levels in Africa range from about 1 t ha\textsuperscript{-1} in upland ecologies to 1.5 to 2 t ha\textsuperscript{-1} in rain fed lowland ecologies with the irrigated lowland ecologies having the highest yields of 3.0 to 4.0 t ha\textsuperscript{-1} \cite{Diagne2013}. Rice yields in African farmers fields are low due to a combination of abiotic and biotic stresses that constrain them. Farmers can significantly reduce the yield gaps with improved field, water and crop management, and weed control \cite{Saito2013}.
 
 Apart from weeds, pests and diseases also are major biotic stresses that can cause significant reductions in rice yields. Two important diseases in Sub-Saharan African rice are leaf blast (LB), causal agent \textit{Magnaporthe oryzae}, and bacterial blight (BB) \cite{Verdier2012}, causal agent \textit{Xanthamonas oryzae} pv. \textit{oryzae}. Because infectious plant disease occurs as an interaction of a favorable environment, a susceptible host and a competent pathogen \cite{Madden2007}, weather conditions impact both the occurrence and gravity of plant disease. Climate change is likely to affect plant disease \cite{Anderson2004, Coakley1999, Garrett2006} and several others have expressed interest in changes to plant disease as a result of climate change \cite{Chakraborty2011, Juroszek2011, Luck2011, Pautasso2010, Savary2011, Sutherst2011}. Moreover, intensification of rice production, which was witnessed in Sub-Saharan Africa since the food crisis of 2008 \cite{Saito2013}, may lead to an increased yield loss due to the blast, thus reducing the benefits that were created \cite{Sere2013}. Increases in disease incidence and severity may deter farmers from investing in intensification measures because of risks related to yield losses or even total crop failure. To the authors knowledge, the impact of climate change on leaf blast and bacterial blight diseases of rice in Africa has not yet been investigated.
 
-Efforts to link plant disease models with a geographic information system (GIS) to assess the impact of plant diseases spatially include  \citet{Hijmans2000}, which mapped the global number of pesticide applications necessary to control potato late blight using contemporary weather data. While Sparks et al. (2014) used a meta-model to generate map estimates of changes in global potato late blight due to climate change. \citet{Savary2012} developed a GIS-linked model, EPIRICE, capable of simulating several important diseases of rice, including leaf blast and bacterial blight amongst others.
+Efforts to link plant disease models with a geographic information system (GIS) to assess the impact of plant diseases spatially include  \citet{Hijmans2000}, which mapped the global number of pesticide applications necessary to control potato late blight using contemporary weather data. While \citet{Sparks2014} used a meta-model to generate map estimates of changes in global potato late blight due to climate change. \citet{Savary2012} developed a GIS-linked model, EPIRICE, capable of simulating several important diseases of rice, including leaf blast and bacterial blight amongst others.
 
 The objective of the study was to quantify the impact of climate change as forecasted by the Intergovernmental Panel on Climate Change (IPCC) on rice yield loss as result of BB and LB. To carry out this study, we linked two previously unlinked, existing models, EPIRICE and RICEPEST \cite{Willocquet2000, Willocquet2002}, and we applied them using spatially and temporally downscaled climate change data to generate predictions on changes in plant disease impact due to climate change in Tanzania.
 
@@ -224,7 +228,40 @@ To map and quantify the spatial distribution of rice yield loss as a result of t
 \section{Results and discussion}
 
 \subsection{Potential epidemics (EPIRICE output)}
-Bacterial blight epidemics exhibited normal progress curves in all time slices and scenarios started rapidly increasing around day 50 and increased up until day 100, when it began decreasing (Figure \ref{BBCurves}). The AUDPC illustrates the differences between the time slices and scenarios more clearly (Table \ref{BBAUDPC}.
+Predicted leaf blast epidemics were low for the country. Severity of the disesae was predicted to be less than 2.5 percent across the entire country for all time slices and emission scenarios. (Figure \ref{LBCurves}). The AUDPC values were correspondingly low as well (Table \ref{AUDPCTable}), with decreases for all future predictions as compared to the base prediction.
+
+% Leaf blast progress curves
+\begin{figure}[H]
+  \includegraphics[width = 140mm]{figures/LB}
+  \caption{Leaf blast disease severity curves as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of several rice diseases using weather data inputs to predict daily disease severity and the cumulative value, AUDPC, at the end of season.}
+    \label{LBCurves}
+\end{figure}
+
+% Leaf blast and bacterial blight AUDPC Table
+
+\begin{table}[h]
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+\multicolumn{1}{c}{\multirow{3}{*}{Emission Scenario}} & \multicolumn{6}{c}{Time Slice}                                                                                                                                  \\ \cmidrule(l){2-7} 
+\multicolumn{1}{c}{}                                   & \multicolumn{1}{c}{2000} & \multicolumn{1}{c}{2030} & \multicolumn{1}{c}{2050} & \multicolumn{1}{c}{2000} & \multicolumn{1}{c}{2030} & \multicolumn{1}{c}{2050} \\ \cmidrule(l){2-7} 
+\multicolumn{1}{c}{}                                   & \multicolumn{3}{c}{Leaf Blast}                                                 & \multicolumn{3}{c}{Bacterial Blight}                                           \\ \midrule
+Base                                                   & 88                       &                          &                          & 1699                     &                          &                          \\
+A1B                                                    &                          & 66                       & 59                       &                          & 1656                     & 1738                     \\
+A2                                                     &                          & 67                       & 59                       &                          & 1749                     & 1843                     \\
+B1                                                     &                          & 57                       & 54                       &                          & 1387                     & 1445                     \\ \bottomrule
+\end{tabular}
+\caption{Area under disease progress curve values for leaf blast and bacterial blight as predicted by EPIRICE. The EPIRICE model predicts disease severity of several rice diseases using weather data inputs to predict daily disease severity and the cumulative value, AUDPC, at the end of season. A quantitative measure of disease severity over time, AUDPC allows us to compare disease severity at different times.}
+\label{AUDPCTable}
+\end{table}
+
+Bacterial blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{BBCurves}). The differing emmission scenarios result in differing AUDPC responses for bacterial blight (Table \ref{AUDPCTable}).
+
+% Bacterial blight progress curves
+\begin{figure}[H]
+  \includegraphics[width = 140mm]{figures/BB}
+  \label{BBCurves}
+  \caption{Bacterial leaf blight disease severity curves as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of several rice diseases using weather data inputs to predict daily disease severity and the cumulative value, AUDPC, at the end of season.}
+\end{figure}
 
 \subsection{Yield losses (RICEPEST output)}
 
@@ -236,18 +273,8 @@ MICCORDEA project financed by GIZ, CCAFS and GRiSP consortium research programs
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal section
-\appendix
+% \appendix
 
-\section{Figures}
-\label{Figures}
-\begin{figure}[htb]
-  \caption{Bacterial leaf blight disease severity curves.}
-  \includegraphics[width = 1\textwidth]{figures/BB}
-  \label{BBCurves}
-\end{figure}
-
-\section{Tables}
-\label{Tables}
 
 
 %% References

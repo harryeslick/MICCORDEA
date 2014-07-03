@@ -5,7 +5,7 @@
 # producer      : prepared by A. Sparks;
 # last update   : in Los Baños, Philippines, Jul. 2014;
 # inputs        : GTiff files of yield losses for Tanzania calculated using RICEPEST;
-# outputs       : Histograms and maps of lesion coverages for base/2030/2050 a2/b1/ab scenario;
+# outputs       : Line graphs of disease progress for each time slice and scenario;
 # remarks 1     : ;
 # Licence:      : GPL2;
 ##############################################################################
@@ -16,10 +16,13 @@ library(ggplot2)
 library(beepr)
 library(grid)
 library(scales)
+library(extrafont)
 ##### End libraries ####
 
+rm(list = ls()) # This script shares the same value names with the MICORDEA_TZ_AUDPC_R script, to be sure we have a clean environment to work in
+
 #### Begin data import ####
-## Leaf blast files ##
+## Leaf blast percent lesion coverage files ##
 tz.base.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # stack all files for blast, base time slice/scenario
 tz.base.lb[tz.base.lb == -9999] <- NA # set -9999 values to NA for R
 
@@ -38,7 +41,7 @@ tz.2030.b1.lb[tz.2030.b1.lb == -9999] <- NA
 tz.2050.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2050
 tz.2050.b1.lb[tz.2050.b1.lb == -9999] <- NA
 
-## Bacterial Blight Files ##
+## Bacterial blight percent lesion coverage files ##
 tz.base.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # Base
 tz.base.bb[tz.base.bb == -9999] <- NA
 
@@ -85,15 +88,19 @@ beep()
 #### End extract data and make dataframe for visualisation ####
 
 #### Begin data visualisation ####
-## lb
+## Leaf blast graph ##
+
 p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   geom_line(aes(linetype = as.factor(Scenario)), size = 1) +
   scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage by Blast Lesions", limits = c(0, 40)) + 
   scale_linetype_discrete("Emission Scenario") +
-  theme_bw(base_size = 9, base_family = "Helvetica") + 
-  theme(legend.position = c(0.1, 0.85), 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        legend.position = c(0.1, 0.85), 
         legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(11, "mm"), 
+        legend.key.width = unit(11, "mm"),
+        legend.text = element_text(size = 8, family = "Helvetica"),
         panel.grid.minor = element_blank(), # switch off minor gridlines
         panel.border = element_rect(colour = "black", unit(0.25, "mm")),
         legend.title = element_blank(),
@@ -103,16 +110,21 @@ p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
         axis.ticks.length = unit(0.15 , "cm"))
 p + facet_grid(. ~ Time.Slice)
 
-ggsave("LB.pdf", width = 140, height = 120, units = "mm")
+ggsave("../Latex/Figures/LB.eps", width = 140, height = 120, units = "mm")
+
+## Bacterial blight graph ##
 
 q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
   geom_line(aes(linetype = as.factor(Scenario)), size = 1) + 
   scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage by Bacterial Blight Lesions") +
   scale_linetype_discrete("Emission Scenario") +
-  theme_bw(base_size = 9, base_family = "Helvetica") + 
-  theme(legend.position = c(0.1, 0.85), 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        legend.position = c(0.1, 0.85), 
         legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(11, "mm"), 
+        legend.key.width = unit(11, "mm"),
+        legend.text = element_text(size = 8, family = "Helvetica"),
         panel.grid.minor = element_blank(), # switch off minor gridlines
         panel.border = element_rect(colour = "black", unit(0.25, "mm")),
         legend.title = element_blank(),
@@ -122,7 +134,7 @@ q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) +
         axis.ticks.length = unit(0.15 , "cm"))
 q + facet_grid(. ~ Time.Slice)
 
-ggsave("BB.pdf", width = 140, height = 120, units = "mm")
+ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 120, units = "mm")
 
 #### End data visualisation ####
 
