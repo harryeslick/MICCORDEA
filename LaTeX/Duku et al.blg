@@ -9,45 +9,45 @@ Warning--can't use both author and editor fields in Saito2013
 Warning--can't use both author and editor fields in Sere2013
 Warning--can't use both author and editor fields in Boko2007
 Warning--empty journal in Madden2006
-You've used 38 entries,
+You've used 39 entries,
             2793 wiz_defined-function locations,
-            916 strings with 15542 characters,
-and the built_in function-call counts, 24545 in all, are:
-= -- 1383
-> -- 1052
+            925 strings with 15892 characters,
+and the built_in function-call counts, 25190 in all, are:
+= -- 1423
+> -- 1072
 < -- 14
-+ -- 414
-- -- 328
-* -- 3629
-:= -- 3226
-add.period$ -- 38
-call.type$ -- 38
-change.case$ -- 159
-chr.to.int$ -- 38
-cite$ -- 48
-duplicate$ -- 1905
-empty$ -- 1801
-format.name$ -- 438
-if$ -- 4365
++ -- 422
+- -- 334
+* -- 3731
+:= -- 3308
+add.period$ -- 39
+call.type$ -- 39
+change.case$ -- 163
+chr.to.int$ -- 39
+cite$ -- 49
+duplicate$ -- 1955
+empty$ -- 1852
+format.name$ -- 447
+if$ -- 4481
 int.to.chr$ -- 1
-int.to.str$ -- 39
-missing$ -- 484
-newline$ -- 124
-num.names$ -- 108
-pop$ -- 367
+int.to.str$ -- 40
+missing$ -- 496
+newline$ -- 127
+num.names$ -- 111
+pop$ -- 372
 preamble$ -- 1
-purify$ -- 190
+purify$ -- 195
 quote$ -- 0
-skip$ -- 433
+skip$ -- 442
 stack$ -- 0
-substring$ -- 1186
-swap$ -- 1926
+substring$ -- 1225
+swap$ -- 1980
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 216
+type$ -- 222
 warning$ -- 6
-while$ -- 121
+while$ -- 124
 width$ -- 0
-write$ -- 462
+write$ -- 475
 (There were 6 warnings)

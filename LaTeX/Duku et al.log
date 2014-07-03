@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.2)  3 JUL 2014 20:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.2)  3 JUL 2014 22:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,7 +252,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
 
-LaTeX Warning: Reference `' on page 5 undefined on input line 204.
+LaTeX Warning: Reference `' on page 5 undefined on input line 208.
 
 [5] [6] [7]
 Package epstopdf Info: Source file: <figures/LB.eps>
@@ -263,17 +263,17 @@ Package epstopdf Info: Source file: <figures/LB.eps>
 (epstopdf)                    size: 13758 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/LB-eps-converted-t
 o.pdf figures/LB.eps>
-(epstopdf)             \includegraphics on input line 232.
+(epstopdf)             \includegraphics on input line 236.
 Package epstopdf Info: Output file is already uptodate.
  <figures/LB-eps-converted-to.pdf, id=41, 398.48875pt x 341.275pt>
 File: figures/LB-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/LB-eps-converted-to.pdf>
-Package pdftex.def Info: figures/LB-eps-converted-to.pdf used on input line 232
+Package pdftex.def Info: figures/LB-eps-converted-to.pdf used on input line 236
 .
 (pdftex.def)             Requested size: 398.33858pt x 341.15958pt.
 
-Overfull \hbox (8.33858pt too wide) in paragraph at lines 232--233
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 236--237
 [][] 
  []
 
@@ -286,18 +286,18 @@ Package epstopdf Info: Source file: <figures/BB.eps>
 (epstopdf)                    size: 14468 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/BB-eps-converted-t
 o.pdf figures/BB.eps>
-(epstopdf)             \includegraphics on input line 258.
+(epstopdf)             \includegraphics on input line 262.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/BB-eps-converted-to.pdf, id=52, 398.48875pt x 341.275pt>
 File: figures/BB-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/BB-eps-converted-to.pdf>
-Package pdftex.def Info: figures/BB-eps-converted-to.pdf used on input line 258
+Package pdftex.def Info: figures/BB-eps-converted-to.pdf used on input line 262
 .
 (pdftex.def)             Requested size: 398.33858pt x 341.15958pt.
 
-Overfull \hbox (8.33858pt too wide) in paragraph at lines 258--260
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 262--264
 [][]
  []
 
@@ -457,7 +457,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--139
 \OT1/cmr/m/n/12 ISSN 1469-185X, doi:10.1111/j.1469-185X.2010.00123.x, URL
  []
 
-[12]
+
 Underfull \hbox (badness 1668) in paragraph at lines 143--156
 \OT1/cmr/m/n/12 S. Pande, M. Sharma, J. Yuen, A. Djurle, In-ter-na-tional Agri-
 
@@ -469,7 +469,7 @@ Underfull \hbox (badness 3646) in paragraph at lines 143--156
 te
  []
 
-
+[12]
 Underfull \hbox (badness 2894) in paragraph at lines 181--189
 []\OT1/cmr/m/n/12 R. J. Hi-j-mans, G. A. Forbes, T. S. Walker, Es-ti-mat-ing th
 e
@@ -669,7 +669,7 @@ Overfull \hbox (44.96658pt too wide) in paragraph at lines 346--354
 1904\OT1/cmr/m/n/12 . 
  []
 
-[15]
+
 Underfull \hbox (badness 5446) in paragraph at lines 356--363
 []\OT1/cmr/m/n/12 S. Geng, F. W. P. de Vries, I. Supit, A sim-ple method
  []
@@ -696,24 +696,51 @@ Overfull \hbox (38.79158pt too wide) in paragraph at lines 356--363
 146\OT1/cmr/m/n/12 . 
  []
 
-) [16] (./Duku et al.aux
+[15]
+Underfull \hbox (badness 4673) in paragraph at lines 379--387
+[]\OT1/cmr/m/n/12 M. B. Burke, D. B. Lo-bell, L. Guar-ino, Shifts in African
+ []
 
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
 
-)
+Underfull \hbox (badness 7631) in paragraph at lines 379--387
+\OT1/cmr/m/n/12 crop cli-mates by 2050, and the im-pli-ca-tions for crop im-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--387
+\OT1/cmr/m/n/12 prove-ment and ge-netic re-sources con-ser-va-tion, Global En-
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 379--387
+\OT1/cmr/m/n/12 vi-ron-men-tal Change 19 (3) (2009) 317 -- 325, ISSN 0959-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--387
+\OT1/cmr/m/n/12 3780, doi:http://dx.doi.org/10.1016/j.gloenvcha.2009.04.003, UR
+L
+ []
+
+
+Overfull \hbox (44.96658pt too wide) in paragraph at lines 379--387
+\OT1/cmtt/m/n/12 http://www.sciencedirect.com/science/article/pii/S095937800900
+0351\OT1/cmr/m/n/12 . 
+ []
+
+) [16] (./Duku et al.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2917 strings out of 493117
- 39663 string characters out of 6135434
- 103403 words of memory out of 5000000
- 6304 multiletter control sequences out of 15000+600000
+ 2920 strings out of 493117
+ 39714 string characters out of 6135434
+ 103461 words of memory out of 5000000
+ 6307 multiletter control sequences out of 15000+600000
  12959 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,30p,1895b,310s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,9n,30p,1895b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -731,7 +758,7 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 4/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "Duku et al.pdf" (16 pages, 251473 bytes).
+Output written on "Duku et al.pdf" (16 pages, 252071 bytes).
 PDF statistics:
  140 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream
