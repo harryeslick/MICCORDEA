@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{40}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -384,5 +384,16 @@
   \bibinfo{pages}{317 -- 325}, ISSN \bibinfo{issn}{0959-3780},
   \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.gloenvcha.2009.04.003}},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0959378009000351}.
+
+\bibitem[{Thornton et~al.(2009)Thornton, Jones, Alagarswamy, and
+  Andresen}]{Thornton2009}
+\bibinfo{author}{P.~K. Thornton}, \bibinfo{author}{P.~G. Jones},
+  \bibinfo{author}{G.~Alagarswamy}, \bibinfo{author}{J.~Andresen},
+  \bibinfo{title}{Spatial variation of crop yield response to climate change in
+  East Africa}, \bibinfo{journal}{Global Environmental Change}
+  \bibinfo{volume}{19}~(\bibinfo{number}{1}) (\bibinfo{year}{2009})
+  \bibinfo{pages}{54 -- 65}, ISSN \bibinfo{issn}{0959-3780},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.gloenvcha.2008.08.005}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0959378008000812}.
 
 \end{thebibliography}
