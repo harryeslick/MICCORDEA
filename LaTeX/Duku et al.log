@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.1)  3 JUL 2014 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.1)  3 JUL 2014 17:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -253,15 +253,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [4] [5]
 [6]
 Package epstopdf Info: Source file: <figures/LB.eps>
-(epstopdf)                    date: 2014-07-03 17:02:36
+(epstopdf)                    date: 2014-07-03 17:26:08
 (epstopdf)                    size: 19793 bytes
 (epstopdf)             Output file: <figures/LB-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-07-03 17:02:44
-(epstopdf)                    size: 13758 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/LB-eps-converted-t
 o.pdf figures/LB.eps>
 (epstopdf)             \includegraphics on input line 235.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=figures/LB-eps-converted-to.pdf figures/LB.eps)..
+.executed safely (allowed).
+
+Package epstopdf Info: Result file: <figures/LB-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-07-03 17:28:00
+(epstopdf)                    size: 13758 bytes.
  <figures/LB-eps-converted-to.pdf, id=37, 398.48875pt x 341.275pt>
 File: figures/LB-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -279,15 +282,18 @@ Overfull \hbox (8.33858pt too wide) in paragraph at lines 235--236
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package epstopdf Info: Source file: <figures/BB.eps>
-(epstopdf)                    date: 2014-07-03 17:02:37
+(epstopdf)                    date: 2014-07-03 17:26:08
 (epstopdf)                    size: 19575 bytes
 (epstopdf)             Output file: <figures/BB-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-07-03 17:02:45
-(epstopdf)                    size: 14468 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/BB-eps-converted-t
 o.pdf figures/BB.eps>
 (epstopdf)             \includegraphics on input line 261.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=figures/BB-eps-converted-to.pdf figures/BB.eps)..
+.executed safely (allowed).
+
+Package epstopdf Info: Result file: <figures/BB-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-07-03 17:28:01
+(epstopdf)                    size: 14468 bytes.
 <figures/BB-eps-converted-to.pdf, id=42, 398.48875pt x 341.275pt>
 File: figures/BB-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -711,7 +717,7 @@ sy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
 fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pf
 b>
-Output written on "Duku et al.pdf" (15 pages, 249051 bytes).
+Output written on "Duku et al.pdf" (15 pages, 249574 bytes).
 PDF statistics:
  137 PDF objects out of 1000 (max. 8388607)
  96 compressed objects within 1 object stream
