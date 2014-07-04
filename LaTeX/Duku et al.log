@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.2)  3 JUL 2014 22:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.1)  4 JUL 2014 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,52 +252,52 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
 
-LaTeX Warning: Reference `' on page 5 undefined on input line 208.
+LaTeX Warning: Reference `' on page 5 undefined on input line 205.
 
 [5] [6] [7]
 Package epstopdf Info: Source file: <figures/LB.eps>
-(epstopdf)                    date: 2014-07-03 17:59:00
+(epstopdf)                    date: 2014-07-03 17:26:08
 (epstopdf)                    size: 19793 bytes
 (epstopdf)             Output file: <figures/LB-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-07-03 18:00:02
+(epstopdf)                    date: 2014-07-03 17:28:00
 (epstopdf)                    size: 13758 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/LB-eps-converted-t
 o.pdf figures/LB.eps>
-(epstopdf)             \includegraphics on input line 236.
+(epstopdf)             \includegraphics on input line 233.
 Package epstopdf Info: Output file is already uptodate.
  <figures/LB-eps-converted-to.pdf, id=41, 398.48875pt x 341.275pt>
 File: figures/LB-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/LB-eps-converted-to.pdf>
-Package pdftex.def Info: figures/LB-eps-converted-to.pdf used on input line 236
+Package pdftex.def Info: figures/LB-eps-converted-to.pdf used on input line 233
 .
 (pdftex.def)             Requested size: 398.33858pt x 341.15958pt.
 
-Overfull \hbox (8.33858pt too wide) in paragraph at lines 236--237
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 233--234
 [][] 
  []
 
 [8 <./figures/LB-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/BB.eps>
-(epstopdf)                    date: 2014-07-03 17:59:00
+(epstopdf)                    date: 2014-07-03 17:26:08
 (epstopdf)                    size: 19575 bytes
 (epstopdf)             Output file: <figures/BB-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-07-03 18:00:03
+(epstopdf)                    date: 2014-07-03 17:28:01
 (epstopdf)                    size: 14468 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/BB-eps-converted-t
 o.pdf figures/BB.eps>
-(epstopdf)             \includegraphics on input line 262.
+(epstopdf)             \includegraphics on input line 258.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/BB-eps-converted-to.pdf, id=52, 398.48875pt x 341.275pt>
 File: figures/BB-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/BB-eps-converted-to.pdf>
-Package pdftex.def Info: figures/BB-eps-converted-to.pdf used on input line 262
+Package pdftex.def Info: figures/BB-eps-converted-to.pdf used on input line 258
 .
 (pdftex.def)             Requested size: 398.33858pt x 341.15958pt.
 
-Overfull \hbox (8.33858pt too wide) in paragraph at lines 262--264
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 258--260
 [][]
  []
 
@@ -752,7 +752,7 @@ Here is how much of TeX's memory you used:
  6310 multiletter control sequences out of 15000+600000
  12959 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,30p,1895b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,13n,30p,1895b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -770,7 +770,7 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 4/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "Duku et al.pdf" (16 pages, 252320 bytes).
+Output written on "Duku et al.pdf" (16 pages, 252855 bytes).
 PDF statistics:
  140 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream

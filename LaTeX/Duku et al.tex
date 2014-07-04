@@ -157,12 +157,11 @@ Efforts to link plant disease models with a geographic information system (GIS) 
 
 The objective of the study was to quantify the impact of climate change as forecasted by the Intergovernmental Panel on Climate Change (IPCC) on rice yield loss as result of BB and LB. To carry out this study, we linked two previously unlinked, existing models, EPIRICE and RICEPEST \cite{Willocquet2000, Willocquet2002}, and we applied them using spatially and temporally downscaled climate change data to generate predictions on changes in plant disease impact due to climate change in Tanzania.
 
-Rice accounts for five percent of the total value of agricultural production in Tanzania and is the 7th most important agricultural crop with steadily increasing production over the last decade. However, rice yields in Tanzania remain significantly lower than in neighboring countries \cite{Barreiro-Hurle2012}.
+Rice accounts for five percent of the total value of agricultural production in Tanzania and is the seventh most important agricultural crop with steadily increasing production over the last decade. However, rice yields in Tanzania remain significantly lower than in neighboring countries \cite{Barreiro-Hurle2012}.
 
 The linkage of EPIRICE with RICEPEST gives two advantages. First, RICEPEST has been used to estimate yield losses due to diseases and other pest injuries in rice in varying production situations with current weather and climate conditions. However, as plant diseases are affected by weather, the linkage with EPIRICE allows us to model the effects of climate change on both the rice crop and on the diseases while using the same weather data inputs. Second, the spatial nature of EPIRICE outputs enabled us to use RICEPEST in a GIS. Until now RICEPEST yield loss estimates have not been linked to a GIS. Linking RICEPEST with a GIS allowed us to map yield losses for the whole country of Tanzania, rather than just point estimates.
 
 This paper will continue with a justification for the study area, followed by descriptions of the EPIRICE and RICEPEST models. We will then elaborate the framework for assessing rice yield losses under climate change that links both models. The procedure for generating daily weather inputs from the downscaled climate scenarios is outlined followed by the choice of production situations. Next the results are presented, followed by a discussion and finally conclusions.
-
 
 \section{Materials and Methods}
 
@@ -173,9 +172,7 @@ This paper will continue with a justification for the study area, followed by de
 \subsection{The study region}
 Tanzania was chosen as the study region because of its location in sub-Saharan Africa, the probabal effects of climate change in the region and rice is planted widely across the country \cite{Rowhani2011} (Table 1). The bulk of the rice crop is grown from December until June of the following year during the rainy season. 
 
-The current climate of Tanzania is ... with ... and ... ocurring. 
-
-According to the International Panel on Climate Change (IPCC), East Africa and especially the Great Lakes Region are among the more vulnerable regions in Africa to climate change, where the trend is towards increasing temperatures and declining rainfall according to General Circulation Model outputs \cite{Boko2007}.
+According to the International Panel on Climate Change (IPCC), East Africa and especially the Great Lakes Region are among the more vulnerable regions in Africa to climate change, where the trend is towards increasing temperatures and declining rainfall according to General Circulation Model outputs \cite{Boko2007}. Temperatures are predicted to increase 2 $^{\circ}$C by 2050, which in turn are predicted to negatively affect rice yields \cite{Rowhani2011}.
 
 \subsection{Model descriptions}
 \subsubsection{The EPIRICE model}
@@ -239,23 +236,22 @@ Predicted leaf blast epidemics were low for the country. Severity of the disesae
 \end{figure}
 
 % Leaf blast and bacterial blight AUDPC Table
-
 \begin{table}[H]
 \begin{tabular}{@{}lllllll@{}}
 \toprule
-\multicolumn{1}{c}{\multirow{3}{*}{Emission Scenario}} & \multicolumn{6}{c}{Time Slice}                                                                                                                                  \\ \cmidrule(l){2-7} 
-\multicolumn{1}{c}{}                                   & \multicolumn{1}{c}{2000} & \multicolumn{1}{c}{2030} & \multicolumn{1}{c}{2050} & \multicolumn{1}{c}{2000} & \multicolumn{1}{c}{2030} & \multicolumn{1}{c}{2050} \\ \cmidrule(l){2-7} 
-\multicolumn{1}{c}{}                                   & \multicolumn{3}{c}{Leaf Blast}                                                 & \multicolumn{3}{c}{Bacterial Blight}                                           \\ \midrule
-Base                                                   & 88                       &                          &                          & 1699                     &                          &                          \\
-A1B                                                    &                          & 66                       & 59                       &                          & 1656                     & 1738                     \\
-A2                                                     &                          & 67                       & 59                       &                          & 1749                     & 1843                     \\
-B1                                                     &                          & 57                       & 54                       &                          & 1387                     & 1445                     \\ \bottomrule
+\multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Emission\\ Scenario\end{tabular}} & \multicolumn{6}{c}{Time Slice} \\ \cmidrule(l){2-7} 
+ & \multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}}Mean Leaf Blast\\ AUDPC\end{tabular}} & \multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}}Mean Bacterial Blight\\ AUDPC\end{tabular}} \\ \cmidrule(l){2-7} 
+ & 2000 & 2030 & 2050 & 2000 & 2030 & 2050 \\ \midrule
+Base & 88 &  &  & 1699 &  &  \\
+A1B &  & 66 & 59 &  & 1656 & 1738 \\
+A2 &  & 67 & 59 &  & 1749 & 1843 \\
+B1 &  & 57 & 54 &  & 1387 & 1445 \\ \bottomrule
 \end{tabular}
 \caption{Area under disease progress curve values for leaf blast and bacterial blight as predicted by EPIRICE. The EPIRICE model predicts disease severity of several rice diseases using weather data inputs to predict daily disease severity and the cumulative value, AUDPC, at the end of season. A quantitative measure of disease severity over time, AUDPC allows us to compare disease severity at different times.}
 \label{AUDPCTable}
 \end{table}
 
-Bacterial blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{BBCurves}). The three different emmission scenarios result in differing AUDPC responses for bacterial blight across the time slices (Table \ref{AUDPCTable}).
+Bacterial blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{BBCurves}). The three different emmission scenarios result in differing AUDPC responses for bacterial blight across the time slices (Table \ref{AUDPCTable}). The A2 scenario resulting in the highest predicted disease levels, the B1 scenario is noteably lower than the Base or A1B or A2 scenarios.
 
 % Bacterial blight progress curves
 \begin{figure}[H]

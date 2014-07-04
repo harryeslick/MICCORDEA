@@ -1,6 +1,11 @@
 This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Duku et al.aux
+Case mismatch error between cite keys rowhani2011 and Rowhani2011
+---line 28 of file Duku et al.aux
+ : \citation{rowhani2011
+ :                      }
+I'm skipping whatever remains of this command
 The style file: elsarticle-num-names.bst
 Database file #1: MICORDEA_References.bib
 Warning--can't use both author and editor fields in Seck2013
@@ -50,4 +55,4 @@ warning$ -- 6
 while$ -- 127
 width$ -- 0
 write$ -- 488
-(There were 6 warnings)
+(There was 1 error message)
