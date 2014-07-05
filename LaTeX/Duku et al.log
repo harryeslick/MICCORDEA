@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.1)  4 JUL 2014 14:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.2)  5 JUL 2014 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -256,10 +256,10 @@ LaTeX Warning: Reference `' on page 5 undefined on input line 205.
 
 [5] [6] [7]
 Package epstopdf Info: Source file: <figures/LB.eps>
-(epstopdf)                    date: 2014-07-03 17:26:08
+(epstopdf)                    date: 2014-07-03 17:59:00
 (epstopdf)                    size: 19793 bytes
 (epstopdf)             Output file: <figures/LB-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-07-03 17:28:00
+(epstopdf)                    date: 2014-07-03 18:00:02
 (epstopdf)                    size: 13758 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/LB-eps-converted-t
 o.pdf figures/LB.eps>
@@ -279,10 +279,10 @@ Overfull \hbox (8.33858pt too wide) in paragraph at lines 232--233
 
 [8 <./figures/LB-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/BB.eps>
-(epstopdf)                    date: 2014-07-03 17:26:08
+(epstopdf)                    date: 2014-07-03 17:59:00
 (epstopdf)                    size: 19575 bytes
 (epstopdf)             Output file: <figures/BB-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-07-03 17:28:01
+(epstopdf)                    date: 2014-07-03 18:00:03
 (epstopdf)                    size: 14468 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/BB-eps-converted-t
 o.pdf figures/BB.eps>
@@ -770,7 +770,7 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 4/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "Duku et al.pdf" (16 pages, 252888 bytes).
+Output written on "Duku et al.pdf" (16 pages, 254813 bytes).
 PDF statistics:
  140 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream
