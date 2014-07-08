@@ -15,23 +15,10 @@ library(raster)
 ##### End libraries ####
 
 #### Begin data import ####
-tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "a[[:graph:]]{3}_bb1.tif$", full.names = TRUE))
-tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "a[[:graph:]]{3}_lb1.tif$", full.names = TRUE))
+tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:graph:]]{4}_bb1.tif$", full.names = TRUE))
+tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:graph:]]{4}_lb1.tif$", full.names = TRUE))
+tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:graph:]]{4}_att1.tif$", full.names = TRUE))
 
-## 2050 B1 extent is off, so we have to load and align those seperately
-h <- raster("~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff/b130_bb1.tif")
-i <- raster("~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff/b130_lb1.tif")
-
-j <- raster("~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff/b150_bb1.tif")
-k <- raster("~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff/b150_lb1.tif")
-
-j <- alignExtent(j, h)
-k <- alignExtent(k, i)
-
-tz.bb <- stack(tz.bb, j)
-tz.lb <- stack(tz.lb, k)
-
-tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:alnum:]]+_att_[[:graph:]]+.tif$", full.names = TRUE))
 #### End data import ####
 
 #### Begin data visualisation ####
