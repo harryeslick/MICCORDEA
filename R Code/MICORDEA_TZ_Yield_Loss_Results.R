@@ -15,9 +15,9 @@ library(raster)
 ##### End libraries ####
 
 #### Begin data import ####
-tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:graph:]]_bb1.tif$", full.names = TRUE))
-tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:graph:]]_lb1.tif$", full.names = TRUE))
-tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Results/GPS3 Final Yields tiff", pattern = "[[:graph:]]_att1.tif$", full.names = TRUE))
+tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
+tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
+tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
 
 #### End data import ####
 
