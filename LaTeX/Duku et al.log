@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.1)  7 JUL 2014 09:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.23)  23 JUL 2014 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **"Duku et al.tex"
 (./Duku et al.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+Babel <3.9k> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/elsarticle/elsarticle.cls
 Document Class: elsarticle 2009/09/17, 1.2.0: Elsevier Ltd
 \@bls=\dimen102
@@ -301,7 +301,57 @@ Overfull \hbox (8.33858pt too wide) in paragraph at lines 254--256
 [][]
  []
 
-[9] [10 <./figures/BB-eps-converted-to.pdf>] (./Duku et al.bbl
+[9] [10 <./figures/BB-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/LB_Losses_Violin.eps>
+(epstopdf)                    date: 2014-07-23 16:21:36
+(epstopdf)                    size: 34443 bytes
+(epstopdf)             Output file: <figures/LB_Losses_Violin-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2014-07-23 16:29:25
+(epstopdf)                    size: 20038 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/LB_Losses_Violin-e
+ps-converted-to.pdf figures/LB_Losses_Violin.eps>
+(epstopdf)             \includegraphics on input line 267.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/LB_Losses_Violin-eps-converted-to.pdf, id=66, 398.48875pt x 398.48875p
+t>
+File: figures/LB_Losses_Violin-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/LB_Losses_Violin-eps-converted-to.pdf>
+Package pdftex.def Info: figures/LB_Losses_Violin-eps-converted-to.pdf used on 
+input line 267.
+(pdftex.def)             Requested size: 398.33858pt x 398.354pt.
+
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 267--269
+[][]
+ []
+
+[11 <./figures/LB_Losses_Violin-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/BB_Losses_Violin.eps>
+(epstopdf)                    date: 2014-07-23 16:21:35
+(epstopdf)                    size: 36089 bytes
+(epstopdf)             Output file: <figures/BB_Losses_Violin-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2014-07-23 16:29:26
+(epstopdf)                    size: 22186 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/BB_Losses_Violin-e
+ps-converted-to.pdf figures/BB_Losses_Violin.eps>
+(epstopdf)             \includegraphics on input line 277.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/BB_Losses_Violin-eps-converted-to.pdf, id=77, 398.48875pt x 398.48875p
+t>
+File: figures/BB_Losses_Violin-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/BB_Losses_Violin-eps-converted-to.pdf>
+Package pdftex.def Info: figures/BB_Losses_Violin-eps-converted-to.pdf used on 
+input line 277.
+(pdftex.def)             Requested size: 398.33858pt x 398.354pt.
+
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 277--279
+[][]
+ []
+
+[12 <./figures/BB_Losses_Violin-eps-converted-to.pdf>] (./Duku et al.bbl
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 53.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
@@ -353,7 +403,7 @@ Overfull \hbox (44.96658pt too wide) in paragraph at lines 64--74
 2186\OT1/cmr/m/n/12 . 
  []
 
-[11]
+[13]
 Underfull \hbox (badness 4647) in paragraph at lines 76--84
 []\OT1/cmr/m/n/12 S. M. Coak-ley, H. Scherm, S. Chakraborty, Cli-mate change
  []
@@ -486,7 +536,7 @@ Underfull \hbox (badness 3646) in paragraph at lines 143--156
 te
  []
 
-[12]
+[14]
 Underfull \hbox (badness 2894) in paragraph at lines 181--189
 []\OT1/cmr/m/n/12 R. J. Hi-j-mans, G. A. Forbes, T. S. Walker, Es-ti-mat-ing th
 e
@@ -569,7 +619,7 @@ Overfull \hbox (44.96658pt too wide) in paragraph at lines 212--221
 2714\OT1/cmr/m/n/12 . 
  []
 
-[13]
+[15]
 Overfull \hbox (44.96658pt too wide) in paragraph at lines 224--237
 \OT1/cmtt/m/n/12 http://www.sciencedirect.com/science/article/pii/S030438000200
 0145\OT1/cmr/m/n/12 . 
@@ -620,7 +670,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 274--279
 \OT1/cmr/m/n/12 115 (1) (2006) 3--23, doi:10.1007/s10658-005-1229-5, URL
  []
 
-[14]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 306--311
 []\OT1/cmr/m/n/12 R. Bi-vand, T. Keitt, B. Rowl-ing-son, rgdal: Bind-
  []
@@ -723,7 +773,7 @@ Overfull \hbox (38.79158pt too wide) in paragraph at lines 356--363
 146\OT1/cmr/m/n/12 . 
  []
 
-[15]
+[17]
 Underfull \hbox (badness 4673) in paragraph at lines 393--401
 []\OT1/cmr/m/n/12 M. B. Burke, D. B. Lo-bell, L. Guar-ino, Shifts in African
  []
@@ -767,16 +817,16 @@ Overfull \hbox (44.96658pt too wide) in paragraph at lines 404--412
 0812\OT1/cmr/m/n/12 . 
  []
 
-) [16] (./Duku et al.aux)
+) [18] (./Duku et al.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2926 strings out of 493117
- 39847 string characters out of 6135434
- 103673 words of memory out of 5000000
- 6313 multiletter control sequences out of 15000+600000
+ 2938 strings out of 493108
+ 40321 string characters out of 6134847
+ 103747 words of memory out of 5000000
+ 6324 multiletter control sequences out of 15000+600000
  12959 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,13n,30p,2019b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -797,10 +847,10 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 4/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "Duku et al.pdf" (16 pages, 254434 bytes).
+Output written on "Duku et al.pdf" (18 pages, 293435 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 163 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
