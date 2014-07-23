@@ -33,6 +33,16 @@ tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pat
 tz.bb.loss <- (tz.ya-tz.bb)
 tz.lb.loss <- (tz.ya-tz.lb)
 
+points.tz.bb.loss <- rasterToPoints(tz.bb.loss[[1]])
+points.tz.lb.loss <- rasterToPoints(tz.lb.loss)
+
+# Make the points a dataframe for ggplot
+bb.map.df <- data.frame(points.tz.bb.loss)
+lb.map.df <- data.frame(points.tz.lb.loss)
+
+#Make appropriate column headings
+names(bb.map.df) <- names(lb.map.df) <- c("Longitude", "Latitude", "MAP")
+
 ## Create data frames
 bb <- na.omit(data.frame(values(tz.bb.loss)))
 lb <- na.omit(data.frame(values(tz.lb.loss)))
@@ -61,6 +71,11 @@ p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
 ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## Maps of yield loss
+ggplot(data = bb.map.df, aes(y = Latitude, x = Longitude)) +
+  geom_raster(aes(fill = MAP)) +
+  coord_equal() +
+  scale_fill_gradient("Tons/Ha")
+
 
 
 #### End data visualisation ####
