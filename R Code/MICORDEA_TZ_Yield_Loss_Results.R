@@ -47,14 +47,14 @@ lb_melted <- melt(lb)
 ## BB
 p.bb <- ggplot(bb_melted, aes(x = variable, y = value))
 p.bb <- p.bb + geom_violin(aes(fill = variable, colour = variable)) +
-  labs(x = "Scenario and\nTimeslice", y = "Yield loss (tonnes/ha)") + theme(legend.position = "none")
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none")
 
 ggsave(filename = "BB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## LB
 p.lb <- ggplot(lb_melted, aes(x = variable, y = value))
 p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
-  labs(x = "Scenario and\nTimeslice", y = "Yield loss (tonnes/ha)") + theme(legend.position = "none") +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"))
