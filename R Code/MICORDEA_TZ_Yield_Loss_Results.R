@@ -15,13 +15,16 @@ library(raster)
 library(ggplot2)
 library(reshape)
 library(extrafont)
+library(maps)
 ##### End libraries ####
 
 #### Begin functions ####
-TZ <- getData("GADM", country = "TZA", level = 0)
+source("Functions/multiplot.R")
 #### End libraries ####
 
 #### Begin data import ####
+TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
+
 tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
 tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
 tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
@@ -33,15 +36,16 @@ tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pat
 tz.bb.loss <- (tz.ya-tz.bb)
 tz.lb.loss <- (tz.ya-tz.lb)
 
-points.tz.bb.loss <- rasterToPoints(tz.bb.loss[[1]])
-points.tz.lb.loss <- rasterToPoints(tz.lb.loss)
-
-# Make the points a dataframe for ggplot
-bb.map.df <- data.frame(points.tz.bb.loss)
-lb.map.df <- data.frame(points.tz.lb.loss)
+p.bb.loss.a230 <- data.frame(rasterToPoints(tz.bb.loss[[1]]))
+p.bb.loss.a250 <- data.frame(rasterToPoints(tz.bb.loss[[2]]))
+p.bb.loss.ab30 <- data.frame(rasterToPoints(tz.bb.loss[[3]]))
+p.bb.loss.ab50 <- data.frame(rasterToPoints(tz.bb.loss[[4]]))
+p.bb.loss.b130 <- data.frame(rasterToPoints(tz.bb.loss[[5]]))
+p.bb.loss.b150 <- data.frame(rasterToPoints(tz.bb.loss[[6]]))
+p.bb.loss.base <- data.frame(rasterToPoints(tz.bb.loss[[7]]))
 
 #Make appropriate column headings
-names(bb.map.df) <- names(lb.map.df) <- c("Longitude", "Latitude", "MAP")
+names(p.bb.loss.a230) <- names(p.bb.loss.a250) <- names(p.bb.loss.ab30) <- names(p.bb.loss.ab50) <- names(p.bb.loss.b130) <- names(p.bb.loss.b150) <- names(p.bb.loss.base) <- c("Longitude", "Latitude", "MAP")
 
 ## Create data frames
 bb <- na.omit(data.frame(values(tz.bb.loss)))
@@ -71,11 +75,11 @@ p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
 ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## Maps of yield loss
-ggplot(data = bb.map.df, aes(y = Latitude, x = Longitude)) +
-  geom_raster(aes(fill = MAP)) +
+ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude)) +
+  geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
+  geom_tile(aes(fill = MAP, colour = MAP)) +
   coord_equal() +
-  scale_fill_gradient("Tons/Ha") +
-  geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "black", alpha = 0) # add country borders
+  coord_map() # more common Mercator projection 
 
 
 
