@@ -18,7 +18,7 @@ library(extrafont)
 ##### End libraries ####
 
 #### Begin functions ####
-source("Functions/multiplot.R")
+TZ <- getData("GADM", country = "TZA", level = 0)
 #### End libraries ####
 
 #### Begin data import ####
@@ -74,7 +74,8 @@ ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height
 ggplot(data = bb.map.df, aes(y = Latitude, x = Longitude)) +
   geom_raster(aes(fill = MAP)) +
   coord_equal() +
-  scale_fill_gradient("Tons/Ha")
+  scale_fill_gradient("Tons/Ha") +
+  geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "black", alpha = 0) # add country borders
 
 
 
