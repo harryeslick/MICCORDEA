@@ -75,10 +75,11 @@ p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
 ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## Maps of yield loss
-ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude)) +
+ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
-  geom_tile(aes(fill = MAP, colour = MAP)) +
+  geom_tile() +
   coord_equal() +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = median(p.bb.loss.a230$MAP), space = "rgb", guide = "colourbar") +
   coord_map() # more common Mercator projection 
 
 
