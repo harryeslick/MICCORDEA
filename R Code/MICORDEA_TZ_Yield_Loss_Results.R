@@ -1,10 +1,10 @@
 ##############################################################################
 # title         : MICORDEA_TZ_Yield_Loss_Results.R;
 # purpose       : analyse the yield loss results from the MICORDEA project
-#               : for publication;
+#               : and generate plots for publication;
 # producer      : prepared by A. Sparks;
 # last update   : in Los Baños, Philippines, Jul. 2014;
-# inputs        : GTiff files of yield losses for Tanzania calculated using RICEPEST;
+# inputs        : ESRI files of yield losses for Tanzania calculated using RICEPEST;
 # outputs       : Histograms and maps of yield losses for base/2030/2050 a2/b1/ab scenario;
 # remarks 1     : ;
 # Licence:      : GPL2;
@@ -20,10 +20,6 @@ library(dplyr)
 library(plyr)
 ##### End libraries ####
 
-#### Begin functions ####
-source("Functions/multiplot.R")
-#### End libraries ####
-
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
@@ -33,7 +29,12 @@ tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pat
 
 #### End data import ####
 
-#### Begin data munging 
+
+
+
+#### Begin data manipulation ####
+
+
 ## Calculate the yield losses
 tz.bb.loss <- (tz.ya-tz.bb)
 tz.lb.loss <- (tz.ya-tz.lb)
@@ -91,11 +92,11 @@ p.lb.loss.b130 <- mutate(p.lb.loss.b130, Change = (b130_att-base_att))
 p.lb.loss.b150 <- mutate(p.lb.loss.b150, Change = (b150_att-base_att))
 
 
-#Make appropriate column headings
+# Make appropriate column names
 names(p.bb.loss.a230) <- names(p.bb.loss.a250) <- names(p.bb.loss.ab30) <- names(p.bb.loss.ab50) <- names(p.bb.loss.b130) <- names(p.bb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names(p.lb.loss.ab50) <- names(p.lb.loss.b130) <- names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
-## Create data frames
+#### Create data frames for violin plots ####
 bb <- na.omit(data.frame(values(tz.bb.loss)))
 lb <- na.omit(data.frame(values(tz.lb.loss)))
 
@@ -104,8 +105,16 @@ names(lb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B
 lb_melted <- melt(lb)
 lb_melted <- melt(lb)
 
+#### End data manipulation ####
+
+
+
+
 #### Begin data visualisation ####
-## Graphs of yield loss
+
+
+## Violin plots of yield loss by time slice and scenario
+
 ## BB
 p.bb <- ggplot(bb_melted, aes(x = variable, y = value))
 p.bb <- p.bb + geom_violin(aes(fill = variable, colour = variable)) +
@@ -122,8 +131,13 @@ p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
         axis.text = element_text(size = 9, family = "Helvetica"))
 ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
 
+
+
+
 #### Maps of yield loss ####
-## Bacterial Blight Change from Base to Future Time Points
+
+
+#### Bacterial Blight Change from Base to Future Time Points ####
 bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
@@ -300,5 +314,16 @@ LB.map6 <- ggplot(data =p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill = 
 ggsave("B1 2050 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
                                                                                                             
 #### End data visualisation ####
+
+
+
+
+#### Begin data values for tables and other text ####
+
+
+round(summary(tz.bb.loss), 2)
+round(summary(tz.lb.loss), 2)
+
+#### End data values for tables and other text ####
 
 #eos
