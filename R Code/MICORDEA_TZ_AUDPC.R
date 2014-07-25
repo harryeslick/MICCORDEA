@@ -21,41 +21,41 @@ library(extrafont)
 
 #### Begin data import ####
 ## Leaf blast percent lesion coverage files ##
-tz.base.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # stack all files for blast, base time slice/scenario
+tz.base.lb <- raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "_blast_audpc.tif$", full.names = TRUE)) #raster all files for blast, base time slice/scenario
 tz.base.lb[tz.base.lb == -9999] <- NA # set -9999 values to NA for R
 
-tz.2030.a2.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # A2 2030
+tz.2030.a2.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # A2 2030
 tz.2030.a2.lb[tz.2030.a2.lb == -9999] <- NA
-tz.2050.a2.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # A2 2050
+tz.2050.a2.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # A2 2050
 tz.2050.a2.lb[tz.2050.a2.lb == -9999] <- NA
 
-tz.2030.ab.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # A1B 2030
-tz.2030.ab.lb[tz.2030.ab.lb == -9999] <- NA
-tz.2050.ab.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # A1B 2050
-tz.2050.ab.lb[tz.2050.ab.lb == -9999] <- NA
+tz.2030.a1b.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # A1B 2030
+tz.2030.a1b.lb[tz.2030.ab.lb == -9999] <- NA
+tz.2050.a1b.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # A1B 2050
+tz.2050.a1b.lb[tz.2050.ab.lb == -9999] <- NA
 
-tz.2030.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # B1 2030
+tz.2030.b1.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # B1 2030
 tz.2030.b1.lb[tz.2030.b1.lb == -9999] <- NA
-tz.2050.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # B1 2050
+tz.2050.b1.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # B1 2050
 tz.2050.b1.lb[tz.2050.b1.lb == -9999] <- NA
 
 ## Bacterial blight percent lesion coverage files ##
-tz.base.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # Base
+tz.base.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # Base
 tz.base.bb[tz.base.bb == -9999] <- NA
 
-tz.2030.a2.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # A2 2030
+tz.2030.a2.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # A2 2030
 tz.2030.a2.bb[tz.2030.a2.bb == -9999] <- NA
-tz.2050.a2.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # A2 2050
+tz.2050.a2.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # A2 2050
 tz.2050.a2.bb[tz.2050.a2.bb == -9999] <- NA
 
-tz.2030.ab.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # A1B 2030
-tz.2030.ab.bb[tz.2030.ab.bb == -9999] <- NA
-tz.2050.ab.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # A1B 2050
-tz.2050.ab.bb[tz.2050.ab.bb == -9999] <- NA
+tz.2030.a1b.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # A1B 2030
+tz.2030.a1b.bb[tz.2030.ab.bb == -9999] <- NA
+tz.2050.a1b.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # A1B 2050
+tz.2050.a1b.bb[tz.2050.ab.bb == -9999] <- NA
 
-tz.2030.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # B1 2030
+tz.2030.b1.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # B1 2030
 tz.2030.b1.bb[tz.2030.b1.bb == -9999] <- NA
-tz.2050.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "[[:graph:]]+bblight_audpc.tif$", full.names = TRUE)) # B1 2050
+tz.2050.b1.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # B1 2050
 tz.2050.b1.bb[tz.2050.b1.bb == -9999] <- NA
 #### End data import ####
 
