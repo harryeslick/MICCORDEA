@@ -93,6 +93,10 @@ names(p.bb.loss.a230) <- names(p.bb.loss.a250) <- names(p.bb.loss.ab30) <- names
 names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names(p.lb.loss.ab50) <- names(p.lb.loss.b130) <- names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
 #### Create data frames for violin plots ####
+ya <- mask(tz.ya, tz.bb.loss)
+ya <- na.omit(unlist(values(ya)))
+ya <- ya[, c(7, 1, 2, 3, 4, 5, 6)]
+
 bb <- na.omit(unlist(values(tz.bb.loss)))
 bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 
@@ -101,6 +105,10 @@ lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
 x <- c(rep("Base 2000", length(bb[, 1])), rep("A2 2030", length(bb[, 1])), rep("A2 2050", length(bb[, 1])), rep("A1B 2030", length(bb[, 1])), rep("A1B 2050", length(bb[, 1])), rep("B1 2030", length(bb[, 1])), rep("B1 2050", length(bb[, 1])))
 scenarios <- c(rep("Base", length(bb[, 1])), rep("A2", length(bb[, 1])*2), rep("A1B", length(bb[, 1])*2), rep("B1", length(bb[, 1])*2))
+
+ya <- as.vector(ya)
+ya <- data.frame(x, scenarios, ya)
+ya[, 1] <- factor(ya[, 1], as.character(ya[, 1]))
 
 bb <- as.vector(bb)
 bb <- data.frame(x, scenarios, bb)
@@ -118,6 +126,16 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 
 
 ## Violin plots of yield loss by time slice and scenario
+
+## Attainable yield
+p.ya <- ggplot(ya, aes(x = x, y = ya))
+p.ya <- p.ya + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 9, family = "Helvetica"))
+ggsave(filename = "Yield_Attainable_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 ## BB
 p.bb <- ggplot(bb, aes(x = x, y = bb))
