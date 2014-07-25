@@ -29,11 +29,7 @@ tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pat
 
 #### End data import ####
 
-
-
-
 #### Begin data manipulation ####
-
 
 ## Calculate the yield losses
 tz.bb.loss <- (tz.ya-tz.bb)
@@ -97,14 +93,21 @@ names(p.bb.loss.a230) <- names(p.bb.loss.a250) <- names(p.bb.loss.ab30) <- names
 names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names(p.lb.loss.ab50) <- names(p.lb.loss.b130) <- names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
 #### Create data frames for violin plots ####
-bb <- na.omit(data.frame(values(tz.bb.loss)))
-lb <- na.omit(data.frame(values(tz.lb.loss)))
+bb <- na.omit(unlist(values(tz.bb.loss)))
+bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 
-names(lb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
+lb <- na.omit(unlist(values(tz.lb.loss)))
+lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
-lb_melted <- melt(lb)
-lb_melted <- melt(lb)
+scenarios <- c(rep("Base 2000", length(bb[, 1])), rep("A2 2030", length(bb[, 1])), rep("A2 2050", length(bb[, 1])), rep("A1B 2030", length(bb[, 1])), rep("A1B 2050", length(bb[, 1])), rep("B1 2030", length(bb[, 1])), rep("B1 2050", length(bb[, 1])))
 
+bb <- as.vector(bb)
+bb <- data.frame(scenarios, bb)
+bb[, 1] <- factor(bb[, 1], as.character(bb[, 1]))
+
+lb <- as.vector(lb)
+lb <- data.frame(scenarios, lb)
+lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 #### End data manipulation ####
 
 
@@ -116,20 +119,22 @@ lb_melted <- melt(lb)
 ## Violin plots of yield loss by time slice and scenario
 
 ## BB
-p.bb <- ggplot(bb_melted, aes(x = variable, y = value))
-p.bb <- p.bb + geom_violin(aes(fill = variable, colour = variable)) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none")
-
-ggsave(filename = "BB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
-
-## LB
-p.lb <- ggplot(lb_melted, aes(x = variable, y = value))
-p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
+p.bb <- ggplot(bb, aes(x = scenarios, y = bb))
+p.bb <- p.bb + geom_violin(aes(fill = scenarios, colour = scenarios)) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"))
-ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+
+## LB
+p.lb <- ggplot(lb, aes(x = scenarios, y = lb))
+p.lb <- p.lb + geom_violin(aes(fill = scenarios, colour = scenarios)) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 9, family = "Helvetica"))
+ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 
 
@@ -150,7 +155,7 @@ bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2030 BB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A2 2030 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -164,7 +169,7 @@ bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2050 BB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A2 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -178,7 +183,7 @@ bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2030 BB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A1B 2030 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -192,7 +197,7 @@ bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2050 BB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A1B 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -206,7 +211,7 @@ bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2030 BB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("B1 2030 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -220,7 +225,7 @@ bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2050 BB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("B1 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 
 
@@ -241,7 +246,7 @@ LB.map1 <- ggplot(data = p.lb.loss.a230, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2030 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A2 2030 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 LB.map2 <- ggplot(data = p.lb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -255,7 +260,7 @@ LB.map2 <- ggplot(data = p.lb.loss.a250, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2050 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A2 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 LB.map3 <- ggplot(data = p.lb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -269,7 +274,7 @@ LB.map3 <- ggplot(data = p.lb.loss.ab30, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2030 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A1B 2030 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 LB.map4 <- ggplot(data = p.lb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -283,7 +288,7 @@ LB.map4 <- ggplot(data = p.lb.loss.ab50, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2050 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("A1B 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
 LB.map5 <- ggplot(data = p.lb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -297,9 +302,9 @@ LB.map5 <- ggplot(data = p.lb.loss.b130, aes(y = Latitude, x = Longitude, fill =
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2030 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("B1 2030 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
 
-LB.map6 <- ggplot(data =p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
+LB.map6 <- ggplot(data = p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
@@ -311,7 +316,7 @@ LB.map6 <- ggplot(data =p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill = 
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2050 LB Change.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave("B1 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
                                                                                                             
 #### End data visualisation ####
 

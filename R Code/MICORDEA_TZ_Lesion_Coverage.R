@@ -23,41 +23,41 @@ rm(list = ls()) # This script shares the same value names with the MICORDEA_TZ_A
 
 #### Begin data import ####
 ## Leaf blast percent lesion coverage files ##
-tz.base.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # stack all files for blast, base time slice/scenario
+tz.base.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # stack all files for blast, base time slice/scenario
 tz.base.lb[tz.base.lb == -9999] <- NA # set -9999 values to NA for R
 
-tz.2030.a2.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2030
+tz.2030.a2.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2030
 tz.2030.a2.lb[tz.2030.a2.lb == -9999] <- NA
-tz.2050.a2.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2050
+tz.2050.a2.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2050
 tz.2050.a2.lb[tz.2050.a2.lb == -9999] <- NA
 
-tz.2030.ab.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2030
+tz.2030.ab.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2030
 tz.2030.ab.lb[tz.2030.ab.lb == -9999] <- NA
-tz.2050.ab.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2050
+tz.2050.ab.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2050
 tz.2050.ab.lb[tz.2050.ab.lb == -9999] <- NA
 
-tz.2030.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2030
+tz.2030.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2030
 tz.2030.b1.lb[tz.2030.b1.lb == -9999] <- NA
-tz.2050.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "[[:graph:]]+blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2050
+tz.2050.b1.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "_blast_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2050
 tz.2050.b1.lb[tz.2050.b1.lb == -9999] <- NA
 
 ## Bacterial blight percent lesion coverage files ##
-tz.base.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # Base
+tz.base.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # Base
 tz.base.bb[tz.base.bb == -9999] <- NA
 
-tz.2030.a2.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2030
+tz.2030.a2.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/a2/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2030
 tz.2030.a2.bb[tz.2030.a2.bb == -9999] <- NA
-tz.2050.a2.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2050
+tz.2050.a2.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/a2/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A2 2050
 tz.2050.a2.bb[tz.2050.a2.bb == -9999] <- NA
 
-tz.2030.ab.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2030
+tz.2030.ab.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2030
 tz.2030.ab.bb[tz.2030.ab.bb == -9999] <- NA
-tz.2050.ab.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2050
+tz.2050.ab.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # A1B 2050
 tz.2050.ab.bb[tz.2050.ab.bb == -9999] <- NA
 
-tz.2030.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2030
+tz.2030.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2030
 tz.2030.b1.bb[tz.2030.b1.bb == -9999] <- NA
-tz.2050.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "[[:graph:]]+bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2050
+tz.2050.b1.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "_bblight_[[:digit:]]{2,3}.tif$", full.names = TRUE)) # B1 2050
 tz.2050.b1.bb[tz.2050.b1.bb == -9999] <- NA
 #### End data import ####
 
@@ -91,50 +91,38 @@ beep()
 ## Leaf blast graph ##
 
 p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
-  geom_line(aes(linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage by Blast Lesions", limits = c(0, 40)) + 
-  scale_linetype_discrete("Emission Scenario") +
+  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
+  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Blast Lesions (%)", limits = c(0, 40)) + 
+  scale_linetype_discrete("Emission\nScenario") +
+  scale_colour_discrete("Emission\nScenario") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        legend.position = c(0.1, 0.85), 
+        legend.position = c(0.1, 0.825), 
         legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(11, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"),
-        panel.grid.minor = element_blank(), # switch off minor gridlines
-        panel.border = element_rect(colour = "black", unit(0.25, "mm")),
-        legend.title = element_blank(),
-        legend.key.size = unit(1, "lines"),
-        legend.key = element_blank(),
-        legend.key.size = unit(1, "lines"),
-        axis.ticks.length = unit(0.15 , "cm"))
+        legend.key.width = unit(6, "mm"),
+        legend.text = element_text(size = 8, family = "Helvetica"))
 p + facet_grid(. ~ Time.Slice)
 
-ggsave("../Latex/Figures/LB.eps", width = 140, height = 120, units = "mm")
+ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
 
 ## Bacterial blight graph ##
 
 q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
-  geom_line(aes(linetype = as.factor(Scenario)), size = 1) + 
-  scale_x_continuous("Day of Season") + scale_y_continuous("Percent Leaf Coverage by Bacterial Blight Lesions") +
-  scale_linetype_discrete("Emission Scenario") +
+  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
+  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Bacterial Blight Lesions (%)", limits = c(0, 40)) + 
+  scale_linetype_discrete("Emission\nScenario") +
+  scale_colour_discrete("Emission\nScenario") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        legend.position = c(0.1, 0.85), 
+        legend.position = c(0.1, 0.825), 
         legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(11, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"),
-        panel.grid.minor = element_blank(), # switch off minor gridlines
-        panel.border = element_rect(colour = "black", unit(0.25, "mm")),
-        legend.title = element_blank(),
-        legend.key.size = unit(1, "lines"),
-        legend.key = element_blank(),
-        legend.key.size = unit(1, "lines"),
-        axis.ticks.length = unit(0.15 , "cm"))
+        legend.key.width = unit(6, "mm"),
+        legend.text = element_text(size = 8, family = "Helvetica"))
 q + facet_grid(. ~ Time.Slice)
 
-ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 120, units = "mm")
+ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 140, units = "mm")
 
 #### End data visualisation ####
 

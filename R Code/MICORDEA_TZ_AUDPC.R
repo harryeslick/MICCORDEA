@@ -93,6 +93,10 @@ bb[, 1] <- factor(bb[, 1], levels = c("Base", "A1B", "A2", "B1"))
 
 #### End extract data and make dataframe for visualisation ####
 
+
+
+#### Begin data visualisation ####
+
 p <- ggplot(data = lb, aes(x = Time.Slice, y = Leaf.Blast.AUDPC, group = Time.Slice)) +
   geom_boxplot(width = 10, outlier.shape = NA) +
   scale_x_continuous("Time Slice") + scale_y_continuous("Leaf Blast AUDPC Values", limits = c(0, max(na.omit(bb[, 3])))) +
@@ -131,5 +135,6 @@ p <- ggplot(data = bb, aes(x = Time.Slice, y = Bacterial.Blight.AUDPC, group = T
 p + facet_grid(. ~ Scenario)
 
 ggsave("../Latex/Figures/BB_AUDPC.eps", width = 140, height = 120, units = "mm")
+#### End data visualisation ####
 
 #eos
