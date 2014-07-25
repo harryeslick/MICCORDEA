@@ -99,14 +99,15 @@ bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 lb <- na.omit(unlist(values(tz.lb.loss)))
 lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
-scenarios <- c(rep("Base 2000", length(bb[, 1])), rep("A2 2030", length(bb[, 1])), rep("A2 2050", length(bb[, 1])), rep("A1B 2030", length(bb[, 1])), rep("A1B 2050", length(bb[, 1])), rep("B1 2030", length(bb[, 1])), rep("B1 2050", length(bb[, 1])))
+x <- c(rep("Base 2000", length(bb[, 1])), rep("A2 2030", length(bb[, 1])), rep("A2 2050", length(bb[, 1])), rep("A1B 2030", length(bb[, 1])), rep("A1B 2050", length(bb[, 1])), rep("B1 2030", length(bb[, 1])), rep("B1 2050", length(bb[, 1])))
+scenarios <- c(rep("Base", length(bb[, 1])), rep("A2", length(bb[, 1])*2), rep("A1B", length(bb[, 1])*2), rep("B1", length(bb[, 1])*2))
 
 bb <- as.vector(bb)
-bb <- data.frame(scenarios, bb)
+bb <- data.frame(x, scenarios, bb)
 bb[, 1] <- factor(bb[, 1], as.character(bb[, 1]))
 
 lb <- as.vector(lb)
-lb <- data.frame(scenarios, lb)
+lb <- data.frame(x, scenarios, lb)
 lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 #### End data manipulation ####
 
@@ -119,18 +120,20 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 ## Violin plots of yield loss by time slice and scenario
 
 ## BB
-p.bb <- ggplot(bb, aes(x = scenarios, y = bb))
-p.bb <- p.bb + geom_violin(aes(fill = scenarios, colour = scenarios)) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none") +
+p.bb <- ggplot(bb, aes(x = x, y = bb))
+p.bb <- p.bb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"))
 ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 ## LB
-p.lb <- ggplot(lb, aes(x = scenarios, y = lb))
-p.lb <- p.lb + geom_violin(aes(fill = scenarios, colour = scenarios)) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none") +
+p.lb <- ggplot(lb, aes(x = x, y = lb))
+p.lb <- p.lb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"))
