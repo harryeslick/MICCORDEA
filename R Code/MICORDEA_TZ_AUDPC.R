@@ -19,8 +19,6 @@ library(scales)
 library(extrafont)
 ##### End libraries ####
 
-rm(list = ls()) # This script shares the same value names with the MICORDEA_Lesion_Coverage.R script, to be sure we have a clean environment to work in
-
 #### Begin data import ####
 ## Leaf blast percent lesion coverage files ##
 tz.base.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "[[:graph:]]+blast_audpc.tif$", full.names = TRUE)) # stack all files for blast, base time slice/scenario
