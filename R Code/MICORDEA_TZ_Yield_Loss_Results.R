@@ -326,8 +326,11 @@ ggsave("B1 2050 LB Change.eps", path = "../Latex/figures", width = 140, height =
 #### Begin data values for tables and other text ####
 
 
-round(summary(tz.bb.loss), 2)
-round(summary(tz.lb.loss), 2)
+round(summary(tz.bb.loss), 4)
+round(summary(tz.lb.loss), 4)
+
+cellStats(tz.bb.loss, stat = "mean", na.rm = TRUE)
+cellStats(tz.lb.loss, stat = "mean", na.rm = TRUE)
 
 #### End data values for tables and other text ####
 
