@@ -20,6 +20,8 @@ library(dplyr)
 library(plyr)
 ##### End libraries ####
 
+source("Functions/multiplot.R")
+
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
@@ -157,9 +159,6 @@ p.lb <- p.lb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(s
         axis.text = element_text(size = 9, family = "Helvetica"))
 ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
-
-
-
 #### Maps of yield loss ####
 
 
@@ -172,7 +171,8 @@ bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -186,7 +186,8 @@ bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -200,7 +201,8 @@ bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -214,7 +216,8 @@ bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -228,7 +231,8 @@ bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -242,14 +246,12 @@ bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
 ggsave("B1 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
-
-
-
 
 
 #### Leaf Blast Change from Base to Future Time Points ####
@@ -263,7 +265,8 @@ LB.map1 <- ggplot(data = p.lb.loss.a230, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -277,7 +280,8 @@ LB.map2 <- ggplot(data = p.lb.loss.a250, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -291,7 +295,8 @@ LB.map3 <- ggplot(data = p.lb.loss.ab30, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -305,7 +310,8 @@ LB.map4 <- ggplot(data = p.lb.loss.ab50, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -319,7 +325,8 @@ LB.map5 <- ggplot(data = p.lb.loss.b130, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -333,7 +340,8 @@ LB.map6 <- ggplot(data = p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill =
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica")) +
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -346,10 +354,11 @@ ggsave("B1 2050 LB Change.eps", path = "../Latex/figures", width = 140, height =
 
 #### Begin data values for tables and other text ####
 
-
+round(summary(tz.ya), 4)
 round(summary(tz.bb.loss), 4)
 round(summary(tz.lb.loss), 4)
 
+cellStats(tz.ya, stat = "mean", na.rm = TRUE)
 cellStats(tz.bb.loss, stat = "mean", na.rm = TRUE)
 cellStats(tz.lb.loss, stat = "mean", na.rm = TRUE)
 
