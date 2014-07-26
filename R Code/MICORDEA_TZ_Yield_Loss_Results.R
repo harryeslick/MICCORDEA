@@ -130,7 +130,7 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 ## Attainable yield
 p.ya <- ggplot(ya, aes(x = x, y = ya))
 p.ya <- p.ya + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") + 
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
