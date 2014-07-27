@@ -20,19 +20,15 @@ library(dplyr)
 library(plyr)
 ##### End libraries ####
 
-source("Functions/multiplot.R")
-
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
 tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
 tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
 tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
-
 #### End data import ####
 
 #### Begin data manipulation ####
-
 ## Calculate the yield losses
 tz.bb.loss <- (tz.ya-tz.bb)
 tz.lb.loss <- (tz.ya-tz.lb)
