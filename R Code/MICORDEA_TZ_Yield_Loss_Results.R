@@ -256,8 +256,8 @@ ggsave("B1 2050 BB Change.eps", path = "../Latex/figures", width = 140, height =
 LB.map1 <- ggplot(data = p.lb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
+  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -271,8 +271,8 @@ ggsave("A2 2030 LB Change.eps", path = "../Latex/figures", width = 140, height =
 LB.map2 <- ggplot(data = p.lb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
+  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -286,8 +286,8 @@ ggsave("A2 2050 LB Change.eps", path = "../Latex/figures", width = 140, height =
 LB.map3 <- ggplot(data = p.lb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
+  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -301,8 +301,8 @@ ggsave("A1B 2030 LB Change.eps", path = "../Latex/figures", width = 140, height 
 LB.map4 <- ggplot(data = p.lb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
+  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -316,8 +316,8 @@ ggsave("A1B 2050 LB Change.eps", path = "../Latex/figures", width = 140, height 
 LB.map5 <- ggplot(data = p.lb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits =  c(-0.002, 0.005), "Tons/Ha") +
+  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -331,8 +331,8 @@ ggsave("B1 2030 LB Change.eps", path = "../Latex/figures", width = 140, height =
 LB.map6 <- ggplot(data = p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
+  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
+  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -342,7 +342,7 @@ LB.map6 <- ggplot(data = p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill =
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
 ggsave("B1 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
-                                                                                                            
+
 #### End data visualisation ####
 
 
