@@ -11,9 +11,9 @@ import arcpy
 import sys
 import os
 
-arcpy.AddMessage("\n              NAME:             RICEPEST Spatial Model")                                                   
-arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI)                                 and Sander Zwart(AfricaRice)")
-arcpy.AddMessage("              BASED ON WORK BY: Serge Savary and Laetitia Willocquet (IRRI)")
+arcpy.AddMessage("\n            NAME:             RICEPEST Spatial Model")                                                   
+arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI) and Sander Zwart (AfricaRice)")
+arcpy.AddMessage("              BASED ON WORK BY: Laetitia Willocquet and Serge Savary (IRRI)")
 arcpy.AddMessage("              REQUIREMENTS:     ArcGIS Spatial Analyst Extension")
 
 
@@ -536,7 +536,7 @@ elif prodSituation == "PS2":
                 out23.save(path + name)
         
         out22 = 0.785 * out4
-        out22.save(path + "tschock")
+        out22.save(path + "tshock")
         
         out2 = out23 - out22
         out2.save(path + name1)
@@ -955,7 +955,7 @@ elif prodSituation == "PS3":
                 out23.save(path + name)
         
         out22 = 0.785 * out4
-        out22.save(path + "tschock")
+        out22.save(path + "tshock")
         
         out2 = out23 - out22
         out2.save(path + name1)
@@ -1033,22 +1033,22 @@ elif prodSituation == "PS3":
             bsrf = arcpy.sa.Power(pbsrf1, beta)
             return bsrf
         
-##        #Damage mechanism due to Brown Spot
-##        if analysisType == "Attainable Yield":
-##            brownSpot = 0
-##            bsbrf = arcpy.sa.Times(oneRaster, brownSpot)
-##        
-##        elif analysisType == "Actual Yield":
-##            arcpy.AddMessage("  Calculating Reduction Factor for BS")
-##            for brownSpot in BSpotGDB:
-##                bsDate = brownSpot[2:]
-##                if tempDate == bsDate:
-##                    pbsrf = arcpy.sa.Divide(bsdm, 100)
-##                    pbsrf1 = arcpy.sa.Minus(1, pbsbrf)
-##                    bsbrf = arcpy.sa.Power(pbsbrf1, 6.3)
-##                    break
-##            else:
-##                bsbrf = 1
+#        #Damage mechanism due to Brown Spot
+#        if analysisType == "Attainable Yield":
+#            brownSpot = 0
+#            bsbrf = arcpy.sa.Times(oneRaster, brownSpot)
+#        
+#        elif analysisType == "Actual Yield":
+#            arcpy.AddMessage("  Calculating Reduction Factor for BS")
+#            for brownSpot in BSpotGDB:
+#                bsDate = brownSpot[2:]
+#                if tempDate == bsDate:
+#                    pbsrf = arcpy.sa.Divide(bsdm, 100)
+#                    pbsrf1 = arcpy.sa.Minus(1, pbsbrf)
+#                    bsbrf = arcpy.sa.Power(pbsbrf1, 6.3)
+#                    break
+#            else:
+#                bsbrf = 1
 
         #Damage mechanism due to Bacterial Leaf Blight
         if analysisType == "Attainable Yield":
@@ -1084,15 +1084,15 @@ elif prodSituation == "PS3":
                 rlbrf = 1
                 
             
-        #Damage mechanism due to Sheath Rot
-        myshrdm = 0
-        shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
-        def SHR ():
-            shrrf = arcpy.sa.Minus(1, shrdm)
-            #shrrf = arcpy.sa.Times(pshrrf, Days)
-            return shrrf
-
+         #Damage mechanism due to Sheath Rot
+         myshrdm = 0
+         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
+         
+         def SHR ():
+             shrrf = arcpy.sa.Minus(1, shrdm)
+             #shrrf = arcpy.sa.Times(pshrrf, Days)
+             return shrrf
+ 
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
@@ -1791,7 +1791,7 @@ elif prodSituation == "PS5":
                 out23.save(path + name)
         
         out22 = 0.785 * out4
-        out22.save(path + "tschock")
+        out22.save(path + "tshock")
         
         out2 = out23 - out22
         out2.save(path + name1)
@@ -2201,7 +2201,7 @@ elif prodSituation == "PS6":
                 out23.save(path + name)
         
         out22 = 0.785 * out4
-        out22.save(path + "tschock")
+        out22.save(path + "tshock")
         
         out2 = out23 - out22
         out2.save(path + name1)

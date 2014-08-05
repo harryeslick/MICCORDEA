@@ -29,6 +29,12 @@ tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pat
 #### End data import ####
 
 #### Begin data manipulation ####
+
+## Drop cells where RICEPEST predicted yields of zero tons/ha ##
+tz.bb[tz.bb == 0] <- NA
+tz.ya[tz.lb == 0] <- NA
+tz.ya[tz.ya == 0] <- NA
+
 ## Calculate the yield losses
 tz.bb.loss <- (tz.ya-tz.bb)
 tz.lb.loss <- (tz.ya-tz.lb)

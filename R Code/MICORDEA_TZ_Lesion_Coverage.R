@@ -19,7 +19,6 @@ library(scales)
 library(extrafont)
 ##### End libraries ####
 
-rm(list = ls()) # This script shares the same value names with the MICORDEA_TZ_AUDPC_R script, to be sure we have a clean environment to work in
 
 #### Begin data import ####
 ## Leaf blast percent lesion coverage files ##
