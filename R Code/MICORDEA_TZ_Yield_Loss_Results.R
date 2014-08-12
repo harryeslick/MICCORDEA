@@ -167,18 +167,18 @@ ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 #### Bacterial Blight Change from Base to Future Time Points ####
 bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
-  geom_tile(size = 0.4) + # eliminates lines between the cell
+  geom_tile() + # eliminates lines between the cell
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2030 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A2 2030 BB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -186,14 +186,14 @@ bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A2 2050 BB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -201,14 +201,14 @@ bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2030 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A1B 2030 BB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -216,14 +216,14 @@ bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A1B 2050 BB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -231,14 +231,14 @@ bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2030 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("B1 2030 BB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -246,14 +246,14 @@ bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2050 BB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("B1 2050 BB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 
 #### Leaf Blast Change from Base to Future Time Points ####
@@ -265,14 +265,14 @@ LB.map1 <- ggplot(data = p.lb.loss.a230, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2030 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A2 2030 LB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 LB.map2 <- ggplot(data = p.lb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -280,14 +280,14 @@ LB.map2 <- ggplot(data = p.lb.loss.a250, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A2 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A2 2050 LB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 LB.map3 <- ggplot(data = p.lb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -295,14 +295,14 @@ LB.map3 <- ggplot(data = p.lb.loss.ab30, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2030 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A1B 2030 LB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 LB.map4 <- ggplot(data = p.lb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -310,14 +310,14 @@ LB.map4 <- ggplot(data = p.lb.loss.ab50, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("A1B 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("A1B 2050 LB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 LB.map5 <- ggplot(data = p.lb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -325,14 +325,14 @@ LB.map5 <- ggplot(data = p.lb.loss.b130, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits =  c(-0.002, 0.005), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2030 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("B1 2030 LB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 LB.map6 <- ggplot(data = p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
@@ -340,14 +340,14 @@ LB.map6 <- ggplot(data = p.lb.loss.b150, aes(y = Latitude, x = Longitude, fill =
   scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.002, 0.005), "Tons/Ha") +
   theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
+        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
+        axis.title.x = element_text(size = 4, family = "Helvetica"),
+        axis.text = element_text(size = 3, family = "Helvetica"),
         legend.position = "none") +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("B1 2050 LB Change.eps", path = "../Latex/figures", width = 140, height = 140, units = "mm")
+ggsave("B1 2050 LB Change.eps", path = "../Latex/figures", width = 50, height = 50, units = "mm")
 
 #### End data visualisation ####
 
