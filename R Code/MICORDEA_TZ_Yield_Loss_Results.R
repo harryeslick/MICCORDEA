@@ -16,8 +16,8 @@ library(ggplot2)
 library(reshape)
 library(extrafont)
 library(maps)
-library(dplyr)
 library(plyr)
+library(dplyr)
 ##### End libraries ####
 
 #### Begin data import ####
