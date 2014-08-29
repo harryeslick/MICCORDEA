@@ -1,10 +1,8 @@
-
 #NAME: RICEPEST Spatial Model
 #DESCRIPTION: Generic RICEPEST tool for calculating attainable and actual yields based on supplied parameters
 #REQUIREMENTS: ArcGIS Spatial Analyst Extension
-#DEVELOPED BY: Confidence Duku (AfricaRice), Adam Sparks (IRRI), Sander Zwart (AfricaRice)
+#DEVELOPED BY: Confidence Duku (AfricaRice), Adam Spark(IRRI), Sander Zwart (AfricaRice
 #BASED ON WORK DONE BY: Serge Savary and Laetitia Willocquet (IRRI)
-#COMMENTS: Sum Temperature to maturity 2300
 
 #SCRIPT MODIFIED BY: Adam Sparks (IRRI)
 
@@ -12,8 +10,8 @@ import arcpy
 import sys
 import os
 
-arcpy.AddMessage("\n            NAME:             RICEPEST Spatial Model")
-arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI) and Sander Zwart (AfricaRice)")
+arcpy.AddMessage("\n              NAME:           RICEPEST Spatial Model")
+arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI) and Sander Zwart(AfricaRice)")
 arcpy.AddMessage("              BASED ON WORK BY: Laetitia Willocquet and Serge Savary (IRRI)")
 arcpy.AddMessage("              REQUIREMENTS:     ArcGIS Spatial Analyst Extension")
 
@@ -139,7 +137,7 @@ if prodSituation == "PS1":
     for temp in TempGDB:
         test = 0
         where1 = "\"VALUE\" < %d" % test
-        tempDate = temp[4:]
+        tempDate = temp[14:]
         #calculating sum of temperature
         bn = i + 15
         ft = str(bn)
@@ -292,7 +290,7 @@ if prodSituation == "PS1":
 
         #Calculating actual radiation
         for rad in RadGDB:
-            radDate = rad[4:]
+            radDate = rad[14:]
             if tempDate == radDate:
                 this_RAD = rad
                 break
@@ -460,7 +458,7 @@ if prodSituation == "PS1":
     arcpy.AddMessage("COMPLETED")
 
 
-elif prodSituation == "PS2":
+if prodSituation == "PS2":
     PANW = 0
     LEAFW = 6
     STEMW = 4
@@ -472,7 +470,7 @@ elif prodSituation == "PS2":
     rt = 0
     kt = 0
 
-    #check if rice variety is directed seeded or transplanted.
+    #check if rice variety is direct seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
         for raster in IniTemp:
@@ -549,7 +547,7 @@ elif prodSituation == "PS2":
     for temp in TempGDB:
         test = 0
         where1 = "\"VALUE\" < %d" % test
-        tempDate = temp[4:]
+        tempDate = temp[14:]
         #calculating sum of temperature
         bn = i + 15
         ft = str(bn)
@@ -610,21 +608,15 @@ elif prodSituation == "PS2":
 
 
         #Damage mechanism due to Brown Spot
-        if analysisType == "Attainable Yield":
-            brownSpot = 0
-            bsbrf = arcpy.sa.Times(oneRaster, mybsdm)
 
-        elif analysisType == "Actual Yield":
-            arcpy.AddMessage("  Calculating Reduction factor for BROWN SPOT")
-            for brownSpot in BSpotGDB:
-                bsDate = BS[2:]
-                if tempDate == bsDate:
-                    pbsbrf = arcpy.sa.Divide(brownSpot, 100)
-                    pbsbrf1 = arcpy.sa.Minus(1, pbsbrf)
-                    bsbrf = arcpy.sa.Power(pbsbrf1, 6.3)
-                    break
-            else:
-                bsbrf = 1
+        mybsdm = 0
+        bsdm = arcpy.sa.Times(oneRaster, mybsdm)
+
+        def BS (beta=6.3):
+            pbsrf = arcpy.sa.Divide(bsdm, 100)
+            pbsrf1 = arcpy.sa.Minus(1, pbsrf)
+            bsrf = arcpy.sa.Power(pbsrf1, beta)
+            return bsrf
 
         #Damage mechanism due to Bacterial Leaf Blight
         if analysisType == "Attainable Yield":
@@ -709,7 +701,7 @@ elif prodSituation == "PS2":
 
         #Calculating actual radiation
         for rad in RadGDB:
-            radDate = rad[3:]
+            radDate = rad[14:]
             if tempDate == radDate:
                 this_RAD = rad
                 break
@@ -878,7 +870,6 @@ elif prodSituation == "PS2":
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
 
-
 elif prodSituation == "PS3":
     PANW = 0
     LEAFW = 17
@@ -968,7 +959,7 @@ elif prodSituation == "PS3":
     for temp in TempGDB:
         test = 0
         where1 = "\"VALUE\" < %d" % test
-        tempDate = temp[5:]
+        tempDate = temp[14:]
         #calculating sum of temperature
         bn = i + 15
         ft = str(bn)
@@ -1034,22 +1025,22 @@ elif prodSituation == "PS3":
             bsrf = arcpy.sa.Power(pbsrf1, beta)
             return bsrf
 
-#        #Damage mechanism due to Brown Spot
-#        if analysisType == "Attainable Yield":
-#            brownSpot = 0
-#            bsbrf = arcpy.sa.Times(oneRaster, brownSpot)
-#
-#        elif analysisType == "Actual Yield":
-#            arcpy.AddMessage("  Calculating Reduction Factor for BS")
-#            for brownSpot in BSpotGDB:
-#                bsDate = brownSpot[2:]
-#                if tempDate == bsDate:
-#                    pbsrf = arcpy.sa.Divide(bsdm, 100)
-#                    pbsrf1 = arcpy.sa.Minus(1, pbsbrf)
-#                    bsbrf = arcpy.sa.Power(pbsbrf1, 6.3)
-#                    break
-#            else:
-#                bsbrf = 1
+##        #Damage mechanism due to Brown Spot
+##        if analysisType == "Attainable Yield":
+##            brownSpot = 0
+##            bsbrf = arcpy.sa.Times(oneRaster, brownSpot)
+##
+##        elif analysisType == "Actual Yield":
+##            arcpy.AddMessage("  Calculating Reduction Factor for BS")
+##            for brownSpot in BSpotGDB:
+##                bsDate = brownSpot[2:]
+##                if tempDate == bsDate:
+##                    pbsrf = arcpy.sa.Divide(bsdm, 100)
+##                    pbsrf1 = arcpy.sa.Minus(1, pbsbrf)
+##                    bsbrf = arcpy.sa.Power(pbsbrf1, 6.3)
+##                    break
+##            else:
+##                bsbrf = 1
 
         #Damage mechanism due to Bacterial Leaf Blight
         if analysisType == "Attainable Yield":
@@ -1085,14 +1076,14 @@ elif prodSituation == "PS3":
                 rlbrf = 1
 
 
-         #Damage mechanism due to Sheath Rot
-         myshrdm = 0
-         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
+        #Damage mechanism due to Sheath Rot
+        myshrdm = 0
+        shrdm = arcpy.sa.Times(oneRaster, myshrdm)
 
-         def SHR ():
-             shrrf = arcpy.sa.Minus(1, shrdm)
-             #shrrf = arcpy.sa.Times(pshrrf, Days)
-             return shrrf
+        def SHR ():
+            shrrf = arcpy.sa.Minus(1, shrdm)
+            #shrrf = arcpy.sa.Times(pshrrf, Days)
+            return shrrf
 
         #Damage mechanism due to White Heads
         mywhdm = 0
@@ -1135,7 +1126,7 @@ elif prodSituation == "PS3":
 
         #Calculating actual radiation
         for rad in RadGDB:
-            radDate = rad[3:]
+            radDate = rad[14:]
             if tempDate == radDate:
                 this_RAD = rad
                 break
@@ -1318,7 +1309,7 @@ elif prodSituation == "PS4":
     rt = 0
     kt = 0
 
-    #check if rice variety is directed seeded or transplanted.
+    #check if rice variety is direct seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
         for raster in IniTemp:
@@ -1727,7 +1718,7 @@ elif prodSituation == "PS5":
     rt = 0
     kt = 0
 
-    #check if rice variety is directed seeded or transplanted.
+    #check if rice variety is direct seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
         for raster in IniTemp:
@@ -1804,7 +1795,7 @@ elif prodSituation == "PS5":
     for temp in TempGDB:
         test = 0
         where1 = "\"VALUE\" < %d" % test
-        tempDate = temp[4:]
+        tempDate = temp[14:]
         #calculating sum of temperature
         bn = i + 15
         ft = str(bn)
@@ -1956,7 +1947,7 @@ elif prodSituation == "PS5":
 
         #Calculating actual radiation
         for rad in RadGDB:
-            radDate = rad[3:]
+            radDate = rad[14:]
             if tempDate == radDate:
                 this_RAD = rad
                 break
@@ -2214,7 +2205,7 @@ elif prodSituation == "PS6":
     for temp in TempGDB:
         test = 0
         where1 = "\"VALUE\" < %d" % test
-        tempDate = temp[4:]
+        tempDate = temp[14:]
         #calculating sum of temperature
         bn = i + 15
         ft = str(bn)
@@ -2368,7 +2359,7 @@ elif prodSituation == "PS6":
 
         #Calculating actual radiation
         for rad in RadGDB:
-            radDate = rad[4:]
+            radDate = rad[14:]
             if tempDate == radDate:
                 this_RAD = rad
                 break
