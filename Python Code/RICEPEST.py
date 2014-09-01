@@ -476,6 +476,7 @@ if prodSituation == "PS2":
         for raster in IniTemp:
             test = 0
             where1 = "\"VALUE\" < %d" % test
+             raster = arcpy.sa.Times(raster, 1)
             if rt == 0:
                 out3 = arcpy.sa.Minus(raster, TBASE)
                 out2 = arcpy.sa.Con(out3, 0, out3, where1)
