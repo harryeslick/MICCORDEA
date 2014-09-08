@@ -21,19 +21,27 @@ library(dplyr)
 ##### End libraries ####
 
 #### Begin data import ####
-TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
+TZA <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
 tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
 tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
 tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
+
+planting <- raster("../Data/WORLD_PLANT_PK1_15.tif")
+planting <- resample(planting, tz.bb, method = "ngb")
+planting <- crop(planting, tz.bb)
+planting <- mask(planting, TZA)
 #### End data import ####
 
 #### Begin data manipulation ####
 
-## Drop cells where RICEPEST predicted yields of zero tons/ha ##
-tz.bb[tz.bb == 0] <- NA
-tz.ya[tz.lb == 0] <- NA
-tz.ya[tz.ya == 0] <- NA
+## Remove planting dates that occur before November during the year
+planting[planting < 310] <- NA
+
+## Mask out areas that aren't planting rice from Nov-Dec
+tz.bb <- mask(tz.bb, planting)
+tz.lb <- mask(tz.lb, planting)
+tz.ya <- mask(tz.ya, planting)
 
 ## Calculate the yield losses
 tz.bb.loss <- (tz.ya-tz.bb)

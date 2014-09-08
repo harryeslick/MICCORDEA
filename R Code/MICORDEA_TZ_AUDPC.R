@@ -20,7 +20,9 @@ library(extrafont)
 ##### End libraries ####
 
 #### Begin data import ####
-## Leaf blast percent lesion coverage files ##
+TZA <- getData("GADM", country = "TZA", level = 0)
+
+# Leaf blast percent lesion coverage files ##
 tz.base.lb <- raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/base/", pattern = "_blast_audpc.tif$", full.names = TRUE)) #raster all files for blast, base time slice/scenario
 tz.base.lb[tz.base.lb == -9999] <- NA # set -9999 values to NA for R
 
@@ -30,9 +32,9 @@ tz.2050.a2.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease M
 tz.2050.a2.lb[tz.2050.a2.lb == -9999] <- NA
 
 tz.2030.a1b.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # A1B 2030
-tz.2030.a1b.lb[tz.2030.ab.lb == -9999] <- NA
+tz.2030.a1b.lb[tz.2030.a1b.lb == -9999] <- NA
 tz.2050.a1b.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # A1B 2050
-tz.2050.a1b.lb[tz.2050.ab.lb == -9999] <- NA
+tz.2050.a1b.lb[tz.2050.a1b.lb == -9999] <- NA
 
 tz.2030.b1.lb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "_blast_audpc.tif$", full.names = TRUE)) # B1 2030
 tz.2030.b1.lb[tz.2030.b1.lb == -9999] <- NA
@@ -49,19 +51,49 @@ tz.2050.a2.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease M
 tz.2050.a2.bb[tz.2050.a2.bb == -9999] <- NA
 
 tz.2030.a1b.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/ab/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # A1B 2030
-tz.2030.a1b.bb[tz.2030.ab.bb == -9999] <- NA
+tz.2030.a1b.bb[tz.2030.a1b.bb == -9999] <- NA
 tz.2050.a1b.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/ab/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # A1B 2050
-tz.2050.a1b.bb[tz.2050.ab.bb == -9999] <- NA
+tz.2050.a1b.bb[tz.2050.a1b.bb == -9999] <- NA
 
 tz.2030.b1.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2030/b1/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # B1 2030
 tz.2030.b1.bb[tz.2030.b1.bb == -9999] <- NA
 tz.2050.b1.bb <-raster(list.files(path = "~/Google Drive/Data/MICORDEA/Disease Modelling/2050/b1/", pattern = "_bblight_audpc.tif$", full.names = TRUE)) # B1 2050
 tz.2050.b1.bb[tz.2050.b1.bb == -9999] <- NA
+
+planting <- raster("../Data/WORLD_PLANT_PK1_15.tif")
+planting <- resample(planting, tz.base.lb, method = "ngb")
+planting <- crop(planting, tz.base.lb)
+planting <- mask(planting, TZA)
+
+planting[planting < 310] <- NA
 #### End data import ####
 
+# Mask AUDPC values by planting date later than November
+tz.base.lb <- mask(tz.base.lb, planting)
+
+tz.2030.a1b.lb <- mask(tz.2030.a1b.lb, planting)
+tz.2050.a1b.lb <- mask(tz.2050.a1b.lb, planting)
+
+tz.2030.a2.lb <- mask(tz.2030.a2.lb, planting)
+tz.2050.a2.lb <- mask(tz.2050.a2.lb, planting)
+
+tz.2030.b1.lb <- mask(tz.2030.b1.lb, planting)
+tz.2050.b1.lb <- mask(tz.2050.b1.lb, planting)
+
+tz.base.bb <- mask(tz.base.bb, planting)
+
+tz.2030.a1b.bb <- mask(tz.2030.a1b.bb, planting)
+tz.2050.a1b.bb <- mask(tz.2050.a1b.bb, planting)
+
+tz.2030.a2.bb <- mask(tz.2030.a2.bb, planting)
+tz.2050.a2.bb <- mask(tz.2050.a2.bb, planting)
+
+tz.2030.b1.bb <- mask(tz.2030.b1.bb, planting)
+tz.2050.b1.bb <- mask(tz.2050.b1.bb, planting)
+
 #### Extract data for tabular purposes ####
-lb <- data.frame(round(values(tz.base.lb), 0), round(values(tz.2030.ab.lb), 0), round(values(tz.2050.ab.lb), 0), round(values(tz.2030.a2.lb), 0), round(values(tz.2050.a2.lb), 0), round(values(tz.2030.b1.lb), 0), round(values(tz.2050.b1.lb), 0))
-bb <- data.frame(round(values(tz.base.bb), 0), round(values(tz.2030.ab.bb), 0), round(values(tz.2050.ab.bb), 0), round(values(tz.2030.a2.bb), 0), round(values(tz.2050.a2.bb), 0), round(values(tz.2030.b1.bb), 0), round(values(tz.2050.b1.bb), 0))
+lb <- data.frame(round(values(tz.base.lb), 0), round(values(tz.2030.a1b.lb), 0), round(values(tz.2050.a1b.lb), 0), round(values(tz.2030.a2.lb), 0), round(values(tz.2050.a2.lb), 0), round(values(tz.2030.b1.lb), 0), round(values(tz.2050.b1.lb), 0))
+bb <- data.frame(round(values(tz.base.bb), 0), round(values(tz.2030.a1b.bb), 0), round(values(tz.2050.a1b.bb), 0), round(values(tz.2030.a2.bb), 0), round(values(tz.2050.a2.bb), 0), round(values(tz.2030.b1.bb), 0), round(values(tz.2050.b1.bb), 0))
 
 ## Mean and SD for tabular representation ##
 lb.table <- data.frame(round(apply(lb, 2, mean, na.rm = TRUE), 0), 
