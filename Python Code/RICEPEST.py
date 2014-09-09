@@ -1292,7 +1292,7 @@ elif prodSituation == "PS3":
             name = "leafw" + ty
             thisLEAFW.save(path + name)
 
-    output =  path1 + "ab50_att"
+    output =  path1 + "yield_ps3"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
 
