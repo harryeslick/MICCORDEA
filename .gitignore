@@ -3,7 +3,7 @@
 # Example code in package build process
 *-Ex.R
 # R data files from past sessions
-.Rdata
+*.RData
 # RStudio Project Files
 .RProj
 .Rproj.user
@@ -16,7 +16,6 @@ MICORDEA.Rproj
 *.pdf
 R Code/TZA_adm0.RData
 
-<<<<<<< HEAD
 LaTeX/Duku et al.aux
 
 LaTeX/Duku et al.bbl
@@ -28,9 +27,8 @@ LaTeX/Duku et al.synctex.gz
 LaTeX/Duku et al.spl
 
 LaTeX/Duku et al.synctex.gz(busy)
-=======
+
 LaTeX/Duku et al.log
->>>>>>> Manuscript
 
 LaTeX/Duku et al.blg
 
