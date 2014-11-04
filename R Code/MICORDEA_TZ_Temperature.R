@@ -14,40 +14,44 @@
 library(raster)
 library(ggplot2)
 library(grid)
-library(extrafont)
-library(plyr)
+library(reshape2)
 ##### End libraries ####
 
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
-tmp <- stack(list.files(path = "~/tmp/2nd Batch/base dec-mar", pattern = "tmean[[:graph:]]{6}.tif$", full.names = TRUE))
-tz.mask <- raster("~/Google Drive/Data/MICORDEA/GPS3 Yields/a230_att")
+tmp.base <- stack(list.files(path = "~/tmp/RICEPEST Data/base", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
+tmp.a250 <- stack(list.files(path = "~/tmp/RICEPEST Data/a250", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
+tmp.b150 <- stack(list.files(path = "~/tmp/RICEPEST Data/b159", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
 
-UP_Weather <- read.csv("UP_Weather.csv") # Generated from NASA POWER data set in IRRI Geoclimate Database, based on location of NDUAT from Willocquet et al. 2002
+rad.base <- stack(list.files(path = "~/tmp/RICEPEST Data/base", pattern = "rad[[:graph:]]{6}$", full.names = TRUE))
+rad.a250 <- stack(list.files(path = "~/tmp/RICEPEST Data/a250", pattern = "rad[[:graph:]]{6}$", full.names = TRUE))
+
+UP <- read.csv("UP_Weather.csv")
 
 #### End data import ####
 
 #### Data manipulation ####
-## Crop and mask so only rice growing areas from MICORDEA are represented ##
-t <- crop(tmp, tz.bb[[1]])
-t <- extend(t, u)
-t <- mask(t, tz.bb[[1]])
-t <- crop(t, TZ)
-t[t<8] <- NA # base 8
-t_sum <- sum(t) # sum T for season
-t_sum[t_sum>=2300] <- NA # anything about 2300 would produce yield
+t <- data.frame(na.omit(values(tmp.a250)))
+t <- apply(t, 2, mean)
+t <- data.frame(seq(1, length(t)), t)
+colnames(t) <- c("day", "temp")
 
+r <- data.frame(na.omit(values(a250.rad)))
+r <- apply(r, 2, mean)
+r <- data.frame(seq(1, length(r)), r)
+colnames(r) <- c("day", "rad")
 
-UP_Weather <- mutate(UP_Weather, tavg = (tmin+tmax/2))
+up <- mutate(UP, tmean = tmin+tmax/2)
 
-#### Data visualisation ####
+#### Graphing ####
 
-plot(t_sum)
-plot(TZ, add = TRUE)
-hist(t_sum)
+a <- ggplot(data = t, aes(x = day, y = temp))
+a + geom_line()
 
-summary(t_sum)
+b <- ggplot(data = r, aes(x = day, y = rad))
+b + geom_line()
 
+c <- ggplot(data = up, aes(x = wdate, y = tmean))
+c + geom_line()
 
-  
 #eos
