@@ -15,6 +15,7 @@ library(raster)
 library(ggplot2)
 library(grid)
 library(reshape2)
+library(plyr)
 ##### End libraries ####
 
 #### Begin data import ####
@@ -34,7 +35,8 @@ UP <- read.csv("UP_Weather.csv")
 t <- data.frame(na.omit(values(tmp.a250)))
 t <- apply(t, 2, mean)
 t <- data.frame(seq(1, length(t)), t)
-colnames(t) <- c("day", "temp")
+t <- mutate(t, cumT = cumsum(t))
+colnames(t) <- c("day", "temp", "cumT")
 
 r <- data.frame(na.omit(values(a250.rad)))
 r <- apply(r, 2, mean)
@@ -45,7 +47,7 @@ up <- mutate(UP, tmean = tmin+tmax/2)
 
 #### Graphing ####
 
-a <- ggplot(data = t, aes(x = day, y = temp))
+a <- ggplot(data = t, aes(x = day, y = cumT))
 a + geom_line()
 
 b <- ggplot(data = r, aes(x = day, y = rad))
