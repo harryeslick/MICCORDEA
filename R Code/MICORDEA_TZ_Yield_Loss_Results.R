@@ -34,7 +34,6 @@ tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Res
 
 #### Begin data manipulation ####
 
-
 ## Calculate the yield losses
 tz.bb.loss <- (tz.ya-tz.bb)
 tz.lb.loss <- (tz.ya-tz.lb)
@@ -99,9 +98,11 @@ names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names
 #### Create data frames for violin plots ####
 bb <- na.omit(data.frame(values(tz.bb.loss)))
 lb <- na.omit(data.frame(values(tz.lb.loss)))
+ya <- na.omit(data.frame(values(tz.ya)))
 
 names(bb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
 
+ya_melted <- melt(ya)
 bb_melted <- melt(bb)
 lb_melted <- melt(lb)
 
@@ -114,6 +115,12 @@ lb_melted <- melt(lb)
 
 
 ## Violin plots of yield loss by time slice and scenario
+
+## Attainable yield
+p.ya <- ggplot(ya_melted, aes(x = variable, y = value))
+p.ya <- p.ya + geom_violin(aes(fill = variable, colour = variable)) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none")
+ggsave(filename = "Attainable_Yield_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## BB
 p.bb <- ggplot(bb_melted, aes(x = variable, y = value))
