@@ -16,6 +16,7 @@ MICORDEA.Rproj
 *.pdf
 R Code/TZA_adm0.RData
 
+<<<<<<< HEAD
 LaTeX/Duku et al.aux
 
 LaTeX/Duku et al.bbl
@@ -38,3 +39,6 @@ LaTeX/Duku et al.blg
 LaTeX/Duku et al.out
 
 Data
+=======
+*.RData
+>>>>>>> R-Code

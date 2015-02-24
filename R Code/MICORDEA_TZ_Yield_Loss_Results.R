@@ -23,9 +23,16 @@ library(dplyr)
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
+<<<<<<< HEAD
 tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
 tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
 tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
+=======
+tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*bb$", full.names = TRUE))
+tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*lb$", full.names = TRUE))
+tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*att$", full.names = TRUE))
+
+>>>>>>> R-Code
 #### End data import ####
 
 #### Begin data manipulation ####
@@ -102,12 +109,19 @@ bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 lb <- na.omit(unlist(values(tz.lb.loss)))
 lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
+<<<<<<< HEAD
 x <- c(rep("Base 2000", length(bb[, 1])), rep("A2 2030", length(bb[, 1])), rep("A2 2050", length(bb[, 1])), rep("A1B 2030", length(bb[, 1])), rep("A1B 2050", length(bb[, 1])), rep("B1 2030", length(bb[, 1])), rep("B1 2050", length(bb[, 1])))
 scenarios <- c(rep("Base", length(bb[, 1])), rep("A2", length(bb[, 1])*2), rep("A1B", length(bb[, 1])*2), rep("B1", length(bb[, 1])*2))
 
 ya <- as.vector(ya)
 ya <- data.frame(x, scenarios, ya)
 ya[, 1] <- factor(ya[, 1], as.character(ya[, 1]))
+=======
+names(bb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
+
+bb_melted <- melt(bb)
+lb_melted <- melt(lb)
+>>>>>>> R-Code
 
 bb <- as.vector(bb)
 bb <- data.frame(x, scenarios, bb)
