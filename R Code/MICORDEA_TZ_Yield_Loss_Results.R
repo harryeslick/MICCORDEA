@@ -100,9 +100,9 @@ names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names
 bb <- na.omit(data.frame(values(tz.bb.loss)))
 lb <- na.omit(data.frame(values(tz.lb.loss)))
 
-names(lb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
+names(bb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
 
-lb_melted <- melt(lb)
+bb_melted <- melt(bb)
 lb_melted <- melt(lb)
 
 #### End data manipulation ####
