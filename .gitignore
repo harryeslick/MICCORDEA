@@ -15,3 +15,5 @@ MICORDEA.Rproj
 *.PDF
 *.pdf
 R Code/TZA_adm0.RData
+
+*.RData
