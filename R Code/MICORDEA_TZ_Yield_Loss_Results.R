@@ -23,9 +23,9 @@ library(plyr)
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
-tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
-tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
-tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
+tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*bb$", full.names = TRUE))
+tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*lb$", full.names = TRUE))
+tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*att$", full.names = TRUE))
 
 #### End data import ####
 
