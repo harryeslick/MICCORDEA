@@ -327,7 +327,7 @@ ggsave("B1 2050 LB Change.eps", path = "Graphics", width = 140, height = 140, un
 
 #### Begin data values for tables and other text ####
 
-
+summary(ya)
 round(summary(tz.bb.loss), 2)
 round(summary(tz.lb.loss), 2)
 
