@@ -3,8 +3,8 @@
 # purpose       : analyse the yield loss results from the MICORDEA project
 #               : and generate plots for publication;
 # producer      : prepared by A. Sparks;
-# last update   : in Ho Chi Minh City, Vietnam, Jul. 2014;
-# inputs        : ESRI files of yield losses for Tanzania calculated using RICEPEST;
+# last update   : IRRI, Los Baños, March 2015;
+# inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
 # outputs       : Histograms and maps of yield losses for base/2030/2050 a2/b1/ab scenario;
 # remarks 1     : ;
 # Licence:      : GPL2;
@@ -23,16 +23,10 @@ library(dplyr)
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
-<<<<<<< HEAD
-tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Yields", pattern = "^[a,b].*bb$", full.names = TRUE))
-tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Yields", pattern = "^[a,b].*lb$", full.names = TRUE))
-tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Yields", pattern = "^[a,b].*att$", full.names = TRUE))
-=======
 tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*bb$", full.names = TRUE))
 tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*lb$", full.names = TRUE))
 tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*att$", full.names = TRUE))
 
->>>>>>> R-Code
 #### End data import ####
 
 #### Begin data manipulation ####
