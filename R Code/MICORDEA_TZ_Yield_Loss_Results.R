@@ -3,9 +3,9 @@
 # purpose       : analyse the yield loss results from the MICORDEA project
 #               : and generate plots for publication;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, Jul. 2014;
-# inputs        : ESRI files of yield losses for Tanzania calculated using RICEPEST;
-# outputs       : Histograms and maps of yield losses for base/2030/2050 a2/b1/ab scenario;
+# last update   : in Los Baños, Philippines, March 2015;
+# inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
+# outputs       : Violin plots and maps of yield losses for base/2030/2050 a2/b1/ab scenario;
 # remarks 1     : ;
 # Licence:      : GPL2;
 ##############################################################################
