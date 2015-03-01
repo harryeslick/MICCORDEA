@@ -3,7 +3,7 @@
 # purpose       : analyse the lesion coverage results from the MICORDEA project;
 #               : for publication;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, Jul. 2014;
+# last update   : in Los Baños, Philippines, March 2015;
 # inputs        : GTiff files of yield losses for Tanzania calculated using RICEPEST;
 # outputs       : Line graphs of disease progress for each time slice and scenario;
 # remarks 1     : ;
@@ -17,8 +17,11 @@ library(beepr)
 library(grid)
 library(scales)
 library(extrafont)
+library(wesanderson)
+library(ggthemes)
 ##### End libraries ####
 
+loadfonts(device = "postscript")
 
 #### Begin data import ####
 ## Leaf blast percent lesion coverage files ##
@@ -91,27 +94,10 @@ beep()
 
 p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Blast Lesions (%)", limits = c(0, 40)) + 
-  scale_linetype_discrete("Emission\nScenario") +
-  scale_colour_discrete("Emission\nScenario") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        legend.position = c(0.1, 0.825), 
-        legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(6, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"))
-p + facet_grid(. ~ Time.Slice)
-
-ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
-
-## Bacterial blight graph ##
-
-q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
-  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
   scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Bacterial Blight Lesions (%)", limits = c(0, 40)) + 
   scale_linetype_discrete("Emission\nScenario") +
-  scale_colour_discrete("Emission\nScenario") +
+  scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
+  theme_few() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1),
         axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
@@ -120,6 +106,24 @@ q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) +
         legend.key.width = unit(6, "mm"),
         legend.text = element_text(size = 8, family = "Helvetica"))
 q + facet_grid(. ~ Time.Slice)
+ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
+
+## Bacterial blight graph ##
+
+q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
+  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
+  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Bacterial Blight Lesions (%)", limits = c(0, 40)) + 
+  scale_linetype_discrete("Emission\nScenario") +
+  scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
+  theme_few() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        legend.position = c(0.1, 0.825), 
+        legend.background = element_rect(fill = "white", colour = "black"),
+        legend.key.width = unit(6, "mm"),
+        legend.text = element_text(size = 8, family = "Helvetica"))
+  q + facet_grid(. ~ Time.Slice)
 
 ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 140, units = "mm")
 

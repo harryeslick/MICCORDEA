@@ -18,6 +18,7 @@ library(extrafont)
 library(maps)
 library(plyr)
 library(dplyr)
+library(wesanderson)
 ##### End libraries ####
 
 #### Begin data import ####
@@ -103,19 +104,12 @@ bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 lb <- na.omit(unlist(values(tz.lb.loss)))
 lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
-<<<<<<< HEAD
 x <- c(rep("Base 2000", length(bb[, 1])), rep("A2 2030", length(bb[, 1])), rep("A2 2050", length(bb[, 1])), rep("A1B 2030", length(bb[, 1])), rep("A1B 2050", length(bb[, 1])), rep("B1 2030", length(bb[, 1])), rep("B1 2050", length(bb[, 1])))
 scenarios <- c(rep("Base", length(bb[, 1])), rep("A2", length(bb[, 1])*2), rep("A1B", length(bb[, 1])*2), rep("B1", length(bb[, 1])*2))
 
 ya <- as.vector(ya)
 ya <- data.frame(x, scenarios, ya)
 ya[, 1] <- factor(ya[, 1], as.character(ya[, 1]))
-=======
-names(bb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
-
-bb_melted <- melt(bb)
-lb_melted <- melt(lb)
->>>>>>> R-Code
 
 bb <- as.vector(bb)
 bb <- data.frame(x, scenarios, bb)
@@ -137,7 +131,10 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 ## Attainable yield
 p.ya <- ggplot(ya, aes(x = x, y = ya))
 p.ya <- p.ya + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+  scale_color_manual(values = wes_palette("FantasticFox")) +
+  scale_fill_manual(values = wes_palette("FantasticFox")) + 
   labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") + 
+  theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
@@ -147,7 +144,10 @@ ggsave(filename = "Yield_Attainable_Violin.eps", path = "../LaTeX/Figures/", wid
 ## BB
 p.bb <- ggplot(bb, aes(x = x, y = bb))
 p.bb <- p.bb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+  scale_color_manual(values = wes_palette("FantasticFox")) +
+  scale_fill_manual(values = wes_palette("FantasticFox")) + 
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
@@ -157,7 +157,10 @@ ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 ## LB
 p.lb <- ggplot(lb, aes(x = x, y = lb))
 p.lb <- p.lb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+  scale_color_manual(values = wes_palette("FantasticFox")) +
+  scale_fill_manual(values = wes_palette("FantasticFox")) + 
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
@@ -170,14 +173,14 @@ ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 #### Bacterial Blight Change from Base to Future Time Points ####
 bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
-  geom_tile() + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 4, family = "Helvetica"),
-        axis.text = element_text(size = 3, family = "Helvetica"),
-        legend.position = "none") +
+  geom_tile(size = 0.4) + # eliminates lines between the cell
+  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  theme_few() +
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
+        axis.title.y = element_text(size = 5, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 4, family = "Helvetica")) +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -186,13 +189,13 @@ ggsave("A2 2030 BB Change.eps", path = "../Latex/figures", width = 63, height = 
 bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 4, family = "Helvetica"),
-        axis.text = element_text(size = 3, family = "Helvetica"),
-        legend.position = "none") +
+  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  theme_few() +
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
+        axis.title.y = element_text(size = 5, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 4, family = "Helvetica")) +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -201,13 +204,13 @@ ggsave("A2 2050 BB Change.eps", path = "../Latex/figures", width = 63, height = 
 bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 4, family = "Helvetica"),
-        axis.text = element_text(size = 3, family = "Helvetica"),
-        legend.position = "none") +
+  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  theme_few() +
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
+        axis.title.y = element_text(size = 5, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 4, family = "Helvetica")) +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -216,13 +219,13 @@ ggsave("A1B 2030 BB Change.eps", path = "../Latex/figures", width = 63, height =
 bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 4, family = "Helvetica"),
-        axis.text = element_text(size = 3, family = "Helvetica"),
-        legend.position = "none") +
+  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  theme_few() +
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
+        axis.title.y = element_text(size = 5, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 4, family = "Helvetica")) +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -231,13 +234,13 @@ ggsave("A1B 2050 BB Change.eps", path = "../Latex/figures", width = 63, height =
 bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 4, family = "Helvetica"),
-        axis.text = element_text(size = 3, family = "Helvetica"),
-        legend.position = "none") +
+  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  theme_few() +
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
+        axis.title.y = element_text(size = 5, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 5, family = "Helvetica")) +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
@@ -246,13 +249,13 @@ ggsave("B1 2030 BB Change.eps", path = "../Latex/figures", width = 63, height = 
 bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  scale_colour_gradient2(low = "#0000FF", mid = "#FFFFFF", high ="#FF0000", midpoint = 0, space = "rgb", guide = "colourbar", limits = c(-0.25, 0.31), "Tons/Ha") +
-  theme(plot.title = element_text(face = "bold", family = "Helvetica"), 
-        axis.title.y = element_text(size = 4, angle = 90, family = "Helvetica"),
-        axis.title.x = element_text(size = 4, family = "Helvetica"),
-        axis.text = element_text(size = 3, family = "Helvetica"),
-        legend.position = "none") +
+  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  theme_few() +
+  theme(legend.position = "none") +
+  theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
+        axis.title.y = element_text(size = 5, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 4, family = "Helvetica")) +
   coord_equal() +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
