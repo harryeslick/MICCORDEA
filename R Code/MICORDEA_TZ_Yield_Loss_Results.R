@@ -20,6 +20,7 @@ library(plyr)
 library(dplyr)
 library(wesanderson)
 library(ggthemes)
+library(scales)
 ##### End libraries ####
 
 #### Begin data import ####
@@ -132,8 +133,8 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 ## Attainable yield
 p.ya <- ggplot(ya, aes(x = x, y = ya))
 p.ya <- p.ya + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
-  scale_color_manual(values = wes_palette("FantasticFox")) +
-  scale_fill_manual(values = wes_palette("FantasticFox")) + 
+  scale_color_manual(values = wes_palette("Darjeeling2")) +
+  scale_fill_manual(values = wes_palette("Darjeeling2")) + 
   labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") + 
   theme_few() +
   theme(legend.position = "none") +
@@ -145,8 +146,8 @@ ggsave(filename = "Yield_Attainable_Violin.eps", path = "../LaTeX/Figures/", wid
 ## BB
 p.bb <- ggplot(bb, aes(x = x, y = bb))
 p.bb <- p.bb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
-  scale_color_manual(values = wes_palette("FantasticFox")) +
-  scale_fill_manual(values = wes_palette("FantasticFox")) + 
+  scale_color_manual(values = wes_palette("Darjeeling2")) +
+  scale_fill_manual(values = wes_palette("Darjeeling2")) + 
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
   theme_few() +
   theme(legend.position = "none") +
@@ -158,8 +159,8 @@ ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 ## LB
 p.lb <- ggplot(lb, aes(x = x, y = lb))
 p.lb <- p.lb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
-  scale_color_manual(values = wes_palette("FantasticFox")) +
-  scale_fill_manual(values = wes_palette("FantasticFox")) + 
+  scale_color_manual(values = wes_palette("Darjeeling2")) +
+  scale_fill_manual(values = wes_palette("Darjeeling2")) + 
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
   theme_few() +
   theme(legend.position = "none") +
@@ -175,8 +176,8 @@ ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
@@ -190,8 +191,8 @@ ggsave("A2 2030 BB Change.eps", path = "../Latex/figures", width = 63, height = 
 bb.map2 <- ggplot(data = p.bb.loss.a250, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
@@ -205,8 +206,8 @@ ggsave("A2 2050 BB Change.eps", path = "../Latex/figures", width = 63, height = 
 bb.map3 <- ggplot(data = p.bb.loss.ab30, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
@@ -220,8 +221,8 @@ ggsave("A1B 2030 BB Change.eps", path = "../Latex/figures", width = 63, height =
 bb.map4 <- ggplot(data = p.bb.loss.ab50, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
@@ -235,8 +236,8 @@ ggsave("A1B 2050 BB Change.eps", path = "../Latex/figures", width = 63, height =
 bb.map5 <- ggplot(data = p.bb.loss.b130, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
@@ -250,8 +251,8 @@ ggsave("B1 2030 BB Change.eps", path = "../Latex/figures", width = 63, height = 
 bb.map6 <- ggplot(data = p.bb.loss.b150, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "Lab", limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),
