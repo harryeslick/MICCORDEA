@@ -19,6 +19,7 @@ library(maps)
 library(plyr)
 library(dplyr)
 library(wesanderson)
+library(ggthemes)
 ##### End libraries ####
 
 #### Begin data import ####
