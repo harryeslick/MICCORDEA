@@ -269,7 +269,7 @@ Bacterial blight epidemics exhibited normal progress curves for the disease with
 
 \subsection{Predicted yields and yield losses (RICEPEST model output)}
 \subsubsection{Attainable yields}
-RICEPEST predicted the mean attainable yields under the current conditions, in the absence of yield reducing factors, to be 3.88 tons per hectare for the current rice growing areas of Tanzania for the base climate (Figure \ref{Yield_Attainable_Violin}). Future conditions were all predicted to have higher mean attainable yields. All simulated time-slices exhibited a minimal amount of values that were reported as 0 tons per hectare.
+RICEPEST predicted the mean attainable yields under the current conditions, in the absence of yield reducing factors, to be 3.88 tons per hectare for the current rice growing areas of Tanzania for the base climate (Figure \ref{Yield_Attainable_Violin}). Future conditions were all predicted to have higher mean attainable yields. All simulated time-slices exhibited a minimal amount of values that were reported as zero tons per hectare.
 
 % Attainable yield loss violin plots
 \begin{figure}[H]
@@ -284,17 +284,17 @@ Differences due to leaf blast between all time slices and scenarios were negligi
 % Leaf blast yield loss violin plots
 \begin{figure}[H]
   \includegraphics[width = 90mm]{Figures/LB_Losses_Violin}
-  \caption{Yield losses in tons per hectare due to leaf blast as predicted by the RICEPEST model three time slices and three IPCC climate emission scenarios. The RICEPEST model predicts both attainable yield and the yield in the presence of yield-reducing factors.}
+  \caption{Yield losses in tons per hectare due to leaf blast as predicted by the EPIRICE and RICEPEST model three time slices and three IPCC climate emission scenarios. The EPIRICE model predicts disease severity of an unmanaged epidemic using weather data, the RICEPEST model predicts both attainable yield and the yield in the presence of yield-reducing factors like leaf blast.}
   \label{LB_Losses_Violin}
 \end{figure}
 
 \subsubsection{Yield losses due to bacterial blight}
-Bacterial blight was predicted to cause much greater losses than leaf blast (Figure \ref{BB_Losses_Violin}). The overall trend in losses due to bacterial blight was up from the base 2000. The A2 2050  and AB 2050 scenario and time slices had the highest average predicted values with 0.73 tons per hectare lost due to bacterial blight. The A2 2030 scenario and time slice registered the single highest losses, 1.44 tons per hectare.
+Bacterial blight was predicted to cause much greater losses than leaf blast (Figure \ref{BB_Losses_Violin}). The overall trend in losses due to bacterial blight was up for all three climate scenarios, from the Base 2000. The A2 2050 and AB 2050 scenario and time slices had the highest average predicted values with 0.73 tons per hectare lost due to bacterial blight. The A2 2030 scenario and time slice registered the single highest losses, 1.44 tons per hectare.
 
 % Bacterial blight yield loss violin plots
 \begin{figure}[H]
   \includegraphics[width = 90mm]{Figures/BB_Losses_Violin}
-  \caption{Yield losses in tons per hectare due to bacterial leaf blight as predicted by the RICEPEST model three time slices and three IPCC climate emission scenarios. The RICEPEST model predicts both attainable yield and the yield in the presence of yield-reducing factors.}
+  \caption{Yield losses in tons per hectare due to bacterial blight as predicted by the EPIRICE and RICEPEST model three time slices and three IPCC climate emission scenarios. The EPIRICE model predicts disease severity of an unmanaged epidemic using weather data, the RICEPEST model predicts both attainable yield and the yield in the presence of yield-reducing factors like bacterial blight.}
   \label{BB_Losses_Violin}
 \end{figure}
 
@@ -302,21 +302,23 @@ Bacterial blight was predicted to cause much greater losses than leaf blast (Fig
 
 \begin{figure}[H]
   \includegraphics[width = 140mm]{Figures/BB_Yield_Loss_Change}
-  \caption{Changes in yield losses due to bacterial blight  in tons per hectare due to bacterial blight for all time slices and emission scenarios as predicted using a combination of EPIRICE and RICEPEST models. The EPIRICE model predicts disease severity of an unmanaged epidemic using weather data, the RICEPEST model predicts both attainable yield and the yield in the presence of yield-reducing factors.}
+  \caption{Changes in yield losses due to bacterial blight disease expressed as tons per hectare for all time slices and emission scenarios as predicted using a combination of EPIRICE and RICEPEST models. The EPIRICE model predicts disease severity of an unmanaged epidemic using weather data, the RICEPEST model predicts both attainable yield and the yield in the presence of yield-reducing factors like bacterial blight.}
   \label{BB_Change_Map}
 \end{figure}
 
-The results of this study indicate that the effects of climate change on plant disease can be expected to be uneven as the environment becomes less favourable for some diseases such as LB), it becomes more-so for others like BB. 
+\section{Conclusions}
+The loose coupling approach that we adopted for this research has proven to be useful. It allows for us to examine patterns and trends that previously we were unable to easily examine. This approach should prove useful for further work where spatial modelling of rice yield loss is desired.
+
+We experienced some initial difficulties in selecting the proper production situation for an area outside the original application domain of the model. Because the original PS3 was based in Faizabad, Uttar Pradesh, India, the temperatures and duration of the rice were too long to be consistent with Tanzania. Because of this, we elected to modify the model using currently available information in the model itself based on our determinations of what best matched the situation on the ground. The results of the modified RICEPEST model seem to better represent possible scenarios than the original unmodified model was able to.
 
 {Burke2009} suggest that changes in climate may cause...
 
 \citet{Thornton2009} says...
 
-\section{Conclusions}
-The loose coupling approach that we adopted for this research has proven to be useful. It allows for us to examine patterns and trends that previously we were unable to easily examine.
+The results of this study indicate that the effects of climate change on plant disease can be expected to be uneven as the environment becomes less favourable for some diseases such as LB, it becomes more favorable for others like BB. One thing that the results fail to capture is the variation in weather. Because this exercise is based on time-slice averages, what is captured here is the most likely to occur in a given year based on the climate. Weather patterns have great influence on plant diseases. However, these results should be instructive for breeders and policy makers. We should not ignore leaf blast, but these results indicate that in the future bacterial blight will be more of an issue for rice growers in Tanzania than leaf blast so breeding efforts for resistance and other mitigation methods should be put into place with this being anticipated.
 
 \section{Acknowledgments}
-MICCORDEA project financed by GIZ, CCAFS and GRiSP consortium research programs. The authors wish to acknowledge J.K. Aunario and M. Noel for their assistance in running models and gathering data used in this study.
+The authors wish to acknowledge J.K. Aunario and M. Noel for their assistance in running models and gathering data used in this study. The authors were funded in part by the Mitigating the Impact of Climate Change On Rice Disease resistance in East Africa (MICCORDEA) project financed by GIZ, by the CGIAR Research Programs Climate Change, Agriculture and Food Security (CCAFS) and Global Rice Science Partnership (GRiSP) consortium research programs.
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal section
