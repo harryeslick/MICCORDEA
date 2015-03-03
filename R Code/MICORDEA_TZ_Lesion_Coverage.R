@@ -105,7 +105,7 @@ p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
         legend.background = element_rect(fill = "white", colour = "black"),
         legend.key.width = unit(6, "mm"),
         legend.text = element_text(size = 8, family = "Helvetica"))
-q + facet_grid(. ~ Time.Slice)
+p + facet_grid(. ~ Time.Slice)
 ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
 
 ## Bacterial blight graph ##

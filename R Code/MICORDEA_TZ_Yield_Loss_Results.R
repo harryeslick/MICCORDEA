@@ -24,7 +24,7 @@ library(scales)
 ##### End libraries ####
 
 #### Begin data import ####
-TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
+TZ <- getData("GADM", country = "TZA", level = 2) # Get country data from GADM
 
 tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*bb$", full.names = TRUE))
 tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*lb$", full.names = TRUE))
@@ -57,12 +57,12 @@ p.bb.loss.b130 <- inner_join(p.bb.loss.b130, p.bb.loss.base)
 p.bb.loss.b150 <- inner_join(p.bb.loss.b150, p.bb.loss.base)
 
 #Calculate change in loss
-p.bb.loss.a230 <- mutate(p.bb.loss.a230, Change = (a230_att-base_att))
-p.bb.loss.a250 <- mutate(p.bb.loss.a250, Change = (a250_att-base_att))
-p.bb.loss.ab30 <- mutate(p.bb.loss.ab30, Change = (ab30_att-base_att))
-p.bb.loss.ab50 <- mutate(p.bb.loss.ab50, Change = (ab50_att-base_att))
-p.bb.loss.b130 <- mutate(p.bb.loss.b130, Change = (b130_att-base_att))
-p.bb.loss.b150 <- mutate(p.bb.loss.b150, Change = (b150_att-base_att))
+p.bb.loss.a230 <- mutate(p.bb.loss.a230, Change = a230_att-base_att)
+p.bb.loss.a250 <- mutate(p.bb.loss.a250, Change = a250_att-base_att)
+p.bb.loss.ab30 <- mutate(p.bb.loss.ab30, Change = ab30_att-base_att)
+p.bb.loss.ab50 <- mutate(p.bb.loss.ab50, Change = ab50_att-base_att)
+p.bb.loss.b130 <- mutate(p.bb.loss.b130, Change = b130_att-base_att)
+p.bb.loss.b150 <- mutate(p.bb.loss.b150, Change = b150_att-base_att)
 
 ## LB
 #Create data frames from rasters
@@ -83,12 +83,12 @@ p.lb.loss.b130 <- inner_join(p.lb.loss.b130, p.lb.loss.base)
 p.lb.loss.b150 <- inner_join(p.lb.loss.b150, p.lb.loss.base)
 
 #Calculate change in loss
-p.lb.loss.a230 <- mutate(p.lb.loss.a230, Change = (a230_att-base_att))
-p.lb.loss.a250 <- mutate(p.lb.loss.a250, Change = (a250_att-base_att))
-p.lb.loss.ab30 <- mutate(p.lb.loss.ab30, Change = (ab30_att-base_att))
-p.lb.loss.ab50 <- mutate(p.lb.loss.ab50, Change = (ab50_att-base_att))
-p.lb.loss.b130 <- mutate(p.lb.loss.b130, Change = (b130_att-base_att))
-p.lb.loss.b150 <- mutate(p.lb.loss.b150, Change = (b150_att-base_att))
+p.lb.loss.a230 <- mutate(p.lb.loss.a230, Change = a230_att-base_att)
+p.lb.loss.a250 <- mutate(p.lb.loss.a250, Change = a250_att-base_att)
+p.lb.loss.ab30 <- mutate(p.lb.loss.ab30, Change = ab30_att-base_att)
+p.lb.loss.ab50 <- mutate(p.lb.loss.ab50, Change = ab50_att-base_att)
+p.lb.loss.b130 <- mutate(p.lb.loss.b130, Change = b130_att-base_att)
+p.lb.loss.b150 <- mutate(p.lb.loss.b150, Change = b150_att-base_att)
 
 
 # Make appropriate column names
@@ -176,8 +176,8 @@ ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 bb.map1 <- ggplot(data = p.bb.loss.a230, aes(y = Latitude, x = Longitude, fill = MAP, colour = MAP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
-  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-0.784, 0.52), "Tons/Ha") +
+  scale_fill_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-40, 20), "Tons/Ha") +
+  scale_colour_gradient2(space = "rgb", low = "blue", high = "red",  limits = c(-40, 20), "Tons/Ha") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 5, family = "Helvetica"),

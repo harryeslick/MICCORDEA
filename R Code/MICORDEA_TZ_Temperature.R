@@ -21,39 +21,38 @@ library(plyr)
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 tmp.base <- stack(list.files(path = "~/tmp/RICEPEST Data/base", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
+tmp.a230 <- stack(list.files(path = "~/tmp/RICEPEST Data/a230", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
 tmp.a250 <- stack(list.files(path = "~/tmp/RICEPEST Data/a250", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp.b150 <- stack(list.files(path = "~/tmp/RICEPEST Data/b159", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-
-rad.base <- stack(list.files(path = "~/tmp/RICEPEST Data/base", pattern = "rad[[:graph:]]{6}$", full.names = TRUE))
-rad.a250 <- stack(list.files(path = "~/tmp/RICEPEST Data/a250", pattern = "rad[[:graph:]]{6}$", full.names = TRUE))
-
-UP <- read.csv("UP_Weather.csv")
+tmp.b130 <- stack(list.files(path = "~/tmp/RICEPEST Data/b130", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
+tmp.b150 <- stack(list.files(path = "~/tmp/RICEPEST Data/b150", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
+tmp.ab30 <- stack(list.files(path = "~/tmp/RICEPEST Data/ab30", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
+tmp.ab50 <- stack(list.files(path = "~/tmp/RICEPEST Data/ab50", pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
 
 #### End data import ####
 
 #### Data manipulation ####
-t <- data.frame(na.omit(values(tmp.a250)))
-t <- apply(t, 2, mean)
-t <- data.frame(seq(1, length(t)), t)
-t <- mutate(t, cumT = cumsum(t))
-colnames(t) <- c("day", "temp", "cumT")
+tmp.base.avg <- mean(cellStats(tmp.base, stat = "mean"))
+tmp.a230.avg <- mean(cellStats(tmp.a230, stat = "mean"))
+tmp.a250.avg <- mean(cellStats(tmp.a250, stat = "mean"))
+tmp.ab30.avg <- mean(cellStats(tmp.ab30, stat = "mean"))
+tmp.ab50.avg <- mean(cellStats(tmp.ab50, stat = "mean"))
+tmp.b130.avg <- mean(cellStats(tmp.b130, stat = "mean"))
+tmp.b150.avg <- mean(cellStats(tmp.b150, stat = "mean"))
 
-r <- data.frame(na.omit(values(a250.rad)))
-r <- apply(r, 2, mean)
-r <- data.frame(seq(1, length(r)), r)
-colnames(r) <- c("day", "rad")
+temperature <- data.frame(round(tmp.base.avg, 2),
+                            round(mean(cellStats(tmp.a230, stat = "mean")), 2),
+                            round(mean(cellStats(tmp.a250, stat = "mean")), 2),
+                            round(mean(cellStats(tmp.ab30, stat = "mean")), 2),
+                            round(mean(cellStats(tmp.ab50, stat = "mean")), 2),
+                            round(mean(cellStats(tmp.b130, stat = "mean")), 2),
+                            round(mean(cellStats(tmp.b150, stat = "mean")), 2),
+                            round(tmp.a230.avg-tmp.base.avg, 2),
+                            round(tmp.a250.avg-tmp.base.avg, 2),
+                            round(tmp.ab30.avg-tmp.base.avg, 2),
+                            round(tmp.ab50.avg-tmp.base.avg, 2),
+                            round(tmp.b130.avg-tmp.base.avg, 2),
+                            round(tmp.b150.avg-tmp.base.avg, 2))
 
-up <- mutate(UP, tmean = tmin+tmax/2)
-
-#### Graphing ####
-
-a <- ggplot(data = t, aes(x = day, y = cumT))
-a + geom_line()
-
-b <- ggplot(data = r, aes(x = day, y = rad))
-b + geom_line()
-
-c <- ggplot(data = up, aes(x = wdate, y = tmean))
-c + geom_line()
+names(temperature) <- c("Base", "a230", "a250", "ab30", "ab50", "b130", "b150", "a230 Increase", "a250 Increase", "ab30 Increase", "ab50 Increase", "b130 Increase", "b150 Increase")
 
 #eos
