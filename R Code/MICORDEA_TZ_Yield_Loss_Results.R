@@ -123,12 +123,12 @@ lb <- data.frame(x, scenarios, lb)
 lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 
 #### Cut data for mapping ####
-p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP, include.lowest = TRUE, breaks = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56)))
-p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP, include.lowest = TRUE, breaks = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56)))
-p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, include.lowest = TRUE, breaks = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56)))
-p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP, include.lowest = TRUE, breaks = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56)))
-p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP, include.lowest = TRUE, breaks = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56)))
-p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP, include.lowest = TRUE, breaks = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56)))
+p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP, include.lowest = TRUE, breaks = seq(-.79, 0.56, by = .25)))
+p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP, include.lowest = TRUE, breaks = seq(-.79, 0.56, by = .25)))
+p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, include.lowest = TRUE, breaks = seq(-.79, 0.56, by = .25)))
+p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP, include.lowest = TRUE, breaks = seq(-.79, 0.56, by = .25)))
+p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP, include.lowest = TRUE, breaks = seq(-.79, 0.56, by = .25)))
+p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP, include.lowest = TRUE, breaks = seq(-.79, 0.56, by = .25)))
 
 p.bb.loss <- rbind(p.bb.loss.a230, p.bb.loss.a250, p.bb.loss.ab30, p.bb.loss.ab50, p.bb.loss.b130, p.bb.loss.b150)
 SCENARIO <- c(rep("A2", length(p.bb.loss.a230[, 1])), 
@@ -206,11 +206,11 @@ bb.map <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GROUP
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_colour_brewer(type = "div", 
                       palette = "RdYlBu",
-                      labels = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56),
+                      labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
                       expression(paste("t ", ha^"-1"))) +
   scale_fill_brewer(type = "div", 
                     palette = "RdYlBu",
-                    labels = c(-0.79, -0.64, -0.49, -0.34, -0.19, -0.04, 0.11, 0.26, 0.41, 0.56),
+                    labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
                     expression(paste("t ", ha^"-1"))) +
   theme_few() +
   theme(axis.title.x = element_text(size = 6, family = "Helvetica"),
