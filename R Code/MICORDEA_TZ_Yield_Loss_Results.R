@@ -97,8 +97,7 @@ names(p.bb.loss.a230) <- names(p.bb.loss.a250) <- names(p.bb.loss.ab30) <- names
 names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names(p.lb.loss.ab50) <- names(p.lb.loss.b130) <- names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
 #### Create data frames for violin plots ####
-ya <- mask(tz.ya, tz.bb.loss)
-ya <- na.omit(unlist(values(ya)))
+ya <- na.omit(unlist(values(tz.ya)))
 ya <- ya[, c(7, 1, 2, 3, 4, 5, 6)]
 
 bb <- na.omit(unlist(values(tz.bb.loss)))
