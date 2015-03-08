@@ -104,8 +104,9 @@ p <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
         legend.position = c(0.1, 0.825), 
         legend.background = element_rect(fill = "white", colour = "black"),
         legend.key.width = unit(6, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"))
-p + facet_grid(. ~ Time.Slice)
+        legend.text = element_text(size = 8, family = "Helvetica"),
+        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
+  facet_grid(. ~ Time.Slice)
 ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
 
 ## Bacterial blight graph ##
@@ -122,8 +123,9 @@ q <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) +
         legend.position = c(0.1, 0.825), 
         legend.background = element_rect(fill = "white", colour = "black"),
         legend.key.width = unit(6, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"))
-  q + facet_grid(. ~ Time.Slice)
+        legend.text = element_text(size = 8, family = "Helvetica"),
+        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
+  facet_grid(. ~ Time.Slice)
 
 ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 140, units = "mm")
 

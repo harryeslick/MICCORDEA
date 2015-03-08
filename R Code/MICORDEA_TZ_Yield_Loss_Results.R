@@ -181,7 +181,8 @@ p.bb <- p.bb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(s
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"))
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        plot.margin = unit(c(.5, .5, .5, .5), "lines"))
 ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 ## LB
@@ -194,7 +195,8 @@ p.lb <- p.lb + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(s
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"))
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        plot.margin = unit(c(.5, .5, .5, .5), "lines"))
 ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 #### Map of yield loss for BB ####
@@ -212,16 +214,15 @@ bb.map <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GROUP
                     labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
                     expression(paste("t ", ha^"-1"))) +
   theme_few() +
-  theme(axis.title.x = element_text(size = 6, family = "Helvetica"),
-        axis.title.y = element_text(size = 6, angle = 90, family = "Helvetica"),
-        axis.text = element_text(size = 7, family = "Helvetica"),
-        legend.text = element_text(size = 8, family = "Helvetica"),
-        legend.title = element_text(size = 8, family = "Helvetica")) +
+  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
   coord_equal() +
   facet_grid(TIMESLICE ~ SCENARIO) +
   coord_map("cylindrical") # use cylindrical projection at low latitude # use cylindrical projection at low latitude
 
-ggsave("BB_Yield_Loss_Change.eps", path = "../Latex/figures", width = 190, units = "mm")
+ggsave("BB_Yield_Loss_Change.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
 
 #### End data visualisation ####
 
