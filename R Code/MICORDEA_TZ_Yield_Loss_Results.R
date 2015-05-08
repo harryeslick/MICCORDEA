@@ -23,9 +23,12 @@ library(plyr)
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country outline from GADM
 
-tz.bb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*bb$", full.names = TRUE))
-tz.lb <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*lb$", full.names = TRUE))
-tz.ya <- stack(list.files(path = "~/Google Drive/Data/MICORDEA/Modified GPS3 Results", pattern = "^[a,b].*att$", full.names = TRUE))
+tz.bb <- stack(list.files(path = "../Data/Modified GPS3 Results", 
+                          pattern = "^[a,b].*bb$", full.names = TRUE))
+tz.lb <- stack(list.files(path = "../Data/Modified GPS3 Results", 
+                          pattern = "^[a,b].*lb$", full.names = TRUE))
+tz.ya <- stack(list.files(path = "../Data/Modified GPS3 Results", 
+                          pattern = "^[a,b].*att$", full.names = TRUE))
 
 #### End data import ####
 
@@ -92,15 +95,31 @@ p.lb.loss.b150 <- mutate(p.lb.loss.b150, Change = (b150_att-base_att))
 
 
 # Make appropriate column names
-names(p.bb.loss.a230) <- names(p.bb.loss.a250) <- names(p.bb.loss.ab30) <- names(p.bb.loss.ab50) <- names(p.bb.loss.b130) <- names(p.bb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
-names(p.lb.loss.a230) <- names(p.lb.loss.a250) <- names(p.lb.loss.ab30) <- names(p.lb.loss.ab50) <- names(p.lb.loss.b130) <- names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
+names(p.bb.loss.a230) <- 
+  names(p.bb.loss.a250) <- 
+  names(p.bb.loss.ab30) <- 
+  names(p.bb.loss.ab50) <- 
+  names(p.bb.loss.b130) <-
+  names(p.bb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
+names(p.lb.loss.a230) <-
+  names(p.lb.loss.a250) <-
+  names(p.lb.loss.ab30) <-
+  names(p.lb.loss.ab50) <-
+  names(p.lb.loss.b130) <-
+  names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
 #### Create data frames for violin plots ####
 bb <- na.omit(data.frame(values(tz.bb.loss)))
 lb <- na.omit(data.frame(values(tz.lb.loss)))
 ya <- na.omit(data.frame(values(tz.ya)))
 
-names(bb) <- names(lb) <- c("A2\n2030", "A2\n2050", "A1B\n2030", "A1B\n2050", "B1\n2030", "B1\n2050", "Base")
+names(bb) <- names(lb) <- c("A2\n2030",
+                            "A2\n2050",
+                            "A1B\n2030",
+                            "A1B\n2050",
+                            "B1\n2030", 
+                            "B1\n2050", 
+                            "Base")
 
 ya_melted <- melt(ya)
 bb_melted <- melt(bb)
@@ -119,24 +138,30 @@ lb_melted <- melt(lb)
 ## Attainable yield
 p.ya <- ggplot(ya_melted, aes(x = variable, y = value))
 p.ya <- p.ya + geom_violin(aes(fill = variable, colour = variable)) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none")
-ggsave(filename = "Attainable_Yield_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme(legend.position = "none")
+ggsave(filename = "Attainable_Yield_Violin.eps", 
+       path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## BB
 p.bb <- ggplot(bb_melted, aes(x = variable, y = value))
 p.bb <- p.bb + geom_violin(aes(fill = variable, colour = variable)) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none")
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  theme(legend.position = "none")
 
-ggsave(filename = "BB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave(filename = "BB_Losses_Violin.eps",
+       path = "Graphics", width = 140, height = 140, units = "mm")
 
 ## LB
 p.lb <- ggplot(lb_melted, aes(x = variable, y = value))
 p.lb <- p.lb + geom_violin(aes(fill = variable, colour = variable)) +
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + theme(legend.position = "none") +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
+  theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"))
-ggsave(filename = "LB_Losses_Violin.eps", path = "Graphics", width = 140, height = 140, units = "mm")
+ggsave(filename = "LB_Losses_Violin.eps",
+       path = "Graphics", width = 140, height = 140, units = "mm")
 
 
 
