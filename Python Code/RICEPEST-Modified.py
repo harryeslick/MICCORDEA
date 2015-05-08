@@ -12,7 +12,7 @@ import sys
 import os
 
 arcpy.AddMessage("\n            NAME:             RICEPEST Spatial Model")                                                   
-arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI)                                 and Sander Zwart(AfricaRice)")
+arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI) and Sander Zwart(AfricaRice)")
 arcpy.AddMessage("              BASED ON WORK BY: Serge Savary and Laetitia Willocquet (IRRI)")
 arcpy.AddMessage("              REQUIREMENTS:     ArcGIS Spatial Analyst Extension")
 
