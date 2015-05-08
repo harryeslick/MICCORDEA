@@ -1,7 +1,6 @@
 ##############################################################################
-# title         : MICORDEA_TZ_Yield_Loss_Results.R;
-# purpose       : analyse the yield loss results from the MICORDEA project
-#               : and generate plots for publication;
+# title         : Figures_4_5_and_6.R;
+# purpose       : generate figures 4, 5 and 6 for publication;
 # producer      : prepared by A. Sparks;
 # last update   : IRRI, Los Baños, May 2015;
 # inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;

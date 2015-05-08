@@ -1,6 +1,6 @@
 ##############################################################################
-# title         : MICORDEA_TZ_Temperature.R;
-# purpose       : extract and data temperature trends for Table 1;
+# title         : Table_1.R;
+# purpose       : extract temperature values for Table 1;
 # producer      : prepared by A. Sparks;
 # last update   : in Los Baños, Philippines, May 2015;
 # inputs        : Generated weather files from C. Duku;
