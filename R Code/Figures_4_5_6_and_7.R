@@ -1,6 +1,6 @@
 ##############################################################################
-# title         : Figures_4_5_and_6.R;
-# purpose       : generate figures 4, 5 and 6 for publication;
+# title         : Figures_4_5_6_and_7.R;
+# purpose       : generate figures 4, 5, 6 and 7 for publication;
 # producer      : prepared by A. Sparks;
 # last update   : IRRI, Los Baños, May 2015;
 # inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
@@ -149,8 +149,8 @@ p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP,
 p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP,
                                        include.lowest = TRUE, 
                                        breaks = seq(-.79, 0.56, by = .25)))
-p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, i
-                                       nclude.lowest = TRUE, 
+p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, 
+                                       include.lowest = TRUE, 
                                        breaks = seq(-.79, 0.56, by = .25)))
 p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP,
                                        include.lowest = TRUE,
@@ -232,6 +232,31 @@ figure.6 <- figure.6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
         axis.text = element_text(size = 9, family = "Helvetica"),
         plot.margin = unit(c(.5, .5, .5, .5), "lines"))
 ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+
+#### Map of yield loss for BB ####
+
+#### Bacterial Blight Change from Base to Future Time Points ####
+figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GROUP, colour = GROUP)) +
+  geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
+  geom_tile(size = 0.4) + # eliminates lines between the cell
+  scale_colour_brewer(type = "div", 
+                      palette = "RdYlBu",
+                      labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
+                      expression(paste("t ", ha^"-1"))) +
+  scale_fill_brewer(type = "div", 
+                    palette = "RdYlBu",
+                    labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
+                    expression(paste("t ", ha^"-1"))) +
+  theme_few() +
+  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.text = element_text(size = 9, family = "Helvetica"),
+        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
+  coord_equal() +
+  facet_grid(TIMESLICE ~ SCENARIO) +
+  coord_map("cylindrical") # use cylindrical projection at low latitude # use cylindrical projection at low latitude
+
+  ggsave("BB_Yield_Loss_Change.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
 
 #### End data visualisation ####
 
