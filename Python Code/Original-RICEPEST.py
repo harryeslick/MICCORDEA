@@ -4,7 +4,7 @@
 #DEVELOPED BY: Confidence Duku (AfricaRice), Adam Sparks (IRRI), Sander Zwart (AfricaRice
 #BASED ON WORK DONE BY: Laetitia Willocquet and Serge Savary (IRRI)
 
-#SCRIPT MODIFIED BY: Adam Sparks (IRRI)
+#ORIGINAL VERSION WITH UNMODIFIED PS3
 
 import arcpy
 import sys
