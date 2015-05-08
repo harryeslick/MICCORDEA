@@ -2,10 +2,8 @@
 #NAME: RICEPEST Spatial Model
 #DESCRIPTION: Generic RICEPEST tool for calculating attainable and actual yields based on supplied parameters
 #REQUIREMENTS: ArcGIS Spatial Analyst Extension
-#DEVELOPED BY: Confidence Duku (AfricaRice), Adam Spark(IRRI), Sander Zwart (AfricaRice
+#DEVELOPED BY: Confidence Duku (AfricaRice), Adam Sparks (IRRI), Sander Zwart (AfricaRice)
 #BASED ON WORK DONE BY: Serge Savary and Laetitia Willocquet (IRRI)
-
-#SCRIPT MODIFIED BY: Adam Sparks (IRRI)
 
 import arcpy
 import sys
