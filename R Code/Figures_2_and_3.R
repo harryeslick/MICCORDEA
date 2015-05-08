@@ -152,7 +152,7 @@ figure.2 <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
         legend.background = element_rect(fill = "white", colour = "black"),
         legend.key.width = unit(6, "mm"),
         legend.text = element_text(size = 8, family = "Helvetica"),
-        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   facet_grid(. ~ Time.Slice)
 ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
 
@@ -171,7 +171,7 @@ figure.3 <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario))
         legend.background = element_rect(fill = "white", colour = "black"),
         legend.key.width = unit(6, "mm"),
         legend.text = element_text(size = 8, family = "Helvetica"),
-        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   facet_grid(. ~ Time.Slice)
 
 ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 140, units = "mm")

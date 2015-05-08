@@ -26,11 +26,11 @@ library(Hmisc)
 #### Begin data import ####
 TZ <- getData("GADM", country = "TZA", level = 0) # Get country data from GADM
 
-tz.bb <- stack(list.files(path = "../Data/Modified GPS3 Results", 
+tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*bb$", full.names = TRUE))
-tz.lb <- stack(list.files(path = "../Data/Modified GPS3 Results", 
+tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*lb$", full.names = TRUE))
-tz.ya <- stack(list.files(path = "../Data/Modified GPS3 Results", 
+tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*att$", full.names = TRUE))
 
 #### End data import ####
@@ -145,22 +145,22 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 #### Cut data for mapping ####
 p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP, 
                                        include.lowest = TRUE, 
-                                       breaks = seq(-.79, 0.56, by = .25)))
+                                       breaks = seq(-0.79, 0.56, by = .25)))
 p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP,
                                        include.lowest = TRUE, 
-                                       breaks = seq(-.79, 0.56, by = .25)))
+                                       breaks = seq(-0.79, 0.56, by = .25)))
 p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, 
                                        include.lowest = TRUE, 
-                                       breaks = seq(-.79, 0.56, by = .25)))
+                                       breaks = seq(-0.79, 0.56, by = .25)))
 p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP,
                                        include.lowest = TRUE,
-                                       breaks = seq(-.79, 0.56, by = .25)))
+                                       breaks = seq(-0.79, 0.56, by = .25)))
 p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP, 
                                        include.lowest = TRUE,
-                                       breaks = seq(-.79, 0.56, by = .25)))
+                                       breaks = seq(-0.79, 0.56, by = .25)))
 p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP, 
                                        include.lowest = TRUE,
-                                       breaks = seq(-.79, 0.56, by = .25)))
+                                       breaks = seq(-0.79, 0.56, by = .25)))
 
 p.bb.loss <- rbind(p.bb.loss.a230, 
                    p.bb.loss.a250, 
@@ -251,7 +251,7 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"),
-        plot.margin = unit(c(.5, .5, .5, .5), "lines")) +
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   coord_equal() +
   facet_grid(TIMESLICE ~ SCENARIO) +
   coord_map("cylindrical") # use cylindrical projection at low latitude # use cylindrical projection at low latitude
