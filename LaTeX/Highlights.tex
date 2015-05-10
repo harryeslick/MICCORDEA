@@ -1,0 +1,45 @@
+% XeLaTeX can use any Mac OS X font. See the setromanfont command below.
+% Input to XeLaTeX is full Unicode, so Unicode characters can be typed directly into the source.
+
+% The next lines tell TeXShop to typeset with xelatex, and to open and save the source with Unicode encoding.
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+% Will Robertson's fontspec.sty can be used to simplify font choices.
+% To experiment, open /Applications/Font Book to examine the fonts provided on Mac OS X,
+% and change "Hoefler Text" to any of these choices.
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Scale=1]{Times}
+\setromanfont[Mapping=tex-text]{Hoefler Text}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+\title{Highlights from "Spatial modelling of rice yield losses in Tanzania due to bacterial blight and leaf blast in a changing climate"}
+\author{C. Duku, A. H. Sparks, and S. J. Zwart}
+\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+
+\begin{itemize}
+
+\item We couple two models to examine the effects of disease on rice yields in Tanzania.
+\item We examine how climate change affects two rice diseases over three time periods.
+\item Bacterial blight severity mostly increases causing greater yield losses in the future.
+\item Leaf blast severity mostly decreases causing lesser yield losses in the future.
+\item The effects of climate change on the diseases are not geographically uniform.
+
+\end{itemize}
+\end{document}  
