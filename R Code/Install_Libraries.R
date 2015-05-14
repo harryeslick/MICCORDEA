@@ -15,7 +15,8 @@ install.packages(c("ggplot2",
                    "scales", 
                    "extrafont", 
                    "wesanderson", 
-                   "ggthemes"),
+                   "ggthemes",
+                   "plotKML"),
                  dep = TRUE)
 
 library(extrafont)

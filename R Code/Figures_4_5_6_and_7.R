@@ -15,23 +15,28 @@ library(ggplot2)
 library(reshape)
 library(extrafont)
 library(maps)
-library(plyr)
 library(dplyr)
 library(wesanderson)
 library(ggthemes)
 library(scales)
 library(Hmisc)
+library(plotKML)
 ##### End libraries ####
 
 #### Begin data import ####
-TZ <- getData("GADM", country = "TZA", level = 0) # Get country data from GADM
+## Get country data from GADM
+TZ <- getData("GADM", country = "TZA", level = 0)
 
+## Load Raster files and set CRS
 tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*bb$", full.names = TRUE))
+crs(tz.bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*lb$", full.names = TRUE))
+crs(tz.lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*att$", full.names = TRUE))
+crs(tz.ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 
 #### End data import ####
 
@@ -241,11 +246,11 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_colour_brewer(type = "div", 
                       palette = "RdYlBu",
-                      labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
+                      labels = c("-0.55", "-0.30", "-0.05", " 0.20", " 0.56"),
                       expression(paste("t ", ha^"-1"))) +
   scale_fill_brewer(type = "div", 
                     palette = "RdYlBu",
-                    labels = c("-0.55", "-0.3", "-0.05", " 0.20", " 0.56"),
+                    labels = c("-0.55", "-0.30", "-0.05", " 0.20", " 0.56"),
                     expression(paste("t ", ha^"-1"))) +
   theme_few() +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
