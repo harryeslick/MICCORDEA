@@ -13,6 +13,7 @@
 #### Begin libraries ####
 library(raster)
 library(plotKML)
+library(RColorBrewer)
 
 #### End libraries ####
 
