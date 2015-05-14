@@ -43,7 +43,10 @@ for(i in 1:6){
   if(i == 1){tz.bb.change <- change} else tz.bb.change <- stack(tz.bb.change, change)
 }
 
-#convert values to classes
+#### Convert values to classes ####
+#create data frame with numbered classes and corresponding breaks
+ColorBreaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = .25))
+
 tz.bb.change <- cut(tz.bb.change, 
                     breaks = breaks[, 2], 
                     include.lowest = TRUE)
@@ -55,14 +58,10 @@ tz.bb.change <- reclassify(tz.bb.change,
 #### End data manipulation ####
 
 #### Begin KML export and visualize in GoogleEarth ####
-
-#### Set up a few items so that our KML file outputs match Figure 7 in manuscript ####
-
-#create data frame with numbered classes and corresponding breaks
-ColorBreaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = .25))
-NColorBreaks <- length(ColorBreaks[, 1])-1
+##set up a few items so that our KML file outputs match Figure 7 in manuscript
 
 #set palette
+NColorBreaks <- length(ColorBreaks[, 1])-1
 mypalette <- colorRampPalette(brewer.pal(NColorBreaks, "RdYlBu"))
 
 #assign useful names to layers for file outputs
