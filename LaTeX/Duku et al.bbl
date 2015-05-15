@@ -1,0 +1,406 @@
+\begin{thebibliography}{41}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\url{#1}\endgroup}\fi
+\providecommand{\bibinfo}[2]{#2}
+
+\bibitem[{Hijmans et~al.(2009)Hijmans, Savary, Pangga, and
+  Aunario}]{Hijmans2009}
+\bibinfo{author}{R.~J. Hijmans}, \bibinfo{author}{S.~Savary},
+  \bibinfo{author}{R.~Pangga}, \bibinfo{author}{J.~Aunario},
+  \bibinfo{title}{cropsim: Simulation modeling of crops and their diseases},
+  \bibinfo{note}{{R} package version 0.2.0-5}, \bibinfo{year}{2009}.
+
+\bibitem[{Seck et~al.(2013)Seck, Toure, Coulibaly, Diagne, and
+  Wopereis}]{Seck2013}
+\bibinfo{author}{P.~Seck}, \bibinfo{author}{A.~Toure},
+  \bibinfo{author}{J.~Coulibaly}, \bibinfo{author}{A.~Diagne},
+  \bibinfo{author}{M.~Wopereis}, \bibinfo{title}{Realizing Africa's rice
+  promise}, chap. \bibinfo{chapter}{Africa's rice economy before and after the
+  2008 rice crisis}, \bibinfo{publisher}{CABI}, \bibinfo{address}{Nosworthy
+  Way, Wallingford, Oxfordshire OX10 8DE, UK}, \bibinfo{pages}{24--34},
+  \bibinfo{year}{2013}.
+
+\bibitem[{Diagne et~al.(2013)Diagne, Amovin-Assagba, Futakuchi, and
+  Wopereis}]{Diagne2013}
+\bibinfo{author}{A.~Diagne}, \bibinfo{author}{E.~Amovin-Assagba},
+  \bibinfo{author}{K.~Futakuchi}, \bibinfo{author}{M.~Wopereis},
+  \bibinfo{title}{Realizing Africa's rice promise}, chap.
+  \bibinfo{chapter}{Estimation of cultivated area, number of farming households
+  and yield for major rice-growing environments in Africa},
+  \bibinfo{publisher}{CABI}, \bibinfo{address}{Nosworthy Way, Wallingford,
+  Oxfordshire OX10 8DE, UK}, \bibinfo{pages}{35--45}, \bibinfo{year}{2013}.
+
+\bibitem[{Saito et~al.(2013)Saito, Nelson, Zwart, Niang, Sow, Yoshida, and
+  Wopereis}]{Saito2013}
+\bibinfo{author}{K.~Saito}, \bibinfo{author}{A.~Nelson},
+  \bibinfo{author}{S.~Zwart}, \bibinfo{author}{A.~Niang},
+  \bibinfo{author}{A.~Sow}, \bibinfo{author}{H.~Yoshida},
+  \bibinfo{author}{M.~Wopereis}, \bibinfo{title}{Realizing Africa's rice
+  promise}, chap. \bibinfo{chapter}{Towards a better understanding of
+  biophysical determinants of yield gaps and potential expansion of rice area
+  in Africa}, \bibinfo{publisher}{CABI}, \bibinfo{address}{Nosworthy Way,
+  Wallingford, Oxfordshire OX10 8DE, UK}, \bibinfo{pages}{188--203},
+  \bibinfo{year}{2013}.
+
+\bibitem[{Verdier et~al.(2012)Verdier, Cruz, and Leach}]{Verdier2012}
+\bibinfo{author}{V.~Verdier}, \bibinfo{author}{C.~V. Cruz},
+  \bibinfo{author}{J.~E. Leach}, \bibinfo{title}{Controlling rice bacterial
+  blight in Africa: Needs and prospects}, \bibinfo{journal}{Journal of
+  Biotechnology} \bibinfo{volume}{159}~(\bibinfo{number}{4})
+  (\bibinfo{year}{2012}) \bibinfo{pages}{320 -- 328}, ISSN
+  \bibinfo{issn}{0168-1656},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.jbiotec.2011.09.020}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0168165611005578}.
+
+\bibitem[{Madden et~al.(2007)Madden, Hughes, and {van den Bosch}}]{Madden2007}
+\bibinfo{author}{L.~Madden}, \bibinfo{author}{G.~Hughes},
+  \bibinfo{author}{F.~{van den Bosch}}, \bibinfo{title}{The study of plant
+  disease epidemics}, \bibinfo{publisher}{The American Phytopathological
+  Society, APS Press}, \bibinfo{address}{St. Paul, Minnesota},
+  \bibinfo{year}{2007}.
+
+\bibitem[{Anderson et~al.(2004)Anderson, Cunningham, Patel, Morales, Epstein,
+  and Daszak}]{Anderson2004}
+\bibinfo{author}{P.~K. Anderson}, \bibinfo{author}{A.~A. Cunningham},
+  \bibinfo{author}{N.~G. Patel}, \bibinfo{author}{F.~J. Morales},
+  \bibinfo{author}{P.~R. Epstein}, \bibinfo{author}{P.~Daszak},
+  \bibinfo{title}{Emerging infectious diseases of plants: pathogen pollution,
+  climate change and agrotechnology drivers}, \bibinfo{journal}{Trends in
+  Ecology \& Evolution} \bibinfo{volume}{19}~(\bibinfo{number}{10})
+  (\bibinfo{year}{2004}) \bibinfo{pages}{535 -- 544}, ISSN
+  \bibinfo{issn}{0169-5347},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.tree.2004.07.021}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0169534704002186}.
+
+\bibitem[{Coakley et~al.(1999)Coakley, Scherm, and Chakraborty}]{Coakley1999}
+\bibinfo{author}{S.~M. Coakley}, \bibinfo{author}{H.~Scherm},
+  \bibinfo{author}{S.~Chakraborty}, \bibinfo{title}{Climate change and plant
+  disease management}, \bibinfo{journal}{Annual Review of Phytopathology}
+  \bibinfo{volume}{37}~(\bibinfo{number}{1}) (\bibinfo{year}{1999})
+  \bibinfo{pages}{399--426},
+  \doi{\bibinfo{doi}{10.1146/annurev.phyto.37.1.399}},
+  \urlprefix\url{http://dx.doi.org/10.1146/annurev.phyto.37.1.399},
+  \bibinfo{note}{pMID: 11701829}.
+
+\bibitem[{Garrett et~al.(2006)Garrett, Dendy, Frank, Rouse, and
+  Travers}]{Garrett2006}
+\bibinfo{author}{K.~A. Garrett}, \bibinfo{author}{S.~P. Dendy},
+  \bibinfo{author}{E.~E. Frank}, \bibinfo{author}{M.~N. Rouse},
+  \bibinfo{author}{S.~E. Travers}, \bibinfo{title}{Climate Change Effects on
+  Plant Disease: Genomes to Ecosystems}, \bibinfo{journal}{Annual Review of
+  Phytopathology} \bibinfo{volume}{44}~(\bibinfo{number}{1})
+  (\bibinfo{year}{2006}) \bibinfo{pages}{489--509},
+  \doi{\bibinfo{doi}{10.1146/annurev.phyto.44.070505.143420}},
+  \urlprefix\url{http://dx.doi.org/10.1146/annurev.phyto.44.070505.143420},
+  \bibinfo{note}{pMID: 16722808}.
+
+\bibitem[{Chakraborty and Newton(2011)}]{Chakraborty2011}
+\bibinfo{author}{S.~Chakraborty}, \bibinfo{author}{A.~C. Newton},
+  \bibinfo{title}{Climate change, plant diseases and food security: an
+  overview}, \bibinfo{journal}{Plant Pathology}
+  \bibinfo{volume}{60}~(\bibinfo{number}{1}) (\bibinfo{year}{2011})
+  \bibinfo{pages}{2--14}, ISSN \bibinfo{issn}{1365-3059},
+  \doi{\bibinfo{doi}{10.1111/j.1365-3059.2010.02411.x}},
+  \urlprefix\url{http://dx.doi.org/10.1111/j.1365-3059.2010.02411.x}.
+
+\bibitem[{Juroszek and von Tiedemann(2011)}]{Juroszek2011}
+\bibinfo{author}{P.~Juroszek}, \bibinfo{author}{A.~von Tiedemann},
+  \bibinfo{title}{Potential strategies and future requirements for plant
+  disease management under a changing climate}, \bibinfo{journal}{Plant
+  Pathology} \bibinfo{volume}{60}~(\bibinfo{number}{1}) (\bibinfo{year}{2011})
+  \bibinfo{pages}{100--112}, ISSN \bibinfo{issn}{1365-3059},
+  \doi{\bibinfo{doi}{10.1111/j.1365-3059.2010.02410.x}},
+  \urlprefix\url{http://dx.doi.org/10.1111/j.1365-3059.2010.02410.x}.
+
+\bibitem[{Luck et~al.(2011)Luck, Spackman, Freeman, Tre˛bicki, Griffiths,
+  Finlay, and Chakraborty}]{Luck2011}
+\bibinfo{author}{J.~Luck}, \bibinfo{author}{M.~Spackman},
+  \bibinfo{author}{A.~Freeman}, \bibinfo{author}{P.~Tre˛bicki},
+  \bibinfo{author}{W.~Griffiths}, \bibinfo{author}{K.~Finlay},
+  \bibinfo{author}{S.~Chakraborty}, \bibinfo{title}{Climate change and diseases
+  of food crops}, \bibinfo{journal}{Plant Pathology}
+  \bibinfo{volume}{60}~(\bibinfo{number}{1}) (\bibinfo{year}{2011})
+  \bibinfo{pages}{113--121}, ISSN \bibinfo{issn}{1365-3059},
+  \doi{\bibinfo{doi}{10.1111/j.1365-3059.2010.02414.x}},
+  \urlprefix\url{http://dx.doi.org/10.1111/j.1365-3059.2010.02414.x}.
+
+\bibitem[{Pautasso et~al.(2010)Pautasso, Dehnen-Schmutz, Holdenrieder,
+  Pietravalle, Salama, Jeger, Lange, and Hehl-Lange}]{Pautasso2010}
+\bibinfo{author}{M.~Pautasso}, \bibinfo{author}{K.~Dehnen-Schmutz},
+  \bibinfo{author}{O.~Holdenrieder}, \bibinfo{author}{S.~Pietravalle},
+  \bibinfo{author}{N.~Salama}, \bibinfo{author}{M.~J. Jeger},
+  \bibinfo{author}{E.~Lange}, \bibinfo{author}{S.~Hehl-Lange},
+  \bibinfo{title}{Plant health and global change -- some implications for
+  landscape management}, \bibinfo{journal}{Biological Reviews}
+  \bibinfo{volume}{85}~(\bibinfo{number}{4}) (\bibinfo{year}{2010})
+  \bibinfo{pages}{729--755}, ISSN \bibinfo{issn}{1469-185X},
+  \doi{\bibinfo{doi}{10.1111/j.1469-185X.2010.00123.x}},
+  \urlprefix\url{http://dx.doi.org/10.1111/j.1469-185X.2010.00123.x}.
+
+\bibitem[{Savary et~al.(2011)Savary, Nelson, Sparks, Willocquet, Duveiller,
+  Mahuku, Forbes, Garrett, Hodson, Padgham, Pande, Sharma, Yuen, and
+  Djurle}]{Savary2011}
+\bibinfo{author}{S.~Savary}, \bibinfo{author}{A.~Nelson},
+  \bibinfo{author}{A.~H. Sparks}, \bibinfo{author}{L.~Willocquet},
+  \bibinfo{author}{E.~Duveiller}, \bibinfo{author}{G.~Mahuku},
+  \bibinfo{author}{G.~Forbes}, \bibinfo{author}{K.~A. Garrett},
+  \bibinfo{author}{D.~Hodson}, \bibinfo{author}{J.~Padgham},
+  \bibinfo{author}{S.~Pande}, \bibinfo{author}{M.~Sharma},
+  \bibinfo{author}{J.~Yuen}, \bibinfo{author}{A.~Djurle},
+  \bibinfo{title}{International agricultural research tackling the effects of
+  global and climate changes on plant diseases in the developing world},
+  \bibinfo{journal}{Plant Disease} \bibinfo{volume}{95}~(\bibinfo{number}{10})
+  (\bibinfo{year}{2011}) \bibinfo{pages}{1204--1216},
+  \doi{\bibinfo{doi}{10.1094/PDIS-04-11-0316}},
+  \urlprefix\url{http://dx.doi.org/10.1094/PDIS-04-11-0316}.
+
+\bibitem[{Sutherst et~al.(2011)Sutherst, Constable, Finlay, Harrington, Luck,
+  and Zalucki}]{Sutherst2011}
+\bibinfo{author}{R.~W. Sutherst}, \bibinfo{author}{F.~Constable},
+  \bibinfo{author}{K.~J. Finlay}, \bibinfo{author}{R.~Harrington},
+  \bibinfo{author}{J.~Luck}, \bibinfo{author}{M.~P. Zalucki},
+  \bibinfo{title}{Adapting to crop pest and pathogen risks under a changing
+  climate}, \bibinfo{journal}{Wiley Interdisciplinary Reviews: Climate Change}
+  \bibinfo{volume}{2}~(\bibinfo{number}{2}) (\bibinfo{year}{2011})
+  \bibinfo{pages}{220--237}, ISSN \bibinfo{issn}{1757-7799},
+  \doi{\bibinfo{doi}{10.1002/wcc.102}},
+  \urlprefix\url{http://dx.doi.org/10.1002/wcc.102}.
+
+\bibitem[{Sere et~al.(2013)Sere, Fargette, Abo, Wydra, Bimerew, Onasanya, and
+  Akator}]{Sere2013}
+\bibinfo{author}{Y.~Sere}, \bibinfo{author}{D.~Fargette},
+  \bibinfo{author}{M.~Abo}, \bibinfo{author}{K.~Wydra},
+  \bibinfo{author}{M.~Bimerew}, \bibinfo{author}{A.~Onasanya},
+  \bibinfo{author}{S.~Akator}, \bibinfo{title}{Realizing Africa's rice
+  promise}, chap. \bibinfo{chapter}{Managing the major diseases of rice in
+  Africa}, \bibinfo{publisher}{CABI}, \bibinfo{address}{Nosworthy Way,
+  Wallingford, Oxfordshire OX10 8DE, UK}, \bibinfo{pages}{213--228},
+  \bibinfo{year}{2013}.
+
+\bibitem[{Hijmans et~al.(2000)Hijmans, Forbes, and Walker}]{Hijmans2000}
+\bibinfo{author}{R.~J. Hijmans}, \bibinfo{author}{G.~A. Forbes},
+  \bibinfo{author}{T.~S. Walker}, \bibinfo{title}{Estimating the global
+  severity of potato late blight with GIS-linked disease forecast models},
+  \bibinfo{journal}{Plant Pathology} \bibinfo{volume}{49}~(\bibinfo{number}{6})
+  (\bibinfo{year}{2000}) \bibinfo{pages}{697--705}, ISSN
+  \bibinfo{issn}{1365-3059},
+  \doi{\bibinfo{doi}{10.1046/j.1365-3059.2000.00511.x}},
+  \urlprefix\url{http://dx.doi.org/10.1046/j.1365-3059.2000.00511.x}.
+
+\bibitem[{Sparks et~al.(2014)Sparks, Forbes, Hijmans, and Garrett}]{Sparks2014}
+\bibinfo{author}{A.~H. Sparks}, \bibinfo{author}{G.~A. Forbes},
+  \bibinfo{author}{R.~J. Hijmans}, \bibinfo{author}{K.~A. Garrett},
+  \bibinfo{title}{Climate change may have limited effect on global risk of
+  potato late blight}, \bibinfo{journal}{Global Change Biology}
+  (\bibinfo{year}{2014}) \bibinfo{pages}{n/a--n/a}ISSN
+  \bibinfo{issn}{1365-2486}, \doi{\bibinfo{doi}{10.1111/gcb.12587}},
+  \urlprefix\url{http://dx.doi.org/10.1111/gcb.12587}.
+
+\bibitem[{Savary et~al.(2012)Savary, Nelson, Willocquet, Pangga, and
+  Aunario}]{Savary2012}
+\bibinfo{author}{S.~Savary}, \bibinfo{author}{A.~Nelson},
+  \bibinfo{author}{L.~Willocquet}, \bibinfo{author}{I.~Pangga},
+  \bibinfo{author}{J.~Aunario}, \bibinfo{title}{Modeling and mapping potential
+  epidemics of rice diseases globally}, \bibinfo{journal}{Crop Protection}
+  \bibinfo{volume}{34}~(\bibinfo{number}{0}) (\bibinfo{year}{2012})
+  \bibinfo{pages}{6 -- 17}, ISSN \bibinfo{issn}{0261-2194},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.cropro.2011.11.009}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0261219411003656}.
+
+\bibitem[{Willocquet et~al.(2000)Willocquet, Savary, Fernandez, Elazegui, and
+  Teng}]{Willocquet2000}
+\bibinfo{author}{L.~Willocquet}, \bibinfo{author}{S.~Savary},
+  \bibinfo{author}{L.~Fernandez}, \bibinfo{author}{F.~Elazegui},
+  \bibinfo{author}{P.~Teng}, \bibinfo{title}{Development and evaluation of a
+  multiple-pest, production situation specific model to simulate yield losses
+  of rice in tropical Asia}, \bibinfo{journal}{Ecological Modelling}
+  \bibinfo{volume}{131}~(\bibinfo{number}{2 -- 3}) (\bibinfo{year}{2000})
+  \bibinfo{pages}{133 -- 159}, ISSN \bibinfo{issn}{0304-3800},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/S0304-3800(00)00271-4}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304380000002714}.
+
+\bibitem[{Willocquet et~al.(2002)Willocquet, Savary, Fernandez, Elazegui,
+  Castilla, Zhu, Tang, Huang, Lin, Singh, and Srivastava}]{Willocquet2002}
+\bibinfo{author}{L.~Willocquet}, \bibinfo{author}{S.~Savary},
+  \bibinfo{author}{L.~Fernandez}, \bibinfo{author}{F.~Elazegui},
+  \bibinfo{author}{N.~Castilla}, \bibinfo{author}{D.~Zhu},
+  \bibinfo{author}{Q.~Tang}, \bibinfo{author}{S.~Huang},
+  \bibinfo{author}{X.~Lin}, \bibinfo{author}{H.~Singh},
+  \bibinfo{author}{R.~Srivastava}, \bibinfo{title}{Structure and validation of
+  RICEPEST, a production situation-driven, crop growth model simulating rice
+  yield response to multiple pest injuries for tropical Asia},
+  \bibinfo{journal}{Ecological Modelling}
+  \bibinfo{volume}{153}~(\bibinfo{number}{3}) (\bibinfo{year}{2002})
+  \bibinfo{pages}{247 -- 268}, ISSN \bibinfo{issn}{0304-3800},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/S0304-3800(02)00014-5}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304380002000145}.
+
+\bibitem[{Barreiro-Hurle(2012)}]{Barreiro-Hurle2012}
+\bibinfo{author}{J.~Barreiro-Hurle}, \bibinfo{title}{Analysis of incentives and
+  disincentives for rice in the United Republic of Tanzania},
+  \bibinfo{type}{Technical Note Series}, \bibinfo{institution}{MAFAP, FAO,
+  Rome}, \bibinfo{year}{2012}.
+
+\bibitem[{Rowhani et~al.(2011)Rowhani, Lobell, Linderman, and
+  Ramankutty}]{Rowhani2011}
+\bibinfo{author}{P.~Rowhani}, \bibinfo{author}{D.~B. Lobell},
+  \bibinfo{author}{M.~Linderman}, \bibinfo{author}{N.~Ramankutty},
+  \bibinfo{title}{Climate variability and crop production in Tanzania},
+  \bibinfo{journal}{Agricultural and Forest Meteorology}
+  \bibinfo{volume}{151}~(\bibinfo{number}{4}) (\bibinfo{year}{2011})
+  \bibinfo{pages}{449 -- 460}, ISSN \bibinfo{issn}{0168-1923},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.agrformet.2010.12.002}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0168192310003357}.
+
+\bibitem[{Boko et~al.(2007)Boko, Niang, Nyong, Vogel, Githeko, Medany,
+  Osman-Elasha, Tabo, and Yanda}]{Boko2007}
+\bibinfo{author}{M.~Boko}, \bibinfo{author}{I.~Niang},
+  \bibinfo{author}{A.~Nyong}, \bibinfo{author}{C.~Vogel},
+  \bibinfo{author}{A.~Githeko}, \bibinfo{author}{M.~Medany},
+  \bibinfo{author}{B.~Osman-Elasha}, \bibinfo{author}{R.~Tabo},
+  \bibinfo{author}{P.~Yanda}, \bibinfo{title}{Climate Change 2007: Impacts,
+  Adaptation and Vulnerability. Contribution of Working Group II to the Fourth
+  Assessment Report of the Intergovernmental Panel on Climate Change}, chap.
+  \bibinfo{chapter}{Africa}, \bibinfo{publisher}{Cambridge University Press},
+  \bibinfo{pages}{433--467}, \bibinfo{year}{2007}.
+
+\bibitem[{Kermack and McKendrick(1927)}]{Kermack1927}
+\bibinfo{author}{W.~Kermack}, \bibinfo{author}{A.~McKendrick},
+  \bibinfo{title}{A contribution to the mathematical theory of epidemics},
+  \bibinfo{journal}{Proceedings of the Royal Society of London}
+  \bibinfo{volume}{115} (\bibinfo{year}{1927}) \bibinfo{pages}{700--721}.
+
+\bibitem[{Madden(2006)}]{Madden2006}
+\bibinfo{author}{L.~V. Madden}, \bibinfo{title}{Botanical epidemiology: some
+  key advances and its continuing role in disease management},
+  \bibinfo{journal}{European Journal of Plant Pathology}
+  \bibinfo{volume}{115}~(\bibinfo{number}{1}) (\bibinfo{year}{2006})
+  \bibinfo{pages}{3--23}, \doi{\bibinfo{doi}{10.1007/s10658-005-1229-5}},
+  \urlprefix\url{http://dx.doi.org/10.1007/s10658-005-1229-5}.
+
+\bibitem[{{R Core Team}(2014)}]{R2014}
+\bibinfo{author}{{R Core Team}}, \bibinfo{title}{R: A Language and Environment
+  for Statistical Computing}, \bibinfo{organization}{R Foundation for
+  Statistical Computing}, \bibinfo{address}{Vienna, Austria},
+  \urlprefix\url{http://www.R-project.org/}, \bibinfo{year}{2014}.
+
+\bibitem[{Hijmans(2014)}]{Hijmans2014}
+\bibinfo{author}{R.~J. Hijmans}, \bibinfo{title}{raster: raster: Geographic
+  data analysis and modeling},
+  \urlprefix\url{http://CRAN.R-project.org/package=raster}, \bibinfo{note}{{R}
+  package version 2.2-31}, \bibinfo{year}{2014}.
+
+\bibitem[{Bivand et~al.(2014)Bivand, Keitt, and Rowlingson}]{Bivand2014}
+\bibinfo{author}{R.~Bivand}, \bibinfo{author}{T.~Keitt},
+  \bibinfo{author}{B.~Rowlingson}, \bibinfo{title}{rgdal: Bindings for the
+  Geospatial Data Abstraction Library},
+  \urlprefix\url{http://CRAN.R-project.org/package=rgdal}, \bibinfo{note}{{R}
+  package version 0.8-16}, \bibinfo{year}{2014}.
+
+\bibitem[{Ripley and Lapsley(2013)}]{Ripley2013}
+\bibinfo{author}{B.~Ripley}, \bibinfo{author}{M.~Lapsley},
+  \bibinfo{title}{RODBC: ODBC Database Access},
+  \urlprefix\url{http://CRAN.R-project.org/package=RODBC}, \bibinfo{note}{{R}
+  package version 1.3-10}, \bibinfo{year}{2013}.
+
+\bibitem[{pyt(2014)}]{python}
+\bibinfo{title}{The Python Language Reference}, \bibinfo{organization}{Python
+  Software Foundation}, \urlprefix\url{https://docs.python.org/2/},
+  \bibinfo{year}{2014}.
+
+\bibitem[{ESR(2011)}]{ESRI2011}
+\bibinfo{title}{ArcGIS Desktop: Release 10},
+  \bibinfo{organization}{Environmental Systems Research Institute},
+  \bibinfo{address}{Redlands, CA}, \bibinfo{year}{2011}.
+
+\bibitem[{{Food and Agriculture Organization of the United
+  Nations}(2015)}]{FAOCropCalendar}
+\bibinfo{author}{{Food and Agriculture Organization of the United Nations}},
+  \bibinfo{title}{{CROPCALENDAR. Crop calendar (Database)}},
+  \bibinfo{howpublished}{Webpage},
+  \urlprefix\url{http://data.fao.org/ref/2ca1cadd-9ee2-42ee-84d4-34473f2508fa.html?version=1.0},
+  \bibinfo{year}{2015}.
+
+\bibitem[{Portmann et~al.(2010)Portmann, Siebert, and D{\"o}ll}]{Portmann2010}
+\bibinfo{author}{F.~T. Portmann}, \bibinfo{author}{S.~Siebert},
+  \bibinfo{author}{P.~D{\"o}ll}, \bibinfo{title}{MIRCA2000---Global monthly
+  irrigated and rainfed crop areas around the year 2000: A new high-resolution
+  data set for agricultural and hydrological modeling},
+  \bibinfo{journal}{Global Biogeochemical Cycles}
+  \bibinfo{volume}{24}~(\bibinfo{number}{1}), ISSN \bibinfo{issn}{1944-9224},
+  \doi{\bibinfo{doi}{10.1029/2008GB003435}},
+  \urlprefix\url{http://dx.doi.org/10.1029/2008GB003435}.
+
+\bibitem[{Jones et~al.(2009)Jones, Thornton, and Heinke}]{Jones2009}
+\bibinfo{author}{P.~Jones}, \bibinfo{author}{P.~Thornton},
+  \bibinfo{author}{J.~Heinke}, \bibinfo{title}{Generating Characteristic daily
+  weather data using downscaled climate model data from the IPCC's Fourth
+  Assessment Report}, \bibinfo{year}{2009}.
+
+\bibitem[{Liu et~al.(2009)Liu, Williams, Wang, and Yang}]{Liu2009}
+\bibinfo{author}{J.~Liu}, \bibinfo{author}{J.~R. Williams},
+  \bibinfo{author}{X.~Wang}, \bibinfo{author}{H.~Yang}, \bibinfo{title}{Using
+  {MODAWEC} to generate daily weather data for the {EPIC} model},
+  \bibinfo{journal}{Environmental Modelling \& Software}
+  \bibinfo{volume}{24}~(\bibinfo{number}{5}) (\bibinfo{year}{2009})
+  \bibinfo{pages}{655 -- 664}, ISSN \bibinfo{issn}{1364-8152},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.envsoft.2008.10.008}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S1364815208001904}.
+
+\bibitem[{Geng et~al.(1986)Geng, de~Vries, and Supit}]{Geng1986}
+\bibinfo{author}{S.~Geng}, \bibinfo{author}{F.~W.~P. de~Vries},
+  \bibinfo{author}{I.~Supit}, \bibinfo{title}{A simple method for generating
+  daily rainfall data}, \bibinfo{journal}{Agricultural and Forest Meteorology}
+  \bibinfo{volume}{36}~(\bibinfo{number}{4}) (\bibinfo{year}{1986})
+  \bibinfo{pages}{363 -- 376}, ISSN \bibinfo{issn}{0168-1923},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/0168-1923(86)90014-6}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0168192386900146}.
+
+\bibitem[{Savary et~al.(2000)Savary, Willocquet, Elazegui, Teng, Van~Du, Zhu,
+  Tang, Huang, Lin, Singh, and Srivastava}]{Savary2000}
+\bibinfo{author}{S.~Savary}, \bibinfo{author}{L.~Willocquet},
+  \bibinfo{author}{F.~A. Elazegui}, \bibinfo{author}{P.~S. Teng},
+  \bibinfo{author}{P.~Van~Du}, \bibinfo{author}{D.~Zhu},
+  \bibinfo{author}{Q.~Tang}, \bibinfo{author}{S.~Huang},
+  \bibinfo{author}{X.~Lin}, \bibinfo{author}{H.~M. Singh},
+  \bibinfo{author}{R.~K. Srivastava}, \bibinfo{title}{Rice Pest Constraints in
+  Tropical Asia: Characterization of Injury Profiles in Relation to Production
+  Situations}, \bibinfo{journal}{Plant Disease}
+  \bibinfo{volume}{84}~(\bibinfo{number}{3}) (\bibinfo{year}{2000})
+  \bibinfo{pages}{341--356}, \doi{\bibinfo{doi}{10.1094/PDIS.2000.84.3.341}},
+  \urlprefix\url{http://dx.doi.org/10.1094/PDIS.2000.84.3.341}.
+
+\bibitem[{Bouman et~al.(2001)Bouman, Kropff, Tuong, Woperies, {ten Berge}, and
+  {van Laar}}]{Oryza}
+\bibinfo{author}{B.~Bouman}, \bibinfo{author}{M.~Kropff},
+  \bibinfo{author}{T.~Tuong}, \bibinfo{author}{M.~Woperies},
+  \bibinfo{author}{H.~{ten Berge}}, \bibinfo{author}{H.~{van Laar}},
+  \bibinfo{title}{ORYZA2000: modeling lowland rice},
+  \bibinfo{publisher}{International Rice Research Institute, and Wageningen:
+  Wageningen University and Research Center}, \bibinfo{address}{Suite 1009,
+  Pacific Bank Building, 6776 Ayala Avenue, Makati City, Philippines},
+  \bibinfo{year}{2001}.
+
+\bibitem[{Yoshida(1981)}]{Yoshida}
+\bibinfo{author}{S.~Yoshida}, \bibinfo{title}{Fundamentals of Rice Science},
+  \bibinfo{publisher}{The International Rice Research Institute},
+  \bibinfo{address}{PO Box 933, Metro Manila, Philippines},
+  \bibinfo{year}{1981}.
+
+\bibitem[{Thornton et~al.(2009)Thornton, Jones, Alagarswamy, and
+  Andresen}]{Thornton2009}
+\bibinfo{author}{P.~K. Thornton}, \bibinfo{author}{P.~G. Jones},
+  \bibinfo{author}{G.~Alagarswamy}, \bibinfo{author}{J.~Andresen},
+  \bibinfo{title}{Spatial variation of crop yield response to climate change in
+  East Africa}, \bibinfo{journal}{Global Environmental Change}
+  \bibinfo{volume}{19}~(\bibinfo{number}{1}) (\bibinfo{year}{2009})
+  \bibinfo{pages}{54 -- 65}, ISSN \bibinfo{issn}{0959-3780},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.gloenvcha.2008.08.005}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0959378008000812}.
+
+\end{thebibliography}

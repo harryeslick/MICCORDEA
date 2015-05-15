@@ -1,44 +1,9 @@
-# History files
-.Rhistory
-# Example code in package build process
-*-Ex.R
-# R data files from past sessions
+*.Rhistory
 *.RData
-# RStudio Project Files
-.RProj
-.Rproj.user
-MICORDEA.Rproj
-
-*.Rproj
-
-MICORDEA.Rproj
+*.RProj
+*.Rproj.user
 *.PDF
 *.pdf
-R Code/TZA_adm0.RData
-
-<<<<<<< HEAD
-LaTeX/Duku et al.aux
-
-LaTeX/Duku et al.bbl
-
-LaTeX/Duku et al.log
-
-LaTeX/Duku et al.synctex.gz
-
-LaTeX/Duku et al.spl
-
-<<<<<<< HEAD
-LaTeX/Duku et al.synctex.gz(busy)
-
-LaTeX/Duku et al.log
-
-LaTeX/Duku et al.blg
-
-=======
->>>>>>> FETCH_HEAD
-LaTeX/Duku et al.out
-
-Data
-=======
-*.RData
->>>>>>> R-Code
+*.Rproj
+*.Rapp.history
+*.history
