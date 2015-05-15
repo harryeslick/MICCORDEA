@@ -46,14 +46,13 @@ for(i in 1:6){
 #### End data manipulation ####
 
 #### Convert values to classes and cut for plotting ####
+bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
 
 tz.bb.change.cuts <- na.omit(getValues(tz.bb.change[[5]]))
 tz.bb.change.cuts <- unique(cut(tz.bb.change.cuts, breaks = bb.breaks[, 2], 
                                 include.lowest = TRUE))
 
 #create data frame with numbered classes and corresponding breaks
-bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
-
 tz.bb.change <- cut(tz.bb.change, 
                     breaks = bb.breaks[, 2], 
                     include.lowest = TRUE)
@@ -77,7 +76,7 @@ names(tz.bb.change) <- c("a2_2030_change", "a2_2050_change",
 
 #### End setup ####
 #create the KML files
-kml_layer.Raster(tz.bb.change, colour_scale = mypalette(length(levels(as.factor(tz.bb.change[[5]])))))
+kml(tz.bb.change, colour_scale = mypalette(length(levels(as.factor(tz.bb.change.cuts)))))
 
 #### End KML export and visualize in GoogleEarth ####
 
