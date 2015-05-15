@@ -43,15 +43,8 @@ for(i in 1:6){
   if(i == 1){tz.bb.change <- change} else tz.bb.change <- stack(tz.bb.change, change)
 }
 
-#### End data manipulation ####
-
-#### Convert values to classes and cut for plotting ####
+#convert values to classes and cut for plotting
 bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
-
-#layer 5 has the widest span of values, use it for cuts
-tz.bb.change.cuts <- na.omit(getValues(tz.bb.change[[5]]))
-tz.bb.change.cuts <- cut(tz.bb.change.cuts, breaks = bb.breaks[, 2], 
-                                include.lowest = TRUE)
 
 #create data frame with numbered classes and corresponding breaks
 tz.bb.change <- cut(tz.bb.change, 
@@ -63,6 +56,19 @@ tz.bb.change <- reclassify(tz.bb.change,
                            by = bb.breaks[, 1], 
                            which = bb.breaks[, 2])
 
+list1 <- unstack(tz.bb.change)
+
+#convert to SpatialPixelsDataFrame for easier KML generation
+a2.2030 <- as(list1[[1]], "SpatialPixelsDataFrame")
+a2.2050 <- as(list1[[2]], "SpatialPixelsDataFrame")
+a1b.2030 <- as(list1[[3]], "SpatialPixelsDataFrame")
+a1b.2050 <- as(list1[[4]], "SpatialPixelsDataFrame")
+b1.2030 <- as(list1[[5]], "SpatialPixelsDataFrame")
+b1.2050 <- as(list1[[6]], "SpatialPixelsDataFrame")
+
+a2.2030$cuts <- cut(a2.2030$layer.1, breaks = bb.breaks[, 2],
+                     include.lowest=TRUE)
+
 #### Begin KML export and visualize in GoogleEarth ####
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
 
@@ -70,16 +76,9 @@ tz.bb.change <- reclassify(tz.bb.change,
 NColorBreaks <- length(bb.breaks[, 1])-1
 mypalette <- colorRampPalette(brewer.pal(NColorBreaks, "RdYlBu"), space = "Lab")
 
-#assign useful names to layers for file outputs
-names(tz.bb.change) <- c("a2_2030_change", "a2_2050_change", 
-                         "a1b_2030_change", "a1b_2050_change",
-                         "b1_2030_change", "b1_2050_change")
-
 #### End setup ####
 #create the KML files
-kml(tz.bb.change[[i]], colour_scale = mypalette(length(levels(tz.bb.change.cuts))))
-
-
+plotKML(a2.2030["layer.1"], colour_scale = mypalette(length(levels(a2.2030$cuts))))
 
 #### End KML export and visualize in GoogleEarth ####
 
