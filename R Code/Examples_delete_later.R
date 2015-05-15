@@ -15,15 +15,3 @@ summary(eberg_grid$rc)
 plotKML(eberg_grid["rc"],
         colour_scale=DivColPalette(length(levels(eberg_grid$rc)))) 
 
-
-set.seed(0)
-r <- raster(nrow=10, ncol=10)
-r[] <- runif(ncell(r)) * 10
-is.factor(r)
-
-r <- round(r)
-f <- as.factor(r)
-is.factor(f)
-
-x <- levels(f)[[1]]
-x

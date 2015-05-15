@@ -43,26 +43,32 @@ for(i in 1:6){
   if(i == 1){tz.bb.change <- change} else tz.bb.change <- stack(tz.bb.change, change)
 }
 
-#### Convert values to classes ####
+#### End data manipulation ####
+
+#### Convert values to classes and cut for plotting ####
+
+tz.bb.change.cuts <- na.omit(getValues(tz.bb.change[[5]]))
+tz.bb.change.cuts <- unique(cut(tz.bb.change.cuts, breaks = bb.breaks[, 2], 
+                                include.lowest = TRUE))
+
 #create data frame with numbered classes and corresponding breaks
-ColorBreaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = .25))
+bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
 
 tz.bb.change <- cut(tz.bb.change, 
-                    breaks = breaks[, 2], 
+                    breaks = bb.breaks[, 2], 
                     include.lowest = TRUE)
 #reclassify BB yield loss changes for mapping purposes
 tz.bb.change <- reclassify(tz.bb.change, 
-                           breaks, 
-                           by = breaks[, 1], 
-                           which = breaks[, 2])
-#### End data manipulation ####
+                           bb.breaks, 
+                           by = bb.breaks[, 1], 
+                           which = bb.breaks[, 2])
 
 #### Begin KML export and visualize in GoogleEarth ####
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
 
 #set palette
-NColorBreaks <- length(ColorBreaks[, 1])-1
-mypalette <- colorRampPalette(brewer.pal(NColorBreaks, "RdYlBu"))
+NColorBreaks <- length(bb.breaks[, 1])-1
+mypalette <- colorRampPalette(brewer.pal(NColorBreaks, "RdYlBu"), space = "Lab")
 
 #assign useful names to layers for file outputs
 names(tz.bb.change) <- c("a2_2030_change", "a2_2050_change", 
@@ -71,9 +77,8 @@ names(tz.bb.change) <- c("a2_2030_change", "a2_2050_change",
 
 #### End setup ####
 #create the KML files
-kml_layer.Raster(tz.bb.change, 
-                 colour_scale = mypalette(length(levels(as.factor(tz.bb.change[[5]])))))
+kml_layer.Raster(tz.bb.change, colour_scale = mypalette(length(levels(as.factor(tz.bb.change[[5]])))))
 
 #### End KML export and visualize in GoogleEarth ####
 
-#eos
+#eos)
