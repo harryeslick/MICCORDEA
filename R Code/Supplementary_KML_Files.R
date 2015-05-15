@@ -3,7 +3,8 @@
 # purpose       : generate supplementary KML files for publication on web;
 # producer      : prepared by A. Sparks;
 # last update   : IRRI, Los Baños, May 2015;
-# inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
+# inputs        : ESRI files of yield losses and attainable yield for Tanzania 
+#               : calculated using RICEPEST;
 # outputs       : KML files of yield losses for base/2030/2050 a2/b1/ab scenario
 #                 and attainable yields for each time-slice in absence of disease;
 # remarks 1     : ;
@@ -22,13 +23,13 @@ library(RColorBrewer)
 #load Raster files and set CRS
 tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*bb$", full.names = TRUE))
-crs(tz.bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz.bb) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*lb$", full.names = TRUE))
-crs(tz.lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz.lb) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*att$", full.names = TRUE))
-crs(tz.ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz.ya) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 
 #### End data import ####
 
@@ -40,7 +41,8 @@ tz.bb.loss <- (tz.ya-tz.bb)
 #calculate change
 for(i in 1:6){
   change <- tz.bb.loss[[i]]-tz.bb.loss[[7]]
-  if(i == 1){tz.bb.change <- change} else tz.bb.change <- stack(tz.bb.change, change)
+  if(i == 1){tz.bb.change <- change} else 
+    tz.bb.change <- stack(tz.bb.change, change)
 }
 
 #convert values to classes and cut for plotting
@@ -61,13 +63,13 @@ a2.2030$cuts <- cut(a2.2030$layer.1.1, breaks = bb.breaks[, 2],
                     include.lowest = TRUE)
 a2.2050$cuts <- cut(a2.2050$layer.2.1, breaks = bb.breaks[, 2],
                     include.lowest = TRUE)
-a1b.2050$cuts <- cut(ab.2030$layer.1.2, breaks = bb.breaks[, 2],
+a1b.2030$cuts <- cut(a1b.2030$layer.1.2, breaks = bb.breaks[, 2],
                     include.lowest = TRUE)
-a1b.2050$cuts <- cut(ab.2050$layer.2.2, breaks = bb.breaks[, 2],
+a1b.2050$cuts <- cut(a1b.2050$layer.2.2, breaks = bb.breaks[, 2],
                     include.lowest = TRUE)
-b1.2030$cuts <- cut(a2.2030$layer.1, breaks = bb.breaks[, 2],
+b1.2030$cuts <- cut(b1.2030$layer.1, breaks = bb.breaks[, 2],
                     include.lowest = TRUE)
-b1.2050$cuts <- cut(a2.2050$layer.2, breaks = bb.breaks[, 2],
+b1.2050$cuts <- cut(b1.2050$layer.2, breaks = bb.breaks[, 2],
                     include.lowest = TRUE)
 #### Begin KML export and visualize in GoogleEarth ####
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
@@ -77,9 +79,13 @@ NColorBreaks <- length(bb.breaks[, 1])-1
 mypalette <- colorRampPalette(brewer.pal(NColorBreaks, "RdYlBu"), space = "Lab")
 
 #### End setup ####
-#create the KML files
+#change working directory for saving KML files
+setwd("../KML")
 
+#create the KML files
 plotKML(a2.2030["cuts"], 
+        folder.name = "../KML",
+        file.name = "a2_2030_bb_change.kml",
         colour_scale = mypalette(length(levels(a2.2030$cuts))))
 
 #### End KML export and visualize in GoogleEarth ####
