@@ -150,22 +150,22 @@ lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 #### Cut data for mapping ####
 p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP, 
                                        include.lowest = TRUE, 
-                                       breaks = seq(-0.79, 0.56, by = 0.25)))
+                                       breaks = seq(-0.79, 0.71, by = .25)))
 p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP,
                                        include.lowest = TRUE, 
-                                       breaks = seq(-0.79, 0.56, by = 0.25)))
+                                       breaks = seq(-0.79, 0.71, by = .25)))
 p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, 
                                        include.lowest = TRUE, 
-                                       breaks = seq(-0.79, 0.56, by = 0.25)))
+                                       breaks = seq(-0.79, 0.71, by = .25)))
 p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP,
                                        include.lowest = TRUE,
-                                       breaks = seq(-0.79, 0.56, by = 0.25)))
+                                       breaks = seq(-0.79, 0.71, by = .25)))
 p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP, 
                                        include.lowest = TRUE,
-                                       breaks = seq(-0.79, 0.56, by = 0.25)))
+                                       breaks = seq(-0.79, 0.71, by = .25)))
 p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP, 
                                        include.lowest = TRUE,
-                                       breaks = seq(-0.79, 0.56, by = 0.25)))
+                                       breaks = seq(-0.79, 0.71, by = .25)))
 
 p.bb.loss <- rbind(p.bb.loss.a230, 
                    p.bb.loss.a250, 
@@ -195,6 +195,8 @@ p.bb.loss$GROUP <- as.factor(p.bb.loss$GROUP)
 
 
 #### Begin data visualisation ####
+
+plot.labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, -0.04", "-0.04, 0.21", " 0.21,  0.46", " 0.46,  0.71")
 
 ## Violin plots of yield loss by time slice and scenario
 ## Attainable yield, Figure 4
@@ -246,11 +248,11 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_colour_brewer(type = "div", 
                       palette = "RdYlBu",
-                      labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
+                      labels = plot.labels,
                       expression(paste("t ", ha^"-1"))) +
   scale_fill_brewer(type = "div", 
                     palette = "RdYlBu",
-                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
+                    labels = plot.labels,
                     expression(paste("t ", ha^"-1"))) +
   theme_few() +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),

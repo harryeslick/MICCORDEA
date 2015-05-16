@@ -23,13 +23,13 @@ library(RColorBrewer)
 #load Raster files and set CRS
 tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*bb$", full.names = TRUE))
-crs(tz.bb) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+crs(tz.bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*lb$", full.names = TRUE))
-crs(tz.lb) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+crs(tz.lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*att$", full.names = TRUE))
-crs(tz.ya) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+crs(tz.ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 
 #### End data import ####
 
@@ -45,34 +45,71 @@ for(i in 1:6){
     tz.bb.change <- stack(tz.bb.change, change)
 }
 
-#convert values to classes and cut for plotting
-bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
+#### Convert values to classes ####
+#create data frame with numbered classes and corresponding breaks
+breaks <- data.frame(seq(1:7), seq(-0.79, 0.71, by = .25))
 
-list1 <- unstack(tz.bb.change)
+tz.bb.change <- cut(tz.bb.change, 
+                    breaks = breaks[, 2], 
+                    include.lowest = TRUE)
 
-#convert to SpatialPixelsDataFrame for easier KML generation
-a2.2030 <- as(list1[[1]], "SpatialPixelsDataFrame")
-a2.2050 <- as(list1[[2]], "SpatialPixelsDataFrame")
-a1b.2030 <- as(list1[[3]], "SpatialPixelsDataFrame")
-a1b.2050 <- as(list1[[4]], "SpatialPixelsDataFrame")
-b1.2030 <- as(list1[[5]], "SpatialPixelsDataFrame")
-b1.2050 <- as(list1[[6]], "SpatialPixelsDataFrame")
+#reclassify BB yield loss changes for mapping purposes
+tz.bb.change <- reclassify(tz.bb.change, 
+                           breaks, 
+                           by = breaks[, 1], 
+                           which = breaks[, 2])
 
-#cut objects for plotting
-a2.2030$cuts <- cut(a2.2030$layer.1.1, breaks = bb.breaks[, 2],
-                    include.lowest = TRUE)
-a2.2050$cuts <- cut(a2.2050$layer.2.1, breaks = bb.breaks[, 2],
-                    include.lowest = TRUE)
-a1b.2030$cuts <- cut(a1b.2030$layer.1.2, breaks = bb.breaks[, 2],
-                    include.lowest = TRUE)
-a1b.2050$cuts <- cut(a1b.2050$layer.2.2, breaks = bb.breaks[, 2],
-                    include.lowest = TRUE)
-b1.2030$cuts <- cut(b1.2030$layer.1, breaks = bb.breaks[, 2],
-                    include.lowest = TRUE)
-b1.2050$cuts <- cut(b1.2050$layer.2, breaks = bb.breaks[, 2],
-                    include.lowest = TRUE)
+#add a Raster Atribute Table and define the raster as categorical data
+
+a2.2030.change <- ratify(tz.bb.change[[1]])
+a2.2050.change <- ratify(tz.bb.change[[2]])
+a1b.2030.change <- ratify(tz.bb.change[[3]])
+a1b.2050.change <- ratify(tz.bb.change[[4]])
+b1.2030.change <- ratify(tz.bb.change[[5]])
+b1.2050.change <- ratify(tz.bb.change[[6]])
+
+a2.2030.rat <- levels(a2.2030.change)[[1]]
+a2.2050.rat <- levels(a2.2050.change)[[2]]
+a1b.2030.rat <- levels(a1b.2030.change)[[3]]
+a1b.2050.rat <- levels(a1b.2050.change)[[4]]
+b1.2030.rat <- levels(b1.2030.change)[[5]]
+b1.2050.rat <- levels(b1.2050.change)[[6]]
+
+classes <- c("-0.79, -0.54", 
+             "-0.54, -0.29", 
+             "-0.29, -0.04", 
+             "-0.04, 0.21", 
+             "0.21, 0.46",
+             "0.46, 0.71")
+
+a2.2030.rat$classes <-
+  a2.2050.rat$classes <-
+  a1b.2030.rat$classes <-
+  a1b.2050.rat$classes <-
+  b1.2030.rat$classes <-
+  b1.2050.rat$classes <- c("-0.79, -0.54", "-0.54, -0.29", "-0.29, -0.04", "-0.04, 0.21", "0.21, 0.46", "0.46, 0.71")
+
+levels(landClass) <- rat
+
+levelplot(landClass, col.regions=terrain_hcl(4))
+
+#reclassify BB yield loss changes for mapping purposes
+tz.bb.change <- reclassify(tz.bb.change, 
+                           breaks, 
+                           by = breaks[, 1], 
+                           which = breaks[, 2])
+#### End data manipulation ####
+
 #### Begin KML export and visualize in GoogleEarth ####
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
+
+
+
+## Configure the RAT: first create a RAT data.frame using the
+## levels method; second, set the values for each class (to be
+## used by levelplot); third, assign this RAT to the raster
+## using again levels
+
 
 #set palette
 NColorBreaks <- length(bb.breaks[, 1])-1
