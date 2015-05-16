@@ -20,7 +20,6 @@ library(wesanderson)
 library(ggthemes)
 library(scales)
 library(Hmisc)
-library(plotKML)
 ##### End libraries ####
 
 #### Begin data import ####
