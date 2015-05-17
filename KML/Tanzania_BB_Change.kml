@@ -37,6 +37,23 @@
       </GroundOverlay>
     </Folder>
     <Folder>
+      <name>A1B 2030 Change</name>
+      <GroundOverlay>
+        <name>A1B 2030 Change</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>a1b_2030.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
       <name>A1B 2050 Change</name>
       <GroundOverlay>
         <name>A1B 2050 Change</name>

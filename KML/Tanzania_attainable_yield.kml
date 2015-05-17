@@ -54,6 +54,23 @@
       </GroundOverlay>
     </Folder>
     <Folder>
+      <name>A1B 2030 Attainable Yield</name>
+      <GroundOverlay>
+        <name>A1B 2030 Attainable Yield</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>a1b_2030_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
       <name>A1B 2050 Attainable Yield</name>
       <GroundOverlay>
         <name>A1B 2050 Attainable Yield</name>
