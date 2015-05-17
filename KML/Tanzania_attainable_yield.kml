@@ -1,0 +1,116 @@
+<kml xmlns:xsd="http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd" xmlns:xmlns="http://www.opengis.net/kml/2.2/" version="1.0">
+  <Document>
+    <name>Tanzania_attainable_yield.kml</name>
+    <open>1</open>
+    <Folder>
+      <name>Base Attainable Yield</name>
+      <GroundOverlay>
+        <name>Base Attainable Yield</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>base_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
+      <name>A2 2030 Attainable Yield</name>
+      <GroundOverlay>
+        <name>A2 2030 Attainable Yield</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>a2_2030_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
+      <name>A2 2530 ya</name>
+      <GroundOverlay>
+        <name>A2 2050 ya</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>a2_2050_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
+      <name>A1B 2050 Attainable Yield</name>
+      <GroundOverlay>
+        <name>A1B 2050 Attainable Yield</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>a1b_2050_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
+      <name>B1 2030 Attainable Yield</name>
+      <GroundOverlay>
+        <name>B1 2030 Attainable Yield</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>b1_2030_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <Folder>
+      <name>B1 2050 Attainable Yield</name>
+      <GroundOverlay>
+        <name>B1 2050 Attainable Yield</name>
+        <altitude>0</altitude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <Icon>
+          <href>b1_2050_attainable_yield.png</href>
+        </Icon>
+        <LatLonBox>
+          <north>4.63310300000001</north>
+          <south>-12.110197</south>
+          <east>41.6946</east>
+          <west>27.7835</west>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+    <ScreenOverlay>
+      <name>Legend</name>
+      <Icon>
+        <href>b1_2050_attainable_yield_legend.png</href>
+      </Icon>
+      <overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+      <screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+    </ScreenOverlay>
+  </Document>
+</kml>

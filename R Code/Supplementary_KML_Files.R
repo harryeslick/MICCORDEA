@@ -3,8 +3,7 @@
 # purpose       : generate supplementary KML files for publication on web;
 # producer      : prepared by A. Sparks;
 # last update   : IRRI, Los Baños, May 2015;
-# inputs        : ESRI files of yield losses and attainable yield for Tanzania 
-#               : calculated using RICEPEST;
+# inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
 # outputs       : KML files of yield losses for base/2030/2050 a2/b1/ab scenario
 #                 and attainable yields for each time-slice in absence of disease;
 # remarks 1     : ;
@@ -23,13 +22,13 @@ library(RColorBrewer)
 #load Raster files and set CRS
 tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*bb$", full.names = TRUE))
-crs(tz.bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz.bb) <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
 tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*lb$", full.names = TRUE))
-crs(tz.lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz.lb) <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
 tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
                           pattern = "^[a,b].*att$", full.names = TRUE))
-crs(tz.ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz.ya) <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
 
 #### End data import ####
 
@@ -41,90 +40,184 @@ tz.bb.loss <- (tz.ya-tz.bb)
 #calculate change
 for(i in 1:6){
   change <- tz.bb.loss[[i]]-tz.bb.loss[[7]]
-  if(i == 1){tz.bb.change <- change} else 
-    tz.bb.change <- stack(tz.bb.change, change)
+  if(i == 1){tz.bb.change <- change} else tz.bb.change <- stack(tz.bb.change, change)
 }
 
-#### Convert values to classes ####
-#create data frame with numbered classes and corresponding breaks
-breaks <- data.frame(seq(1:7), seq(-0.79, 0.71, by = .25))
+#convert values to classes and cut for plotting
+bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
+ya.breaks <- data.frame(seq(1:8), seq(0, 7))
 
-tz.bb.change <- cut(tz.bb.change, 
-                    breaks = breaks[, 2], 
-                    include.lowest = TRUE)
+##### Convert to SpatialPixelsDataFrame for easier KML generation
+#change in yield
+a2.2030.change <- as(tz.bb.change[[1]], "SpatialPixelsDataFrame")
+a2.2050.change <- as(tz.bb.change[[2]], "SpatialPixelsDataFrame")
+a1b.2030.change <- as(tz.bb.change[[3]], "SpatialPixelsDataFrame")
+a1b.2050.change <- as(tz.bb.change[[4]], "SpatialPixelsDataFrame")
+b1.2030.change <- as(tz.bb.change[[5]], "SpatialPixelsDataFrame")
+b1.2050.change <- as(tz.bb.change[[6]], "SpatialPixelsDataFrame")
 
-#reclassify BB yield loss changes for mapping purposes
-tz.bb.change <- reclassify(tz.bb.change, 
-                           breaks, 
-                           by = breaks[, 1], 
-                           which = breaks[, 2])
+#attainable yields for each time slice
+a2.2030.ya <- as(tz.ya[[1]], "SpatialPixelsDataFrame")
+a2.2050.ya <- as(tz.ya[[2]], "SpatialPixelsDataFrame")
+a1b.2030.ya <- as(tz.ya[[3]], "SpatialPixelsDataFrame")
+a1b.2050.ya <- as(tz.ya[[4]], "SpatialPixelsDataFrame")
+b1.2030.ya <- as(tz.ya[[5]], "SpatialPixelsDataFrame")
+b1.2050.ya <- as(tz.ya[[6]], "SpatialPixelsDataFrame")
+base.ya <- as(tz.ya[[7]], "SpatialPixelsDataFrame")
 
-#add a Raster Atribute Table and define the raster as categorical data
+##### Reproject spatial data frame objects for export to GoogleEarth
+a2.2030.change <- reproject(a2.2030.change)
+a2.2050.change <- reproject(a2.2050.change)
+a1b.2030.change <- reproject(a1b.2030.change)
+a1b.2050.change <- reproject(a1b.2050.change)
+b1.2030.change <- reproject(b1.2030.change)
+b1.2050.change <- reproject(b1.2050.change)
 
-a2.2030.change <- ratify(tz.bb.change[[1]])
-a2.2050.change <- ratify(tz.bb.change[[2]])
-a1b.2030.change <- ratify(tz.bb.change[[3]])
-a1b.2050.change <- ratify(tz.bb.change[[4]])
-b1.2030.change <- ratify(tz.bb.change[[5]])
-b1.2050.change <- ratify(tz.bb.change[[6]])
+a2.2030.ya <- reproject(a2.2030.ya)
+a2.2050.ya <- reproject(a2.2050.ya)
+a1b.2030.ya <- reproject(a1b.2030.ya)
+a1b.2050.ya <- reproject(a1b.2050.ya)
+b1.2030.ya <- reproject(b1.2030.ya)
+b1.2050.ya <- reproject(b1.2050.ya)
+base.ya <- reproject(base.ya)
 
-a2.2030.rat <- levels(a2.2030.change)[[1]]
-a2.2050.rat <- levels(a2.2050.change)[[2]]
-a1b.2030.rat <- levels(a1b.2030.change)[[3]]
-a1b.2050.rat <- levels(a1b.2050.change)[[4]]
-b1.2030.rat <- levels(b1.2030.change)[[5]]
-b1.2050.rat <- levels(b1.2050.change)[[6]]
-
-classes <- c("-0.79, -0.54", 
-             "-0.54, -0.29", 
-             "-0.29, -0.04", 
-             "-0.04, 0.21", 
-             "0.21, 0.46",
-             "0.46, 0.71")
-
-a2.2030.rat$classes <-
-  a2.2050.rat$classes <-
-  a1b.2030.rat$classes <-
-  a1b.2050.rat$classes <-
-  b1.2030.rat$classes <-
-  b1.2050.rat$classes <- c("-0.79, -0.54", "-0.54, -0.29", "-0.29, -0.04", "-0.04, 0.21", "0.21, 0.46", "0.46, 0.71")
-
-levels(landClass) <- rat
-
-levelplot(landClass, col.regions=terrain_hcl(4))
-
-#reclassify BB yield loss changes for mapping purposes
-tz.bb.change <- reclassify(tz.bb.change, 
-                           breaks, 
-                           by = breaks[, 1], 
-                           which = breaks[, 2])
-#### End data manipulation ####
+##### Cut objects for plotting
+#cut change in yield losses
+a2.2030.change$cuts <- cut(a2.2030.change$layer.1.1, breaks = bb.breaks[, 2],
+                           include.lowest = TRUE)
+a2.2050.change$cuts <- cut(a2.2050.change$layer.2.1, breaks = bb.breaks[, 2],
+                           include.lowest = TRUE)
+a1b.2050.change$cuts <- cut(a1b.2030.change$layer.1.2, breaks = bb.breaks[, 2],
+                            include.lowest = TRUE)
+a1b.2050.change$cuts <- cut(a1b.2050.change$layer.2.2, breaks = bb.breaks[, 2],
+                            include.lowest = TRUE)
+b1.2030.change$cuts <- cut(b1.2030.change$layer.1, breaks = bb.breaks[, 2],
+                           include.lowest = TRUE)
+b1.2050.change$cuts <- cut(b1.2050.change$layer.2, breaks = bb.breaks[, 2],
+                           include.lowest = TRUE)
+#cut attainable yields
+a2.2030.ya$cuts <- cut(a2.2030.ya$a230_att, breaks = ya.breaks[, 2],
+                           include.lowest = TRUE)
+a2.2050.ya$cuts <- cut(a2.2050.ya$a250_att, breaks = ya.breaks[, 2],
+                           include.lowest = TRUE)
+a1b.2050.ya$cuts <- cut(a1b.2030.ya$ab30_att, breaks = ya.breaks[, 2],
+                            include.lowest = TRUE)
+a1b.2050.ya$cuts <- cut(a1b.2050.ya$ab50_att, breaks = ya.breaks[, 2],
+                            include.lowest = TRUE)
+b1.2030.ya$cuts <- cut(b1.2030.ya$b130_att, breaks = ya.breaks[, 2],
+                           include.lowest = TRUE)
+b1.2050.ya$cuts <- cut(b1.2050.ya$b150_att, breaks = ya.breaks[, 2],
+                           include.lowest = TRUE)
+base.ya$cuts <- cut(base.ya$base_att, breaks = ya.breaks[, 2],
+                       include.lowest = TRUE)
 
 #### Begin KML export and visualize in GoogleEarth ####
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
 
-
-
-## Configure the RAT: first create a RAT data.frame using the
-## levels method; second, set the values for each class (to be
-## used by levelplot); third, assign this RAT to the raster
-## using again levels
-
-
 #set palette
-NColorBreaks <- length(bb.breaks[, 1])-1
-mypalette <- colorRampPalette(brewer.pal(NColorBreaks, "RdYlBu"), space = "Lab")
+NColorBreaks.bb <- length(bb.breaks[, 1])-1
+mypalette.bb <- colorRampPalette(brewer.pal(NColorBreaks.bb, "RdYlBu"), 
+                                 space = "Lab")
+
+NColorBreaks.ya <- length(bb.breaks[, 1])-1
+mypalette.ya <- colorRampPalette(brewer.pal(NColorBreaks.ya, "PuBuGn"), 
+                                 space = "Lab")
 
 #### End setup ####
-#change working directory for saving KML files
+
+#set working directory to KML, no apparent easy way to specificy this in file name
 setwd("../KML")
 
-#create the KML files
-plotKML(a2.2030["cuts"], 
-        folder.name = "../KML",
-        file.name = "a2_2030_bb_change.kml",
-        colour_scale = mypalette(length(levels(a2.2030$cuts))))
+#create the yield loss KML file
+kml_open("Tanzania_BB_Change_(Figure_7).kml", overwrite = TRUE)
+kml_layer(a2.2030.change["cuts"],
+          subfolder.name = "A2 2030 Change",
+          layer.name = "A2 2030 Change",
+          raster_name = "a2_2030.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.bb(length(levels(a2.2030.change$cuts))))
+kml_layer(a2.2050.change["cuts"],
+          subfolder.name = "A2 2530 Change",
+          layer.name = "A2 2050 Change",
+          raster_name = "a2_2050.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.bb(length(levels(a2.2050.change$cuts))))
+kml_layer(a1b.2030.change["cuts"],
+          subfolder.name = "A1B 2030 Change",
+          layer.name = "A1B 2030 Change",
+          raster_name = "a1b_2030.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.bb(length(levels(a1b.2030.change$cuts))))
+kml_layer(a1b.2050.change["cuts"],
+          subfolder.name = "A1B 2050 Change",
+          layer.name = "A1B 2050 Change",
+          raster_name = "a1b_2050.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.bb(length(levels(a1b.2050.change$cuts))))
+kml_layer(b1.2030.change["cuts"],
+          subfolder.name = "B1 2030 Change",
+          layer.name = "B1 2030 Change",
+          raster_name = "b1_2030.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.bb(length(levels(b1.2030.change$cuts))))
+kml_layer(b1.2050.change["cuts"],
+          subfolder.name = "B1 2050 Change",
+          layer.name = "B1 2050 Change",
+          raster_name = "b1_2050.png",
+          colour_scale = mypalette.bb(length(levels(b1.2050.change$cuts))))
+kml_close("Tanzania_BB_Change.kml")
+
+#Attainable yield KML file
+kml_open("Tanzania_attainable_yield.kml", overwrite = TRUE)
+kml_layer(base.ya["cuts"],
+          subfolder.name = "Base Attainable Yield",
+          layer.name = "Base Attainable Yield",
+          raster_name = "base_attainable_yield.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.ya(length(levels(base.ya$cuts))))
+kml_layer(a2.2030.ya["cuts"],
+          subfolder.name = "A2 2030 Attainable Yield",
+          layer.name = "A2 2030 Attainable Yield",
+          raster_name = "a2_2030_attainable_yield.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.ya(length(levels(a2.2030.ya$cuts))))
+kml_layer(a2.2050.ya["cuts"],
+          subfolder.name = "A2 2530 ya",
+          layer.name = "A2 2050 ya",
+          raster_name = "a2_2050_attainable_yield.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.ya(length(levels(a2.2050.ya$cuts))))
+kml_layer(a1b.2030.ya["cuts"],
+          subfolder.name = "A1B 2030 Attainable Yield",
+          layer.name = "A1B 2030 Attainable Yield",
+          raster_name = "a1b_2030_attainable_yield.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.ya(length(levels(a1b.2030.ya$cuts))))
+kml_layer(a1b.2050.ya["cuts"],
+          subfolder.name = "A1B 2050 Attainable Yield",
+          layer.name = "A1B 2050 Attainable Yield",
+          raster_name = "a1b_2050_attainable_yield.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.ya(length(levels(a1b.2050.ya$cuts))))
+kml_layer(b1.2030.ya["cuts"],
+          subfolder.name = "B1 2030 Attainable Yield",
+          layer.name = "B1 2030 Attainable Yield",
+          raster_name = "b1_2030_attainable_yield.png",
+          plot.legend = FALSE,
+          colour_scale = mypalette.ya(length(levels(b1.2030.ya$cuts))))
+kml_layer(b1.2050.ya["cuts"],
+          subfolder.name = "B1 2050 Attainable Yield",
+          layer.name = "B1 2050 Attainable Yield",
+          raster_name = "b1_2050_attainable_yield.png",
+          colour_scale = mypalette.ya(length(levels(b1.2050.ya$cuts))))
+kml_close("Tanzania_attainable_yield.kml")
+
+#reset working directory for further use with R code
+setwd("../R Code")
 
 #### End KML export and visualize in GoogleEarth ####
+
+#### The resulting KML files are now found in the KML folder and can be     ####
+#### viewed using GoogleEarth                                               ####
 
 #eos
