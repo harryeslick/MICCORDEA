@@ -37,9 +37,9 @@
       </GroundOverlay>
     </Folder>
     <Folder>
-      <name>A2 2530 ya</name>
+      <name>A2 2050 Attainable Yield</name>
       <GroundOverlay>
-        <name>A2 2050 ya</name>
+        <name>A2 2050 Attainable Yield</name>
         <altitude>0</altitude>
         <altitudeMode>clampToGround</altitudeMode>
         <Icon>

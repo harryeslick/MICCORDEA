@@ -115,11 +115,11 @@ base.ya$cuts <- cut(base.ya$base_att, breaks = ya.breaks,
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
 
 #set palette
-mypalette.bb <- colorRampPalette(brewer.pal(length(bb.breaks-1, "RdYlBu"), 
-                                 space = "Lab"))
+mypalette.bb <- colorRampPalette(brewer.pal(length(bb.breaks-1), "RdYlBu"), 
+                                 space = "Lab")
 
-mypalette.ya <- colorRampPalette(brewer.pal(length(ya.breaks-1, "Oranges"), 
-                                 space = "Lab"))
+mypalette.ya <- colorRampPalette(brewer.pal(length(ya.breaks-1), "Oranges"), 
+                                 space = "Lab")
 
 #### End setup ####
 
@@ -180,8 +180,8 @@ kml_layer(a2.2030.ya["cuts"],
           plot.legend = FALSE,
           colour_scale = mypalette.ya(length(levels(a2.2030.ya$cuts))))
 kml_layer(a2.2050.ya["cuts"],
-          subfolder.name = "A2 2530 ya",
-          layer.name = "A2 2050 ya",
+          subfolder.name = "A2 2050 Attainable Yield",
+          layer.name = "A2 2050 Attainable Yield",
           raster_name = "a2_2050_attainable_yield.png",
           plot.legend = FALSE,
           colour_scale = mypalette.ya(length(levels(a2.2050.ya$cuts))))
