@@ -44,8 +44,8 @@ for(i in 1:6){
 }
 
 #convert values to classes and cut for plotting
-bb.breaks <- data.frame(seq(1:6), seq(-0.79, 0.56, by = 0.25))
-ya.breaks <- data.frame(seq(1:8), seq(0, 7))
+bb.breaks <- seq(-0.79, 0.71, by = 0.3)
+ya.breaks <- seq(0, 7)
 
 ##### Convert to SpatialPixelsDataFrame for easier KML generation
 #change in yield
@@ -83,45 +83,43 @@ base.ya <- reproject(base.ya)
 
 ##### Cut objects for plotting
 #cut change in yield losses
-a2.2030.change$cuts <- cut(a2.2030.change$layer.1.1, breaks = bb.breaks[, 2],
+a2.2030.change$cuts <- cut(a2.2030.change$layer.1.1, breaks = bb.breaks,
                            include.lowest = TRUE)
-a2.2050.change$cuts <- cut(a2.2050.change$layer.2.1, breaks = bb.breaks[, 2],
+a2.2050.change$cuts <- cut(a2.2050.change$layer.2.1, breaks = bb.breaks,
                            include.lowest = TRUE)
-a1b.2030.change$cuts <- cut(a1b.2030.change$layer.1.2, breaks = bb.breaks[, 2],
+a1b.2030.change$cuts <- cut(a1b.2030.change$layer.1.2, breaks = bb.breaks,
                             include.lowest = TRUE)
-a1b.2050.change$cuts <- cut(a1b.2050.change$layer.2.2, breaks = bb.breaks[, 2],
+a1b.2050.change$cuts <- cut(a1b.2050.change$layer.2.2, breaks = bb.breaks,
                             include.lowest = TRUE)
-b1.2030.change$cuts <- cut(b1.2030.change$layer.1, breaks = bb.breaks[, 2],
+b1.2030.change$cuts <- cut(b1.2030.change$layer.1, breaks = bb.breaks,
                            include.lowest = TRUE)
-b1.2050.change$cuts <- cut(b1.2050.change$layer.2, breaks = bb.breaks[, 2],
+b1.2050.change$cuts <- cut(b1.2050.change$layer.2, breaks = bb.breaks,
                            include.lowest = TRUE)
 #cut attainable yields
-a2.2030.ya$cuts <- cut(a2.2030.ya$a230_att, breaks = ya.breaks[, 2],
+a2.2030.ya$cuts <- cut(a2.2030.ya$a230_att, breaks = ya.breaks,
                            include.lowest = TRUE)
-a2.2050.ya$cuts <- cut(a2.2050.ya$a250_att, breaks = ya.breaks[, 2],
+a2.2050.ya$cuts <- cut(a2.2050.ya$a250_att, breaks = ya.breaks,
                            include.lowest = TRUE)
-a1b.2030.ya$cuts <- cut(a1b.2030.ya$ab30_att, breaks = ya.breaks[, 2],
+a1b.2030.ya$cuts <- cut(a1b.2030.ya$ab30_att, breaks = ya.breaks,
                             include.lowest = TRUE)
-a1b.2050.ya$cuts <- cut(a1b.2050.ya$ab50_att, breaks = ya.breaks[, 2],
+a1b.2050.ya$cuts <- cut(a1b.2050.ya$ab50_att, breaks = ya.breaks,
                             include.lowest = TRUE)
-b1.2030.ya$cuts <- cut(b1.2030.ya$b130_att, breaks = ya.breaks[, 2],
+b1.2030.ya$cuts <- cut(b1.2030.ya$b130_att, breaks = ya.breaks,
                            include.lowest = TRUE)
-b1.2050.ya$cuts <- cut(b1.2050.ya$b150_att, breaks = ya.breaks[, 2],
+b1.2050.ya$cuts <- cut(b1.2050.ya$b150_att, breaks = ya.breaks,
                            include.lowest = TRUE)
-base.ya$cuts <- cut(base.ya$base_att, breaks = ya.breaks[, 2],
+base.ya$cuts <- cut(base.ya$base_att, breaks = ya.breaks,
                        include.lowest = TRUE)
 
 #### Begin KML export and visualize in GoogleEarth ####
 ##set up a few items so that our KML file outputs match Figure 7 in manuscript
 
 #set palette
-NColorBreaks.bb <- length(bb.breaks[, 1])-1
-mypalette.bb <- colorRampPalette(brewer.pal(NColorBreaks.bb, "RdYlBu"), 
-                                 space = "Lab")
+mypalette.bb <- colorRampPalette(brewer.pal(length(bb.breaks-1, "RdYlBu"), 
+                                 space = "Lab"))
 
-NColorBreaks.ya <- length(bb.breaks[, 1])-1
-mypalette.ya <- colorRampPalette(brewer.pal(NColorBreaks.ya, "PuBuGn"), 
-                                 space = "Lab")
+mypalette.ya <- colorRampPalette(brewer.pal(length(ya.breaks-1, "Oranges"), 
+                                 space = "Lab"))
 
 #### End setup ####
 
