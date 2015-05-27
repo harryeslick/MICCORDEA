@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -211,6 +211,18 @@
   \bibinfo{pages}{6 -- 17}, ISSN \bibinfo{issn}{0261-2194},
   \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.cropro.2011.11.009}},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0261219411003656}.
+
+\bibitem[{Kim et~al.(2015)Kim, Cho, Lee, and Lee}]{Kim2015}
+\bibinfo{author}{K.-H. Kim}, \bibinfo{author}{J.~Cho}, \bibinfo{author}{Y.~H.
+  Lee}, \bibinfo{author}{W.-S. Lee}, \bibinfo{title}{Predicting potential
+  epidemics of rice leaf blast and sheath blight in South Korea under the
+  \{RCP\} 4.5 and \{RCP\} 8.5 climate change scenarios using a rice disease
+  epidemiology model, \{EPIRICE\}}, \bibinfo{journal}{Agricultural and Forest
+  Meteorology} \bibinfo{volume}{203}~(\bibinfo{number}{0})
+  (\bibinfo{year}{2015}) \bibinfo{pages}{191 -- 207}, ISSN
+  \bibinfo{issn}{0168-1923},
+  \doi{\bibinfo{doi}{http://dx.doi.org/10.1016/j.agrformet.2015.01.011}},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S016819231500012X}.
 
 \bibitem[{Willocquet et~al.(2000)Willocquet, Savary, Fernandez, Elazegui, and
   Teng}]{Willocquet2000}

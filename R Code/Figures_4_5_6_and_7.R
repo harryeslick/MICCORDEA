@@ -27,13 +27,13 @@ library(Hmisc)
 TZ <- getData("GADM", country = "TZA", level = 0)
 
 ## Load Raster files and set CRS
-tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
+tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
                           pattern = "^[a,b].*bb$", full.names = TRUE))
 crs(tz.bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
+tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
                           pattern = "^[a,b].*lb$", full.names = TRUE))
 crs(tz.lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output", 
+tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
                           pattern = "^[a,b].*att$", full.names = TRUE))
 crs(tz.ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 
@@ -99,17 +99,17 @@ p.lb.loss.b150 <- mutate(p.lb.loss.b150, Change = b150_att-base_att)
 
 
 # Make appropriate column names
-names(p.bb.loss.a230) <- 
-  names(p.bb.loss.a250) <- 
-  names(p.bb.loss.ab30) <- 
-  names(p.bb.loss.ab50) <- 
-  names(p.bb.loss.b130) <- 
+names(p.bb.loss.a230) <-
+  names(p.bb.loss.a250) <-
+  names(p.bb.loss.ab30) <-
+  names(p.bb.loss.ab50) <-
+  names(p.bb.loss.b130) <-
   names(p.bb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
-names(p.lb.loss.a230) <- 
-  names(p.lb.loss.a250) <- 
-  names(p.lb.loss.ab30) <- 
-  names(p.lb.loss.ab50) <- 
-  names(p.lb.loss.b130) <- 
+names(p.lb.loss.a230) <-
+  names(p.lb.loss.a250) <-
+  names(p.lb.loss.ab30) <-
+  names(p.lb.loss.ab50) <-
+  names(p.lb.loss.b130) <-
   names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
 #### Create data frames for violin plots ####
@@ -122,15 +122,15 @@ bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 lb <- na.omit(unlist(values(tz.lb.loss)))
 lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
-x <- c(rep("Base 2000", length(bb[, 1])), 
-       rep("A2 2030", length(bb[, 1])), 
-       rep("A2 2050", length(bb[, 1])), 
+x <- c(rep("Base 2000", length(bb[, 1])),
+       rep("A2 2030", length(bb[, 1])),
+       rep("A2 2050", length(bb[, 1])),
        rep("A1B 2030", length(bb[, 1])),
        rep("A1B 2050", length(bb[, 1])),
-       rep("B1 2030", length(bb[, 1])), 
+       rep("B1 2030", length(bb[, 1])),
        rep("B1 2050", length(bb[, 1])))
 scenarios <- c(rep("Base", length(bb[, 1])),
-               rep("A2", length(bb[, 1])*2), 
+               rep("A2", length(bb[, 1])*2),
                rep("A1B", length(bb[, 1])*2),
                rep("B1", length(bb[, 1])*2))
 
@@ -147,49 +147,49 @@ lb <- data.frame(x, scenarios, lb)
 lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
 
 #### Cut data for mapping ####
-p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP, 
-                                       include.lowest = TRUE, 
+p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP,
+                                       include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.71, by = 0.3)))
 p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP,
-                                       include.lowest = TRUE, 
+                                       include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.71, by = 0.3)))
-p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP, 
-                                       include.lowest = TRUE, 
+p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP,
+                                       include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.71, by = 0.3)))
 p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.71, by = 0.3)))
-p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP, 
+p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.71, by = 0.3)))
-p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP, 
+p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.71, by = 0.3)))
 
-p.bb.loss <- rbind(p.bb.loss.a230, 
-                   p.bb.loss.a250, 
-                   p.bb.loss.ab30, 
-                   p.bb.loss.ab50, 
-                   p.bb.loss.b130, 
+p.bb.loss <- rbind(p.bb.loss.a230,
+                   p.bb.loss.a250,
+                   p.bb.loss.ab30,
+                   p.bb.loss.ab50,
+                   p.bb.loss.b130,
                    p.bb.loss.b150)
-SCENARIO <- c(rep("A2", length(p.bb.loss.a230[, 1])), 
-               rep("A2", length(p.bb.loss.ab30[, 1])), 
-               rep("AB", length(p.bb.loss.ab30[, 1])), 
-               rep("AB", length(p.bb.loss.ab50[, 1])), 
-               rep("B1", length(p.bb.loss.b130[, 1])), 
+SCENARIO <- c(rep("A2", length(p.bb.loss.a230[, 1])),
+               rep("A2", length(p.bb.loss.ab30[, 1])),
+               rep("AB", length(p.bb.loss.ab30[, 1])),
+               rep("AB", length(p.bb.loss.ab50[, 1])),
+               rep("B1", length(p.bb.loss.b130[, 1])),
                rep("B1", length(p.bb.loss.b150[, 1])))
-TIMESLICE <- c(rep(2030, length(p.bb.loss.a230[, 1])), 
-               rep(2050, length(p.bb.loss.ab30[, 1])), 
-               rep(2030, length(p.bb.loss.ab30[, 1])), 
-               rep(2050, length(p.bb.loss.ab50[, 1])), 
-               rep(2030, length(p.bb.loss.b130[, 1])), 
+TIMESLICE <- c(rep(2030, length(p.bb.loss.a230[, 1])),
+               rep(2050, length(p.bb.loss.ab30[, 1])),
+               rep(2030, length(p.bb.loss.ab30[, 1])),
+               rep(2050, length(p.bb.loss.ab50[, 1])),
+               rep(2030, length(p.bb.loss.b130[, 1])),
                rep(2050, length(p.bb.loss.b150[, 1])))
 
 p.bb.loss <- cbind(p.bb.loss, SCENARIO, TIMESLICE)
 p.bb.loss$GROUP <- as.factor(p.bb.loss$GROUP)
-              
-              
-              
+
+
+
 #### End data manipulation ####
 
 
@@ -202,8 +202,8 @@ plot.labels = c("-0.79, -0.49", "-0.49, -0.19", "-0.19,  0.11", " 0.11,  0.41", 
 figure.4 <- ggplot(ya, aes(x = x, y = ya))
 figure.4 <- figure.4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
-  scale_fill_manual(values = wes_palette("Darjeeling2")) + 
-  labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") + 
+  scale_fill_manual(values = wes_palette("Darjeeling2")) +
+  labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -215,8 +215,8 @@ ggsave(filename = "Yield_Attainable_Violin.eps", path = "../LaTeX/Figures/", wid
 figure.5 <- ggplot(lb, aes(x = x, y = lb))
 figure.5 <- figure.5 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
-  scale_fill_manual(values = wes_palette("Darjeeling2")) + 
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  scale_fill_manual(values = wes_palette("Darjeeling2")) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -229,8 +229,8 @@ ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 figure.6 <- ggplot(bb, aes(x = x, y = bb))
 figure.6 <- figure.6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
-  scale_fill_manual(values = wes_palette("Darjeeling2")) + 
-  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") + 
+  scale_fill_manual(values = wes_palette("Darjeeling2")) +
+  labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
@@ -245,11 +245,11 @@ ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 14
 figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GROUP, colour = GROUP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
-  scale_colour_brewer(type = "div", 
+  scale_colour_brewer(type = "div",
                       palette = "RdYlBu",
                       labels = plot.labels,
                       expression(paste("t ", ha^"-1"))) +
-  scale_fill_brewer(type = "div", 
+  scale_fill_brewer(type = "div",
                     palette = "RdYlBu",
                     labels = plot.labels,
                     expression(paste("t ", ha^"-1"))) +
@@ -258,9 +258,8 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"),
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
-  coord_equal() +
   facet_grid(TIMESLICE ~ SCENARIO) +
-  coord_map("cylindrical") # use cylindrical projection at low latitude # use cylindrical projection at low latitude
+  coord_map("cylindrical") # use cylindrical projection at low latitude
 
   ggsave("BB_Yield_Loss_Change.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
 
