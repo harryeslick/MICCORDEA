@@ -2,12 +2,5 @@
 *.RData
 *.RProj
 *.Rproj.user
-*.PDF
-*.Rproj
 *.Rapp.history
 *.history
-.Rproj.user
-
-KML/cuts.png
-
-KML/cuts_legend.png
