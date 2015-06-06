@@ -205,11 +205,18 @@ figure.4 <- figure.4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") +
   theme_few() +
-  theme(legend.position = "none") +
-  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"))
-ggsave(filename = "Yield_Attainable_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+  theme(legend.position = "none",
+        axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5,
+                                   family = "Helvetica"),
+        axis.title.x = element_text(size = 8, family = "Helvetica"),
+        axis.title.y = element_text(size = 7, angle = 90, family = "Helvetica"),
+        axis.text.y = element_text(size = 7,  family = "Helvetica"),
+        legend.background = element_rect(fill = "white", colour = "black"),
+        strip.text.x = element_text(size = 7,  family = "Helvetica"), 
+        legend.key.height = unit(2.5, "mm"),
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
+ggsave(filename = "Yield_Attainable_Violin.eps", path = "../LaTeX/Figures/", 
+       width = 84, height = 84, units = "mm")
 
 ## LB, Figure 5
 figure.5 <- ggplot(lb, aes(x = x, y = lb))
@@ -218,12 +225,18 @@ figure.5 <- figure.5 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
   theme_few() +
-  theme(legend.position = "none") +
-  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
-        plot.margin = unit(c(.5, .5, .5, .5), "lines"))
-ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+  theme(legend.position = "none",
+        axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5,
+                                   family = "Helvetica"),
+        axis.title.x = element_text(size = 8, family = "Helvetica"),
+        axis.title.y = element_text(size = 7, angle = 90, family = "Helvetica"),
+        axis.text.y = element_text(size = 7,  family = "Helvetica"),
+        legend.background = element_rect(fill = "white", colour = "black"),
+        strip.text.x = element_text(size = 7,  family = "Helvetica"), 
+        legend.key.height = unit(2.5, "mm"),
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
+  ggsave(filename = "LB_Losses_Violin.eps", path = "../LaTeX/Figures/", 
+         width = 84, height = 84, units = "mm")
 
 ## BB, Figure 6
 figure.6 <- ggplot(bb, aes(x = x, y = bb))
@@ -232,12 +245,18 @@ figure.6 <- figure.6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
   theme_few() +
-  theme(legend.position = "none") +
-  theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        axis.text = element_text(size = 9, family = "Helvetica"),
-        plot.margin = unit(c(.5, .5, .5, .5), "lines"))
-ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+  theme(legend.position = "none",
+        axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5,
+                                   family = "Helvetica"),
+        axis.title.x = element_text(size = 8, family = "Helvetica"),
+        axis.title.y = element_text(size = 7, angle = 90, family = "Helvetica"),
+        axis.text.y = element_text(size = 7,  family = "Helvetica"),
+        legend.background = element_rect(fill = "white", colour = "black"),
+        strip.text.x = element_text(size = 7,  family = "Helvetica"), 
+        legend.key.height = unit(2.5, "mm"),
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
+ggsave(filename = "BB_Losses_Violin.eps", path = "../LaTeX/Figures/", 
+       width = 84, height = 84, units = "mm")
 
 #### Map of yield loss for BB ####
 
@@ -257,11 +276,13 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"),
-        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines"),
+        strip.text.x = element_text(size = 10, family = "Helvetica")) +
   facet_grid(TIMESLICE ~ SCENARIO) +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-  ggsave("BB_Yield_Loss_Change.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
+  ggsave("BB_Yield_Loss_Change.eps", path = "../Latex/figures", width = 174,
+         height = 99, units = "mm")
 
 #### End data visualisation ####
 

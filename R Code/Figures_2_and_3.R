@@ -2,7 +2,7 @@
 # title         : Figures_2_and_3.R;
 # purpose       : generate figures 2 and 3 for publication;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, May 2015;
+# last update   : in Los Baños, Philippines, June 2015;
 # inputs        : GTiff files of yield losses for Tanzania calculated using RICEPEST;
 # outputs       : Line graphs of disease progress for each time slice and scenario;
 # remarks 1     : ;
@@ -145,16 +145,21 @@ figure.2 <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        legend.position = c(0.1, 0.825), 
+  theme(axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5,
+                                   family = "Helvetica"),
+        axis.title.x = element_text(size = 8, family = "Helvetica"),
+        axis.title.y = element_text(size = 7, angle = 90, family = "Helvetica"),
+        axis.text.y = element_text(size = 7, family = "Helvetica"),
+        legend.position = c(0.11, 0.83), 
         legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(6, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"),
+        legend.key.width = unit(2.5, "mm"),
+        strip.text.x = element_text(size = 7, family = "Helvetica"), 
+        legend.key.height = unit(2.5, "mm"),
+        legend.text = element_text(size = 6, family = "Helvetica"),
+        legend.title = element_text(size = 6, family = "Helvetica"), 
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   facet_grid(. ~ Time.Slice)
-ggsave("../Latex/Figures/LB.eps", width = 140, height = 140, units = "mm")
+ggsave("../Latex/Figures/LB.eps", width = 84, height = 84, units = "mm")
 
 ## Bacterial blight graph ##
 
@@ -164,17 +169,21 @@ figure.3 <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario))
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1),
-        axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
-        legend.position = c(0.1, 0.825), 
+  theme(axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5),
+        axis.title.x = element_text(size = 8, family = "Helvetica"),
+        axis.title.y = element_text(size = 7, angle = 90, family = "Helvetica"),
+        axis.text.y = element_text(size = 7),
+        legend.position = c(0.11, 0.83), 
         legend.background = element_rect(fill = "white", colour = "black"),
-        legend.key.width = unit(6, "mm"),
-        legend.text = element_text(size = 8, family = "Helvetica"),
+        legend.key.width = unit(2.5, "mm"),
+        strip.text.x = element_text(size = 7, family = "Helvetica"), 
+        legend.key.height = unit(2.5, "mm"),
+        legend.text = element_text(size = 6, family = "Helvetica"),
+        legend.title = element_text(size = 6, family = "Helvetica"), 
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   facet_grid(. ~ Time.Slice)
 
-ggsave("../LaTeX/Figures/BB.eps", width = 140, height = 140, units = "mm")
+ggsave("../LaTeX/Figures/BB.eps", width = 84, height = 84, units = "mm")
 
 #### End data visualisation ####
 
