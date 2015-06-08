@@ -137,7 +137,7 @@ Rice is the most rapidly growing staple food in Africa and although rice product
     \end{equation}
     
     \begin{equation}
-    LAI_t = SLA_t \times LEAFWt
+    LAI_t = SLA_t \times LEAFW_t
     \label{LAI}
     \end{equation}
     The damage functions that calculate the reduction factors, BBDM (Formula \ref{BBDM}) and LBDM (Formula \ref{LBDM}) are the percent of leaf area covered by BB and LB respectively \citep{Willocquet2002}, which were generated as raster files for use in this version of RICEPEST using the EPIRICE model as described in the previous section, \ref{EPIRICE}. 
@@ -152,13 +152,13 @@ Rice is the most rapidly growing staple food in Africa and although rice product
     \end{equation}
     Thus, the complete LAI formula with the damage function for BB reducing the photosynthetic area of the leaf becomes
      \begin{equation}
-    LAI_t = SLA_t \times LEAFWt \times (1-(BBDM_t / 100)).
+    LAI_t = SLA_t \times LEAFW_t \times (1-(BBDM_t / 100)).
     \label{LAIBBDM}
     \end{equation}
     
     \subsubsection{Model coupling}
     \label{model_coupling}
-    To facilitate coupling of EPIRICE to RICEPEST, a temporal disaggregation function was incorporated into the EPIRICE model. With this function, the modified EPIRICE model produced daily, spatially representative and non-cumulative percentage disease severity data as outputs instead of the single cumulated output, AUDPC. The time-series of daily percentage disease severity data for BB and LB produced by the modified EPIRICE model were then used as inputs for RICEPEST. Both models were linked to a geographic information system (GIS). EPIRICE is implemented in the R language using the following packages: cropsim \citep{Hijmans2009}, oldweather \citep{Hijmans2009}, raster \citep{Hijmans2014}, rgdal \citep{Bivand2014}, and RODBC \citep{Ripley2013}, while this version of RICEPEST is implemented in Python language \citep{python}, using the ArcPy package, as a script in the ArcGIS platform \citep{ESRI2011}. A loose coupling approach was adopted due to the different implementation environments. This approach provided flexibility in data handling and data interoperability (Figure \ref{Flowchart}).
+    To facilitate coupling of EPIRICE to RICEPEST, a temporal disaggregation function was incorporated into the EPIRICE model. With this function, the modified EPIRICE model produced daily, spatially representative and non-cumulative percentage disease severity data as outputs instead of the single cumulated output, AUDPC. The time-series of daily percentage disease severity data for BB and LB produced by the modified EPIRICE model were then used as inputs for RICEPEST. Both models were linked to a geographic information system (GIS). EPIRICE is implemented in the R language using the following packages: cropsim \citep{Hijmans2009}, oldweather \citep{Hijmans2009}, raster \citep{Hijmans2014}, rgdal \citep{Bivand2014}, and RODBC \citep{Ripley2013}, while this version of RICEPEST is implemented in Python language \citep{python}, using the ArcPy package, as a script in the ArcGIS platform \citep{ESRI2011}. A loose coupling approach was adopted due to the different implementation environments. This approach provided flexibility in data handling and data interoperability (Figure \ref{Fig1}).
         
     \subsection{Growing seasons and areas}
     \label{growings_seasons}
@@ -176,7 +176,7 @@ Rice is the most rapidly growing staple food in Africa and although rice product
     \label{modelling_yield_loss}
     Simulation runs of EPIRICE and RICEPEST were made separately at a spatial resolution of 10km by 10km for the growing season December to March for current climate conditions, the 2000 time slice, and for each of the three emission scenarios, A1B, A2 and B1, for both the 2030 and the 2050 time slices. These data only included precipitation and temperature changes. The effects of changes CO$_{2}$ levels on the plant host or pathogens were not considered as a part of this study.
     
-    To map and quantify the spatial distribution of rice yield loss as a result of the two diseases under current and future climate conditions, the RICEPEST model was run using daily temperature and solar radiation data and daily disease severity outputs from the EPIRICE model within the ArcGIS environment using the aforementioned Python tool in ArcGIS. Simulation runs were first made without the injury profiles to obtain the attainable yield. Maintaining the same weather data and production situation parameter values, simulation runs were then made with the treatment of injury profiles to obtain the actual yield in the presence of the two diseases separately (Figure \ref{Flowchart}). Yield loss was then modelled as the difference between attainable yield and actual yield for both BB and LB damaged crops respectively.
+    To map and quantify the spatial distribution of rice yield loss as a result of the two diseases under current and future climate conditions, the RICEPEST model was run using daily temperature and solar radiation data and daily disease severity outputs from the EPIRICE model within the ArcGIS environment using the aforementioned Python tool in ArcGIS. Simulation runs were first made without the injury profiles to obtain the attainable yield. Maintaining the same weather data and production situation parameter values, simulation runs were then made with the treatment of injury profiles to obtain the actual yield in the presence of the two diseases separately (Figure \ref{Fig1}). Yield loss was then modelled as the difference between attainable yield and actual yield for both BB and LB damaged crops respectively.
     
     \section{Results and discussion}
     \label{results_and_discussion}
@@ -208,23 +208,23 @@ Scenario and Time Slice      & Average Temperature ($^{\circ}$C) & Change in Tem
 
 \subsection{Potential disease epidemics (EPIRICE model output)}
 \label{potential_epidemics}
-    Predicted leaf blast epidemics were not sever for the entire country. Severity of the disease was predicted to be less than 2.5 percent across Tanzania for all time slices and emission scenarios (Figure \ref{LBCurves}). Disease peaks halfway through the season, which is characteristic of this disease that tends to occur during vegetative growth stages before the crop reaches reproductive stages and final maturity.
+    Predicted leaf blast epidemics were not sever for the entire country. Severity of the disease was predicted to be less than 2.5 percent across Tanzania for all time slices and emission scenarios (Figure \ref{Fig2}). Disease peaks halfway through the season, which is characteristic of this disease that tends to occur during vegetative growth stages before the crop reaches reproductive stages and final maturity.
     
-    Bacterial blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{BBCurves}), which is normal for this disease. The three different emission scenarios resulted in differing AUDPC responses for bacterial blight across the time slices. The A2 scenario resulting in the highest predicted disease levels, the B1 scenario was the lowest.
+    Bacterial blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{Fig3}), which is normal for this disease. The three different emission scenarios resulted in differing AUDPC responses for bacterial blight across the time slices. The A2 scenario resulting in the highest predicted disease levels, the B1 scenario was the lowest.
         
     \subsection{Predicted yields and yield losses (RICEPEST model output)}
     \label{predicted_yields}
     \subsubsection{Attainable yields}
     \label{attainable_yields}
-    RICEPEST predicted the mean attainable yields under the current conditions, in the absence of yield reducing factors, to be 3.88 t ha\textsuperscript{-1} for the current rice growing areas of Tanzania for the base climate (Figure \ref{Yield_Attainable_Violin}). Future conditions were all predicted to have higher mean attainable yields. All simulated time-slices exhibited a minimal amount of values that were reported as zero t ha\textsuperscript{-1}.
+    RICEPEST predicted the mean attainable yields under the current conditions, in the absence of yield reducing factors, to be 3.88 t ha\textsuperscript{-1} for the current rice growing areas of Tanzania for the base climate (Figure \ref{Fig4}). Future conditions were all predicted to have higher mean attainable yields. All simulated time-slices exhibited a minimal amount of values that were reported as zero t ha\textsuperscript{-1}.
     
     \subsubsection{Yield losses due to leaf blast}
     \label{lb_yield_losses}
-    Differences due to leaf blast between all time slices and scenarios were negligible (Figure \ref{LB_Losses_Violin}). The base had the highest average yield loss values due to leaf blast, 0.12 t ha\textsuperscript{-1}. However, the B1 2050 scenario exhibited the lowest average yield losses of any scenario and time slice combination, but the highest values at 0.13 t ha\textsuperscript{-1} lost.
+    Differences due to leaf blast between all time slices and scenarios were negligible (Figure \ref{Fig5}). The base had the highest average yield loss values due to leaf blast, 0.12 t ha\textsuperscript{-1}. However, the B1 2050 scenario exhibited the lowest average yield losses of any scenario and time slice combination, but the highest values at 0.13 t ha\textsuperscript{-1} lost.
        
     \subsubsection{Yield losses due to bacterial blight}
     \label{bb_yield_losses}
-    Bacterial blight was predicted to cause much greater losses than leaf blast (Figure \ref{BB_Losses_Violin}). The overall trend in losses due to bacterial blight was up for all three climate scenarios, from the Base 2000. The A2 2050 and AB 2050 scenario and time slices had the highest average predicted values with 0.73 t ha\textsuperscript{-1} lost due to bacterial blight. The A2 2030 scenario and time slice registered the single highest losses, 1.44 t ha\textsuperscript{-1}.
+    Bacterial blight was predicted to cause much greater losses than leaf blast (Figure \ref{Fig6}). The overall trend in losses due to bacterial blight was up for all three climate scenarios, from the Base 2000. The A2 2050 and AB 2050 scenario and time slices had the highest average predicted values with 0.73 t ha\textsuperscript{-1} lost due to bacterial blight. The A2 2030 scenario and time slice registered the single highest losses, 1.44 t ha\textsuperscript{-1}.
         
     \section{Conclusions and discussions}
     \label{conclusions}
@@ -236,7 +236,7 @@ Scenario and Time Slice      & Average Temperature ($^{\circ}$C) & Change in Tem
     
     Despite the predictions of climate change to reduce rice crop yields, this study predicted that the attainable yield would increase with an increase in temperatures. Since the average temperatures were below 24 $^{\circ}$C, it is likely that this would be the case as temperatures below 20 $^{\circ}$C can cause yield losses, so the increased temperatures are more optimal for tropical rice \citep{Yoshida}.
             
-    \citet{Thornton2009} found that climate change effects are likely to be unequal across East Africa when they examined maize and bean crops. Localised adaptations to climate change will be necessary. This seems to be the case when examining the maps of change in yield losses due to BB (Figure \ref{BB_Change_Map}). Some areas appear to lose more than another half ton per hectare to BB than they previously have, while others appear to actually lose less to BB, gaining 0.75 t ha\textsuperscript{-1} potential yield due to the reduction in the severity of BB.
+    \citet{Thornton2009} found that climate change effects are likely to be unequal across East Africa when they examined maize and bean crops. Localised adaptations to climate change will be necessary. This seems to be the case when examining the maps of change in yield losses due to BB (Figure \ref{Fig7}). Some areas appear to lose more than another half ton per hectare to BB than they previously have, while others appear to actually lose less to BB, gaining 0.75 t ha\textsuperscript{-1} potential yield due to the reduction in the severity of BB.
     
     The results of this study indicate that the effects of climate change on plant disease can be expected to be uneven as the environment becomes less favourable for some diseases such as LB, it becomes more favorable for others like BB. One thing that the results fail to capture is the variation in weather. Because this exercise is based on time-slice averages, what is captured here is the most likely to occur in a given year based on the climate. Weather patterns have great influence on plant diseases. However, these results should be instructive for breeders and policy makers. We should not ignore leaf blast, however these results indicate that in the future bacterial blight will be more of an issue for rice growers in Tanzania than leaf blast. This information can be useful for breeders and policy makers so breeding efforts for resistance and other mitigation methods can be put into place with this outcome in mind.
     
@@ -250,9 +250,9 @@ KML files of the change in yield losses due to bacterial blight (Figure 7) and a
 \section{Author attributions}
 \begin{itemize}
 \item Inputs preparation (CD, AS)
-\item Model coupling (CD, AS)
+\item Model coupling and processing (CD, AS)
 \item Data analysis (CD, AS, SZ)
-\item Writing (CD, AS, SZ)
+\item Manuscript preparation (CD, AS, SZ)
 \end{itemize}
 
 % BibTeX users please use one of
@@ -264,52 +264,52 @@ KML files of the change in yield losses due to bacterial blight (Figure 7) and a
 \newpage
      \begin{figure}
      
-      \includegraphics[width = 174mm]{figures/Simulation_Tree_Flowchart}
+      \includegraphics[width = 174mm]{figures/Fig1}
       \caption{Flowchart illustrating the loose coupling between EPIRICE, used to simulate unmanaged disease epidemics as affected by weather conditions, and RICEPEST, used to estimate yield losses due to leaf blast and bacterial blight severity. Three time slices, 2000, 2030 and 2050 were examined for four climate scenarios, current or base, IPCC A1B, IPCC A2 and IPCC B1.}
-      \label{Flowchart}
+      \label{Fig1}
     \end{figure} 
 
     % Leaf blast progress curves
     \begin{figure}
-      \includegraphics[width = 84mm]{figures/LB}
+      \includegraphics[width = 84mm]{figures/Fig2}
       \caption{Leaf blast disease severity curves as predicted by the EPIRICE model averaged for Tanzania.}
-        \label{LBCurves}
+        \label{Fig2}
     \end{figure}
     
         % Bacterial blight progress curves
     \begin{figure}
-      \includegraphics[width = 84mm]{figures/BB}
+      \includegraphics[width = 84mm]{figures/Fig3}
       \caption{Bacterial leaf blight disease severity curves as predicted by the EPIRICE model using observed and future, modelled weather data for three climate change scenarios, A1B; A2 and B1 and three time slices, 2010; 2030 and 2050.}
-        \label{BBCurves}
+        \label{Fig3}
     \end{figure}
     
         % Attainable yield loss violin plots
     \begin{figure}
-      \includegraphics[width = 84mm]{figures/Yield_Attainable_Violin}
+      \includegraphics[width = 84mm]{figures/Fig4}
       \caption{RICEPEST predicted attainable yield (i.e., the yield in the absence of yield reducing factors) in t ha\textsuperscript{-1} for all time slices and emission scenarios.}
-      \label{Yield_Attainable_Violin}
+      \label{Fig4}
     \end{figure}
 
     % Leaf blast yield loss violin plots
     \begin{figure}
-      \includegraphics[width = 84mm]{Figures/LB_Losses_Violin}
+      \includegraphics[width = 84mm]{Figures/Fig5}
       \caption{Yield losses in t ha\textsuperscript{-1} due to leaf blast as predicted by the EPIRICE and RICEPEST model three time slices and three IPCC climate emission scenarios.}
-      \label{LB_Losses_Violin}
+      \label{Fig5}
     \end{figure}
 
     % Bacterial blight yield loss violin plots
     \begin{figure}
-      \includegraphics[width = 84mm]{Figures/BB_Losses_Violin}
+      \includegraphics[width = 84mm]{Figures/Fig6}
       \caption{Yield losses in t ha\textsuperscript{-1} due to bacterial blight as predicted by the EPIRICE and RICEPEST model three time slices and three IPCC climate emission scenarios.}
-      \label{BB_Losses_Violin}
+      \label{Fig6}
     \end{figure}
     
     % Bacterial leaf blight yield loss change maps
     
     \begin{figure}
-      \includegraphics[width = 174mm]{Figures/BB_Yield_Loss_Change}
+      \includegraphics[width = 174mm]{Figures/Fig7}
       \caption{Changes in yield losses due to bacterial blight disease expressed as t ha\textsuperscript{-1} for all time slices and emission scenarios as predicted using a combination of EPIRICE and RICEPEST models.}
-      \label{BB_Change_Map}
+      \label{Fig7}
     \end{figure}
 
 \end{document}
