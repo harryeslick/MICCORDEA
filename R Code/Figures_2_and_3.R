@@ -141,7 +141,7 @@ bb.avg <- subset(bb.avg, Day > 21)
 
 figure.2 <- ggplot(lb.avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
   geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Bacterial Blight Lesions (%)", limits = c(0, 40)) + 
+  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Leaf Blast Lesions (%)", limits = c(0, 40)) + 
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +
@@ -165,7 +165,7 @@ ggsave("../Latex/Figures/Fig2.eps", width = 84, height = 84, units = "mm")
 
 figure.3 <- ggplot(bb.avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) + 
   geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Bacterial Blight Lesions (%)", limits = c(0, 40)) + 
+  scale_x_continuous("Day of Season") + scale_y_continuous("Leaf Coverage by Bacterial Leaf Blight Lesions (%)", limits = c(0, 40)) + 
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +
