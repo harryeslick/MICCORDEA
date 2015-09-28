@@ -1,4 +1,4 @@
-\begin{thebibliography}{43}
+\begin{thebibliography}{44}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -235,6 +235,10 @@ Sparks AH, Forbes GA, Hijmans RJ, Garrett KA (2014) Climate change may have
   limited effect on global risk of potato late blight. Global Change Biology
   20(12):3621--3631, \doi{10.1111/gcb.12587},
   \urlprefix\url{http://dx.doi.org/10.1111/gcb.12587}
+
+\bibitem[{Stevens(1960)}]{Stevens1960}
+Stevens RB (1960) Plant Pathology, an Advanced Treatise, vol~3, Academic Press,
+  New York, USA, pp 357--429
 
 \bibitem[{Sutherst et~al(2011)Sutherst, Constable, Finlay, Harrington, Luck,
   and Zalucki}]{Sutherst2011}
