@@ -60,7 +60,7 @@ grestore
 %
 \begin{document}
 
-\title{Spatial modelling of rice yield losses in Tanzania due to bacterial blight and leaf blast in a changing climate\thanks{The authors wish to acknowledge J.K. Aunario and M. Noel for their assistance in running models and gathering data used in this study. The authors were funded in part by the Mitigating the Impact of Climate Change On Rice Disease resistance in East Africa (MICCORDEA) project financed by Deutsche Gesellschaft f{\"u}r Internationale Zusammenarbeit (GIZ), by the Consultative Group for International Agricultural Research (CGIAR) Consortium Research Programs (CRP) Climate Change, Agriculture and Food Security (CCAFS) and Global Rice Science Partnership (GRiSP).}}
+\title{Spatial modelling of rice yield losses in Tanzania due to bacterial leaf blight and leaf blast in a changing climate\thanks{The authors wish to acknowledge J.K. Aunario and M. Noel for their assistance in running models and gathering data used in this study. The authors were funded in part by the Mitigating the Impact of Climate Change On Rice Disease resistance in East Africa (MICCORDEA) project financed by Deutsche Gesellschaft f{\"u}r Internationale Zusammenarbeit (GIZ), by the Consultative Group for International Agricultural Research (CGIAR) Consortium Research Programs (CRP) Climate Change, Agriculture and Food Security (CCAFS) and Global Rice Science Partnership (GRiSP).}}
 
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
@@ -91,7 +91,7 @@ grestore
 \maketitle
 
 \begin{abstract}
-Rice is the most rapidly growing staple food in Africa and although rice production is steadily increasing, the consumption is still out-pacing the production. In Tanzania, two important diseases in rice production are leaf blast caused by \textit{Magnaporthe oryzae} and bacterial blight caused by \textit{Xanthomonas oryzae} pv. \textit{oryzae}. The objective of this study was to quantify rice yield losses due to these two important diseases under a changing climate. We found that bacterial blight is predicted to increase causing greater losses than leaf blast in the future, with losses due to leaf blast declining. The results of this study indicate that the effects of climate change on plant disease can not only be expected to be uneven across diseases but also across geographies, as in some geographic areas losses increase but decrease in others for the same disease.
+Rice is the most rapidly growing staple food in Africa and although rice production is steadily increasing, the consumption is still out-pacing the production. In Tanzania, two important diseases in rice production are leaf blast caused by \textit{Magnaporthe oryzae} and bacterial leaf blight caused by \textit{Xanthomonas oryzae} pv. \textit{oryzae}. The objective of this study was to quantify rice yield losses due to these two important diseases under a changing climate. We found that bacterial leaf blight is predicted to increase causing greater losses than leaf blast in the future, with losses due to leaf blast declining. The results of this study indicate that the effects of climate change on plant disease can not only be expected to be uneven across diseases but also across geographies, as in some geographic areas losses increase but decrease in others for the same disease.
 \keywords{EPIRICE \and RICEPEST \and Sub-Saharan Africa \and \textit{Magnaporthe oryzae} \and \textit{Xanthomonas oryzae} pv. \textit{oryzae}
 }
 % \PACS{PACS code1 \and PACS code2 \and more}
@@ -102,9 +102,9 @@ Rice is the most rapidly growing staple food in Africa and although rice product
 \label{intro}
 Rice is the most rapidly growing staple food in Africa and although rice production is steadily increasing, the consumption is still out-pacing the production. For example, by 2009 37 percentof the rice consumed in Africa was imported. To reduce its reliance on imports and dependency on global markets Africa's rice production needs to increase further \citep{Seck2013}. Current average yield levels in Africa range from about 1 t ha\textsuperscript{-1} in upland ecologies to 1.5 to 2 t ha\textsuperscript{-1} in rainfed lowland ecologies with the irrigated lowland ecologies having the highest yields of 3.0 to 4.0 t ha\textsuperscript{-1} \citep{Diagne2013}. Rice yields in African farmers fields are low due to a combination of abiotic and biotic stresses that constrain them. Farmers can significantly reduce the yield gaps with improved field, water and crop management, and weed control \citep{Saito2013}.
     
-    Apart from weeds, pests and diseases also are major biotic stresses that can cause significant reductions in rice yields. Two important diseases in rice are leaf blast (LB) caused by \textit{Magnaporthe oryzae} and bacterial blight (BB) caused by \textit{Xanthomonas oryzae} pv. \textit{oryzae} \citep{Verdier2012}. Because infectious plant disease occurs as an interaction of a favorable environment, a susceptible host and a competent pathogen \citep{Madden2007}, weather conditions impact both the occurrence and gravity of plant disease. Climate change is likely to affect plant disease \citep{Anderson2004,Coakley1999,Garrett2006} and several others have expressed interest in changes to plant disease as a result of climate change \citep{Chakraborty2011,Juroszek2011,Luck2011,Pautasso2010,Savary2011,Sutherst2011}. Moreover, intensification of rice production, which was witnessed in Sub-Saharan Africa since the food crisis of 2008 \citep{Saito2013}, may lead to an increased yield loss due to the blast, thus reducing the benefits that were created \citep{Sere2013}. Increases in disease incidence and severity may deter farmers from investing in intensification measures because of risks related to yield losses or even total crop failure. To the authors' knowledge, the impact of climate change on leaf blast and bacterial blight diseases of rice in Africa has not yet been investigated.
+    Apart from weeds, pests and diseases also are major biotic stresses that can cause significant reductions in rice yields. Two important diseases in rice are leaf blast (LB) caused by \textit{Magnaporthe oryzae} and bacterial leaf blight (BB) caused by \textit{Xanthomonas oryzae} pv. \textit{oryzae} \citep{Verdier2012}. Because infectious plant disease occurs as an interaction of a favorable environment, a susceptible host and a competent pathogen \citep{Madden2007}, weather conditions impact both the occurrence and gravity of plant disease. Climate change is likely to affect plant disease \citep{Anderson2004,Coakley1999,Garrett2006} and several others have expressed interest in changes to plant disease as a result of climate change \citep{Chakraborty2011,Juroszek2011,Luck2011,Pautasso2010,Savary2011,Sutherst2011}. Moreover, intensification of rice production, which was witnessed in Sub-Saharan Africa since the food crisis of 2008 \citep{Saito2013}, may lead to an increased yield loss due to the blast, thus reducing the benefits that were created \citep{Sere2013}. Increases in disease incidence and severity may deter farmers from investing in intensification measures because of risks related to yield losses or even total crop failure. To the authors' knowledge, the impact of climate change on leaf blast and bacterial leaf blight diseases of rice in Africa has not yet been investigated.
     
-    Efforts to link plant disease models with a geographic information system (GIS) to assess the impact of plant diseases spatially include maps of the global number of pesticide applications necessary to control potato late blight using contemporary weather data \citep{Hijmans2000}. While a meta-model to generate map estimates of changes in global potato late blight due to climate change has also been developed \citep{Sparks2014}. Savary et al developed EPIRICE, a GIS--linked plant disease severity model capable of simulating several important diseases of rice, including leaf blast and bacterial blight amongst others \citep{Savary2012}. Most recently, \citep{Kim2015} used a modified version of the EPIRICE model to evaluate the potential impacts of climate change on leaf blast and sheath blight in South Korean rice.
+    Efforts to link plant disease models with a geographic information system (GIS) to assess the impact of plant diseases spatially include maps of the global number of pesticide applications necessary to control potato late blight using contemporary weather data \citep{Hijmans2000}. While a meta-model to generate map estimates of changes in global potato late blight due to climate change has also been developed \citep{Sparks2014}. Savary et al developed EPIRICE, a GIS--linked plant disease severity model capable of simulating several important diseases of rice, including leaf blast and bacterial leaf blight amongst others \citep{Savary2012}. Most recently, \citep{Kim2015} used a modified version of the EPIRICE model to evaluate the potential impacts of climate change on leaf blast and sheath blight in South Korean rice.
     
     The objective of the study was to quantify the impact of climate change as forecasted by the Intergovernmental Panel on Climate Change (IPCC) on rice yield loss as result of BB and LB. To carry out this study, we linked two previously unlinked, existing models, EPIRICE and RICEPEST \citep{Willocquet2000,Willocquet2002}, and we applied them using spatially and temporally downscaled climate change data to generate predictions on changes in plant disease impact due to climate change in Tanzania.
     
@@ -130,7 +130,7 @@ Rice is the most rapidly growing staple food in Africa and although rice product
     \subsubsection{The RICEPEST model}\label{RICEPEST}
     The RICEPEST model \citep{Willocquet2000,Willocquet2002} simulates rice yield losses due to several yield-reducing factors under a range of specific production situations with simulated diseases including BB and LB. The model runs on a daily time-step with simulation starting 14 days after crop establishment for both transplanted and direct seeded rice. The model incorporates two sub-models, the first sub-model simulates the dynamics of the rice crop biomass and the second sub-model simulates the dynamics of the tiller population. The biomass sub-model accounts for the daily accumulation and partitioning of assimilates towards roots, leaves, stems, and panicles. For this study, because the damage mechanisms of the diseases of interest (BB and LB) are simulated only in the biomass sub-model, the tiller sub-model was not considered.
     
-    Bacterial blight and LB cause lesions on the leaf blades. These lesions decrease the green leaf area index (LAI), reducing the photosynthetic capacity of the plant. RICEPEST reduces the rate of growth (RG) (Formula \ref{RG}) by reducing the LAI (Formula \ref{LAI}) by applying a damage function (Formula \ref{BBDM}) or (\ref{LBDM}) where SLA is the specific leaf area; LEAFW is the leaf dry weight; RUE is radiation use efficiency; RAD is daily solar radiation; k is coefficient of light extinction and is defined as the proportion of light intercepted by the crop \citep{Willocquet2000}, set to 0.6 \citep{Willocquet2002}.
+    bacterial leaf blight and LB cause lesions on the leaf blades. These lesions decrease the green leaf area index (LAI), reducing the photosynthetic capacity of the plant. RICEPEST reduces the rate of growth (RG) (Formula \ref{RG}) by reducing the LAI (Formula \ref{LAI}) by applying a damage function (Formula \ref{BBDM}) or (\ref{LBDM}) where SLA is the specific leaf area; LEAFW is the leaf dry weight; RUE is radiation use efficiency; RAD is daily solar radiation; k is coefficient of light extinction and is defined as the proportion of light intercepted by the crop \citep{Willocquet2000}, set to 0.6 \citep{Willocquet2002}.
     \begin{equation}
     RG_t = RUE_t \times RAD_t \times (1- exp(- k \times LAI_t))
     \label{RG}
@@ -210,7 +210,7 @@ Scenario and Time Slice      & Average Temperature ($^{\circ}$C) & Change in Tem
 \label{potential_epidemics}
     Predicted leaf blast epidemics were not severefor the entire country. Severity of the disease was predicted to be less than 2.5 percent across Tanzania for all time slices and emission scenarios (Figure \ref{Fig2}). Disease peaks halfway through the season, which is characteristic of this disease that tends to occur during vegetative growth stages before the crop reaches reproductive stages and final maturity.
     
-    Bacterial blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{Fig3}), which is normal for this disease. The three different emission scenarios resulted in differing AUDPC responses for bacterial blight across the time slices. The A2 scenario resulting in the highest predicted disease levels, the B1 scenario was the lowest.
+    bacterial leaf blight epidemics exhibited normal progress curves for the disease with a much greater severity in all time slices than that of LB. Under all time slices and scenarios the predicted epidemic started rapidly increasing around day 50 and increased up until day 100, when it began decreasing at crop maturity (Figure \ref{Fig3}), which is normal for this disease. The three different emission scenarios resulted in differing AUDPC responses for bacterial leaf blight across the time slices. The A2 scenario resulting in the highest predicted disease levels, the B1 scenario was the lowest.
         
     \subsection{Predicted yields and yield losses (RICEPEST model output)}
     \label{predicted_yields}
@@ -222,9 +222,9 @@ Scenario and Time Slice      & Average Temperature ($^{\circ}$C) & Change in Tem
     \label{lb_yield_losses}
     Differences due to leaf blast between all time slices and scenarios were negligible (Figure \ref{Fig5}). The base had the highest average yield loss values due to leaf blast, 0.12 t ha\textsuperscript{-1}. However, the B1 2050 scenario exhibited the lowest average yield losses of any scenario and time slice combination, but the highest values at 0.13 t ha\textsuperscript{-1} lost.
        
-    \subsubsection{Yield losses due to bacterial blight}
+    \subsubsection{Yield losses due to bacterial leaf blight}
     \label{bb_yield_losses}
-    Bacterial blight was predicted to cause much greater losses than leaf blast (Figure \ref{Fig6}). The overall trend in losses due to bacterial blight was up for all three climate scenarios, from the Base 2000. The A2 2050 and AB 2050 scenario and time slices had the highest average predicted values with 0.73 t ha\textsuperscript{-1} lost due to bacterial blight. The A2 2030 scenario and time slice registered the single highest losses, 1.44 t ha\textsuperscript{-1}.
+    bacterial leaf blight was predicted to cause much greater losses than leaf blast (Figure \ref{Fig6}). The overall trend in losses due to bacterial leaf blight was up for all three climate scenarios, from the Base 2000. The A2 2050 and AB 2050 scenario and time slices had the highest average predicted values with 0.73 t ha\textsuperscript{-1} lost due to bacterial leaf blight. The A2 2030 scenario and time slice registered the single highest losses, 1.44 t ha\textsuperscript{-1}.
         
     \section{Conclusions and discussions}
     \label{conclusions}
@@ -238,14 +238,14 @@ Scenario and Time Slice      & Average Temperature ($^{\circ}$C) & Change in Tem
             
     \citet{Thornton2009} found that climate change effects are likely to be unequal across East Africa when they examined maize and bean crops. Localised adaptations to climate change will be necessary. This seems to be the case when examining the maps of change in yield losses due to BB (Figure \ref{Fig7}). Some areas appear to lose more than a half ton per hectare to BB than they previously have, while others appear to actually lose less to BB, gaining 0.75 t ha\textsuperscript{-1} potential yield due to the reduction in the severity of BB.
     
-    The results of this study indicate that the effects of climate change on plant disease can be expected to be uneven as the environment becomes less favourable for some diseases such as LB, it becomes more favorable for others like BB. One thing that the results fail to capture is the variation in weather. Because this exercise is based on time-slice averages, what is captured here is the most likely to occur in a given year based on the climate. Weather patterns have great influence on plant diseases. However, these results should be instructive for breeders and policy makers. We should not ignore leaf blast, however these results indicate that in the future bacterial blight will be more of an issue for rice growers in Tanzania than leaf blast. This information can be useful for breeders and policy makers so breeding efforts for resistance and other mitigation methods can be put into place with this outcome in mind.
+    The results of this study indicate that the effects of climate change on plant disease can be expected to be uneven as the environment becomes less favourable for some diseases such as LB, it becomes more favorable for others like BB. One thing that the results fail to capture is the variation in weather. Because this exercise is based on time-slice averages, what is captured here is the most likely to occur in a given year based on the climate. Weather patterns have great influence on plant diseases. However, these results should be instructive for breeders and policy makers. We should not ignore leaf blast, however these results indicate that in the future bacterial leaf blight will be more of an issue for rice growers in Tanzania than leaf blast. This information can be useful for breeders and policy makers so breeding efforts for resistance and other mitigation methods can be put into place with this outcome in mind.
     
 \section{Software, data and supplementary file availability}
 \label{software_and_data_availability}
 All code used for analysis and data used in this dataset are available from figshare,\\ http://figshare.com/articles/MICORDEA/1408501, and can also be cloned from GitHub,\\https://github.com/adamhsparks/MICORDEA. A Stella language version of the original, complete version of the RICEPEST model by the original authors, L. Willocquet and S. Savary, is available for download from The American Phytopathological Society Education Center,\\
 https://www.apsnet.org/edcenter/advanced/topics/BotanicalEpidemiology/Pages/default.aspx.
 
-KML files of the change in yield losses due to bacterial blight (Figure 7) and attainable yields (Figure 4) are also available in the figshare data and GitHub repository in the ``KML'' folder for further exploration and the ability to interactively explore the changes across time-slices using GoogleEarth.
+KML files of the change in yield losses due to bacterial leaf blight (Figure 7) and attainable yields (Figure 4) are also available in the figshare data and GitHub repository in the ``KML'' folder for further exploration and the ability to interactively explore the changes across time-slices using GoogleEarth.
 
 \section{Author attributions}
 \begin{itemize}
@@ -265,7 +265,7 @@ KML files of the change in yield losses due to bacterial blight (Figure 7) and a
      \begin{figure}
      
       \includegraphics[width = 174mm]{figures/Fig1}
-      \caption{Flowchart illustrating the loose coupling between EPIRICE, used to simulate unmanaged disease epidemics as affected by weather conditions, and RICEPEST, used to estimate yield losses due to leaf blast and bacterial blight severity. Three time slices, 2000, 2030 and 2050 were examined for four climate scenarios, current or base, IPCC A1B, IPCC A2 and IPCC B1.}
+      \caption{Flowchart illustrating the loose coupling between EPIRICE, used to simulate unmanaged disease epidemics as affected by weather conditions, and RICEPEST, used to estimate yield losses due to leaf blast and bacterial leaf blight severity. Three time slices, 2000, 2030 and 2050 were examined for four climate scenarios, current or base, IPCC A1B, IPCC A2 and IPCC B1.}
       \label{Fig1}
     \end{figure} 
 
@@ -276,7 +276,7 @@ KML files of the change in yield losses due to bacterial blight (Figure 7) and a
         \label{Fig2}
     \end{figure}
     
-        % Bacterial blight progress curves
+        % bacterial leaf blight progress curves
     \begin{figure}
       \includegraphics[width = 84mm]{figures/Fig3}
       \caption{Bacterial leaf blight disease severity curves as predicted by the EPIRICE model using observed and future, modelled weather data for three climate change scenarios, A1B; A2 and B1 and three time slices, 2010; 2030 and 2050.}
@@ -297,10 +297,10 @@ KML files of the change in yield losses due to bacterial blight (Figure 7) and a
       \label{Fig5}
     \end{figure}
 
-    % Bacterial blight yield loss violin plots
+    % bacterial leaf blight yield loss violin plots
     \begin{figure}
       \includegraphics[width = 84mm]{Figures/Fig6}
-      \caption{Yield losses in t ha\textsuperscript{-1} due to bacterial blight as predicted by the EPIRICE and RICEPEST model three time slices and three IPCC climate emission scenarios.}
+      \caption{Yield losses in t ha\textsuperscript{-1} due to bacterial leaf blight as predicted by the EPIRICE and RICEPEST model three time slices and three IPCC climate emission scenarios.}
       \label{Fig6}
     \end{figure}
     
@@ -308,7 +308,7 @@ KML files of the change in yield losses due to bacterial blight (Figure 7) and a
     
     \begin{figure}
       \includegraphics[width = 174mm]{Figures/Fig7}
-      \caption{Changes in yield losses due to bacterial blight disease expressed as t ha\textsuperscript{-1} for all time slices and emission scenarios as predicted using a combination of EPIRICE and RICEPEST models.}
+      \caption{Changes in yield losses due to bacterial leaf blight disease expressed as t ha\textsuperscript{-1} for all time slices and emission scenarios as predicted using a combination of EPIRICE and RICEPEST models. }
       \label{Fig7}
     \end{figure}
 
