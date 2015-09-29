@@ -18,26 +18,26 @@ Anderson PK, Cunningham AA, Patel NG, Morales FJ, Epstein PR, Daszak P (2004)
 
 \bibitem[{Barreiro-Hurle(2012)}]{Barreiro-Hurle2012}
 Barreiro-Hurle J (2012) Analysis of incentives and disincentives for rice in
-  the united republic of tanzania. Technical note series, MAFAP, FAO, Rome
+  the {United Republic of Tanzania}. Technical note series, MAFAP, FAO, Rome
 
 \bibitem[{Bivand et~al(2014)Bivand, Keitt, and Rowlingson}]{Bivand2014}
 Bivand R, Keitt T, Rowlingson B (2014) rgdal: Bindings for the Geospatial Data
   Abstraction Library. \urlprefix\url{http://CRAN.R-project.org/package=rgdal},
-  {R} package version 0.8-16
+  {R package version 0.8-16}
 
 \bibitem[{Boko et~al(2007)Boko, Niang, Nyong, Vogel, Githeko, Medany,
   Osman-Elasha, Tabo, and Yanda}]{Boko2007}
 Boko M, Niang I, Nyong A, Vogel C, Githeko A, Medany M, Osman-Elasha B, Tabo R,
-  Yanda P (2007) Climate Change 2007: Impacts, Adaptation and Vulnerability.
+  Yanda P (2007) {Climate Change 2007: Impacts, Adaptation and Vulnerability.
   Contribution of Working Group II to the Fourth Assessment Report of the
-  Intergovernmental Panel on Climate Change, Cambridge University Press, chap
-  Africa, pp 433--467
+  Intergovernmental Panel on Climate Change}, Cambridge University Press, chap
+  {Africa}, pp 433--467
 
 \bibitem[{Bouman et~al(2001)Bouman, Kropff, Tuong, Woperies, {ten Berge}, and
   {van Laar}}]{Oryza}
 Bouman B, Kropff M, Tuong T, Woperies M, {ten Berge} H, {van Laar} H (2001)
-  ORYZA2000: modeling lowland rice. International Rice Research Institute, and
-  Wageningen: Wageningen University and Research Center, Suite 1009, Pacific
+  ORYZA2000: modeling lowland rice. {International Rice Research Institute, and
+  Wageningen: Wageningen University and Research Center}, Suite 1009, Pacific
   Bank Building, 6776 Ayala Avenue, Makati City, Philippines
 
 \bibitem[{Chakraborty and Newton(2011)}]{Chakraborty2011}
@@ -55,10 +55,10 @@ Coakley SM, Scherm H, Chakraborty S (1999) Climate change and plant disease
 
 \bibitem[{Diagne et~al(2013)Diagne, Amovin-Assagba, Futakuchi, and
   Wopereis}]{Diagne2013}
-Diagne A, Amovin-Assagba E, Futakuchi K, Wopereis M (2013) Realizing Africa's
-  rice promise, CABI, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
+Diagne A, Amovin-Assagba E, Futakuchi K, Wopereis M (2013) Realizing {Africa's}
+  rice promise, {CABI}, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
   chap Estimation of cultivated area, number of farming households and yield
-  for major rice-growing environments in Africa, pp 35--45
+  for major rice-growing environments in {Africa}, pp 35--45
 
 \bibitem[{{Food and Agriculture Organization of the United
   Nations}(2015)}]{FAOCropCalendar}
@@ -86,7 +86,7 @@ Geng S, de~Vries FWP, Supit I (1986) A simple method for generating daily
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0168192386900146}
 
 \bibitem[{Hijmans(2014)}]{Hijmans2014}
-Hijmans RJ (2014) raster: raster: Geographic data analysis and modeling.
+Hijmans RJ (2014) raster: Geographic data analysis and modeling.
   \urlprefix\url{http://CRAN.R-project.org/package=raster}, {R} package version
   2.2-31
 
@@ -102,13 +102,13 @@ Hijmans RJ, Savary S, Pangga R, Aunario J (2009) cropsim: Simulation modeling
   of crops and their diseases. {R} package version 0.2.0-5
 
 \bibitem[{Institute(2011)}]{ESRI2011}
-Institute ESR (2011) ArcGIS Desktop: Release 10. Environmental Systems Research
-  Institute, Redlands, CA
+Institute ESR (2011) ArcGIS Desktop: Release 10. {Environmental Systems
+  Research Institute}, Redlands, CA
 
 \bibitem[{Jones et~al(2009)Jones, Thornton, and Heinke}]{Jones2009}
 Jones P, Thornton P, Heinke J (2009) Generating characteristic daily weather
-  data using downscaled climate model data from the ipcc's fourth assessment
-  report
+  data using downscaled climate model data from the {IPCC's Fourth Assessment
+  Report}
 
 \bibitem[{Juroszek and von Tiedemann(2011)}]{Juroszek2011}
 Juroszek P, von Tiedemann A (2011) Potential strategies and future requirements
@@ -122,9 +122,9 @@ Kermack W, McKendrick A (1927) A contribution to the mathematical theory of
 
 \bibitem[{Kim et~al(2015)Kim, Cho, Lee, and Lee}]{Kim2015}
 Kim KH, Cho J, Lee YH, Lee WS (2015) Predicting potential epidemics of rice
-  leaf blast and sheath blight in south korea under the \{RCP\} 4.5 and \{RCP\}
-  8.5 climate change scenarios using a rice disease epidemiology model,
-  \{EPIRICE\}. Agricultural and Forest Meteorology 203(0):191--207,
+  leaf blast and sheath blight in south korea under the {RCP} 4.5 and {RCP} 8.5
+  climate change scenarios using a rice disease epidemiology model, {EPIRICE}.
+  Agricultural and Forest Meteorology 203(0):191--207,
   \doi{http://dx.doi.org/10.1016/j.agrformet.2015.01.011},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S016819231500012X}
 
@@ -179,43 +179,43 @@ Peng S, Huang J, Sheehy JE, Laza RC, Visperas RM, Zhong X, Centeno GS, Khush
   \eprint{http://www.pnas.org/content/101/27/9971.full.pdf}
 
 \bibitem[{Portmann et~al(2010)Portmann, Siebert, and D{\"o}ll}]{Portmann2010}
-Portmann FT, Siebert S, D{\"o}ll P (2010) Mirca2000---global monthly irrigated
-  and rainfed crop areas around the year 2000: A new high-resolution data set
-  for agricultural and hydrological modeling. Global Biogeochemical Cycles
-  24(1), \doi{10.1029/2008GB003435},
+Portmann FT, Siebert S, D{\"o}ll P (2010) {MIRCA2000}---global monthly
+  irrigated and rainfed crop areas around the year 2000: A new high-resolution
+  data set for agricultural and hydrological modeling. Global Biogeochemical
+  Cycles 24(1), \doi{10.1029/2008GB003435},
   \urlprefix\url{http://dx.doi.org/10.1029/2008GB003435}
 
 \bibitem[{{R Core Team}(2014)}]{R2014}
-{R Core Team} (2014) R: A Language and Environment for Statistical Computing. R
-  Foundation for Statistical Computing, Vienna, Austria,
+{R Core Team} (2014) R: A Language and Environment for Statistical Computing.
+  {R} Foundation for Statistical Computing, Vienna, Austria,
   \urlprefix\url{http://www.R-project.org/}
 
 \bibitem[{Ripley and Lapsley(2013)}]{Ripley2013}
-Ripley B, Lapsley M (2013) RODBC: ODBC Database Access.
-  \urlprefix\url{http://CRAN.R-project.org/package=RODBC}, {R} package version
-  1.3-10
+Ripley B, Lapsley M (2013) {RODBC: ODBC Database Access}.
+  \urlprefix\url{http://CRAN.R-project.org/package={RODBC}}, {R} package
+  version 1.3-10
 
 \bibitem[{Rowhani et~al(2011)Rowhani, Lobell, Linderman, and
   Ramankutty}]{Rowhani2011}
 Rowhani P, Lobell DB, Linderman M, Ramankutty N (2011) Climate variability and
-  crop production in tanzania. Agricultural and Forest Meteorology
+  crop production in {Tanzania}. Agricultural and Forest Meteorology
   151(4):449--460, \doi{http://dx.doi.org/10.1016/j.agrformet.2010.12.002},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0168192310003357}
 
 \bibitem[{Saito et~al(2013)Saito, Nelson, Zwart, Niang, Sow, Yoshida, and
   Wopereis}]{Saito2013}
 Saito K, Nelson A, Zwart S, Niang A, Sow A, Yoshida H, Wopereis M (2013)
-  Realizing Africa's rice promise, CABI, Nosworthy Way, Wallingford,
+  Realizing {Africa's} rice promise, {CABI}, Nosworthy Way, Wallingford,
   Oxfordshire OX10 8DE, UK, chap Towards a better understanding of biophysical
-  determinants of yield gaps and potential expansion of rice area in Africa, pp
-  188--203
+  determinants of yield gaps and potential expansion of rice area in {Africa},
+  pp 188--203
 
 \bibitem[{Savary et~al(2000)Savary, Willocquet, Elazegui, Teng, Van~Du, Zhu,
   Tang, Huang, Lin, Singh, and Srivastava}]{Savary2000}
 Savary S, Willocquet L, Elazegui FA, Teng PS, Van~Du P, Zhu D, Tang Q, Huang S,
-  Lin X, Singh HM, Srivastava RK (2000) Rice pest constraints in tropical asia:
-  Characterization of injury profiles in relation to production situations.
-  Plant Disease 84(3):341--356, \doi{10.1094/PDIS.2000.84.3.341},
+  Lin X, Singh HM, Srivastava RK (2000) Rice pest constraints in tropical
+  {Asia}: Characterization of injury profiles in relation to production
+  situations. Plant Disease 84(3):341--356, \doi{10.1094/PDIS.2000.84.3.341},
   \urlprefix\url{http://dx.doi.org/10.1094/PDIS.2000.84.3.341}
 
 \bibitem[{Savary et~al(2011)Savary, Nelson, Sparks, Willocquet, Duveiller,
@@ -237,16 +237,16 @@ Savary S, Nelson A, Willocquet L, Pangga I, Aunario J (2012) Modeling and
 
 \bibitem[{Seck et~al(2013)Seck, Toure, Coulibaly, Diagne, and
   Wopereis}]{Seck2013}
-Seck P, Toure A, Coulibaly J, Diagne A, Wopereis M (2013) Realizing Africa's
-  rice promise, CABI, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
-  chap Africa's rice economy before and after the 2008 rice crisis, pp 24--34
+Seck P, Toure A, Coulibaly J, Diagne A, Wopereis M (2013) {Realizing Africa's
+  rice promise}, {CABI}, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
+  chap {Africa's rice economy before and after the 2008 rice crisis}, pp 24--34
 
 \bibitem[{Sere et~al(2013)Sere, Fargette, Abo, Wydra, Bimerew, Onasanya, and
   Akator}]{Sere2013}
 Sere Y, Fargette D, Abo M, Wydra K, Bimerew M, Onasanya A, Akator S (2013)
-  Realizing Africa's rice promise, CABI, Nosworthy Way, Wallingford,
-  Oxfordshire OX10 8DE, UK, chap Managing the major diseases of rice in Africa,
-  pp 213--228
+  {Realizing Africa's rice promise}, {CABI}, Nosworthy Way, Wallingford,
+  Oxfordshire OX10 8DE, UK, chap {Managing the major diseases of rice in
+  Africa}, pp 213--228
 
 \bibitem[{Sparks et~al(2014)Sparks, Forbes, Hijmans, and Garrett}]{Sparks2014}
 Sparks AH, Forbes GA, Hijmans RJ, Garrett KA (2014) Climate change may have
@@ -268,13 +268,13 @@ Sutherst RW, Constable F, Finlay KJ, Harrington R, Luck J, Zalucki MP (2011)
 \bibitem[{Thornton et~al(2009)Thornton, Jones, Alagarswamy, and
   Andresen}]{Thornton2009}
 Thornton PK, Jones PG, Alagarswamy G, Andresen J (2009) Spatial variation of
-  crop yield response to climate change in east africa. Global Environmental
+  crop yield response to climate change in {East Africa}. Global Environmental
   Change 19(1):54--65, \doi{http://dx.doi.org/10.1016/j.gloenvcha.2008.08.005},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0959378008000812}
 
 \bibitem[{Verdier et~al(2012)Verdier, Cruz, and Leach}]{Verdier2012}
 Verdier V, Cruz CV, Leach JE (2012) Controlling rice bacterial blight in
-  africa: Needs and prospects. Journal of Biotechnology 159(4):320--328,
+  {Africa}: Needs and prospects. Journal of Biotechnology 159(4):320--328,
   \doi{http://dx.doi.org/10.1016/j.jbiotec.2011.09.020},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0168165611005578}
 
@@ -282,16 +282,16 @@ Verdier V, Cruz CV, Leach JE (2012) Controlling rice bacterial blight in
   Teng}]{Willocquet2000}
 Willocquet L, Savary S, Fernandez L, Elazegui F, Teng P (2000) Development and
   evaluation of a multiple-pest, production situation specific model to
-  simulate yield losses of rice in tropical asia. Ecological Modelling 131(2 --
-  3):133--159, \doi{http://dx.doi.org/10.1016/S0304-3800(00)00271-4},
+  simulate yield losses of rice in tropical {Asia}. Ecological Modelling 131(2
+  -- 3):133--159, \doi{http://dx.doi.org/10.1016/S0304-3800(00)00271-4},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304380000002714}
 
 \bibitem[{Willocquet et~al(2002)Willocquet, Savary, Fernandez, Elazegui,
   Castilla, Zhu, Tang, Huang, Lin, Singh, and Srivastava}]{Willocquet2002}
 Willocquet L, Savary S, Fernandez L, Elazegui F, Castilla N, Zhu D, Tang Q,
   Huang S, Lin X, Singh H, Srivastava R (2002) Structure and validation of
-  ricepest, a production situation-driven, crop growth model simulating rice
-  yield response to multiple pest injuries for tropical asia. Ecological
+  {RICEPEST}, a production situation-driven, crop growth model simulating rice
+  yield response to multiple pest injuries for tropical {Asia}. Ecological
   Modelling 153(3):247--268,
   \doi{http://dx.doi.org/10.1016/S0304-3800(02)00014-5},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304380002000145}
@@ -300,11 +300,11 @@ Willocquet L, Savary S, Fernandez L, Elazegui F, Castilla N, Zhu D, Tang Q,
   Fischer, Peng, Ten, Srivastava, Singh, Zhu, and Savary}]{Willocquet2004}
 Willocquet L, Elizegui FA, Castilla N, Fernandez L, , Fischer KS, Peng S, Ten
   PS, Srivastava RK, Singh HM, Zhu D, Savary S (2004) Research priorities for
-  rice management in tropical asia: A simulation analysis of yield losses and
+  rice management in tropical {Asia}: A simulation analysis of yield losses and
   management efficiencies. Phytopathology 94:672--682
 
 \bibitem[{Yoshida(1981)}]{Yoshida}
-Yoshida S (1981) Fundamentals of Rice Science. The International Rice Research
-  Institute, PO Box 933, Metro Manila, Philippines
+Yoshida S (1981) Fundamentals of Rice Science. {The International Rice Research
+  Institute}, PO Box 933, Metro Manila, Philippines
 
 \end{thebibliography}
