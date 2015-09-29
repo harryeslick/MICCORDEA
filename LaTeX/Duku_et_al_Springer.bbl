@@ -1,4 +1,4 @@
-\begin{thebibliography}{44}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -152,6 +152,15 @@ Madden LV (2006) Botanical epidemiology: some key advances and its continuing
   \doi{10.1007/s10658-005-1229-5},
   \urlprefix\url{http://dx.doi.org/10.1007/s10658-005-1229-5}
 
+\bibitem[{Parry et~al(2004)Parry, Rosenzweig, Iglesias, Livermore, and
+  Fischer}]{Parry2004}
+Parry M, Rosenzweig C, Iglesias A, Livermore M, Fischer G (2004) Effects of
+  climate change on global food production under \{SRES\} emissions and
+  socio-economic scenarios. Global Environmental Change 14(1):53 -- 67,
+  \doi{http://dx.doi.org/10.1016/j.gloenvcha.2003.10.008},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0959378003000827},
+  climate Change
+
 \bibitem[{Pautasso et~al(2010)Pautasso, Dehnen-Schmutz, Holdenrieder,
   Pietravalle, Salama, Jeger, Lange, and Hehl-Lange}]{Pautasso2010}
 Pautasso M, Dehnen-Schmutz K, Holdenrieder O, Pietravalle S, Salama N, Jeger
@@ -159,6 +168,15 @@ Pautasso M, Dehnen-Schmutz K, Holdenrieder O, Pietravalle S, Salama N, Jeger
   implications for landscape management. Biological Reviews 85(4):729--755,
   \doi{10.1111/j.1469-185X.2010.00123.x},
   \urlprefix\url{http://dx.doi.org/10.1111/j.1469-185X.2010.00123.x}
+
+\bibitem[{Peng et~al(2004)Peng, Huang, Sheehy, Laza, Visperas, Zhong, Centeno,
+  Khush, and Cassman}]{Peng2004}
+Peng S, Huang J, Sheehy JE, Laza RC, Visperas RM, Zhong X, Centeno GS, Khush
+  GS, Cassman KG (2004) Rice yields decline with higher night temperature from
+  global warming. Proceedings of the National Academy of Sciences of the United
+  States of America 101(27):9971--9975, \doi{10.1073/pnas.0403720101},
+  \urlprefix\url{http://www.pnas.org/content/101/27/9971.abstract},
+  \eprint{http://www.pnas.org/content/101/27/9971.full.pdf}
 
 \bibitem[{Portmann et~al(2010)Portmann, Siebert, and D{\"o}ll}]{Portmann2010}
 Portmann FT, Siebert S, D{\"o}ll P (2010) Mirca2000---global monthly irrigated
