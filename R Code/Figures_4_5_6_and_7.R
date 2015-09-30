@@ -188,9 +188,8 @@ TIMESLICE <- c(rep(2030, length(p.bb.loss.a230[, 1])),
 
 p.bb.loss <- cbind(p.bb.loss, SCENARIO, TIMESLICE)
 p.bb.loss$GROUP <- as.factor(p.bb.loss$GROUP)
-              
-              
-              
+
+
 #### End data manipulation ####
 
 
