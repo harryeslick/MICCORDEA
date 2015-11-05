@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{48}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -55,10 +55,11 @@ Coakley SM, Scherm H, Chakraborty S (1999) Climate change and plant disease
 
 \bibitem[{Diagne et~al(2013)Diagne, Amovin-Assagba, Futakuchi, and
   Wopereis}]{Diagne2013}
-Diagne A, Amovin-Assagba E, Futakuchi K, Wopereis M (2013) Realizing {Africa's}
-  rice promise, {CABI}, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
-  chap Estimation of cultivated area, number of farming households and yield
-  for major rice-growing environments in {Africa}, pp 35--45
+Diagne A, Amovin-Assagba E, Futakuchi K, Wopereis M (2013) {Realizing Africa's
+  rice promise}, {CAB International}, Nosworthy Way, Wallingford, Oxfordshire
+  OX10 8DE, UK, chap Estimation of cultivated area, number of farming
+  households and yield for major rice-growing environments in {Africa}, pp
+  35--45
 
 \bibitem[{{Food and Agriculture Organization of the United
   Nations}(2015)}]{FAOCropCalendar}
@@ -84,6 +85,13 @@ Geng S, de~Vries FWP, Supit I (1986) A simple method for generating daily
   rainfall data. Agricultural and Forest Meteorology 36(4):363--376,
   \doi{http://dx.doi.org/10.1016/0168-1923(86)90014-6},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/0168192386900146}
+
+\bibitem[{Haefele et~al(2013)Haefele, Saito, N'Diaye, Mussgnug, Nelson, and
+  Wopereis}]{Haefele2013}
+Haefele SM, Saito K, N'Diaye KM, Mussgnug F, Nelson A, Wopereis MCS (2013)
+  {Realizing Africa's rice promise}, {CAB International}, Nosworthy Way,
+  Wallingford, Oxfordshire OX10 8DE, UK, chap Increasing Productivity Through
+  Improved Nutrient Use in Africa, pp 205--264
 
 \bibitem[{Hijmans(2014)}]{Hijmans2014}
 Hijmans RJ (2014) raster: Geographic data analysis and modeling.
@@ -152,6 +160,11 @@ Madden LV (2006) Botanical epidemiology: some key advances and its continuing
   \doi{10.1007/s10658-005-1229-5},
   \urlprefix\url{http://dx.doi.org/10.1007/s10658-005-1229-5}
 
+\bibitem[{Meertens et~al(1999)Meertens, Ndege, and Lupeja}]{Meertens1999}
+Meertens H, Ndege L, Lupeja P (1999) {The cultivation of rainfed, lowland rice
+  in Sukumaland, Tanzania}. {Agriculture, Ecosystems \& Environment} 76(1):31
+  -- 45, \doi{http://dx.doi.org/10.1016/S0167-8809(99)00073-0}
+
 \bibitem[{Parry et~al(2004)Parry, Rosenzweig, Iglesias, Livermore, and
   Fischer}]{Parry2004}
 Parry M, Rosenzweig C, Iglesias A, Livermore M, Fischer G (2004) Effects of
@@ -205,10 +218,10 @@ Rowhani P, Lobell DB, Linderman M, Ramankutty N (2011) Climate variability and
 \bibitem[{Saito et~al(2013)Saito, Nelson, Zwart, Niang, Sow, Yoshida, and
   Wopereis}]{Saito2013}
 Saito K, Nelson A, Zwart S, Niang A, Sow A, Yoshida H, Wopereis M (2013)
-  Realizing {Africa's} rice promise, {CABI}, Nosworthy Way, Wallingford,
-  Oxfordshire OX10 8DE, UK, chap Towards a better understanding of biophysical
-  determinants of yield gaps and potential expansion of rice area in {Africa},
-  pp 188--203
+  Realizing {Africa's} rice promise, {CAB International}, Nosworthy Way,
+  Wallingford, Oxfordshire OX10 8DE, UK, chap Towards a better understanding of
+  biophysical determinants of yield gaps and potential expansion of rice area
+  in {Africa}, pp 188--203
 
 \bibitem[{Savary et~al(2000)Savary, Willocquet, Elazegui, Teng, Van~Du, Zhu,
   Tang, Huang, Lin, Singh, and Srivastava}]{Savary2000}
@@ -238,15 +251,16 @@ Savary S, Nelson A, Willocquet L, Pangga I, Aunario J (2012) Modeling and
 \bibitem[{Seck et~al(2013)Seck, Toure, Coulibaly, Diagne, and
   Wopereis}]{Seck2013}
 Seck P, Toure A, Coulibaly J, Diagne A, Wopereis M (2013) {Realizing Africa's
-  rice promise}, {CABI}, Nosworthy Way, Wallingford, Oxfordshire OX10 8DE, UK,
-  chap {Africa's rice economy before and after the 2008 rice crisis}, pp 24--34
+  rice promise}, {CAB International}, Nosworthy Way, Wallingford, Oxfordshire
+  OX10 8DE, UK, chap {Africa's rice economy before and after the 2008 rice
+  crisis}, pp 24--34
 
 \bibitem[{Sere et~al(2013)Sere, Fargette, Abo, Wydra, Bimerew, Onasanya, and
   Akator}]{Sere2013}
 Sere Y, Fargette D, Abo M, Wydra K, Bimerew M, Onasanya A, Akator S (2013)
-  {Realizing Africa's rice promise}, {CABI}, Nosworthy Way, Wallingford,
-  Oxfordshire OX10 8DE, UK, chap {Managing the major diseases of rice in
-  Africa}, pp 213--228
+  {Realizing Africa's rice promise}, {CAB International}, Nosworthy Way,
+  Wallingford, Oxfordshire OX10 8DE, UK, chap {Managing the major diseases of
+  rice in Africa}, pp 213--228
 
 \bibitem[{Sparks et~al(2014)Sparks, Forbes, Hijmans, and Garrett}]{Sparks2014}
 Sparks AH, Forbes GA, Hijmans RJ, Garrett KA (2014) Climate change may have
