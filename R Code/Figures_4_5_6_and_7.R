@@ -245,12 +245,12 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_colour_brewer(type = "div", 
                       palette = "RdYlBu",
-                      labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
-                      expression(paste("t ", ha^"-1"))) +
+                      labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.04, 0.21", " 0.21, 0.46"),
+                      expression(paste("t ", ha ^"-1"))) +
   scale_fill_brewer(type = "div", 
                     palette = "RdYlBu",
-                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
-                    expression(paste("t ", ha^"-1"))) +
+                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.04, 0.21", " 0.21, 0.46"),
+                    expression(paste("t ", ha ^"-1"))) +
   theme_few() +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
