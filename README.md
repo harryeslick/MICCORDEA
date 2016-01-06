@@ -1,7 +1,7 @@
 MICCORDEA
 ========
 
-This repository includes the LaTeX files, R and Python for the AfricaRice and IRRI MICORDEA project for modelling effects of climate change on rice disease in Tanzania.
+This repository includes the LaTeX files, R and Python for the AfricaRice and IRRI MICCORDEA project for modelling effects of climate change on rice disease in Tanzania.
 
 The LaTeX files compile the manuscript as submitted.
 
