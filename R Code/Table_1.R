@@ -19,6 +19,7 @@ library(plyr)
 
 # Load data --------------------------------------------------------------------
 TZ <- getData("GADM", country = "TZA", level = 0, path = "../Data") # Get country outline from GADM
+
 tmp_base <- stack(list.files(path = "../Data/RICEPEST Data/base",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
 tmp_a230 <- stack(list.files(path = "../Data/RICEPEST Data/a230",
@@ -35,7 +36,7 @@ tmp_ab50 <- stack(list.files(path = "../Data/RICEPEST Data/ab50",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
 
 
-# Data manipulation ------------------------------------------------------------
+# Data reformatting ------------------------------------------------------------
 tmp_base_avg <- mean(cellStats(tmp_base, stat = "mean"))
 tmp_a230_avg <- mean(cellStats(tmp_a230, stat = "mean"))
 tmp_a250_avg <- mean(cellStats(tmp_a250, stat = "mean"))
