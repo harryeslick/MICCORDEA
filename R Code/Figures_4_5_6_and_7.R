@@ -25,97 +25,97 @@ library(Hmisc)
 
 TZ <- getData("GADM", country = "TZA", level = 0, path = "../Data")
 
-tz.bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
+tz_bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
                           pattern = "^[a,b].*bb$", full.names = TRUE))
-crs(tz.bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-tz.lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
+crs(tz_bb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+tz_lb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
                           pattern = "^[a,b].*lb$", full.names = TRUE))
-crs(tz.lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-tz.ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
+crs(tz_lb) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+tz_ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
                           pattern = "^[a,b].*att$", full.names = TRUE))
-crs(tz.ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+crs(tz_ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 
 
 # Begin data manipulation ------------------------------------------------------
 
 # Calculate the yield losses
-tz.bb.loss <- (tz.ya-tz.bb)
-tz.lb.loss <- (tz.ya-tz.lb)
+tz_bb.loss <- (tz_ya-tz_bb)
+tz_lb.loss <- (tz_ya-tz_lb)
 
 # BB
-p.bb.loss.a230 <- data.frame(rasterToPoints(tz.bb.loss[[1]]))
-p.bb.loss.a250 <- data.frame(rasterToPoints(tz.bb.loss[[2]]))
-p.bb.loss.ab30 <- data.frame(rasterToPoints(tz.bb.loss[[3]]))
-p.bb.loss.ab50 <- data.frame(rasterToPoints(tz.bb.loss[[4]]))
-p.bb.loss.b130 <- data.frame(rasterToPoints(tz.bb.loss[[5]]))
-p.bb.loss.b150 <- data.frame(rasterToPoints(tz.bb.loss[[6]]))
-p.bb.loss.base <- data.frame(rasterToPoints(tz.bb.loss[[7]]))
+p_bb_loss_a230 <- data.frame(rasterToPoints(tz_bb.loss[[1]]))
+p_bb_loss_a250 <- data.frame(rasterToPoints(tz_bb.loss[[2]]))
+p_bb_loss_ab30 <- data.frame(rasterToPoints(tz_bb.loss[[3]]))
+p_bb_loss_ab50 <- data.frame(rasterToPoints(tz_bb.loss[[4]]))
+p_bb_loss.b130 <- data.frame(rasterToPoints(tz_bb.loss[[5]]))
+p_bb_loss.b150 <- data.frame(rasterToPoints(tz_bb.loss[[6]]))
+p_bb_loss.base <- data.frame(rasterToPoints(tz_bb.loss[[7]]))
 
 # Join data frames (future and base)
-p.bb.loss.a230 <- inner_join(p.bb.loss.a230, p.bb.loss.base)
-p.bb.loss.a250 <- inner_join(p.bb.loss.a250, p.bb.loss.base)
-p.bb.loss.ab30 <- inner_join(p.bb.loss.ab30, p.bb.loss.base)
-p.bb.loss.ab50 <- inner_join(p.bb.loss.ab50, p.bb.loss.base)
-p.bb.loss.b130 <- inner_join(p.bb.loss.b130, p.bb.loss.base)
-p.bb.loss.b150 <- inner_join(p.bb.loss.b150, p.bb.loss.base)
+p_bb_loss_a230 <- inner_join(p_bb_loss_a230, p_bb_loss.base)
+p_bb_loss_a250 <- inner_join(p_bb_loss_a250, p_bb_loss.base)
+p_bb_loss_ab30 <- inner_join(p_bb_loss_ab30, p_bb_loss.base)
+p_bb_loss_ab50 <- inner_join(p_bb_loss_ab50, p_bb_loss.base)
+p_bb_loss.b130 <- inner_join(p_bb_loss.b130, p_bb_loss.base)
+p_bb_loss.b150 <- inner_join(p_bb_loss.b150, p_bb_loss.base)
 
 # Calculate change in loss
-p.bb.loss.a230 <- mutate(p.bb.loss.a230, Change = a230_att-base_att)
-p.bb.loss.a250 <- mutate(p.bb.loss.a250, Change = a250_att-base_att)
-p.bb.loss.ab30 <- mutate(p.bb.loss.ab30, Change = ab30_att-base_att)
-p.bb.loss.ab50 <- mutate(p.bb.loss.ab50, Change = ab50_att-base_att)
-p.bb.loss.b130 <- mutate(p.bb.loss.b130, Change = b130_att-base_att)
-p.bb.loss.b150 <- mutate(p.bb.loss.b150, Change = b150_att-base_att)
+p_bb_loss_a230 <- mutate(p_bb_loss_a230, Change = a230_att-base_att)
+p_bb_loss_a250 <- mutate(p_bb_loss_a250, Change = a250_att-base_att)
+p_bb_loss_ab30 <- mutate(p_bb_loss_ab30, Change = ab30_att-base_att)
+p_bb_loss_ab50 <- mutate(p_bb_loss_ab50, Change = ab50_att-base_att)
+p_bb_loss.b130 <- mutate(p_bb_loss.b130, Change = b130_att-base_att)
+p_bb_loss.b150 <- mutate(p_bb_loss.b150, Change = b150_att-base_att)
 
 # LB
 # Create data frames from rasters
-p.lb.loss.a230 <- data.frame(rasterToPoints(tz.lb.loss[[1]]))
-p.lb.loss.a250 <- data.frame(rasterToPoints(tz.lb.loss[[2]]))
-p.lb.loss.ab30 <- data.frame(rasterToPoints(tz.lb.loss[[3]]))
-p.lb.loss.ab50 <- data.frame(rasterToPoints(tz.lb.loss[[4]]))
-p.lb.loss.b130 <- data.frame(rasterToPoints(tz.lb.loss[[5]]))
-p.lb.loss.b150 <- data.frame(rasterToPoints(tz.lb.loss[[6]]))
-p.lb.loss.base <- data.frame(rasterToPoints(tz.lb.loss[[7]]))
+p_lb_loss_a230 <- data.frame(rasterToPoints(tz_lb.loss[[1]]))
+p_lb_loss_a250 <- data.frame(rasterToPoints(tz_lb.loss[[2]]))
+p_lb_loss_ab30 <- data.frame(rasterToPoints(tz_lb.loss[[3]]))
+p_lb_loss_ab50 <- data.frame(rasterToPoints(tz_lb.loss[[4]]))
+p_lb_loss.b130 <- data.frame(rasterToPoints(tz_lb.loss[[5]]))
+p_lb_loss.b150 <- data.frame(rasterToPoints(tz_lb.loss[[6]]))
+p_lb_loss.base <- data.frame(rasterToPoints(tz_lb.loss[[7]]))
 
 # Join data frames (future and base)
-p.lb.loss.a230 <- inner_join(p.lb.loss.a230, p.lb.loss.base)
-p.lb.loss.a250 <- inner_join(p.lb.loss.a250, p.lb.loss.base)
-p.lb.loss.ab30 <- inner_join(p.lb.loss.ab30, p.lb.loss.base)
-p.lb.loss.ab50 <- inner_join(p.lb.loss.ab50, p.lb.loss.base)
-p.lb.loss.b130 <- inner_join(p.lb.loss.b130, p.lb.loss.base)
-p.lb.loss.b150 <- inner_join(p.lb.loss.b150, p.lb.loss.base)
+p_lb_loss_a230 <- inner_join(p_lb_loss_a230, p_lb_loss.base)
+p_lb_loss_a250 <- inner_join(p_lb_loss_a250, p_lb_loss.base)
+p_lb_loss_ab30 <- inner_join(p_lb_loss_ab30, p_lb_loss.base)
+p_lb_loss_ab50 <- inner_join(p_lb_loss_ab50, p_lb_loss.base)
+p_lb_loss.b130 <- inner_join(p_lb_loss.b130, p_lb_loss.base)
+p_lb_loss.b150 <- inner_join(p_lb_loss.b150, p_lb_loss.base)
 
 # Calculate change in loss
-p.lb.loss.a230 <- mutate(p.lb.loss.a230, Change = a230_att-base_att)
-p.lb.loss.a250 <- mutate(p.lb.loss.a250, Change = a250_att-base_att)
-p.lb.loss.ab30 <- mutate(p.lb.loss.ab30, Change = ab30_att-base_att)
-p.lb.loss.ab50 <- mutate(p.lb.loss.ab50, Change = ab50_att-base_att)
-p.lb.loss.b130 <- mutate(p.lb.loss.b130, Change = b130_att-base_att)
-p.lb.loss.b150 <- mutate(p.lb.loss.b150, Change = b150_att-base_att)
+p_lb_loss_a230 <- mutate(p_lb_loss_a230, Change = a230_att-base_att)
+p_lb_loss_a250 <- mutate(p_lb_loss_a250, Change = a250_att-base_att)
+p_lb_loss_ab30 <- mutate(p_lb_loss_ab30, Change = ab30_att-base_att)
+p_lb_loss_ab50 <- mutate(p_lb_loss_ab50, Change = ab50_att-base_att)
+p_lb_loss.b130 <- mutate(p_lb_loss.b130, Change = b130_att-base_att)
+p_lb_loss.b150 <- mutate(p_lb_loss.b150, Change = b150_att-base_att)
 
 
 # Make appropriate column names
-names(p.bb.loss.a230) <-
-  names(p.bb.loss.a250) <-
-  names(p.bb.loss.ab30) <-
-  names(p.bb.loss.ab50) <-
-  names(p.bb.loss.b130) <-
-  names(p.bb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
-names(p.lb.loss.a230) <-
-  names(p.lb.loss.a250) <-
-  names(p.lb.loss.ab30) <-
-  names(p.lb.loss.ab50) <-
-  names(p.lb.loss.b130) <-
-  names(p.lb.loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
+names(p_bb_loss_a230) <-
+  names(p_bb_loss_a250) <-
+  names(p_bb_loss_ab30) <-
+  names(p_bb_loss_ab50) <-
+  names(p_bb_loss.b130) <-
+  names(p_bb_loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
+names(p_lb_loss_a230) <-
+  names(p_lb_loss_a250) <-
+  names(p_lb_loss_ab30) <-
+  names(p_lb_loss_ab50) <-
+  names(p_lb_loss.b130) <-
+  names(p_lb_loss.b150) <- c("Longitude", "Latitude", "Future", "Base", "MAP")
 
 # Create data frames for violin plots
-ya <- na.omit(unlist(values(tz.ya)))
+ya <- na.omit(unlist(values(tz_ya)))
 ya <- ya[, c(7, 1, 2, 3, 4, 5, 6)]
 
-bb <- na.omit(unlist(values(tz.bb.loss)))
+bb <- na.omit(unlist(values(tz_bb.loss)))
 bb <- bb[, c(7, 1, 2, 3, 4, 5, 6)]
 
-lb <- na.omit(unlist(values(tz.lb.loss)))
+lb <- na.omit(unlist(values(tz_lb.loss)))
 lb <- lb[, c(7, 1, 2, 3, 4, 5, 6)]
 
 x <- c(rep("Base 2000", length(bb[, 1])),
@@ -144,54 +144,54 @@ lb[, 1] <- factor(lb[, 1], levels = unique(as.character(lb[, 1])))
 
 
 # Cut data for mapping
-p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP,
+p_bb_loss_a230$GROUP <- as.numeric(cut(p_bb_loss_a230$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.56, by = 0.25)))
-p.bb.loss.a250$GROUP <- as.numeric(cut(p.bb.loss.a250$MAP,
+p_bb_loss_a250$GROUP <- as.numeric(cut(p_bb_loss_a250$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.56, by = 0.25)))
-p.bb.loss.ab30$GROUP <- as.numeric(cut(p.bb.loss.ab30$MAP,
+p_bb_loss_ab30$GROUP <- as.numeric(cut(p_bb_loss_ab30$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.56, by = 0.25)))
-p.bb.loss.ab50$GROUP <- as.numeric(cut(p.bb.loss.ab50$MAP,
+p_bb_loss_ab50$GROUP <- as.numeric(cut(p_bb_loss_ab50$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.56, by = 0.25)))
-p.bb.loss.b130$GROUP <- as.numeric(cut(p.bb.loss.b130$MAP,
+p_bb_loss.b130$GROUP <- as.numeric(cut(p_bb_loss.b130$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.56, by = 0.25)))
-p.bb.loss.b150$GROUP <- as.numeric(cut(p.bb.loss.b150$MAP,
+p_bb_loss.b150$GROUP <- as.numeric(cut(p_bb_loss.b150$MAP,
                                        include.lowest = TRUE,
                                        breaks = seq(-0.79, 0.56, by = 0.25)))
 
-p.bb.loss <- rbind(p.bb.loss.a230,
-                   p.bb.loss.a250,
-                   p.bb.loss.ab30,
-                   p.bb.loss.ab50,
-                   p.bb.loss.b130,
-                   p.bb.loss.b150)
-SCENARIO <- c(rep("A2", length(p.bb.loss.a230[, 1])),
-              rep("A2", length(p.bb.loss.ab30[, 1])),
-              rep("AB", length(p.bb.loss.ab30[, 1])),
-              rep("AB", length(p.bb.loss.ab50[, 1])),
-              rep("B1", length(p.bb.loss.b130[, 1])),
-              rep("B1", length(p.bb.loss.b150[, 1])))
-TIMESLICE <- c(rep(2030, length(p.bb.loss.a230[, 1])),
-               rep(2050, length(p.bb.loss.ab30[, 1])),
-               rep(2030, length(p.bb.loss.ab30[, 1])),
-               rep(2050, length(p.bb.loss.ab50[, 1])),
-               rep(2030, length(p.bb.loss.b130[, 1])),
-               rep(2050, length(p.bb.loss.b150[, 1])))
+p_bb_loss <- rbind(p_bb_loss_a230,
+                   p_bb_loss_a250,
+                   p_bb_loss_ab30,
+                   p_bb_loss_ab50,
+                   p_bb_loss.b130,
+                   p_bb_loss.b150)
+SCENARIO <- c(rep("A2", length(p_bb_loss_a230[, 1])),
+              rep("A2", length(p_bb_loss_ab30[, 1])),
+              rep("AB", length(p_bb_loss_ab30[, 1])),
+              rep("AB", length(p_bb_loss_ab50[, 1])),
+              rep("B1", length(p_bb_loss.b130[, 1])),
+              rep("B1", length(p_bb_loss.b150[, 1])))
+TIMESLICE <- c(rep(2030, length(p_bb_loss_a230[, 1])),
+               rep(2050, length(p_bb_loss_ab30[, 1])),
+               rep(2030, length(p_bb_loss_ab30[, 1])),
+               rep(2050, length(p_bb_loss_ab50[, 1])),
+               rep(2030, length(p_bb_loss.b130[, 1])),
+               rep(2050, length(p_bb_loss.b150[, 1])))
 
-p.bb.loss <- cbind(p.bb.loss, SCENARIO, TIMESLICE)
-p.bb.loss$GROUP <- as.factor(p.bb.loss$GROUP)
+p_bb_loss <- cbind(p_bb_loss, SCENARIO, TIMESLICE)
+p_bb_loss$GROUP <- as.factor(p_bb_loss$GROUP)
 
 
 # Begin data visualisation -----------------------------------------------------
 
 # Violin plots of yield loss by time slice and scenario
 # Attainable yield, Figure 4
-figure.4 <- ggplot(ya, aes(x = x, y = ya))
-figure.4 <- figure.4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+figure_4 <- ggplot(ya, aes(x = x, y = ya))
+figure_4 <- figure_4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") +
@@ -203,8 +203,8 @@ figure.4 <- figure.4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
 ggsave(filename = "Fig4.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 # LB, Figure 5
-figure.5 <- ggplot(lb, aes(x = x, y = lb))
-figure.5 <- figure.5 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+figure_5 <- ggplot(lb, aes(x = x, y = lb))
+figure_5 <- figure_5 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
@@ -217,8 +217,8 @@ figure.5 <- figure.5 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
 ggsave(filename = "Fig5.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 # BB, Figure 6
-figure.6 <- ggplot(bb, aes(x = x, y = bb))
-figure.6 <- figure.6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+figure_6 <- ggplot(bb, aes(x = x, y = bb))
+figure_6 <- figure_6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
@@ -231,7 +231,7 @@ figure.6 <- figure.6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
 ggsave(filename = "Fig6.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
 
 # Map of yield loss for BB
-figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GROUP, colour = GROUP)) +
+figure_7 <- ggplot(data = p_bb_loss, aes(y = Latitude, x = Longitude, fill = GROUP, colour = GROUP)) +
   geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_colour_brewer(type = "div",
@@ -256,12 +256,12 @@ ggsave("Fig7.eps", path = "../Latex/figures", width = 191, height = 116, units =
 
 # Table data -------------------------------------------------------------------
 
-round(summary(tz.ya), 4)
-round(summary(tz.bb.loss), 4)
-round(summary(tz.lb.loss), 4)
+round(summary(tz_ya), 4)
+round(summary(tz_bb.loss), 4)
+round(summary(tz_lb.loss), 4)
 
-cellStats(tz.ya, stat = "mean", na.rm = TRUE)
-cellStats(tz.bb.loss, stat = "mean", na.rm = TRUE)
-cellStats(tz.lb.loss, stat = "mean", na.rm = TRUE)
+cellStats(tz_ya, stat = "mean", na.rm = TRUE)
+cellStats(tz_bb.loss, stat = "mean", na.rm = TRUE)
+cellStats(tz_lb.loss, stat = "mean", na.rm = TRUE)
 
 # eos
