@@ -100,7 +100,7 @@ Hijmans RJ (2014) raster: Geographic data analysis and modeling.
 
 \bibitem[{Hijmans et~al(2000)Hijmans, Forbes, and Walker}]{Hijmans2000}
 Hijmans RJ, Forbes GA, Walker TS (2000) Estimating the global severity of
-  potato late blight with gis-linked disease forecast models. Plant Pathology
+  potato late blight with {GIS-linked} disease forecast models. Plant Pathology
   49(6):697--705, \doi{10.1046/j.1365-3059.2000.00511.x},
   \urlprefix\url{http://dx.doi.org/10.1046/j.1365-3059.2000.00511.x}
 

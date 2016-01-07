@@ -84,7 +84,7 @@ grestore
 }
 
 
-\date{Received: date / Accepted: date}
+\date{Received: 10/06/2015 / Accepted: 29/11/2015}
 % The correct dates will be entered by the editor
 
 
@@ -170,7 +170,7 @@ Rice is the most rapidly growing staple food in Africa and although rice product
     
     \subsection{Production situation}
     \label{production_situation}
-    Rice production situations have been found to directly affect the intensity of rice yield reduction for a given injury profile. That is, the farmers' practices play a large part in determining what the diseases and injuries will occur \citep{Savary2000}. For this study, production situation is defined as the combination of socioeconomic, environmental and biophysical factors excluding pests that define the attainable yield. Temperature and solar radiation were excluded from this definition because they remain unchanged across all the possible production situations in the study area. Of the approximately 950,000 ha of harvested rice area in Tanzania, over 70\% is in lowland rainfed environments \citep{Diagne2013}. In addition, about 53\ of the cultivated rice area is on very poor soils, i.e., highly weathered soils with very low nutrient availability \citep{Haefele2013}. For lowland rice areas, recommended nitrogen fertilization rates range from 60kg/ha to 120kg/ha \citep{Haefele2013}. Rice cultivars with medium water requirements are most common in Tanzania and the choice of a cultivar by farmers is strongly connected to its water requirements \citep{Meertens1999}.  Due to lack of reliable information about the spatial arrangement of production situations in the study area, the production situation was assumed to be homogeneous based on the most common production situation, lowland rainfed rice \citep{Diagne2013} (Table 1). We created a production situation based on PS3 from \citep{Willocquet2004}. A short duration cultivar, transplanted with poor water management and medium water stress and 90kg/ha nitrogen fertilization modified with the STEMP from PS4.
+    Rice production situations have been found to directly affect the intensity of rice yield reduction for a given injury profile. That is, the farmers' practices play a large part in determining what the diseases and injuries will occur \citep{Savary2000}. For this study, production situation is defined as the combination of socioeconomic, environmental and biophysical factors excluding pests that define the attainable yield. Temperature and solar radiation were excluded from this definition because they remain unchanged across all the possible production situations in the study area. Of the approximately 950,000 ha of harvested rice area in Tanzania, over 70\% is in lowland rainfed environments \citep{Diagne2013}. In addition, about 53\% of the cultivated rice area is on very poor soils, i.e., highly weathered soils with very low nutrient availability \citep{Haefele2013}. For lowland rice areas, recommended nitrogen fertilization rates range from 60kg/ha to 120kg/ha \citep{Haefele2013}. Rice cultivars with medium water requirements are most common in Tanzania and the choice of a cultivar by farmers is strongly connected to its water requirements \citep{Meertens1999}.  Due to lack of reliable information about the spatial arrangement of production situations in the study area, the production situation was assumed to be homogeneous based on the most common production situation, lowland rainfed rice \citep{Diagne2013} (Table 1). We created a production situation based on PS3 from \citep{Willocquet2004}. A short duration cultivar, transplanted with poor water management and medium water stress and 90kg/ha nitrogen fertilization modified with the STEMP from PS4.
     
     \subsection{Spatial modelling of yield loss}
     \label{modelling_yield_loss}
@@ -242,8 +242,8 @@ Scenario and Time Slice      & Countrywide Average Temperature ($^{\circ}$C) & C
     
 \section{Software, data and supplementary file availability}
 \label{software_and_data_availability}
-All code used for analysis and data used in this dataset are available from figshare,\\ http://figshare.com/articles/MICORDEA/1408501, and can also be cloned from GitHub,\\https://github.com/adamhsparks/MICORDEA. A Stella language version of the original, complete version of the RICEPEST model by the original authors, L. Willocquet and S. Savary, is available for download from The American Phytopathological Society Education Center,\\
-https://www.apsnet.org/edcenter/advanced/topics/BotanicalEpidemiology/Pages/default.aspx.
+All code and data used for analysis and data used in this dataset are available from from GitHub,\\https://github.com/adamhsparks/MICORDEA. A Stella language version of the original, complete version of the RICEPEST model by the original authors, L. Willocquet and S. Savary, is available for download from The American Phytopathological Society Education Center,\\
+https://www.apsnet.org/edcenter/advanced/topics/BotanicalEpidemiology/Pages/default.aspx. The Epirice model is available as a part of the R software package, cropsim, available for installation from R-forge, https://r-forge.r-project.org/projects/cropsim/.
 
 KML files of the change in yield losses due to bacterial leaf blight (Figure 7) and attainable yields (Figure 4) are also available in the figshare data and GitHub repository in the ``KML'' folder for further exploration and the ability to interactively explore the changes across time-slices using GoogleEarth.
 
@@ -264,51 +264,50 @@ KML files of the change in yield losses due to bacterial leaf blight (Figure 7) 
 \newpage
      \begin{figure}
      
-      \includegraphics[width = 174mm]{figures/Fig1}
-      \caption{Flowchart illustrating the loose coupling between EPIRICE, used to simulate unmanaged disease epidemics as affected by weather conditions, and RICEPEST, used to estimate yield losses due to leaf blast and bacterial leaf blight severity. Three time slices, 2000, 2030 and 2050 were examined for four climate scenarios, current or base, IPCC A1B, IPCC A2 and IPCC B1.}
+      \includegraphics[width = 174mm]{Figures/Fig1}
+      \caption{Flowchart illustrating the loose coupling between EPIRICE, used to simulate unmanaged disease epidemics as affected by weather conditions, and RICEPEST, used to estimate yield losses due to leaf blast and bacterial leaf blight severity. Three time slices, 2000, 2030 and 2050 were examined for four climate scenarios, current or base, IPCC A1B, IPCC A2 and IPCC B1}
       \label{Fig1}
     \end{figure} 
 
     % Leaf blast progress curves
     \begin{figure}
-      \includegraphics[width = 84mm]{figures/Fig2}
-      \caption{Leaf blast disease severity curves for the growing season from December to March as predicted by the EPIRICE model averaged for the whole country of Tanzania using observed and future, modelled weather data for three climate change scenarios, A1B; A2 and B1 and three time slices, 2010; 2030 and 2050. The EPIRICE model predicts the area under the disease progress curve (AUDPC) of unmanaged disease epidemics of a susceptible rice variety using temperature, relative humidity and precipitation data.}
+      \includegraphics[width = 84mm]{Figures/Fig2}
+      \caption{Leaf blast disease severity curves for the growing season from December to March as predicted by the EPIRICE model averaged for the whole country of Tanzania using observed and future, modelled weather data for three climate change scenarios, A1B; A2 and B1 and three time slices, 2000; 2030 and 2050. The EPIRICE model predicts the area under the disease progress curve (AUDPC) of unmanaged disease epidemics of a susceptible rice variety using temperature, relative humidity and precipitation data}
         \label{Fig2}
     \end{figure}
     
         % bacterial leaf blight progress curves
     \begin{figure}
-      \includegraphics[width = 84mm]{figures/Fig3}
-      \caption{Bacterial leaf blight disease severity curves for the growing season from December to March as predicted by the EPIRICE model averaged for the whole country of Tanzania using observed and future, modelled weather data for three climate change scenarios, A1B; A2 and B1 and three time slices, 2000; 2030 and 2050. The EPIRICE model predicts the area under the disease progress curve (AUDPC) of unmanaged disease epidemics of a susceptible rice variety using temperature, relative humidity and precipitation data.}
+      \includegraphics[width = 84mm]{Figures/Fig3}
+      \caption{Bacterial leaf blight disease severity curves for the growing season from December to March as predicted by the EPIRICE model averaged for the whole country of Tanzania using observed and future, modelled weather data for three climate change scenarios, A1B; A2 and B1 and three time slices, 2000; 2030 and 2050. The EPIRICE model predicts the area under the disease progress curve (AUDPC) of unmanaged disease epidemics of a susceptible rice variety using temperature, relative humidity and precipitation data}
         \label{Fig3}
     \end{figure}
     
         % Attainable yield loss violin plots
     \begin{figure}
-      \includegraphics[width = 84mm]{figures/Fig4}
-      \caption{Predicted attainable yield (i.e., the yield in the absence of yield reducing factors) in tons per hectare for four time slices and three future emission scenarios from the RICEPEST model. RICEPEST is a simple empirical growth model that simulates the growth and yield of tropical rice using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices.}
+      \includegraphics[width = 84mm]{Figures/Fig4}
+      \caption{Predicted attainable yield (i.e., the yield in the absence of yield reducing factors) in tons per hectare for four time slices and three future emission scenarios from the RICEPEST model. RICEPEST is a simple empirical growth model that simulates the growth and yield of tropical rice using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices}
       \label{Fig4}
     \end{figure}
 
     % Leaf blast yield loss violin plots
     \begin{figure}
       \includegraphics[width = 84mm]{Figures/Fig5}
-      \caption{Predicted yield losses due to rice leaf blast disease, given in tons per hectare for four time slices and three IPCC future emission scenarios from the RICEPEST model. RICEPEST is a simple empirical growth model that simulates the growth, yield and yield losses due to pests and diseases of tropical rice using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices and disease severity as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of unmanaged disease of susceptible rice varieties given temperature, relative humidity and precipitation.}
+      \caption{Predicted yield losses due to rice leaf blast disease, given in tons per hectare for four time slices and three IPCC future emission scenarios from the RICEPEST model. RICEPEST is a simple empirical growth model that simulates the growth, yield and yield losses due to pests and diseases of tropical rice using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices and disease severity as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of unmanaged disease of susceptible rice varieties given temperature, relative humidity and precipitation}
       \label{Fig5}
     \end{figure}
 
     % bacterial leaf blight yield loss violin plots
     \begin{figure}
       \includegraphics[width = 84mm]{Figures/Fig6}
-      \caption{Predicted yield losses due to rice bacterial leaf blight disease, given in tons per hectare for four time slices and three IPCC future emission scenarios from the RICEPEST model. RICEPEST is a simple empirical growth model that simulates the growth, yield and yield losses due to pests and diseases of tropical rice based using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices and disease severity as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of unmanaged disease of susceptible rice varieties given temperature, relative humidity and precipitation.}
+      \caption{Predicted yield losses due to rice bacterial leaf blight disease, given in tons per hectare for four time slices and three IPCC future emission scenarios from the RICEPEST model. RICEPEST is a simple empirical growth model that simulates the growth, yield and yield losses due to pests and diseases of tropical rice based using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices and disease severity as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of unmanaged disease of susceptible rice varieties given temperature, relative humidity and precipitation}
       \label{Fig6}
     \end{figure}
     
     % Bacterial leaf blight yield loss change maps
-    
     \begin{figure}
       \includegraphics[width = 174mm]{Figures/Fig7}
-      \caption{Changes in yield losses due to bacterial leaf blight disease expressed as tons per for two future time slices and three IPCC emission scenarios as predicted by the RICEPEST model. The change in yield is calculated as the difference of the future yield and a base time-slice, 2000 representing 1991 to 2010. Negative values indicate a higher yield loss in the future due to increased bacterial leaf blight disease severity. Positive values indicate lower yield losses in future due to decreased bacterial leaf blight disease severity. RICEPEST is a simple empirical growth model that simulates the growth, yield and yield losses due to pests and diseases of tropical rice based using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices and disease severity as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of unmanaged disease of susceptible rice varieties given temperature, relative humidity and precipitation.}
+      \caption{Changes in yield losses due to bacterial leaf blight disease expressed as tons per hectare for two future time slices and three IPCC emission scenarios as predicted by the RICEPEST model. The change in yield loss is calculated as the difference of the future yield losses and a base time-slice, 2000 representing 1991 to 2010, yield losses. Negative values indicate lower yield losses (yield gains) while positive values indicate higher yield losses. RICEPEST is a simple empirical growth model that simulates the growth, yield and yield losses due to pests and diseases of tropical rice based using temperature and radiation inputs and predetermined input levels that include irrigation and fertilization practices and disease severity as predicted by the EPIRICE model. The EPIRICE model predicts disease severity of unmanaged disease of susceptible rice varieties given temperature, relative humidity and precipitation}
       \label{Fig7}
     \end{figure}
 

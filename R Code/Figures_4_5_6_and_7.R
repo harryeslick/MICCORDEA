@@ -132,15 +132,16 @@ scenarios <- c(rep("Base", length(bb[, 1])),
 
 ya <- as.vector(ya)
 ya <- data.frame(x, scenarios, ya)
-ya[, 1] <- factor(ya[, 1], as.character(ya[, 1]))
+ya[, 1] <- factor(ya[, 1], levels = unique(as.character(ya[, 1])))
 
 bb <- as.vector(bb)
 bb <- data.frame(x, scenarios, bb)
-bb[, 1] <- factor(bb[, 1], as.character(bb[, 1]))
+bb[, 1] <- factor(bb[, 1], levels = unique(as.character(bb[, 1])))
 
 lb <- as.vector(lb)
 lb <- data.frame(x, scenarios, lb)
-lb[, 1] <- factor(lb[, 1], as.character(lb[, 1]))
+lb[, 1] <- factor(lb[, 1], levels = unique(as.character(lb[, 1])))
+
 
 # Cut data for mapping
 p.bb.loss.a230$GROUP <- as.numeric(cut(p.bb.loss.a230$MAP,
@@ -169,11 +170,11 @@ p.bb.loss <- rbind(p.bb.loss.a230,
                    p.bb.loss.b130,
                    p.bb.loss.b150)
 SCENARIO <- c(rep("A2", length(p.bb.loss.a230[, 1])),
-               rep("A2", length(p.bb.loss.ab30[, 1])),
-               rep("AB", length(p.bb.loss.ab30[, 1])),
-               rep("AB", length(p.bb.loss.ab50[, 1])),
-               rep("B1", length(p.bb.loss.b130[, 1])),
-               rep("B1", length(p.bb.loss.b150[, 1])))
+              rep("A2", length(p.bb.loss.ab30[, 1])),
+              rep("AB", length(p.bb.loss.ab30[, 1])),
+              rep("AB", length(p.bb.loss.ab50[, 1])),
+              rep("B1", length(p.bb.loss.b130[, 1])),
+              rep("B1", length(p.bb.loss.b150[, 1])))
 TIMESLICE <- c(rep(2030, length(p.bb.loss.a230[, 1])),
                rep(2050, length(p.bb.loss.ab30[, 1])),
                rep(2030, length(p.bb.loss.ab30[, 1])),
@@ -237,10 +238,11 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
                       palette = "RdYlBu",
                       labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
                       expression(paste("t ", ha^"-1"))) +
+
   scale_fill_brewer(type = "div",
                     palette = "RdYlBu",
-                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
-                    expression(paste("t ", ha^"-1"))) +
+                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.04, 0.21", " 0.21, 0.46"),
+                    expression(paste("t ", ha ^"-1"))) +
   theme_few() +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
@@ -250,7 +252,7 @@ figure.7 <- ggplot(data = p.bb.loss, aes(y = Latitude, x = Longitude, fill = GRO
   facet_grid(TIMESLICE ~ SCENARIO) +
   coord_map("cylindrical") # use cylindrical projection at low latitude # use cylindrical projection at low latitude
 
-  ggsave("Fig7.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
+ggsave("Fig7.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
 
 # Table data -------------------------------------------------------------------
 
