@@ -14,7 +14,7 @@ download_RICEPEST_output <- function(){
 
   if(length(list.files(path = "../Data/RICEPEST Modified GPS3 Output")) != 73){
     download.file("https://ndownloader.figshare.com/files/3662088",
-                  tf, method = "wb")
+                  tf, mode = "wb")
     unzip(tf, exdir = "../Data", overwrite = TRUE)
   }
 }
