@@ -2,7 +2,7 @@
 # title         : Table_1.R;
 # purpose       : extract temperature values for Table 1;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, May 2015;
+# last update   : in Los Baños, Philippines, Jan 2016;
 # inputs        : Generated weather files from C. Duku;
 # outputs       : Tables of temperatures at different time slices;
 # remarks 1     : ;
@@ -14,29 +14,33 @@ library(raster)
 library(ggplot2)
 library(grid)
 library(reshape2)
-library(plyr)
+library(dplyr)
 
+source("Functions/Get_Data.R")
 
 # Load data --------------------------------------------------------------------
-TZ <- getData("GADM", country = "TZA", level = 0, path = "../Data") # Get country outline from GADM
 
-tmp_base <- stack(list.files(path = "../Data/RICEPEST Data/base",
+download_data() # get data from Figshare
+
+TZ <- getData("GADM", country = "TZA", level = 0, path = "../Data")
+
+tmp_base <- stack(list.files(path = "../Data/base",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp_a230 <- stack(list.files(path = "../Data/RICEPEST Data/a230",
+tmp_a230 <- stack(list.files(path = "../Data/a230",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp_a250 <- stack(list.files(path = "../Data/RICEPEST Data/a250",
+tmp_a250 <- stack(list.files(path = "../Data/a250",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp_b130 <- stack(list.files(path = "../Data/RICEPEST Data/b130",
+tmp_b130 <- stack(list.files(path = "../Data/b130",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp_b150 <- stack(list.files(path = "../Data/RICEPEST Data/b150",
+tmp_b150 <- stack(list.files(path = "../Data/b150",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp_ab30 <- stack(list.files(path = "../Data/RICEPEST Data/ab30",
+tmp_ab30 <- stack(list.files(path = "../Data/ab30",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
-tmp_ab50 <- stack(list.files(path = "../Data/RICEPEST Data/ab50",
+tmp_ab50 <- stack(list.files(path = "../Data/ab50",
                              pattern = "tmean[[:graph:]]{6}$", full.names = TRUE))
 
 
-# Data reformatting ------------------------------------------------------------
+# Data munging----- ------------------------------------------------------------
 tmp_base_avg <- mean(cellStats(tmp_base, stat = "mean"))
 tmp_a230_avg <- mean(cellStats(tmp_a230, stat = "mean"))
 tmp_a250_avg <- mean(cellStats(tmp_a250, stat = "mean"))
@@ -73,6 +77,6 @@ names(table_1) <- c("Base",
                         "b130 Increase",
                         "b150 Increase")
 
+# Display final values for table 1 in final publication ------------------------
 table_1
-
 # eos

@@ -15,8 +15,10 @@ library(raster)
 library(plotKML)
 library(RColorBrewer)
 
-
+source("Functions/Get_Data.R")
 # Load data --------------------------------------------------------------------
+
+download_data()
 
 #load Raster files and set CRS
 tz_bb <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
@@ -30,18 +32,18 @@ tz_ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
 crs(tz_ya) <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
 
 
-# Data manipulation ------------------------------------------------------------
+# Data munging ---- ------------------------------------------------------------
 
-#caclulate loss due to BB
+# caclulate loss due to BB
 tz_bb_loss <- (tz_ya-tz_bb)
 
-#calculate change
+# calculate change in yield losses to blight
 for(i in 1:6){
   change <- tz_bb_loss[[i]]-tz_bb_loss[[7]]
   if(i == 1){tz_bb_change <- change} else tz_bb_change <- stack(tz_bb_change, change)
 }
 
-#convert values to classes and cut for plotting
+# convert values to classes and cut for plotting
 bb_breaks <- seq(-0.79, 0.71, by = 0.3)
 ya_breaks <- seq(0, 7)
 

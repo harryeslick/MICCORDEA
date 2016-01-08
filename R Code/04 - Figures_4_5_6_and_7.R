@@ -3,8 +3,10 @@
 # purpose       : generate figures 4, 5, 6 and 7 for publication;
 # producer      : prepared by A. Sparks;
 # last update   : IRRI, Los Baños, Jan 2016;
-# inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
-# outputs       : Histograms and maps of yield losses for base/2030/2050 a2/b1/ab scenario;
+# inputs        : ESRI files of yield losses and attainable yield for Tanzania
+#               : calculated using RICEPEST;
+# outputs       : Histograms, maps and tabular data of yield losses for
+#               : base/2030/2050 a2/b1/ab scenarios;
 # remarks 1     : ;
 # Licence:      : GPL2;
 ################################################################################
@@ -12,16 +14,19 @@
 # Libraries --------------------------------------------------------------------
 library(raster)
 library(ggplot2)
-library(reshape)
+library(reshape2)
 library(extrafont)
-library(maps)
 library(dplyr)
 library(wesanderson)
 library(ggthemes)
 library(scales)
 library(Hmisc)
 
-# Data import ------------------------------------------------------------------
+source("Functions/Get_Data.R")
+
+# Load data-- ------------------------------------------------------------------
+
+download_data() # download output from Figshare
 
 TZ <- getData("GADM", country = "TZA", level = 0, path = "../Data")
 
@@ -36,7 +41,7 @@ tz_ya <- stack(list.files(path = "../Data/RICEPEST Modified GPS3 Output",
 crs(tz_ya) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 
 
-# Begin data manipulation ------------------------------------------------------
+# Data munging -----------------------------------------------------------------
 
 # Calculate the yield losses
 tz_bb.loss <- (tz_ya-tz_bb)
@@ -204,7 +209,8 @@ ggsave(filename = "Fig4.eps", path = "../LaTeX/Figures/", width = 140, height = 
 
 # LB, Figure 5
 figure_5 <- ggplot(lb, aes(x = x, y = lb))
-figure_5 <- figure_5 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+figure_5 <- figure_5 +
+  geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
@@ -218,7 +224,8 @@ ggsave(filename = "Fig5.eps", path = "../LaTeX/Figures/", width = 140, height = 
 
 # BB, Figure 6
 figure_6 <- ggplot(bb, aes(x = x, y = bb))
-figure_6 <- figure_6 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+figure_6 <- figure_6 +
+  geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield loss (tons/ha)") +
@@ -250,7 +257,7 @@ figure_7 <- ggplot(data = p_bb_loss, aes(y = Latitude, x = Longitude, fill = GRO
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   coord_equal() +
   facet_grid(TIMESLICE ~ SCENARIO) +
-  coord_map("cylindrical") # use cylindrical projection at low latitude # use cylindrical projection at low latitude
+  coord_map("cylindrical") # use cylindrical projection at low latitude
 
 ggsave("Fig7.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
 

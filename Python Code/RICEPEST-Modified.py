@@ -8,8 +8,9 @@
 import arcpy
 import sys
 import os
+import urllib
 
-arcpy.AddMessage("\n            NAME:             RICEPEST Spatial Model")                                                   
+arcpy.AddMessage("\n            NAME:             RICEPEST Spatial Model")
 arcpy.AddMessage("              DEVELOPED BY:     Confidence Duku (AfricaRice), Adam Sparks (IRRI) and Sander Zwart(AfricaRice)")
 arcpy.AddMessage("              BASED ON WORK BY: Serge Savary and Laetitia Willocquet (IRRI)")
 arcpy.AddMessage("              REQUIREMENTS:     ArcGIS Spatial Analyst Extension")
@@ -21,7 +22,10 @@ arcpy.AddMessage("\nSetting Environment Variables")
 scriptPath = sys.argv[0]
 PathName = os.path.dirname(scriptPath)
 
-#Setting environment variables; extent of Indonesia from GADM
+#Download data from Figshare
+urllib.urlretrieve ("", "")
+
+#Setting environment variables; extent of Tanzania from GADM; Modify as necessary
 arcpy.env.extent = "MAXOF"
 arcpy.env.scratchWorkspace = PathName + "\\Output"
 arcpy.env.cellSize = "MINOF"
@@ -35,7 +39,7 @@ path1 = PathName + "\\Yields\\"
 analysisType = "Actual Yield"
 cropEst = "Transplanted"
 TransplantDays = 20
-prodSituation = "PS3"
+prodSituation = "PS4"
 
 arcpy.AddMessage("RUNNING, " + prodSituation + " ," + analysisType)
 arcpy.CheckOutExtension("Spatial")
@@ -59,7 +63,7 @@ if prodSituation == "PS1":
     jt = 0
     rt = 0
     kt = 0
-    
+
     #check if rice variety is direct seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("\nCalculating Sum of Initial Temperature for Direct Seeded Systems")
@@ -83,7 +87,7 @@ if prodSituation == "PS1":
                 out2.save(path + name)
     elif cropEst == "Transplanted":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Transplanted Systems\n")
-        for raster in IniTemp:            
+        for raster in IniTemp:
             test = 0
             where1 = "\"VALUE\" < %d" % test
             if jt == 0:
@@ -123,14 +127,14 @@ if prodSituation == "PS1":
                 name = "out23_" + ty
                 name1 = "sumtr"
                 out23.save(path + name)
-        
+
         out22 = 0.785 * out4
         out22.save(path + "tshock")
-        
+
         out2 = out23 - out22
         out2.save(path + name1)
-        
-            
+
+
     #calculating sum of temp above TBASE
 
     i = 0
@@ -143,7 +147,7 @@ if prodSituation == "PS1":
         ft = str(bn)
         arcpy.AddMessage("SIMULATION AT " + ft + " DACE")
         arcpy.AddMessage("  Calculating Sum of Temperature above TBASE")
-        if i == 0:    
+        if i == 0:
             out4 = arcpy.sa.Minus(temp, TBASE)
             out5 = arcpy.sa.Con(out4, 0, out4, where1)
             co_sumt = out5 + out2
@@ -159,7 +163,7 @@ if prodSituation == "PS1":
             ty = str(i)
             name = "sumt" + ty
             co_sumt.save(path + name)
-                
+
         def sla():
             arcpy.AddMessage("  Calculating Specific Leaf Area")
             #calculating SLA
@@ -181,7 +185,7 @@ if prodSituation == "PS1":
         trysevl = co_sumt
         oneRaster = arcpy.sa.Divide(trysevl, trysevl)
         Sevl = arcpy.sa.Times(oneRaster, mysevl)
-        
+
         def SHB ():
             #The first Damage mechanism due to Sheath Blight
             prshbl = arcpy.sa.Times(0.00076, Sevl)
@@ -200,7 +204,7 @@ if prodSituation == "PS1":
         #Damage mechanism due to Brown Spot
         mybsdm = 0
         bsdm = arcpy.sa.Times(oneRaster, mybsdm)
-        
+
         def BS (beta=6.3):
             pbsrf = arcpy.sa.Divide(bsdm, 100)
             pbsrf1 = arcpy.sa.Minus(1, pbsrf)
@@ -211,7 +215,7 @@ if prodSituation == "PS1":
         if analysisType == "Attainable Yield":
             blight = 0
             blbrf = arcpy.sa.Minus(oneRaster, blight)
-            
+
         elif analysisType == "Actual Yield":
             arcpy.AddMessage("  Calculating Reduction factor for BLIGHT")
             for blight in BlightGDB:
@@ -222,7 +226,7 @@ if prodSituation == "PS1":
                     break
             else:
                 blbrf = 1
-                
+
         #Damage mechanism due to Rice Leaf Blast
         if analysisType == "Attainable Yield":
             blast = 0
@@ -238,12 +242,12 @@ if prodSituation == "PS1":
                     rlbrf = arcpy.sa.Power(prlbrf2, 3)
                     break
             else:
-                rlbrf = 1               
-            
+                rlbrf = 1
+
         #Damage mechanism due to Sheath Rot
         myshrdm = 0
         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
+
         def SHR ():
             shrrf = arcpy.sa.Minus(1, shrdm)
             #shrrf = arcpy.sa.Times(pshrrf, Days)
@@ -252,7 +256,7 @@ if prodSituation == "PS1":
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
-       
+
         def WH ():
             whrf = arcpy.sa.Minus(1, whdm)
             #whrf = arcpy.sa.Times(pwhrf, Days)
@@ -261,7 +265,7 @@ if prodSituation == "PS1":
         #Damage mechanism due to Weeds
         myweeddm = 0
         weeddm = arcpy.sa.Times(oneRaster, myweeddm)
-        
+
         def WEEDS ():
             prfwd = arcpy.sa.Times(weeddm, -0.003)
             prfwd1 = arcpy.sa.Exp(prfwd)
@@ -274,7 +278,7 @@ if prodSituation == "PS1":
             arcpy.AddMessage("  Calculating Leaf Area Index")
             thisSLA = sla()
             this_shb1 = SHB()
-            this_shbrf = this_shb1[1]       
+            this_shbrf = this_shb1[1]
             this_bsrf = BS()
 
             if i == 1:
@@ -295,7 +299,7 @@ if prodSituation == "PS1":
                 this_RAD = rad
                 break
 
-     
+
         #Calculating the Rate of Growth and the Pool of assimilates
         def POOL (k=-0.6):
             arcpy.AddMessage("  Calculating Pool of assimilates")
@@ -308,7 +312,7 @@ if prodSituation == "PS1":
             pRG3 = arcpy.sa.Minus(1, pRG2)
             pRG4 = arcpy.sa.Times(pRG3, this_RAD)
             pRG5 = arcpy.sa.Times(pRG4, RUE)
-            
+
             #Calculating the rate of growth after treatment with Weeds
             this_weedrf = WEEDS()
             RG = arcpy.sa.Times(pRG5, this_weedrf)
@@ -317,7 +321,7 @@ if prodSituation == "PS1":
             name = "pool" + ty
             RG.save(path + name)
             return RG
-        
+
         arcpy.AddMessage("  Calculating coefficients of partitioning")
         #Calculating the coefficient of partitioning of leaves relative to DVS
         def COPARTL ():
@@ -327,16 +331,16 @@ if prodSituation == "PS1":
             where07 = "\"VALUE\" <= %d" % sumt07
             copartl = arcpy.sa.Con(co_sumt, 0.55, (arcpy.sa.Con(co_sumt, 0.45, 0, where07)), where0)
             return copartl
-        
+
         #Calculating the coefficient of partitioning of roots relative to DVS
         def COPARTR ():
             sumt00 = (-435 * (1**2))+(2755 * 1)-2320
             sumt08 = (-435 * (1.8**2))+(2755 * 1.8)-2320
             where0 = "\"VALUE\" <= %d" % sumt00
-            where08 = "\"VALUE\" < %d" % sumt08  
+            where08 = "\"VALUE\" < %d" % sumt08
             copartr = arcpy.sa.Con(co_sumt, 0.3, arcpy.sa.Con(co_sumt, 0.1, 0, where08), where0)
             return copartr
-        
+
         #Calculating the coefficient of partitioning of panicles relative to DVS
         def COPARTP ():
             sumt075 = (-435 * (1.75**2))+(2755 * 1.75)-2320
@@ -349,7 +353,7 @@ if prodSituation == "PS1":
         #Calculating the coefficient of partitioning of stems relative to DVS
         this_copartp = COPARTP ()
         this_copartl = COPARTL ()
-        def COPARTST ():    
+        def COPARTST ():
             pr_copartst = arcpy.sa.Minus(this_copartl, this_copartp)
             copartst = arcpy.sa.Minus(1, pr_copartst)
             return copartst
@@ -365,18 +369,18 @@ if prodSituation == "PS1":
             this = arcpy.sa.Minus(1, this_copartr)
             pr_partl = arcpy.sa.Times(this_POOL, this_copartl)
             partl = arcpy.sa.Times(pr_partl, this)
-            
+
             #Calculate the partitioning of assimilates to panicles
             pr_partp = arcpy.sa.Times(this_POOL, this_copartp)
             partp = arcpy.sa.Times(pr_partp, this)
-            
+
             #Calculate the partitioning of assimilates to stems
             pr_partst = arcpy.sa.Times(this_POOL, this_copartst)
             partst = arcpy.sa.Times(pr_partst, this)
-            
+
             #Calculate the partitioning of assimilates to roots
             partr = arcpy.sa.Times(this_POOL, this_copartr)
-            
+
             return[partl, partp, partst, partr]
 
         #Redistribution of reserves accumulated in the stems
@@ -409,12 +413,12 @@ if prodSituation == "PS1":
         this_rrsenl = RRSENL()
         this_shb = SHB()
         this_trshbl = this_shb[0]
-        
+
         arcpy.AddMessage("  Calculating the dry weight of organs\n")
 
         #Calculate the increase in dry weight for panicles
         ppanw1 = arcpy.sa.Plus(this_rdist, this_partp)
-           
+
         #Calculating the  dry weight of panicles after Sheath Rot infection
         this_shrrf = SHR()
         ppanw2 = arcpy.sa.Times(ppanw1, this_shrrf)
@@ -422,18 +426,18 @@ if prodSituation == "PS1":
         #Calculating the dry weight of panicles after Sheath Rot and White Head infections
         this_whrf = WH()
         ppanw3 = arcpy.sa.Times(ppanw2, this_whrf)
-        
-        #Calculate the increase in dry weight for stems   
-        pstemw = arcpy.sa.Minus(this_partst, this_rdist)           
-        
+
+        #Calculate the increase in dry weight for stems
+        pstemw = arcpy.sa.Minus(this_partst, this_rdist)
+
         #Calculate the increase in dry weight in leaves
         if i == 1:
             rsenl = arcpy.sa.Times(this_rrsenl, LEAFW)
         else:
             rsenl = arcpy.sa.Times(this_rrsenl, thisLEAFW)
-        
+
         pLEAFW = arcpy.sa.Minus(this_partl, rsenl)
-        
+
         #Calculating the leaf dry weight after treatment with Sheath Blight DM 1a
         pleafw2 = arcpy.sa.Minus(pLEAFW, this_trshbl)
 
@@ -453,7 +457,7 @@ if prodSituation == "PS1":
             ty = str(i)
             name = "leafw" + ty
             thisLEAFW.save(path + name)
-       
+
     output =  path1 + "Yield_PS1"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
@@ -470,7 +474,7 @@ elif prodSituation == "PS2":
     jt = 0
     rt = 0
     kt = 0
-    
+
     #check if rice variety is directed seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
@@ -494,7 +498,7 @@ elif prodSituation == "PS2":
                 out2.save(path + name)
     elif cropEst == "Transplanted":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Transplanted Systems\n")
-        for raster in IniTemp:            
+        for raster in IniTemp:
             test = 0
             where1 = "\"VALUE\" < %d" % test
             if jt == 0:
@@ -534,14 +538,14 @@ elif prodSituation == "PS2":
                 name = "out23_" + ty
                 name1 = "sumtr"
                 out23.save(path + name)
-        
+
         out22 = 0.785 * out4
         out22.save(path + "tschock")
-        
+
         out2 = out23 - out22
         out2.save(path + name1)
-        
-            
+
+
     #calculating sum of temp above TBASE
 
     i = 0
@@ -554,7 +558,7 @@ elif prodSituation == "PS2":
         ft = str(bn)
         arcpy.AddMessage("SIMULATION AT " + ft + " DACE")
         arcpy.AddMessage("  Calculating Sum of Temperature above TBASE")
-        if i == 0:    
+        if i == 0:
             out4 = arcpy.sa.Minus(temp, TBASE)
             out5 = arcpy.sa.Con(out4, 0, out4, where1)
             co_sumt = out5 + out2
@@ -570,7 +574,7 @@ elif prodSituation == "PS2":
             ty = str(i)
             name = "sumt" + ty
             co_sumt.save(path + name)
-                
+
         def sla():
             arcpy.AddMessage("  Calculating Specific Leaf Area")
             #calculating SLA
@@ -592,7 +596,7 @@ elif prodSituation == "PS2":
         trysevl = co_sumt
         oneRaster = arcpy.sa.Divide(trysevl, trysevl)
         Sevl = arcpy.sa.Times(oneRaster, mysevl)
-        
+
         def SHB ():
             #The first Damage mechanism due to Sheath Blight
             prshbl = arcpy.sa.Times(0.00076, Sevl)
@@ -611,7 +615,7 @@ elif prodSituation == "PS2":
         #Damage mechanism due to Brown Spot
         mybsdm = 0
         bsdm = arcpy.sa.Times(oneRaster, mybsdm)
-        
+
         def BS (beta=6.3):
             pbsrf = arcpy.sa.Divide(bsdm, 100)
             pbsrf1 = arcpy.sa.Minus(1, pbsrf)
@@ -622,7 +626,7 @@ elif prodSituation == "PS2":
         if analysisType == "Attainable Yield":
             blight = 0
             blbrf = arcpy.sa.Minus(oneRaster, blight)
-            
+
         elif analysisType == "Actual Yield":
             arcpy.AddMessage("  Calculating Reduction factor for BLIGHT")
             for blight in BlightGDB:
@@ -633,7 +637,7 @@ elif prodSituation == "PS2":
                     break
             else:
                 blbrf = 1
-                
+
         #Damage mechanism due to Rice Leaf Blast
         if analysisType == "Attainable Yield":
             blast = 0
@@ -649,12 +653,12 @@ elif prodSituation == "PS2":
                     rlbrf = arcpy.sa.Power(prlbrf2, 3)
                     break
             else:
-                rlbrf = 1               
-            
+                rlbrf = 1
+
         #Damage mechanism due to Sheath Rot
         myshrdm = 0
         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
+
         def SHR ():
             shrrf = arcpy.sa.Minus(1, shrdm)
             #shrrf = arcpy.sa.Times(pshrrf, Days)
@@ -663,7 +667,7 @@ elif prodSituation == "PS2":
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
-       
+
         def WH ():
             whrf = arcpy.sa.Minus(1, whdm)
             #whrf = arcpy.sa.Times(pwhrf, Days)
@@ -672,7 +676,7 @@ elif prodSituation == "PS2":
         #Damage mechanism due to Weeds
         myweeddm = 0
         weeddm = arcpy.sa.Times(oneRaster, myweeddm)
-        
+
         def WEEDS ():
             prfwd = arcpy.sa.Times(weeddm, -0.003)
             prfwd1 = arcpy.sa.Exp(prfwd)
@@ -685,7 +689,7 @@ elif prodSituation == "PS2":
             arcpy.AddMessage("  Calculating Leaf Area Index")
             thisSLA = sla()
             this_shb1 = SHB()
-            this_shbrf = this_shb1[1]       
+            this_shbrf = this_shb1[1]
             this_bsrf = BS()
 
             if i == 1:
@@ -698,14 +702,14 @@ elif prodSituation == "PS2":
             pLAI3 = arcpy.sa.Times(this_shbrf, pLAI2)
             LAI = arcpy.sa.Times(this_bsrf, pLAI3)
             return LAI
-        
+
         #Calculating actual radiation
         for rad in RadGDB:
             radDate = rad[3:]
             if tempDate == radDate:
                 this_RAD = rad
                 break
-     
+
 
         #Calculating the Rate of Growth and the Pool of assimilates
         def POOL (k=-0.6):
@@ -718,7 +722,7 @@ elif prodSituation == "PS2":
             pRG3 = arcpy.sa.Minus(1, pRG2)
             pRG4 = arcpy.sa.Times(pRG3, this_RAD)
             pRG5 = arcpy.sa.Times(pRG4, RUE)
-            
+
             #Calculating the rate of growth after treatment with Weeds
             this_weedrf = WEEDS()
             RG = arcpy.sa.Times(pRG5, this_weedrf)
@@ -729,7 +733,7 @@ elif prodSituation == "PS2":
             RG.save(path + name)
             return RG
 
-        
+
         arcpy.AddMessage("  Calculating coefficients of partitioning")
         #Calculating the coefficient of partitioning of leaves relative to DVS
         def COPARTL ():
@@ -739,16 +743,16 @@ elif prodSituation == "PS2":
             where07 = "\"VALUE\" <= %d" % sumt07
             copartl = arcpy.sa.Con(co_sumt, 0.55, (arcpy.sa.Con(co_sumt, 0.45, 0, where07)), where0)
             return copartl
-        
+
         #Calculating the coefficient of partitioning of roots relative to DVS
         def COPARTR ():
             sumt00 = (-435 * (1**2))+(2755 * 1)-2320
             sumt08 = (-435 * (1.8**2))+(2755 * 1.8)-2320
             where0 = "\"VALUE\" <= %d" % sumt00
-            where08 = "\"VALUE\" < %d" % sumt08  
+            where08 = "\"VALUE\" < %d" % sumt08
             copartr = arcpy.sa.Con(co_sumt, 0.3, arcpy.sa.Con(co_sumt, 0.1, 0, where08), where0)
             return copartr
-        
+
         #Calculating the coefficient of partitioning of panicles relative to DVS
         def COPARTP ():
             sumt075 = (-435 * (1.75**2))+(2755 * 1.75)-2320
@@ -760,7 +764,7 @@ elif prodSituation == "PS2":
         #Calculating the coefficient of partitioning of stems relative to DVS
         this_copartp = COPARTP ()
         this_copartl = COPARTL ()
-        def COPARTST ():    
+        def COPARTST ():
             pr_copartst = arcpy.sa.Minus(this_copartl, this_copartp)
             copartst = arcpy.sa.Minus(1, pr_copartst)
             return copartst
@@ -776,18 +780,18 @@ elif prodSituation == "PS2":
             this = arcpy.sa.Minus(1, this_copartr)
             pr_partl = arcpy.sa.Times(this_POOL, this_copartl)
             partl = arcpy.sa.Times(pr_partl, this)
-            
+
             #Calculate the partitioning of assimilates to panicles
             pr_partp = arcpy.sa.Times(this_POOL, this_copartp)
             partp = arcpy.sa.Times(pr_partp, this)
-            
+
             #Calculate the partitioning of assimilates to stems
             pr_partst = arcpy.sa.Times(this_POOL, this_copartst)
             partst = arcpy.sa.Times(pr_partst, this)
-            
+
             #Calculate the partitioning of assimilates to roots
             partr = arcpy.sa.Times(this_POOL, this_copartr)
-            
+
             return[partl, partp, partst, partr]
 
         #Redistribution of reserves accumulated in the stems
@@ -820,12 +824,12 @@ elif prodSituation == "PS2":
         this_rrsenl = RRSENL()
         this_shb = SHB()
         this_trshbl = this_shb[0]
-        
+
         arcpy.AddMessage("  Calculating the dry weight of organs\n")
-        
+
         #Calculate the increase in dry weight for panicles
         ppanw1 = arcpy.sa.Plus(this_rdist, this_partp)
-           
+
         #Calculating the  dry weight of panicles after Sheath Rot infection
         this_shrrf = SHR()
         ppanw2 = arcpy.sa.Times(ppanw1, this_shrrf)
@@ -833,19 +837,19 @@ elif prodSituation == "PS2":
         #Calculating the dry weight of panicles after Sheath Rot and White Head infections
         this_whrf = WH()
         ppanw3 = arcpy.sa.Times(ppanw2, this_whrf)
-        
-        #Calculate the increase in dry weight for stems   
+
+        #Calculate the increase in dry weight for stems
         pstemw = arcpy.sa.Minus(this_partst, this_rdist)
-           
-        
+
+
         #Calculate the increase in dry weight in leaves
         if i == 1:
             rsenl = arcpy.sa.Times(this_rrsenl, LEAFW)
         else:
             rsenl = arcpy.sa.Times(this_rrsenl, thisLEAFW)
-        
+
         pLEAFW = arcpy.sa.Minus(this_partl, rsenl)
-        
+
         #Calculating the leaf dry weight after treatment with Sheath Blight DM 1a
         pleafw2 = arcpy.sa.Minus(pLEAFW, this_trshbl)
 
@@ -865,7 +869,7 @@ elif prodSituation == "PS2":
             ty = str(i)
             name = "leafw" + ty
             thisLEAFW.save(path + name)
-            
+
     output =  path1 + "Yield_PS2"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
@@ -882,7 +886,7 @@ elif prodSituation == "PS3":
     jt = 0
     rt = 0
     kt = 0
-    
+
     #check if rice variety is direct seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
@@ -906,7 +910,7 @@ elif prodSituation == "PS3":
                 out2.save(path + name)
     elif cropEst == "Transplanted":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Transplanted Systems\n")
-        for raster in IniTemp:            
+        for raster in IniTemp:
             test = 0
             where1 = "\"VALUE\" < %d" % test
             if jt == 0:
@@ -946,14 +950,14 @@ elif prodSituation == "PS3":
                 name = "out23_" + ty
                 name1 = "sumtr"
                 out23.save(path + name)
-        
+
         out22 = 0.785 * out4
         out22.save(path + "tschock")
-        
+
         out2 = out23 - out22
         out2.save(path + name1)
-        
-            
+
+
     #calculating sum of temp above TBASE
 
     i = 0
@@ -966,7 +970,7 @@ elif prodSituation == "PS3":
         ft = str(bn)
         arcpy.AddMessage("SIMULATION AT " + ft + " DACE")
         arcpy.AddMessage("  Calculating Sum of Temperature above TBASE")
-        if i == 0:    
+        if i == 0:
             out4 = arcpy.sa.Minus(temp, TBASE)
             out5 = arcpy.sa.Con(out4, 0, out4, where1)
             co_sumt = out5 + out2
@@ -982,7 +986,7 @@ elif prodSituation == "PS3":
             ty = str(i)
             name = "sumt" + ty
             co_sumt.save(path + name)
-                
+
         def sla():
             arcpy.AddMessage("  Calculating Specific Leaf Area")
             #calculating SLA
@@ -1003,7 +1007,7 @@ elif prodSituation == "PS3":
         trysevl = co_sumt
         oneRaster = arcpy.sa.Divide(trysevl, trysevl)
         Sevl = arcpy.sa.Times(oneRaster, mysevl)
-        
+
         def SHB ():
             #The first Damage mechanism due to Sheath Blight
             prshbl = arcpy.sa.Times(0.00076, Sevl)
@@ -1020,18 +1024,18 @@ elif prodSituation == "PS3":
 
         mybsdm = 0
         bsdm = arcpy.sa.Times(oneRaster, mybsdm)
-    
+
         def BS (beta=6.3):
             pbsrf = arcpy.sa.Divide(bsdm, 100)
             pbsrf1 = arcpy.sa.Minus(1, pbsrf)
             bsrf = arcpy.sa.Power(pbsrf1, beta)
             return bsrf
-        
+
 ##        #Damage mechanism due to Brown Spot
 ##        if analysisType == "Attainable Yield":
 ##            brownSpot = 0
 ##            bsbrf = arcpy.sa.Times(oneRaster, brownSpot)
-##        
+##
 ##        elif analysisType == "Actual Yield":
 ##            arcpy.AddMessage("  Calculating Reduction Factor for BS")
 ##            for brownSpot in BSpotGDB:
@@ -1048,7 +1052,7 @@ elif prodSituation == "PS3":
         if analysisType == "Attainable Yield":
             blight = 0
             blbrf = arcpy.sa.Minus(oneRaster, blight)
-            
+
         elif analysisType == "Actual Yield":
             arcpy.AddMessage("  Calculating Reduction factor for BLIGHT")
             for blight in BlightGDB:
@@ -1059,7 +1063,7 @@ elif prodSituation == "PS3":
                     break
             else:
                 blbrf = 1
-                
+
         #Damage mechanism due to Rice Leaf Blast
         if analysisType == "Attainable Yield":
             blast = 0
@@ -1076,12 +1080,12 @@ elif prodSituation == "PS3":
                     break
             else:
                 rlbrf = 1
-                
-            
+
+
         #Damage mechanism due to Sheath Rot
         myshrdm = 0
         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
+
         def SHR ():
             shrrf = arcpy.sa.Minus(1, shrdm)
             #shrrf = arcpy.sa.Times(pshrrf, Days)
@@ -1090,7 +1094,7 @@ elif prodSituation == "PS3":
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
-       
+
         def WH ():
             whrf = arcpy.sa.Minus(1, whdm)
             #whrf = arcpy.sa.Times(pwhrf, Days)
@@ -1099,7 +1103,7 @@ elif prodSituation == "PS3":
         #Damage mechanism due to Weeds
         myweeddm = 0
         weeddm = arcpy.sa.Times(oneRaster, myweeddm)
-        
+
         def WEEDS ():
             prfwd = arcpy.sa.Times(weeddm, -0.003)
             prfwd1 = arcpy.sa.Exp(prfwd)
@@ -1112,7 +1116,7 @@ elif prodSituation == "PS3":
             arcpy.AddMessage("  Calculating Leaf Area Index")
             thisSLA = sla()
             this_shb1 = SHB()
-            this_shbrf = this_shb1[1]       
+            this_shbrf = this_shb1[1]
             this_bsrf = BS()
 
             if i == 1:
@@ -1132,7 +1136,7 @@ elif prodSituation == "PS3":
             if tempDate == radDate:
                 this_RAD = rad
                 break
-     
+
 
         #Calculating the Rate of Growth and the Pool of assimilates
         def POOL (k=-0.6):
@@ -1147,7 +1151,7 @@ elif prodSituation == "PS3":
             pRG3 = arcpy.sa.Minus(1, pRG2)
             pRG4 = arcpy.sa.Times(pRG3, this_RAD)
             pRG5 = arcpy.sa.Times(pRG4, RUE)
-            
+
             #Calculating the rate of growth after treatment with Weeds
             this_weedrf = WEEDS()
             RG = arcpy.sa.Times(pRG5, this_weedrf)
@@ -1157,7 +1161,7 @@ elif prodSituation == "PS3":
             RG.save(path + name)
             return RG
 
-       
+
         arcpy.AddMessage("  Calculating coefficients of partitioning")
         #Calculating the coefficient of partitioning of leaves relative to DVS
         def COPARTL ():
@@ -1167,16 +1171,16 @@ elif prodSituation == "PS3":
             where05 = "\"VALUE\" <= %d" % sumt05
             copartl = arcpy.sa.Con(co_sumt, 0.55, (arcpy.sa.Con(co_sumt, 0.45, 0, where05)), where0)
             return copartl
-        
+
         #Calculating the coefficient of partitioning of roots relative to DVS
         def COPARTR ():
             sumt00 = (-300 * (1**2))+(2000 * 1)-1700
             sumt08 = (-300 * (1.8**2))+(2000 * 1.8)-1700
             where0 = "\"VALUE\" <= %d" % sumt00
-            where08 = "\"VALUE\" < %d" % sumt08  
+            where08 = "\"VALUE\" < %d" % sumt08
             copartr = arcpy.sa.Con(co_sumt, 0.3, arcpy.sa.Con(co_sumt, 0.1, 0, where08), where0)
             return copartr
-        
+
         #Calculating the coefficient of partitioning of panicles relative to DVS
         def COPARTP ():
             sumt075 = (-300 * (1.75**2))+(2000 * 1.75)-1700
@@ -1190,7 +1194,7 @@ elif prodSituation == "PS3":
         #Calculating the coefficient of partitioning of stems relative to DVS
         this_copartp = COPARTP ()
         this_copartl = COPARTL ()
-        def COPARTST ():    
+        def COPARTST ():
             pr_copartst = arcpy.sa.Minus(this_copartl, this_copartp)
             copartst = arcpy.sa.Minus(1, pr_copartst)
             return copartst
@@ -1206,18 +1210,18 @@ elif prodSituation == "PS3":
             this = arcpy.sa.Minus(1, this_copartr)
             pr_partl = arcpy.sa.Times(this_POOL, this_copartl)
             partl = arcpy.sa.Times(pr_partl, this)
-            
+
             #Calculate the partitioning of assimilates to panicles
             pr_partp = arcpy.sa.Times(this_POOL, this_copartp)
             partp = arcpy.sa.Times(pr_partp, this)
-            
+
             #Calculate the partitioning of assimilates to stems
             pr_partst = arcpy.sa.Times(this_POOL, this_copartst)
             partst = arcpy.sa.Times(pr_partst, this)
-            
+
             #Calculate the partitioning of assimilates to roots
             partr = arcpy.sa.Times(this_POOL, this_copartr)
-            
+
             return[partl, partp, partst, partr]
 
         #Redistribution of reserves accumulated in the stems
@@ -1250,11 +1254,11 @@ elif prodSituation == "PS3":
         this_rrsenl = RRSENL()
         this_shb = SHB()
         this_trshbl = this_shb[0]
-        
+
         arcpy.AddMessage("  Calculating the dry weight of organs\n")
         #Calculate the increase in dry weight for panicles
         ppanw1 = arcpy.sa.Plus(this_rdist, this_partp)
-           
+
         #Calculating the  dry weight of panicles after Sheath Rot infection
         this_shrrf = SHR()
         ppanw2 = arcpy.sa.Times(ppanw1, this_shrrf)
@@ -1262,18 +1266,18 @@ elif prodSituation == "PS3":
         #Calculating the dry weight of panicles after Sheath Rot and White Head infections
         this_whrf = WH()
         ppanw3 = arcpy.sa.Times(ppanw2, this_whrf)
-        
-        #Calculate the increase in dry weight for stems   
-        pstemw = arcpy.sa.Minus(this_partst, this_rdist)           
-        
+
+        #Calculate the increase in dry weight for stems
+        pstemw = arcpy.sa.Minus(this_partst, this_rdist)
+
         #Calculate the increase in dry weight in leaves
         if i == 1:
             rsenl = arcpy.sa.Times(this_rrsenl, LEAFW)
         else:
             rsenl = arcpy.sa.Times(this_rrsenl, thisLEAFW)
-        
+
         pLEAFW = arcpy.sa.Minus(this_partl, rsenl)
-        
+
         #Calculating the leaf dry weight after treatment with Sheath Blight DM 1a
         pleafw2 = arcpy.sa.Minus(pLEAFW, this_trshbl)
 
@@ -1293,20 +1297,20 @@ elif prodSituation == "PS3":
             ty = str(i)
             name = "leafw" + ty
             thisLEAFW.save(path + name)
-       
+
     output =  path1 + "b150_lb"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
 
 
 elif prodSituation == "PS4":
-    
+
     PANW = 0
     LEAFW = 17
     STEMW = 15
     ROOTW = 7
     TBASE = 8
-    
+
     #calculating the sum of temperature between crop establishment and the start of simulation
     jt = 0
     rt = 0
@@ -1376,14 +1380,14 @@ elif prodSituation == "PS4":
                 name = "out23_" + ty
                 name1 = "sumtr"
                 out23.save(path + name)
-        
+
                 out22 = 0.785 * out4
                 out22.save(path + "tshock")
-        
+
                 out2 = out23 - out22
                 out2.save(path + name1)
-        
-            
+
+
     #calculating sum of temp above TBASE
 
     i = 0
@@ -1396,7 +1400,7 @@ elif prodSituation == "PS4":
         ft = str(bn)
         arcpy.AddMessage("SIMULATION AT " + ft + " DACE")
         arcpy.AddMessage("  Calculating Sum of Temperature above TBASE")
-        if i == 0:    
+        if i == 0:
             out4 = arcpy.sa.Minus(temp, TBASE)
             out5 = arcpy.sa.Con(out4, 0, out4, where1)
             co_sumt = out5 + out2
@@ -1412,7 +1416,7 @@ elif prodSituation == "PS4":
             ty = str(i)
             name = "sumt" + ty
             co_sumt.save(path + name)
-                
+
         def sla():
             arcpy.AddMessage("  Calculating Specific Leaf Area")
             #calculating SLA
@@ -1434,7 +1438,7 @@ elif prodSituation == "PS4":
         trysevl = co_sumt
         oneRaster = arcpy.sa.Divide(trysevl, trysevl)
         Sevl = arcpy.sa.Times(oneRaster, mysevl)
-        
+
         def SHB ():
             #The first Damage mechanism due to Sheath Blight
             prshbl = arcpy.sa.Times(0.00076, Sevl)
@@ -1452,7 +1456,7 @@ elif prodSituation == "PS4":
         #Damage mechanism due to Brown Spot
         mybsdm = 0
         bsdm = arcpy.sa.Times(oneRaster, mybsdm)
-        
+
         def BS (beta=6.3):
             pbsrf = arcpy.sa.Divide(bsdm, 100)
             pbsrf1 = arcpy.sa.Minus(1, pbsrf)
@@ -1463,7 +1467,7 @@ elif prodSituation == "PS4":
         if analysisType == "Attainable Yield":
             blight = 0
             blbrf = arcpy.sa.Minus(oneRaster, blight)
-            
+
         elif analysisType == "Actual Yield":
             arcpy.AddMessage("  Calculating Reduction factor for BLIGHT")
             for blight in BlightGDB:
@@ -1474,7 +1478,7 @@ elif prodSituation == "PS4":
                     break
             else:
                 blbrf = 1
-                
+
         #Damage mechanism due to Rice Leaf Blast
         if analysisType == "Attainable Yield":
             blast = 0
@@ -1490,12 +1494,12 @@ elif prodSituation == "PS4":
                     rlbrf = arcpy.sa.Power(prlbrf2, 3)
                     break
             else:
-                rlbrf = 1             
-            
+                rlbrf = 1
+
         #Damage mechanism due to Sheath Rot
         myshrdm = 0
         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
+
         def SHR ():
             shrrf = arcpy.sa.Minus(1, shrdm)
             #shrrf = arcpy.sa.Times(pshrrf, Days)
@@ -1504,7 +1508,7 @@ elif prodSituation == "PS4":
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
-       
+
         def WH ():
             whrf = arcpy.sa.Minus(1, whdm)
             #whrf = arcpy.sa.Times(pwhrf, Days)
@@ -1513,7 +1517,7 @@ elif prodSituation == "PS4":
         #Damage mechanism due to Weeds
         myweeddm = 0
         weeddm = arcpy.sa.Times(oneRaster, myweeddm)
-        
+
         def WEEDS ():
             prfwd = arcpy.sa.Times(weeddm, -0.003)
             prfwd1 = arcpy.sa.Exp(prfwd)
@@ -1526,7 +1530,7 @@ elif prodSituation == "PS4":
             arcpy.AddMessage("  Calculating Leaf Area Index")
             thisSLA = sla()
             this_shb1 = SHB()
-            this_shbrf = this_shb1[1]       
+            this_shbrf = this_shb1[1]
             this_bsrf = BS()
 
             if i == 1:
@@ -1545,7 +1549,7 @@ elif prodSituation == "PS4":
             radDate = rad[3:]
             if tempDate == radDate:
                 this_RAD = rad
-                break     
+                break
 
         #Calculating the Rate of Growth and the Pool of assimilates
         def POOL (k=-0.6):
@@ -1558,7 +1562,7 @@ elif prodSituation == "PS4":
             pRG3 = arcpy.sa.Minus(1, pRG2)
             pRG4 = arcpy.sa.Times(pRG3, this_RAD)
             pRG5 = arcpy.sa.Times(pRG4, RUE)
-            
+
             #Calculating the rate of growth after treatment with Weeds
             this_weedrf = WEEDS()
             RG = arcpy.sa.Times(pRG5, this_weedrf)
@@ -1567,7 +1571,7 @@ elif prodSituation == "PS4":
             name = "pool" + ty
             RG.save(path + name)
             return RG
-       
+
         arcpy.AddMessage("  Calculating coefficients of partitioning")
         #Calculating the coefficient of partitioning of leaves relative to DVS
         def COPARTL ():
@@ -1577,16 +1581,16 @@ elif prodSituation == "PS4":
             where05 = "\"VALUE\" <= %d" % sumt05
             copartl = arcpy.sa.Con(co_sumt, 0.55, (arcpy.sa.Con(co_sumt, 0.45, 0, where05)), where0)
             return copartl
-        
+
         #Calculating the coefficient of partitioning of roots relative to DVS
         def COPARTR ():
             sumt00 = (-300 * (1**2))+(2000 * 1)-1700
             sumt08 = (-300 * (1.8**2))+(2000 * 1.8)-1700
             where0 = "\"VALUE\" <= %d" % sumt00
-            where08 = "\"VALUE\" < %d" % sumt08  
+            where08 = "\"VALUE\" < %d" % sumt08
             copartr = arcpy.sa.Con(co_sumt, 0.3, arcpy.sa.Con(co_sumt, 0.1, 0, where08), where0)
             return copartr
-        
+
         #Calculating the coefficient of partitioning of panicles relative to DVS
         def COPARTP ():
             sumt065 = (-300 * (1.65**2))+(2000 * 1.65)-1700
@@ -1596,11 +1600,11 @@ elif prodSituation == "PS4":
             copartp = arcpy.sa.Con(co_sumt, 1, arcpy.sa.Con(co_sumt, 0.3, 0, where065), where11)
             return copartp
 
-        
+
         #Calculating the coefficient of partitioning of stems relative to DVS
         this_copartp = COPARTP ()
         this_copartl = COPARTL ()
-        def COPARTST ():    
+        def COPARTST ():
             pr_copartst = arcpy.sa.Minus(this_copartl, this_copartp)
             copartst = arcpy.sa.Minus(1, pr_copartst)
             return copartst
@@ -1616,18 +1620,18 @@ elif prodSituation == "PS4":
             this = arcpy.sa.Minus(1, this_copartr)
             pr_partl = arcpy.sa.Times(this_POOL, this_copartl)
             partl = arcpy.sa.Times(pr_partl, this)
-            
+
             #Calculate the partitioning of assimilates to panicles
             pr_partp = arcpy.sa.Times(this_POOL, this_copartp)
             partp = arcpy.sa.Times(pr_partp, this)
-            
+
             #Calculate the partitioning of assimilates to stems
             pr_partst = arcpy.sa.Times(this_POOL, this_copartst)
             partst = arcpy.sa.Times(pr_partst, this)
-            
+
             #Calculate the partitioning of assimilates to roots
             partr = arcpy.sa.Times(this_POOL, this_copartr)
-            
+
             return[partl, partp, partst, partr]
 
         #Redistribution of reserves accumulated in the stems
@@ -1660,12 +1664,12 @@ elif prodSituation == "PS4":
         this_rrsenl = RRSENL()
         this_shb = SHB()
         this_trshbl = this_shb[0]
-        
+
         arcpy.AddMessage("  Calculating the dry weight of organs\n")
-        
+
         #Calculate the increase in dry weight for panicles
         ppanw1 = arcpy.sa.Plus(this_rdist, this_partp)
-           
+
         #Calculating the  dry weight of panicles after Sheath Rot infection
         this_shrrf = SHR()
         ppanw2 = arcpy.sa.Times(ppanw1, this_shrrf)
@@ -1673,18 +1677,18 @@ elif prodSituation == "PS4":
         #Calculating the dry weight of panicles after Sheath Rot and White Head infections
         this_whrf = WH()
         ppanw3 = arcpy.sa.Times(ppanw2, this_whrf)
-        
-        #Calculate the increase in dry weight for stems   
-        pstemw = arcpy.sa.Minus(this_partst, this_rdist)           
-        
+
+        #Calculate the increase in dry weight for stems
+        pstemw = arcpy.sa.Minus(this_partst, this_rdist)
+
         #Calculate the increase in dry weight in leaves
         if i == 1:
             rsenl = arcpy.sa.Times(this_rrsenl, LEAFW)
         else:
             rsenl = arcpy.sa.Times(this_rrsenl, thisLEAFW)
-        
+
         pLEAFW = arcpy.sa.Minus(this_partl, rsenl)
-        
+
         #Calculating the leaf dry weight after treatment with Sheath Blight DM 1a
         pleafw2 = arcpy.sa.Minus(pLEAFW, this_trshbl)
 
@@ -1704,7 +1708,7 @@ elif prodSituation == "PS4":
             ty = str(i)
             name = "leafw" + ty
             thisLEAFW.save(path + name)
-       
+
     output =  path1 + "Yield_PS4_2"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
@@ -1720,7 +1724,7 @@ elif prodSituation == "PS5":
     jt = 0
     rt = 0
     kt = 0
-    
+
     #check if rice variety is directed seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
@@ -1744,7 +1748,7 @@ elif prodSituation == "PS5":
                 out2.save(path + name)
     elif cropEst == "Transplanted":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Transplanted Systems\n")
-        for raster in IniTemp:            
+        for raster in IniTemp:
             test = 0
             where1 = "\"VALUE\" < %d" % test
             if jt == 0:
@@ -1784,14 +1788,14 @@ elif prodSituation == "PS5":
                 name = "out23_" + ty
                 name1 = "sumtr"
                 out23.save(path + name)
-        
+
         out22 = 0.785 * out4
         out22.save(path + "tschock")
-        
+
         out2 = out23 - out22
         out2.save(path + name1)
-        
-            
+
+
     #calculating sum of temp above TBASE
 
     i = 0
@@ -1804,7 +1808,7 @@ elif prodSituation == "PS5":
         ft = str(bn)
         arcpy.AddMessage("SIMULATION AT " + ft + " DACE")
         arcpy.AddMessage("  Calculating Sum of Temperature above TBASE")
-        if i == 0:    
+        if i == 0:
             out4 = arcpy.sa.Minus(temp, TBASE)
             out5 = arcpy.sa.Con(out4, 0, out4, where1)
             co_sumt = out5 + out2
@@ -1820,7 +1824,7 @@ elif prodSituation == "PS5":
             ty = str(i)
             name = "sumt" + ty
             co_sumt.save(path + name)
-                
+
         def sla():
             arcpy.AddMessage("  Calculating Specific Leaf Area")
             #calculating SLA
@@ -1842,7 +1846,7 @@ elif prodSituation == "PS5":
         trysevl = co_sumt
         oneRaster = arcpy.sa.Divide(trysevl, trysevl)
         Sevl = arcpy.sa.Times(oneRaster, mysevl)
-        
+
         def SHB ():
             #The first Damage mechanism due to Sheath Blight
             prshbl = arcpy.sa.Times(0.00076, Sevl)
@@ -1860,7 +1864,7 @@ elif prodSituation == "PS5":
         #Damage mechanism due to Brown Spot
         mybsdm = 0
         bsdm = arcpy.sa.Times(oneRaster, mybsdm)
-        
+
         def BS (beta=6.3):
             pbsrf = arcpy.sa.Divide(bsdm, 100)
             pbsrf1 = arcpy.sa.Minus(1, pbsrf)
@@ -1871,7 +1875,7 @@ elif prodSituation == "PS5":
         if analysisType == "Attainable Yield":
             blight = 0
             blbrf = arcpy.sa.Minus(oneRaster, blight)
-            
+
         elif analysisType == "Actual Yield":
             arcpy.AddMessage("  Calculating Reduction factor for BLIGHT")
             for blight in BlightGDB:
@@ -1882,7 +1886,7 @@ elif prodSituation == "PS5":
                     break
             else:
                 blbrf = 1
-                
+
         #Damage mechanism due to Rice Leaf Blast
         if analysisType == "Attainable Yield":
             blast = 0
@@ -1898,12 +1902,12 @@ elif prodSituation == "PS5":
                     rlbrf = arcpy.sa.Power(prlbrf2, 3)
                     break
             else:
-                rlbrf = 1                
-            
+                rlbrf = 1
+
         #Damage mechanism due to Sheath Rot
         myshrdm = 0
         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
+
         def SHR ():
             shrrf = arcpy.sa.Minus(1, shrdm)
             #shrrf = arcpy.sa.Times(pshrrf, Days)
@@ -1912,7 +1916,7 @@ elif prodSituation == "PS5":
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
-       
+
         def WH ():
             whrf = arcpy.sa.Minus(1, whdm)
             #whrf = arcpy.sa.Times(pwhrf, Days)
@@ -1921,7 +1925,7 @@ elif prodSituation == "PS5":
         #Damage mechanism due to Weeds
         myweeddm = 0
         weeddm = arcpy.sa.Times(oneRaster, myweeddm)
-        
+
         def WEEDS ():
             prfwd = arcpy.sa.Times(weeddm, -0.003)
             prfwd1 = arcpy.sa.Exp(prfwd)
@@ -1934,7 +1938,7 @@ elif prodSituation == "PS5":
             arcpy.AddMessage("  Calculating Leaf Area Index")
             thisSLA = sla()
             this_shb1 = SHB()
-            this_shbrf = this_shb1[1]       
+            this_shbrf = this_shb1[1]
             this_bsrf = BS()
 
             if i == 1:
@@ -1954,7 +1958,7 @@ elif prodSituation == "PS5":
             if tempDate == radDate:
                 this_RAD = rad
                 break
-     
+
 
         #Calculating the Rate of Growth and the Pool of assimilates
         def POOL (k=-0.6):
@@ -1967,7 +1971,7 @@ elif prodSituation == "PS5":
             pRG3 = arcpy.sa.Minus(1, pRG2)
             pRG4 = arcpy.sa.Times(pRG3, this_RAD)
             pRG5 = arcpy.sa.Times(pRG4, RUE)
-            
+
             #Calculating the rate of growth after treatment with Weeds
             this_weedrf = WEEDS()
             RG = arcpy.sa.Times(pRG5, this_weedrf)
@@ -1977,7 +1981,7 @@ elif prodSituation == "PS5":
             RG.save(path + name)
             return RG
 
-       
+
         arcpy.AddMessage("  Calculating coefficients of partitioning")
         #Calculating the coefficient of partitioning of leaves relative to DVS
         def COPARTL ():
@@ -1987,16 +1991,16 @@ elif prodSituation == "PS5":
             where07 = "\"VALUE\" <= %d" % sumt07
             copartl = arcpy.sa.Con(co_sumt, 0.55, (arcpy.sa.Con(co_sumt, 0.45, 0, where07)), where0)
             return copartl
-        
+
         #Calculating the coefficient of partitioning of roots relative to DVS
         def COPARTR ():
             sumt00 = (-435 * (1**2))+(2755 * 1)-2320
             sumt08 = (-435 * (1.8**2))+(2755 * 1.8)-2320
             where0 = "\"VALUE\" <= %d" % sumt00
-            where08 = "\"VALUE\" < %d" % sumt08  
+            where08 = "\"VALUE\" < %d" % sumt08
             copartr = arcpy.sa.Con(co_sumt, 0.3, arcpy.sa.Con(co_sumt, 0.1, 0, where08), where0)
             return copartr
-        
+
         #Calculating the coefficient of partitioning of panicles relative to DVS
         def COPARTP ():
             sumt075 = (-435 * (1.75**2))+(2755 * 1.75)-2320
@@ -2009,7 +2013,7 @@ elif prodSituation == "PS5":
         #Calculating the coefficient of partitioning of stems relative to DVS
         this_copartp = COPARTP ()
         this_copartl = COPARTL ()
-        def COPARTST ():    
+        def COPARTST ():
             pr_copartst = arcpy.sa.Minus(this_copartl, this_copartp)
             copartst = arcpy.sa.Minus(1, pr_copartst)
             return copartst
@@ -2025,18 +2029,18 @@ elif prodSituation == "PS5":
             this = arcpy.sa.Minus(1, this_copartr)
             pr_partl = arcpy.sa.Times(this_POOL, this_copartl)
             partl = arcpy.sa.Times(pr_partl, this)
-            
+
             #Calculate the partitioning of assimilates to panicles
             pr_partp = arcpy.sa.Times(this_POOL, this_copartp)
             partp = arcpy.sa.Times(pr_partp, this)
-            
+
             #Calculate the partitioning of assimilates to stems
             pr_partst = arcpy.sa.Times(this_POOL, this_copartst)
             partst = arcpy.sa.Times(pr_partst, this)
-            
+
             #Calculate the partitioning of assimilates to roots
             partr = arcpy.sa.Times(this_POOL, this_copartr)
-            
+
             return[partl, partp, partst, partr]
 
         #Redistribution of reserves accumulated in the stems
@@ -2069,12 +2073,12 @@ elif prodSituation == "PS5":
         this_rrsenl = RRSENL()
         this_shb = SHB()
         this_trshbl = this_shb[0]
-        
+
         arcpy.AddMessage("  Calculating the dry weight of organs\n")
-        
+
         #Calculate the increase in dry weight for panicles
         ppanw1 = arcpy.sa.Plus(this_rdist, this_partp)
-           
+
         #Calculating the  dry weight of panicles after Sheath Rot infection
         this_shrrf = SHR()
         ppanw2 = arcpy.sa.Times(ppanw1, this_shrrf)
@@ -2082,18 +2086,18 @@ elif prodSituation == "PS5":
         #Calculating the dry weight of panicles after Sheath Rot and White Head infections
         this_whrf = WH()
         ppanw3 = arcpy.sa.Times(ppanw2, this_whrf)
-        
-        #Calculate the increase in dry weight for stems   
-        pstemw = arcpy.sa.Minus(this_partst, this_rdist)           
-        
+
+        #Calculate the increase in dry weight for stems
+        pstemw = arcpy.sa.Minus(this_partst, this_rdist)
+
         #Calculate the increase in dry weight in leaves
         if i == 1:
             rsenl = arcpy.sa.Times(this_rrsenl, LEAFW)
         else:
             rsenl = arcpy.sa.Times(this_rrsenl, thisLEAFW)
-        
+
         pLEAFW = arcpy.sa.Minus(this_partl, rsenl)
-        
+
         #Calculating the leaf dry weight after treatment with Sheath Blight DM 1a
         pleafw2 = arcpy.sa.Minus(pLEAFW, this_trshbl)
 
@@ -2113,12 +2117,12 @@ elif prodSituation == "PS5":
             ty = str(i)
             name = "leafw" + ty
             thisLEAFW.save(path + name)
-       
+
     output =  path1 + "Yield_PS5"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
 
-    
+
 elif prodSituation == "PS6":
     PANW = 0
     LEAFW = 8
@@ -2130,7 +2134,7 @@ elif prodSituation == "PS6":
     jt = 0
     rt = 0
     kt = 0
-    
+
     #check if rice variety is direct seeded or transplanted.
     if cropEst == "Direct Seeded":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Direct Seeded Systems")
@@ -2154,7 +2158,7 @@ elif prodSituation == "PS6":
                 out2.save(path + name)
     elif cropEst == "Transplanted":
         arcpy.AddMessage("Calculating Sum of Initial Temperature for Transplanted Systems\n")
-        for raster in IniTemp:            
+        for raster in IniTemp:
             test = 0
             where1 = "\"VALUE\" < %d" % test
             if jt == 0:
@@ -2194,14 +2198,14 @@ elif prodSituation == "PS6":
                 name = "out23_" + ty
                 name1 = "sumtr"
                 out23.save(path + name)
-        
+
         out22 = 0.785 * out4
         out22.save(path + "tschock")
-        
+
         out2 = out23 - out22
         out2.save(path + name1)
-        
-            
+
+
     #calculating sum of temp above TBASE
 
     i = 0
@@ -2214,7 +2218,7 @@ elif prodSituation == "PS6":
         ft = str(bn)
         arcpy.AddMessage("SIMULATION AT " + ft + " DACE")
         arcpy.AddMessage("  Calculating Sum of Temperature above TBASE")
-        if i == 0:    
+        if i == 0:
             out4 = arcpy.sa.Minus(temp, TBASE)
             out5 = arcpy.sa.Con(out4, 0, out4, where1)
             co_sumt = out5 + out2
@@ -2230,7 +2234,7 @@ elif prodSituation == "PS6":
             ty = str(i)
             name = "sumt" + ty
             co_sumt.save(path + name)
-                
+
         def sla():
             arcpy.AddMessage("  Calculating Specific Leaf Area")
             #calculating SLA
@@ -2252,7 +2256,7 @@ elif prodSituation == "PS6":
         trysevl = co_sumt
         oneRaster = arcpy.sa.Divide(trysevl, trysevl)
         Sevl = arcpy.sa.Times(oneRaster, mysevl)
-        
+
         def SHB ():
             #The first Damage mechanism due to Sheath Blight
             prshbl = arcpy.sa.Times(0.00076, Sevl)
@@ -2271,7 +2275,7 @@ elif prodSituation == "PS6":
         #Damage mechanism due to Brown Spot
         mybsdm = 0
         bsdm = arcpy.sa.Times(oneRaster, mybsdm)
-        
+
         def BS (beta=6.3):
             pbsrf = arcpy.sa.Divide(bsdm, 100)
             pbsrf1 = arcpy.sa.Minus(1, pbsrf)
@@ -2282,7 +2286,7 @@ elif prodSituation == "PS6":
         if analysisType == "Attainable Yield":
             blight = 0
             blbrf = arcpy.sa.Minus(oneRaster, blight)
-            
+
         elif analysisType == "Actual Yield":
             arcpy.AddMessage("  Calculating Reduction factor for BLIGHT")
             for blight in BlightGDB:
@@ -2293,7 +2297,7 @@ elif prodSituation == "PS6":
                     break
             else:
                 blbrf = 1
-                
+
         #Damage mechanism due to Rice Leaf Blast
         if analysisType == "Attainable Yield":
             blast = 0
@@ -2310,12 +2314,12 @@ elif prodSituation == "PS6":
                     break
             else:
                 rlbrf = 1
-                
-            
+
+
         #Damage mechanism due to Sheath Rot
         myshrdm = 0
         shrdm = arcpy.sa.Times(oneRaster, myshrdm)
-        
+
         def SHR ():
             shrrf = arcpy.sa.Minus(1, shrdm)
             #shrrf = arcpy.sa.Times(pshrrf, Days)
@@ -2324,7 +2328,7 @@ elif prodSituation == "PS6":
         #Damage mechanism due to White Heads
         mywhdm = 0
         whdm = arcpy.sa.Times(oneRaster, mywhdm)
-       
+
         def WH ():
             whrf = arcpy.sa.Minus(1, whdm)
             #whrf = arcpy.sa.Times(pwhrf, Days)
@@ -2333,7 +2337,7 @@ elif prodSituation == "PS6":
         #Damage mechanism due to Weeds
         myweeddm = 0
         weeddm = arcpy.sa.Times(oneRaster, myweeddm)
-        
+
         def WEEDS ():
             prfwd = arcpy.sa.Times(weeddm, -0.003)
             prfwd1 = arcpy.sa.Exp(prfwd)
@@ -2346,7 +2350,7 @@ elif prodSituation == "PS6":
             arcpy.AddMessage("  Calculating Leaf Area Index")
             thisSLA = sla()
             this_shb1 = SHB()
-            this_shbrf = this_shb1[1]       
+            this_shbrf = this_shb1[1]
             this_bsrf = BS()
 
             if i == 1:
@@ -2366,7 +2370,7 @@ elif prodSituation == "PS6":
             if tempDate == radDate:
                 this_RAD = rad
                 break
-     
+
 
         #Calculating the Rate of Growth and the Pool of assimilates
         def POOL (k=-0.6):
@@ -2379,7 +2383,7 @@ elif prodSituation == "PS6":
             pRG3 = arcpy.sa.Minus(1, pRG2)
             pRG4 = arcpy.sa.Times(pRG3, this_RAD)
             pRG5 = arcpy.sa.Times(pRG4, RUE)
-            
+
             #Calculating the rate of growth after treatment with Weeds
             this_weedrf = WEEDS()
             RG = arcpy.sa.Times(pRG5, this_weedrf)
@@ -2389,7 +2393,7 @@ elif prodSituation == "PS6":
             RG.save(path + name)
             return RG
 
-       
+
         arcpy.AddMessage("  Calculating coefficients of partitioning")
         #Calculating the coefficient of partitioning of leaves relative to DVS
         def COPARTL ():
@@ -2399,16 +2403,16 @@ elif prodSituation == "PS6":
             where07 = "\"VALUE\" <= %d" % sumt07
             copartl = arcpy.sa.Con(co_sumt, 0.55, (arcpy.sa.Con(co_sumt, 0.45, 0, where07)), where0)
             return copartl
-        
+
         #Calculating the coefficient of partitioning of roots relative to DVS
         def COPARTR ():
             sumt00 = (-435 * (1**2))+(2755 * 1)-2320
             sumt08 = (-435 * (1.8**2))+(2755 * 1.8)-2320
             where0 = "\"VALUE\" <= %d" % sumt00
-            where08 = "\"VALUE\" < %d" % sumt08  
+            where08 = "\"VALUE\" < %d" % sumt08
             copartr = arcpy.sa.Con(co_sumt, 0.3, arcpy.sa.Con(co_sumt, 0.1, 0, where08), where0)
             return copartr
-        
+
         #Calculating the coefficient of partitioning of panicles relative to DVS
         def COPARTP ():
             sumt075 = (-435 * (1.75**2))+(2755 * 1.75)-2320
@@ -2421,7 +2425,7 @@ elif prodSituation == "PS6":
         #Calculating the coefficient of partitioning of stems relative to DVS
         this_copartp = COPARTP ()
         this_copartl = COPARTL ()
-        def COPARTST ():    
+        def COPARTST ():
             pr_copartst = arcpy.sa.Minus(this_copartl, this_copartp)
             copartst = arcpy.sa.Minus(1, pr_copartst)
             return copartst
@@ -2437,18 +2441,18 @@ elif prodSituation == "PS6":
             this = arcpy.sa.Minus(1, this_copartr)
             pr_partl = arcpy.sa.Times(this_POOL, this_copartl)
             partl = arcpy.sa.Times(pr_partl, this)
-            
+
             #Calculate the partitioning of assimilates to panicles
             pr_partp = arcpy.sa.Times(this_POOL, this_copartp)
             partp = arcpy.sa.Times(pr_partp, this)
-            
+
             #Calculate the partitioning of assimilates to stems
             pr_partst = arcpy.sa.Times(this_POOL, this_copartst)
             partst = arcpy.sa.Times(pr_partst, this)
-            
+
             #Calculate the partitioning of assimilates to roots
             partr = arcpy.sa.Times(this_POOL, this_copartr)
-            
+
             return[partl, partp, partst, partr]
 
         #Redistribution of reserves accumulated in the stems
@@ -2482,11 +2486,11 @@ elif prodSituation == "PS6":
         this_rrsenl = RRSENL()
         this_shb = SHB()
         this_trshbl = this_shb[0]
-        
+
         arcpy.AddMessage("  Calculating the dry weight of organs\n")
         #Calculate the increase in dry weight for panicles
         ppanw1 = arcpy.sa.Plus(this_rdist, this_partp)
-           
+
         #Calculating the  dry weight of panicles after Sheath Rot infection
         this_shrrf = SHR()
         ppanw2 = arcpy.sa.Times(ppanw1, this_shrrf)
@@ -2494,19 +2498,19 @@ elif prodSituation == "PS6":
         #Calculating the dry weight of panicles after Sheath Rot and White Head infections
         this_whrf = WH()
         ppanw3 = arcpy.sa.Times(ppanw2, this_whrf)
-        
-        #Calculate the increase in dry weight for stems   
+
+        #Calculate the increase in dry weight for stems
         pstemw = arcpy.sa.Minus(this_partst, this_rdist)
-           
-        
+
+
         #Calculate the increase in dry weight in leaves
         if i == 1:
             rsenl = arcpy.sa.Times(this_rrsenl, LEAFW)
         else:
             rsenl = arcpy.sa.Times(this_rrsenl, thisLEAFW)
-        
+
         pLEAFW = arcpy.sa.Minus(this_partl, rsenl)
-        
+
         #Calculating the leaf dry weight after treatment with Sheath Blight DM 1a
         pleafw2 = arcpy.sa.Minus(pLEAFW, this_trshbl)
 
@@ -2526,9 +2530,7 @@ elif prodSituation == "PS6":
             ty = str(i)
             name = "leafw" + ty
             thisLEAFW.save(path + name)
-       
+
     output =  path1 + "Yield_PS6"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
-
-

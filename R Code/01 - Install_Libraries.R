@@ -2,7 +2,7 @@
 # title         : Install_Libraries.R;
 # purpose       : install libraries necessary for analysis in R;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, May 2015;
+# last update   : in Los Baños, Philippines, Jan 2016;
 # inputs        : na;
 # outputs       : na;
 # remarks 1     : ;
@@ -16,12 +16,17 @@ install.packages(c("ggplot2",
                    "extrafont",
                    "wesanderson",
                    "ggthemes",
-                   "plotKML"),
+                   "plotKML",
+                   "R.utils",
+                   "dplyr",
+                   "reshape2"),
                  dep = TRUE)
 
 library(extrafont)
 font_import()
 loadfonts()
+
+source("Functions/Get_Data.R") # function to download necessary data
 
 # eos
 
