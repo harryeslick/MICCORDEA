@@ -49,7 +49,7 @@ RadGDB = arcpy.ListRasters("rad*", "GRID")
 TempGDB = arcpy.ListRasters("tmean*", "GRID")
 IniTemp = arcpy.ListRasters("i*", "GRID")
 BlastGDB = arcpy.ListRasters("rblast*", "GRID")
-BlightGDB = arcpy.ListRasters("light*", "GRID")
+BlightGDB = arcpy.ListRasters("bblight*", "GRID")
 
 
 if prodSituation == "PS1":

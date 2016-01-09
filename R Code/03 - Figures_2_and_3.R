@@ -115,19 +115,19 @@ bb <- data.frame(values(tz_base_bb),
 lb_avg <- apply(lb, 2, mean, na.rm = TRUE) # create matrix of average leaf blast lesion coverage for all of Tanzania, by day of growing season
 bb_avg <- apply(bb, 2, mean, na.rm = TRUE) # create matrix of average bacterial leaf blight lesion coverage for all of Tanzaina, by day of growing season
 
-x <- c(rep("Base", 121),
-       rep("A2", 242),
-       rep("A1B", 242),
-       rep("B1", 242)) # Create vector of emission scenario
-y <- c(rep(2000, 121),
-       rep(2030, 121),
-       rep(2050, 121),
-       rep(2030, 121),
-       rep(2050, 121),
-       rep(2030, 121),
-       rep(2050, 121)) # Create vector of time-slice midpoint year
-z <- c(as.numeric(rep(1:121, 7))) # Create vector of days in growing season
-z <- c(as.numeric(rep(1:121, 7))) # Create vector of days in growing season
+x <- c(rep("Base", 106),
+       rep("A2", 212),
+       rep("A1B", 212),
+       rep("B1", 212)) # Create vector of emission scenario
+y <- c(rep(2000, 106),
+       rep(2030, 106),
+       rep(2050, 106),
+       rep(2030, 106),
+       rep(2050, 106),
+       rep(2030, 106),
+       rep(2050, 106)) # Create vector of time-slice midpoint year
+z <- c(as.numeric(rep(1:106, 7))) # Create vector of days in growing season from transplanting
+z <- c(as.numeric(rep(1:106, 7))) # Create vector of days in growing season from transplanting
 
 lb_avg <- data.frame(x, y, z, lb_avg) # Combind the vectors into one dataframe for ggplot2
 bb_avg <- data.frame(x, y, z, bb_avg)
@@ -135,9 +135,6 @@ bb_avg <- data.frame(x, y, z, bb_avg)
 names(lb_avg) <- c("Scenario", "Time.Slice", "Day", "Leaf.Blast") # Assign names to leaf blast data frame
 names(bb_avg) <- c("Scenario", "Time.Slice", "Day", "Bacterial.Blight") # Assign names to bacterial blight data frame
 row.names(lb_avg) <- row.names(bb_avg) <- 1:nrow(lb_avg) # Assign sensible row names for dataframe
-
-lb_avg <- subset(lb_avg, Day > 21) # EPIRICE begins at day 20 of the simulation, this drops all prior values
-bb_avg <- subset(bb_avg, Day > 21)
 
 # Data visulualisation ---------------------------------------------------------
 
@@ -185,7 +182,6 @@ figure_3 <- ggplot(bb_avg, aes(x = Day, y = Bacterial.Blight, group = Scenario))
         legend.title = element_text(size = 6, family = "Helvetica"),
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   facet_grid(. ~ Time.Slice)
-
 ggsave("../LaTeX/Figures/Fig3.eps", width = 84, height = 84, units = "mm")
 
 # eos
