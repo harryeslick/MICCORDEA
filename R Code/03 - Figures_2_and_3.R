@@ -24,6 +24,9 @@ source("Functions/Get_Data.R")
 # Load data --------------------------------------------------------------------
 
 download_data() # get data from Figshare
+source("Functions/Get_EPIRICE_Output.R")
+
+# Load data --------------------------------------------------------------------
 
 # leaf blast
 tz_base_lb <- stack(list.files(path = "../Data/base/",
