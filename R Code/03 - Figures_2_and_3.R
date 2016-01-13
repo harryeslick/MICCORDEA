@@ -30,67 +30,67 @@ source("Functions/Get_EPIRICE_Output.R")
 
 # leaf blast
 tz_base_lb <- stack(list.files(path = "../Data/base/",
-                               pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                               pattern = ".blast_[[:digit:]]{3}.tif$",
                                full.names = TRUE))
 tz_base_lb[tz_base_lb == -9999] <- NA
 
 tz_2030_a2_lb <- stack(list.files(path = "../Data/a230/",
-                                  pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".blast_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2030_a2_lb[tz_2030_a2_lb == -9999] <- NA
 tz_2050_a2_lb <- stack(list.files(path = "../Data/a250/",
-                                  pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".blast_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2050_a2_lb[tz_2050_a2_lb == -9999] <- NA
 
 tz_2030_ab_lb <- stack(list.files(path = "../Data/ab30/",
-                                  pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".blast_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2030_ab_lb[tz_2030_ab_lb == -9999] <- NA
 tz_2050_ab_lb <- stack(list.files(path = "../Data/ab50/",
-                                  pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".blast_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2050_ab_lb[tz_2050_ab_lb == -9999] <- NA
 
 tz_2030_b1_lb <- stack(list.files(path = "../Data/b130/",
-                                  pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".blast_[[:digit:]]{3}.tif$",
                                   full.names = TRUE)) # B1 2030
 tz_2030_b1_lb[tz_2030_b1_lb == -9999] <- NA
 tz_2050_b1_lb <- stack(list.files(path = "../Data/b150/",
-                                  pattern = "rblast[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".blast_[[:digit:]]{3}.tif$",
                                   full.names = TRUE)) # B1 2050
 tz_2050_b1_lb[tz_2050_b1_lb == -9999] <- NA
 
 # bacterial blight
 tz_base_bb <- stack(list.files(path = "../Data/base/",
-                               pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                               pattern = ".bblight_[[:digit:]]{3}.tif$",
                                full.names = TRUE))
 tz_base_bb[tz_base_bb == -9999] <- NA
 
 tz_2030_a2_bb <- stack(list.files(path = "../Data/a230/",
-                                  pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".bblight_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2030_a2_bb[tz_2030_a2_bb == -9999] <- NA
 tz_2050_a2_bb <- stack(list.files(path = "../Data/a250/",
-                                  pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".bblight_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2050_a2_bb[tz_2050_a2_bb == -9999] <- NA
 
 tz_2030_ab_bb <- stack(list.files(path = "../Data/ab30/",
-                                  pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".bblight_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2030_ab_bb[tz_2030_ab_bb == -9999] <- NA
 tz_2050_ab_bb <- stack(list.files(path = "../Data/ab50/",
-                                  pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".bblight_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2050_ab_bb[tz_2050_ab_bb == -9999] <- NA
 
 tz_2030_b1_bb <- stack(list.files(path = "../Data/b130/",
-                                  pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".bblight_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2030_b1_bb[tz_2030_b1_bb == -9999] <- NA
 tz_2050_b1_bb <- stack(list.files(path = "../Data/b150/",
-                                  pattern = "bblight[[:digit:]]{2}_[[:digit:]]{3}$",
+                                  pattern = ".bblight_[[:digit:]]{3}.tif$",
                                   full.names = TRUE))
 tz_2050_b1_bb[tz_2050_b1_bb == -9999] <- NA
 
@@ -115,19 +115,19 @@ bb <- data.frame(values(tz_base_bb),
 lb_avg <- apply(lb, 2, mean, na.rm = TRUE) # create matrix of average leaf blast lesion coverage for all of Tanzania, by day of growing season
 bb_avg <- apply(bb, 2, mean, na.rm = TRUE) # create matrix of average bacterial leaf blight lesion coverage for all of Tanzaina, by day of growing season
 
-x <- c(rep("Base", 106),
-       rep("A2", 212),
-       rep("A1B", 212),
-       rep("B1", 212)) # Create vector of emission scenario
-y <- c(rep(2000, 106),
-       rep(2030, 106),
-       rep(2050, 106),
-       rep(2030, 106),
-       rep(2050, 106),
-       rep(2030, 106),
-       rep(2050, 106)) # Create vector of time-slice midpoint year
-z <- c(as.numeric(rep(1:106, 7))) # Create vector of days in growing season from transplanting
-z <- c(as.numeric(rep(1:106, 7))) # Create vector of days in growing season from transplanting
+x <- c(rep("Base", 121),
+       rep("A2", 242),
+       rep("A1B", 242),
+       rep("B1", 242)) # Create vector of emission scenario
+y <- c(rep(2000, 121),
+       rep(2030, 121),
+       rep(2050, 121),
+       rep(2030, 121),
+       rep(2050, 121),
+       rep(2030, 121),
+       rep(2050, 121)) # Create vector of time-slice midpoint year
+z <- c(as.numeric(rep(1:121, 7))) # Create vector of days in growing season from transplanting
+z <- c(as.numeric(rep(1:121, 7))) # Create vector of days in growing season from transplanting
 
 lb_avg <- data.frame(x, y, z, lb_avg) # Combind the vectors into one dataframe for ggplot2
 bb_avg <- data.frame(x, y, z, bb_avg)

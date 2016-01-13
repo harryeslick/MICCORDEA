@@ -44,8 +44,8 @@ arcpy.CheckOutExtension("Spatial")
 RadGDB = arcpy.ListRasters("rad*", "GRID")
 TempGDB = arcpy.ListRasters("tmean*", "GRID")
 IniTemp = arcpy.ListRasters("i*", "GRID")
-BlastGDB = arcpy.ListRasters("last*", "GRID")
-BlightGDB = arcpy.ListRasters("bblight*", "GRID")
+BlastGDB = arcpy.ListRasters("*blast*", "TIF")
+BlightGDB = arcpy.ListRasters("*bblight*", "TIF")
 
 
 if prodSituation == "PS1":
@@ -2528,5 +2528,3 @@ elif prodSituation == "PS6":
     output =  path1 + "Yield_PS6"
     thisPANW.save(output)
     arcpy.AddMessage("COMPLETED")
-
-

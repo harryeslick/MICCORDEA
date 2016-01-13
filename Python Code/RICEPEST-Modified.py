@@ -48,8 +48,8 @@ arcpy.CheckOutExtension("Spatial")
 RadGDB = arcpy.ListRasters("rad*", "GRID")
 TempGDB = arcpy.ListRasters("tmean*", "GRID")
 IniTemp = arcpy.ListRasters("i*", "GRID")
-BlastGDB = arcpy.ListRasters("rblast*", "GRID")
-BlightGDB = arcpy.ListRasters("bblight*", "GRID")
+BlastGDB = arcpy.ListRasters("*blast*", "TIF")
+BlightGDB = arcpy.ListRasters("*bblight*", "TIF")
 
 
 if prodSituation == "PS1":
