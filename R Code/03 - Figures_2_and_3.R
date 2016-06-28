@@ -184,7 +184,8 @@ figure_3 <- ggplot(bb_avg, aes(x = Day, y = Bacterial.Blight,
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +
-  theme(axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5),
+  theme(axis.text.x = element_text(size = 7, angle = 90, hjust = 1,
+                                   vjust = 0.5),
         axis.title.x = element_text(size = 8, family = "Helvetica"),
         axis.title.y = element_text(size = 7, angle = 90, family = "Helvetica"),
         axis.text.y = element_text(size = 7),

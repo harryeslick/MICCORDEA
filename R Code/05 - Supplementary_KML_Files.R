@@ -2,8 +2,9 @@
 # title         : Supplementary_KML_Files.R;
 # purpose       : generate supplementary KML files for publication on web;
 # producer      : prepared by A. Sparks;
-# last update   : IRRI, Los Baños, Jan 2016;
-# inputs        : ESRI files of yield losses and attainable yield for Tanzania calculated using RICEPEST;
+# last update   : in Toowoomba, Qld, Jun 2016;
+# inputs        : ESRI files of yield losses and attainable yield for Tanzania
+#               : calculated using RICEPEST;
 # outputs       : KML files of yield losses for base/2030/2050 a2/b1/ab scenario
 #                 and attainable yields for each time-slice in absence of disease;
 # remarks 1     : ;
@@ -35,12 +36,13 @@ crs(tz_ya) <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
 # Data munging ---- ------------------------------------------------------------
 
 # caclulate loss due to BB
-tz_bb_loss <- (tz_ya-tz_bb)
+tz_bb_loss <- (tz_ya - tz_bb)
 
 # calculate change in yield losses to blight
-for(i in 1:6){
-  change <- tz_bb_loss[[i]]-tz_bb_loss[[7]]
-  if(i == 1){tz_bb_change <- change} else tz_bb_change <- stack(tz_bb_change, change)
+for (i in 1:6) {
+  change <- tz_bb_loss[[i]] - tz_bb_loss[[7]]
+  if (i == 1) {tz_bb_change <- change}
+  else tz_bb_change <- stack(tz_bb_change, change)
 }
 
 # convert values to classes and cut for plotting
@@ -114,14 +116,15 @@ base_ya$cuts <- cut(base_ya$base_att, breaks = ya_breaks,
 # KML export -------------------------------------------------------------------
 # set up a few items so that our KML file outputs match Figure 7 in manuscript
 
-mypalette_bb <- colorRampPalette(brewer.pal(length(bb_breaks-1), "RdYlBu"),
+mypalette_bb <- colorRampPalette(brewer.pal(length(bb_breaks - 1), "RdYlBu"),
                                  space = "Lab")
 
-mypalette_ya <- colorRampPalette(brewer.pal(length(ya_breaks-1), "Oranges"),
+mypalette_ya <- colorRampPalette(brewer.pal(length(ya_breaks - 1), "Oranges"),
                                  space = "Lab")
 
 
-# set working directory to KML, no apparent easy way to specificy this in file name
+# set working directory to KML, no apparent easy way to specificy this in file
+# name
 setwd("../KML")
 
 # create the yield loss KML file
