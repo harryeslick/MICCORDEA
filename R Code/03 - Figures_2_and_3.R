@@ -2,9 +2,11 @@
 # title         : Figures_2_and_3.R;
 # purpose       : generate figures 2 and 3 for publication;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, Jan 2016;
-# inputs        : GTiff files of yield losses for Tanzania calculated using RICEPEST;
-# outputs       : Line graphs of disease progress for each time slice and scenario;
+# last update   : in Toowoomba, Qld. Jun 2016;
+# inputs        : GTiff files of yield losses for Tanzania calculated using
+#               : RICEPEST;
+# outputs       : Line graphs of disease progress for each time slice and
+#               : scenario;
 # remarks 1     : ;
 # Licence:      : GPL2;
 ################################################################################
@@ -20,11 +22,9 @@ library(ggthemes)
 
 loadfonts(device = "postscript")
 
-source("Functions/Get_Data.R")
-# Load data --------------------------------------------------------------------
+# Download data ----------------------------------------------------------------
 
-download_data() # get data from Figshare
-source("Functions/Get_EPIRICE_Output.R")
+source("Functions/Get_Data.R")
 
 # Load data --------------------------------------------------------------------
 
@@ -111,37 +111,48 @@ bb <- data.frame(values(tz_base_bb),
                  values(tz_2030_b1_bb),
                  values(tz_2050_b1_bb))
 
+# create matrix of average leaf blast lesion coverage for all of Tanzania,
+# by day of growing season
+lb_avg <- apply(lb, 2, mean, na.rm = TRUE)
+# create matrix of average bacterial leaf blight lesion coverage for all of
+# Tanzania, by day of growing season
+bb_avg <- apply(bb, 2, mean, na.rm = TRUE)
 
-lb_avg <- apply(lb, 2, mean, na.rm = TRUE) # create matrix of average leaf blast lesion coverage for all of Tanzania, by day of growing season
-bb_avg <- apply(bb, 2, mean, na.rm = TRUE) # create matrix of average bacterial leaf blight lesion coverage for all of Tanzaina, by day of growing season
+x <- c(rep("Base", 96),
+       rep("A2", 192),
+       rep("A1B", 192),
+       rep("B1", 192)) # Create vector of emission scenario
+y <- c(rep(2000, 96),
+       rep(2030, 96),
+       rep(2050, 96),
+       rep(2030, 96),
+       rep(2050, 96),
+       rep(2030, 96),
+       rep(2050,96)) # Create vector of time-slice midpoint year
+# Create vector of days in growing season from transplanting
+z <- c(as.numeric(rep(25:120, 7)))
+# Create vector of days in growing season from transplanting
+z <- c(as.numeric(rep(25:120, 7)))
 
-x <- c(rep("Base", 121),
-       rep("A2", 242),
-       rep("A1B", 242),
-       rep("B1", 242)) # Create vector of emission scenario
-y <- c(rep(2000, 121),
-       rep(2030, 121),
-       rep(2050, 121),
-       rep(2030, 121),
-       rep(2050, 121),
-       rep(2030, 121),
-       rep(2050, 121)) # Create vector of time-slice midpoint year
-z <- c(as.numeric(rep(1:121, 7))) # Create vector of days in growing season from transplanting
-z <- c(as.numeric(rep(1:121, 7))) # Create vector of days in growing season from transplanting
-
-lb_avg <- data.frame(x, y, z, lb_avg) # Combind the vectors into one dataframe for ggplot2
+# Combind the vectors into one dataframe for ggplot2
+lb_avg <- data.frame(x, y, z, lb_avg)
 bb_avg <- data.frame(x, y, z, bb_avg)
 
-names(lb_avg) <- c("Scenario", "Time.Slice", "Day", "Leaf.Blast") # Assign names to leaf blast data frame
-names(bb_avg) <- c("Scenario", "Time.Slice", "Day", "Bacterial.Blight") # Assign names to bacterial blight data frame
-row.names(lb_avg) <- row.names(bb_avg) <- 1:nrow(lb_avg) # Assign sensible row names for dataframe
+# Assign names to leaf blast data frame
+names(lb_avg) <- c("Scenario", "Time.Slice", "Day", "Leaf.Blast")
+# Assign names to bacterial blight data frame
+names(bb_avg) <- c("Scenario", "Time.Slice", "Day", "Bacterial.Blight")
+# Assign sensible row names for dataframe
+row.names(lb_avg) <- row.names(bb_avg) <- 1:nrow(lb_avg)
 
-# Data visulualisation ---------------------------------------------------------
+# Data visualisation ----------------------------------------------------------
 
 figure_2 <- ggplot(lb_avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
-  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") +
-  scale_y_continuous("Leaf Coverage by Leaf Blast Lesions (%)", limits = c(0, 40)) +
+  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)),
+            size = 1) +
+  scale_x_continuous("Day of Season", limits = c(25, 125)) +
+  scale_y_continuous("Leaf Coverage by Leaf Blast Lesions (%)",
+                     limits = c(0, 40)) +
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +
@@ -162,10 +173,13 @@ figure_2 <- ggplot(lb_avg, aes(x = Day, y = Leaf.Blast, group = Scenario)) +
 ggsave("../Latex/Figures/Fig2.eps", width = 84, height = 84, units = "mm")
 
 # Bacterial blight graph
-figure_3 <- ggplot(bb_avg, aes(x = Day, y = Bacterial.Blight, group = Scenario)) +
-  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)), size = 1) +
-  scale_x_continuous("Day of Season") +
-  scale_y_continuous("Leaf Coverage by Bacterial Leaf Blight Lesions (%)", limits = c(0, 40)) +
+figure_3 <- ggplot(bb_avg, aes(x = Day, y = Bacterial.Blight,
+                               group = Scenario)) +
+  geom_line(aes(colour = as.factor(Scenario), linetype = as.factor(Scenario)),
+            size = 1) +
+  scale_x_continuous("Day of Season", limits = c(25, 125)) +
+  scale_y_continuous("Leaf Coverage by Bacterial Leaf Blight Lesions (%)",
+                     limits = c(0, 40)) +
   scale_linetype_discrete("Emission\nScenario") +
   scale_colour_manual("Emission\nScenario", values = wes_palette("Moonrise3")) +
   theme_few() +

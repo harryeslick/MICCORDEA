@@ -2,7 +2,7 @@
 # title         : Install_Libraries.R;
 # purpose       : install libraries necessary for analysis in R;
 # producer      : prepared by A. Sparks;
-# last update   : in Los Baños, Philippines, Jan 2016;
+# last update   : in Toowoomba, Qld. Jan 2016;
 # inputs        : na;
 # outputs       : na;
 # remarks 1     : ;
