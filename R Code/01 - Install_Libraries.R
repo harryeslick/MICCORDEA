@@ -26,7 +26,5 @@ library(extrafont)
 font_import()
 loadfonts()
 
-source("Functions/Get_Data.R") # function to download necessary data
-
 # eos
 
