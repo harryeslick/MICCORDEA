@@ -2,7 +2,7 @@
 # title         : Figures_4_5_6_and_7.R;
 # purpose       : generate figures 4, 5, 6 and 7 for publication;
 # producer      : prepared by A. Sparks;
-# last update   : IRRI, Los Baños, Jan 2016;
+# last update   : in Toowoomba, Qld. Jun 2016;
 # inputs        : ESRI files of yield losses and attainable yield for Tanzania
 #               : calculated using RICEPEST;
 # outputs       : Histograms, maps and tabular data of yield losses for
@@ -22,11 +22,13 @@ library(ggthemes)
 library(scales)
 library(Hmisc)
 
+loadfonts(device = "postscript")
+
+# Download data ----------------------------------------------------------------
 source("Functions/Get_Data.R")
+download_data() # download output from Figshare
 
 # Load data-- ------------------------------------------------------------------
-
-download_data() # download output from Figshare
 
 TZ <- getData("GADM", country = "TZA", level = 0, path = "../Data")
 
@@ -196,7 +198,8 @@ p_bb_loss$GROUP <- as.factor(p_bb_loss$GROUP)
 # Violin plots of yield loss by time slice and scenario
 # Attainable yield, Figure 4
 figure_4 <- ggplot(ya, aes(x = x, y = ya))
-figure_4 <- figure_4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.factor(scenarios))) +
+figure_4 <- figure_4 + geom_violin(aes(colour = as.factor(scenarios),
+                                       fill = as.factor(scenarios))) +
   scale_color_manual(values = wes_palette("Darjeeling2")) +
   scale_fill_manual(values = wes_palette("Darjeeling2")) +
   labs(x = "Scenario and Time Slice", y = "Yield (tons/ha)") +
@@ -205,7 +208,8 @@ figure_4 <- figure_4 + geom_violin(aes(colour = as.factor(scenarios), fill = as.
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"))
-ggsave(filename = "Fig4.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+ggsave(filename = "Fig4.eps", path = "../LaTeX/Figures/", width = 140,
+       height = 140, units = "mm")
 
 # LB, Figure 5
 figure_5 <- ggplot(lb, aes(x = x, y = lb))
@@ -217,10 +221,12 @@ figure_5 <- figure_5 +
   theme_few() +
   theme(legend.position = "none") +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90,
+                                    family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"),
         plot.margin = unit(c(.5, .5, .5, .5), "lines"))
-ggsave(filename = "Fig5.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+ggsave(filename = "Fig5.eps", path = "../LaTeX/Figures/", width = 140,
+       height = 140, units = "mm")
 
 # BB, Figure 6
 figure_6 <- ggplot(bb, aes(x = x, y = bb))
@@ -235,31 +241,38 @@ figure_6 <- figure_6 +
         axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"),
         plot.margin = unit(c(.5, .5, .5, .5), "lines"))
-ggsave(filename = "Fig6.eps", path = "../LaTeX/Figures/", width = 140, height = 140, units = "mm")
+ggsave(filename = "Fig6.eps", path = "../LaTeX/Figures/", width = 140,
+       height = 140, units = "mm")
 
 # Map of yield loss for BB
-figure_7 <- ggplot(data = p_bb_loss, aes(y = Latitude, x = Longitude, fill = GROUP, colour = GROUP)) +
-  geom_polygon(data = TZ, aes(x = long, y = lat, group = group), colour = "#333333", fill = "#333333") +
+figure_7 <- ggplot(data = p_bb_loss, aes(y = Latitude, x = Longitude,
+                                         fill = GROUP, colour = GROUP)) +
+  geom_polygon(data = TZ, aes(x = long, y = lat, group = group),
+               colour = "#333333", fill = "#333333") +
   geom_tile(size = 0.4) + # eliminates lines between the cell
   scale_colour_brewer(type = "div",
                       palette = "RdYlBu",
-                      labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.40, 0.21", " 0.21, 0.46"),
+                      labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04",
+                                 " 0.40, 0.21", " 0.21, 0.46"),
                       expression(paste("t ", ha^"-1"))) +
 
   scale_fill_brewer(type = "div",
                     palette = "RdYlBu",
-                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04", " 0.04, 0.21", " 0.21, 0.46"),
+                    labels = c("-0.79, -0.54", "-0.54, -0.29", "-0.29, 0.04",
+                               " 0.04, 0.21", " 0.21, 0.46"),
                     expression(paste("t ", ha ^"-1"))) +
   theme_few() +
   theme(axis.title.x = element_text(size = 10, family = "Helvetica"),
-        axis.title.y = element_text(size = 10, angle = 90, family = "Helvetica"),
+        axis.title.y = element_text(size = 10, angle = 90,
+                                    family = "Helvetica"),
         axis.text = element_text(size = 9, family = "Helvetica"),
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "lines")) +
   coord_equal() +
   facet_grid(TIMESLICE ~ SCENARIO) +
   coord_map("cylindrical") # use cylindrical projection at low latitude
 
-ggsave("Fig7.eps", path = "../Latex/figures", width = 191, height = 116, units = "mm")
+ggsave("Fig7.eps", path = "../Latex/figures", width = 191, height = 116,
+       units = "mm")
 
 # Table data -------------------------------------------------------------------
 

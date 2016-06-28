@@ -25,6 +25,7 @@ loadfonts(device = "postscript")
 # Download data ----------------------------------------------------------------
 
 source("Functions/Get_Data.R")
+download_data() # download output from Figshare
 
 # Load data --------------------------------------------------------------------
 
