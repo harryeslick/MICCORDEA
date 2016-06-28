@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Duku_et_al_Springer.aux
+The style file: spbasic.bst
+Database file #1: MICORDEA_References.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--can't use both author and editor fields in Boko2007
+Warning--can't use both author and editor fields in Oryza
+Warning--can't use both author and editor fields in Diagne2013
+Warning--can't use both author and editor fields in Haefele2013
+Warning--can't use both author and editor fields in Saito2013
+Warning--can't use both author and editor fields in Seck2013
+Warning--can't use both author and editor fields in Sere2013
+Warning--can't use both author and editor fields in Stevens1960
+You've used 48 entries,
+            3270 wiz_defined-function locations,
+            1052 strings with 18370 characters,
+and the built_in function-call counts, 76978 in all, are:
+= -- 8372
+> -- 2031
+< -- 27
++ -- 895
+- -- 648
+* -- 6010
+:= -- 8854
+add.period$ -- 40
+call.type$ -- 48
+change.case$ -- 443
+chr.to.int$ -- 48
+cite$ -- 56
+duplicate$ -- 7644
+empty$ -- 5787
+format.name$ -- 782
+if$ -- 16025
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 580
+newline$ -- 154
+num.names$ -- 192
+pop$ -- 2014
+preamble$ -- 1
+purify$ -- 408
+quote$ -- 0
+skip$ -- 2728
+stack$ -- 0
+substring$ -- 7742
+swap$ -- 3941
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 402
+warning$ -- 8
+while$ -- 492
+width$ -- 0
+write$ -- 590
+(There were 8 warnings)

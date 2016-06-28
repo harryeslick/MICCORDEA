@@ -1,0 +1,16 @@
+*.Rhistory
+*.RData
+*.RProj
+*.Rproj.user
+*.Rapp.history
+*.history
+.Rproj.user
+
+ToDo.txt
+
+LaTeX/missfont.log
+Data
+
+Data.tar
+
+Data.tar.bz2
