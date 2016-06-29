@@ -16,8 +16,8 @@ library(R.utils)
 
 download_data <- function(){
   tf <- tempfile()
-  if(!file.exists("../Data.tar")){
-    download.file("https://ndownloader.figshare.com/files/3662892",
+  if (!file.exists("../Data.tar")) {
+    download.file("https://ndownloader.figshare.com/files/5457443",
                   tf, mode = "wb")
     bunzip2(tf, overwrite = TRUE, destname = "../Data.tar")
     untar("../Data.tar", exdir = "../")
