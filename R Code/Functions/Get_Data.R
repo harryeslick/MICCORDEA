@@ -14,7 +14,7 @@ library(R.utils)
 
 # Download data ----------------------------------------------------------------
 
-download_data <- function(){
+download_data <- function() {
   tf <- tempfile()
   if (!file.exists("../Data.tar")) {
     download.file("https://ndownloader.figshare.com/files/5457443",
