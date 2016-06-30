@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>MICCORDEA by adamhsparks</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/adamhsparks/MICCORDEA">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/adamhsparks/MICCORDEA/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/adamhsparks/MICCORDEA/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>MICCORDEA</h1>
+          <p>AfricaRice and IRRI MICCORDEA project for modelling effects of climate change on rice disease in Tanzania.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/adamhsparks">adamhsparks</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="miccordea" class="anchor" href="#miccordea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MICCORDEA</h1>
+
+<p>This repository includes the LaTeX files, R and Python for the AfricaRice and IRRI MICCORDEA project for modelling effects of climate change on rice disease in Tanzania.</p>
+
+<p>The LaTeX files compile the manuscript as submitted.</p>
+
+<p>The R files are used for data analysis and figure generation, figures are generated as .eps files and placed in "LaTex/Figures" for inclusion in final PDF document.</p>
+
+<p>The Python script is an ArcGIS script that is used to run RICEPEST in a GIS environment using inputs from the EPIRICE model. This script requires a Windows operating system and a valid installation of ArcGIS to run. Two scripts are available. The first, RICEPEST-Original.py, is a replication of the original RICEPEST model minus some features. The second, RICEPEST-Modified.py, is the version used in this manuscript with a modified PS3.</p>
+
+<p>The Data directory contains the necessary files to reproduce this work. Weather files are used with the EPIRICE and RICEPEST.py models. Output from EPIRICE RICEPEST-Modified.py are also available in this directory for quicker analysis.</p>
+
+<p>The KML directory contains supplementary KML files, Tanzania_BB_Change.kml, reproduces Figure 7 from the manuscript in GoogleEarth and Tanzania_attainable_yield.kml shows attainable yields for all time-slices as predicted by RICEPEST. Due to the need to reproject the values are not exactly replicated from Figure 7 in manuscript.</p>
+
+<p>The final published version can be found in the Springer Journal, Climatic Change. <a href="http://link.springer.com/article/10.1007/s10584-015-1580-2?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst">http://link.springer.com/article/10.1007/s10584-015-1580-2?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
