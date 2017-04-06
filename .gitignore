@@ -14,3 +14,5 @@ Data
 Data.tar
 
 Data.tar.bz2
+
+*.DS_Store
