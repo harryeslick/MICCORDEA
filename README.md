@@ -13,4 +13,4 @@ The Data directory contains the necessary files to reproduce this work. Weather 
 
 The KML directory contains supplementary KML files, [Tanzania_BB_Change.kml](./KML/Tanzania_BB_Change.kml), reproduces [Figure 7](./LaTeX/Figures/Fig7-eps-converted-to.pdf) from the manuscript in GoogleEarth and [Tanzania_attainable_yield.kml](./KML/Tanzania_attainable_yield.kml) shows attainable yields for all time-slices as predicted by RICEPEST. Due to the need to reproject the values are not exactly replicated from Figure 7 in manuscript.
 
-The final published version can be found in the Springer Journal, Climatic Change. http://link.springer.com/article/10.1007/s10584-015-1580-2?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst
+The final published version can be found in the Springer Journal, Climatic Change. <http://link.springer.com/article/10.1007/s10584-015-1580-2?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst>
