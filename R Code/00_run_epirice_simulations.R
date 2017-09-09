@@ -1,5 +1,5 @@
 ################################################################################
-# title         : run_epirice_simulations.R;
+# title         : 00 - run_epirice_simulations.R;
 # purpose       : script to run EPIRICE model;
 # producer      : prepared by J.Aunario & A. Sparks;
 # last update   : in Toowoomba, Qld, Australia, Sept 2017;
