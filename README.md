@@ -1,6 +1,8 @@
 MICCORDEA
 ========
 
+[![DOI](https://zenodo.org/badge/21346104.svg)](https://zenodo.org/badge/latestdoi/21346104)
+
 This repository includes the LaTeX files, R and Python for the AfricaRice and IRRI project, Mitigating The Impact Of Climate Change On Rice Disease Resistance In East Africa (MICCORDEA) modelling portion of the project, which examines the effects of climate change on rice disease in Tanzania.
 
 The LaTeX files compile the manuscript as submitted.
